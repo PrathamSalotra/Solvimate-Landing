@@ -19,13 +19,32 @@ export const metadata: Metadata = {
     'Solvimate empowers brands with seamless translation, transcription, and dubbing solutions.',
 };
 
+const themeInitScript = `
+  (function() {
+    try {
+      var theme = localStorage.getItem('solvimate-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
