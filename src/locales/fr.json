@@ -4,7 +4,9 @@
     "heroHeadline": "SOLVIMATE accompagne les marques avec des solutions fluides de traduction, transcription et doublage.",
     "heroSupport": "Chez Solvimate, nous vous aidons à communiquer en toute confiance avec le monde.",
     "heroCta": "Commencer",
+    "trustedBy": "Les entreprises leaders nous font confiance",
     "title": "Solvimate - Solutions de Doublage et Linguistiques",
+
     "welcome": "Bienvenue sur Solvimate. Projet Next.js 14+ App Router initialisé avec TypeScript, styled-components (prêt pour SSR), ESLint, Prettier et intégration Supabase.",
     "serverQuery": "Requête serveur vérifiée : {count} offres d'emploi chargées",
     "deployNow": "Déployer maintenant",
