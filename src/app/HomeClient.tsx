@@ -1,37 +1,46 @@
 'use client';
 
-import Image from 'next/image';
+import React from 'react';
 import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
-import styles from './page.module.css';
+import Hero from '@/components/home/Hero';
 
-const StyledTitle = styled.h1`
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+const HomeContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StatusSection = styled.section`
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid ${({ theme }) => theme.border};
 `;
 
 const StatusBadge = styled.span`
   display: inline-block;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 1rem;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: #10b981;
   border-radius: 9999px;
   font-size: 0.875rem;
-  margin-top: 0.5rem;
+  font-weight: 600;
 `;
 
 const TestInputWrapper = styled.div`
-  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 `;
 
 const TestInput = styled.input`
@@ -54,53 +63,20 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
   const { t } = useLanguage();
 
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <StyledTitle>{t('home.title')}</StyledTitle>
-          <p>{t('home.welcome')}</p>
-          <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
-          <TestInputWrapper>
-            <label htmlFor="test-input" style={{ fontSize: '0.75rem', opacity: 0.8 }}>
-              {t('home.inputLabel')}
-            </label>
-            <TestInput id="test-input" type="text" placeholder={t('home.inputPlaceholder')} />
-          </TestInputWrapper>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <HomeContainer>
+      <Hero />
+      <StatusSection>
+        <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
+        <TestInputWrapper>
+          <label
+            htmlFor="test-input"
+            style={{ fontSize: '0.75rem', opacity: 0.8, color: 'inherit' }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            {t('home.deployNow')}
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t('home.documentation')}
-          </a>
-        </div>
-      </main>
-    </div>
+            {t('home.inputLabel')}
+          </label>
+          <TestInput id="test-input" type="text" placeholder={t('home.inputPlaceholder')} />
+        </TestInputWrapper>
+      </StatusSection>
+    </HomeContainer>
   );
 }

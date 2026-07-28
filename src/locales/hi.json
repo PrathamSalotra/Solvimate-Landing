@@ -1,5 +1,9 @@
 {
   "home": {
+    "heroPill": "AI का भविष्य बना रहे हैं",
+    "heroHeadline": "SOLVIMATE वैश्विक ब्रांडों को सहज अनुवाद, ट्रांसक्रिप्शन और डबिंग समाधानों के साथ सशक्त बनाता है।",
+    "heroSupport": "Solvimate में, हम आपको दुनिया के साथ आत्मविश्वास से जुड़ने के लिए सशक्त बनाते हैं।",
+    "heroCta": "शुरू करें",
     "title": "Solvimate - डबिंग और भाषा समाधान",
     "welcome": "Solvimate में आपका स्वागत है। TypeScript, styled-components, ESLint, Prettier और Supabase के साथ प्रारंभ किया गया Next.js 14+ प्रोजेक्ट।",
     "serverQuery": "सर्वर क्वेरी सत्यापित: {count} नौकरी लिस्टिंग लोड की गई",

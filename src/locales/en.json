@@ -1,5 +1,9 @@
 {
   "home": {
+    "heroPill": "Building the Future of AI",
+    "heroHeadline": "SOLVIMATE empowers brands with seamless translation, transcription, and dubbing solutions.",
+    "heroSupport": "At Solvimate, we empower you to confidently connect with the world.",
+    "heroCta": "Get Started",
     "title": "Solvimate - Dubbing & Language Solutions",
     "welcome": "Welcome to Solvimate. Next.js 14+ App Router project initialized with TypeScript, styled-components (SSR ready), ESLint, Prettier, and Supabase integration.",
     "serverQuery": "Server Query Verified: {count} job listings loaded",

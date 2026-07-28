@@ -1,5 +1,9 @@
 {
   "home": {
+    "heroPill": "Construyendo el futuro de la IA",
+    "heroHeadline": "SOLVIMATE impulsa marcas con soluciones perfectas de traducción, transcripción y doblaje.",
+    "heroSupport": "En Solvimate, te potenciamos para conectarte con confianza con el mundo.",
+    "heroCta": "Empezar",
     "title": "Solvimate - Soluciones de Doblaje e Idiomas",
     "welcome": "Bienvenido a Solvimate. Proyecto Next.js 14+ App Router inicializado con TypeScript, styled-components (listo para SSR), ESLint, Prettier e integración con Supabase.",
     "serverQuery": "Consulta de servidor verificada: {count} ofertas de trabajo cargadas",
