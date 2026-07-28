@@ -1,37 +1,54 @@
-'use client';
+import type { Metadata } from 'next';
+import { supabaseServer } from '@/lib/supabase/server';
+import CareersClient from './CareersClient';
 
-import React from 'react';
-import styled from 'styled-components';
-import { useLanguage } from '@/context/LanguageContext';
+export const revalidate = 60; // Short revalidation window per spec §5.5
 
-const PageContainer = styled.main`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
+export interface JobListing {
+  id: string;
+  title: string;
+  track: 'candidate' | 'vendor';
+  category: string;
+  languages: string[];
+  status: 'available' | 'closed';
+  description: string;
+  created_at: string;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: ${({ theme }) => theme.foreground};
+export const metadata: Metadata = {
+  title: 'Opportunities - Solvimate | For Candidates & Vendors',
+  description:
+    'Explore global freelance language specialist roles and vendor agency partnerships across Recording, Transcription, Data Annotation, Content Creation, and Robotic Video Data Collection.',
+  openGraph: {
+    title: 'Opportunities - Solvimate | For Candidates & Vendors',
+    description:
+      'Explore global freelance language specialist roles and vendor agency partnerships across Recording, Transcription, Data Annotation, Content Creation, and Robotic Video Data Collection.',
+    type: 'website',
+  },
+};
+
+async function getJobListings(): Promise<JobListing[]> {
+  try {
+    const { data, error } = await supabaseServer
+      .from('job_listings')
+      .select('*')
+      .eq('status', 'available')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('[Careers Page] Supabase error fetching job_listings:', error.message);
+      return [];
+    }
+
+    return (data as JobListing[]) || [];
+  } catch (err) {
+    console.error('[Careers Page] Unexpected error fetching listings:', err);
+    return [];
   }
+}
 
-  p {
-    color: ${({ theme }) => theme.textSecondary};
-    font-size: 1.125rem;
-    max-width: 700px;
-  }
-`;
+export default async function CareersPage() {
+  const listings = await getJobListings();
 
-export default function CareersPage() {
-  const { t } = useLanguage();
-
-  return (
-    <PageContainer>
-      <h1>{t('nav.careers')} - Solvimate</h1>
-      <p>
-        Join our team of translators, dubbing artists, and AI language specialists worldwide. Check
-        available opportunities.
-      </p>
-    </PageContainer>
-  );
+  return <CareersClient initialListings={listings} />;
 }

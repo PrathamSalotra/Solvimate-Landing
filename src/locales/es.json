@@ -271,7 +271,29 @@
     "submitting_button": "Enviando…",
     "success_toast": "Message sent successfully.",
     "error_toast": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo."
+  },
+  "careers_page": {
+    "tag": "Carreras y Alianzas",
+    "headline": "Oportunidades",
+    "subtitle": "Únase a Solvimate como especialista individual o colabore con nosotros como proveedor especializado.",
+    "track_all": "Todas las oportunidades",
+    "track_candidate": "Para Candidatos",
+    "track_vendor": "Para Proveedores",
+    "track_candidate_desc": "Roles independientes y basados en proyectos para especialistas individuales.",
+    "track_vendor_desc": "Alianzas a nivel de agencia y equipo para proyectos masivos de idiomas y datos.",
+    "cat_all": "Todas las categorías",
+    "cat_recording": "Recording",
+    "cat_transcription": "Transcription",
+    "cat_annotation": "Data Annotation",
+    "cat_content": "Content Creation",
+    "cat_robotic": "Robotic Video Data Collection",
+    "status_available": "Available",
+    "apply_button": "Apply Now",
+    "empty_title": "No hay oportunidades abiertas actualmente",
+    "empty_desc": "Continuamos expandiendo nuestros equipos globales de idiomas e IA. Vuelva pronto o envíe una solicitud abierta a través de nuestro formulario de soporte.",
+    "empty_button": "Enviar solicitud abierta"
   }
 }
+
 
 

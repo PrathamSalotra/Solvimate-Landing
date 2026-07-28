@@ -271,7 +271,29 @@
     "submitting_button": "भेजा जा रहा है…",
     "success_toast": "Message sent successfully.",
     "error_toast": "संदेश भेजने में विफल। कृपया पुन: प्रयास करें।"
+  },
+  "careers_page": {
+    "tag": "करियर और साझेदारी",
+    "headline": "अवसर",
+    "subtitle": "सॉल्विमेट से एक व्यक्तिगत विशेषज्ञ के रूप में जुड़ें या एक विशेषज्ञ वेंडर के रूप में हमारे साथ साझेदारी करें।",
+    "track_all": "सभी अवसर",
+    "track_candidate": "उम्मीदवारों के लिए",
+    "track_vendor": "वेंडर्स के लिए",
+    "track_candidate_desc": "व्यक्तिगत विशेषज्ञों के लिए फ्रीलांस और प्रोजेक्ट आधारित भूमिकाएं।",
+    "track_vendor_desc": "बड़े पैमाने पर भाषा और डेटा प्रोजेक्ट्स के लिए एजेंसी और टीम स्तर की साझेदारी।",
+    "cat_all": "सभी श्रेणियां",
+    "cat_recording": "Recording",
+    "cat_transcription": "Transcription",
+    "cat_annotation": "Data Annotation",
+    "cat_content": "Content Creation",
+    "cat_robotic": "Robotic Video Data Collection",
+    "status_available": "Available",
+    "apply_button": "Apply Now",
+    "empty_title": "वर्तमान में कोई खुला अवसर उपलब्ध नहीं है",
+    "empty_desc": "हम अपनी वैश्विक भाषा और AI टीमों का निरंतर विस्तार कर रहे हैं। जल्द ही वापस देखें या हमारे ग्राहक सहायता फ़ॉर्म के माध्यम से खुला आवेदन भेजें।",
+    "empty_button": "खुला आवेदन भेजें"
   }
 }
+
 
 

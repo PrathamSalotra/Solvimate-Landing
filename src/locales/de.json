@@ -271,7 +271,29 @@
     "submitting_button": "Wird gesendet…",
     "success_toast": "Message sent successfully.",
     "error_toast": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+  },
+  "careers_page": {
+    "tag": "Karriere & Partnerschaften",
+    "headline": "Möglichkeiten",
+    "subtitle": "Schließen Sie sich Solvimate als individueller Spezialist an oder arbeiten Sie als spezialisierter Anbieter mit uns zusammen.",
+    "track_all": "Alle Möglichkeiten",
+    "track_candidate": "Für Kandidaten",
+    "track_vendor": "Für Anbieter",
+    "track_candidate_desc": "Freelance- & projektbasierte Rollen für einzelne Spezialisten.",
+    "track_vendor_desc": "Agentur- & Teampartnerschaften für umfangreiche Sprach- und Datenprojekte.",
+    "cat_all": "Alle Kategorien",
+    "cat_recording": "Recording",
+    "cat_transcription": "Transcription",
+    "cat_annotation": "Data Annotation",
+    "cat_content": "Content Creation",
+    "cat_robotic": "Robotic Video Data Collection",
+    "status_available": "Available",
+    "apply_button": "Apply Now",
+    "empty_title": "Derzeit keine offenen Stellen verfügbar",
+    "empty_desc": "Wir erweitern kontinuierlich unsere globalen Sprach- und KI-Teams. Schauen Sie bald wieder vorbei oder senden Sie eine Initiativbewerbung über unser Support-Formular.",
+    "empty_button": "Initiativbewerbung senden"
   }
 }
+
 
 
