@@ -214,5 +214,38 @@
     "cta_heading": "अपने प्रोजेक्ट के बारे में बताएं",
     "cta_desc": "अपने प्रोजेक्ट के बारे में बताएं और हमारी टीम 24 घंटे के भीतर समाधान के साथ आपसे संपर्क करेगी।",
     "cta_button": "मुफ्त कोटेशन पाएं"
+  },
+  "contact_page": {
+    "tag": "संपर्क करें",
+    "headline": "हमसे संपर्क करें",
+    "intro": "नीचे दिए गए किसी भी चैनल के माध्यम से सीधे हम तक पहुंचें या फ़ॉर्म भरें और हम जल्द ही आपसे संपर्क करेंगे।",
+    "email_label": "ईमेल पता",
+    "email_value": "operationssolvimate@gmail.com",
+    "phone_label": "फ़ोन नंबर",
+    "phone_value": "+91 6307875230",
+    "location_label": "कार्यालय का स्थान",
+    "location_value": "वाराणसी, उत्तर प्रदेश, भारत",
+    "hours_label": "कार्य समय",
+    "hours_value": "सोमवार – शनिवार: सुबह 9:00 – शाम 6:00 IST\nरविवार: बंद",
+    "form_title": "हमें एक संदेश भेजें",
+    "name_label": "पूरा नाम *",
+    "name_placeholder": "राजेश कुमार",
+    "name_error": "पूरा नाम आवश्यक है",
+    "phone_input_label": "फ़ोन नंबर",
+    "phone_placeholder": "+91 98765 43210",
+    "email_input_label": "ईमेल पता *",
+    "email_placeholder": "rajesh@example.com",
+    "email_error_required": "ईमेल पता आवश्यक है",
+    "email_error_invalid": "कृपया एक वैध ईमेल पता दर्ज करें",
+    "subject_label": "विषय",
+    "subject_default": "Project enquiry",
+    "message_label": "संदेश *",
+    "message_placeholder": "अपने प्रोजेक्ट की आवश्यकताओं के बारे में बताएं...",
+    "message_error": "संदेश आवश्यक है",
+    "submit_button": "संदेश भेजें",
+    "submitting_button": "भेजा जा रहा है…",
+    "success_toast": "संदेश भेज दिया गया! हम जल्द ही आपसे संपर्क करेंगे।",
+    "error_toast": "संदेश भेजने में विफल। कृपया पुन: प्रयास करें।"
   }
 }
+

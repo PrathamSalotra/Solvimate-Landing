@@ -214,5 +214,38 @@
     "cta_heading": "Parlez-nous de votre projet",
     "cta_desc": "Parlez-nous de votre projet et notre équipe vous répondra dans les 24 heures avec une solution sur mesure.",
     "cta_button": "Obtenir un devis gratuit"
+  },
+  "contact_page": {
+    "tag": "Contact",
+    "headline": "Contactez-nous",
+    "intro": "Contactez-nous directement via l'un des canaux ci-dessous ou remplissez le formulaire et nous vous répondrons rapidement.",
+    "email_label": "Adresse e-mail",
+    "email_value": "operationssolvimate@gmail.com",
+    "phone_label": "Numéro de téléphone",
+    "phone_value": "+91 6307875230",
+    "location_label": "Emplacement du bureau",
+    "location_value": "Varanasi, UP, Inde",
+    "hours_label": "Heures d'ouverture",
+    "hours_value": "Lundi – Samedi : 9h00 – 18h00 IST\nDimanche : Fermé",
+    "form_title": "Envoyez-nous un message",
+    "name_label": "Nom complet *",
+    "name_placeholder": "Jean Dupont",
+    "name_error": "Le nom complet est requis",
+    "phone_input_label": "Numéro de téléphone",
+    "phone_placeholder": "+91 98765 43210",
+    "email_input_label": "Adresse e-mail *",
+    "email_placeholder": "jean@example.com",
+    "email_error_required": "L'adresse e-mail est requise",
+    "email_error_invalid": "Veuillez entrer une adresse e-mail valide",
+    "subject_label": "Sujet",
+    "subject_default": "Project enquiry",
+    "message_label": "Message *",
+    "message_placeholder": "Parlez-nous de vos exigences de projet...",
+    "message_error": "Le message est requis",
+    "submit_button": "Envoyer le message",
+    "submitting_button": "Envoi en cours…",
+    "success_toast": "Message envoyé ! Nous vous contacterons bientôt.",
+    "error_toast": "Échec de l'envoi du message. Veuillez réessayer."
   }
 }
+

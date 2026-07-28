@@ -214,5 +214,38 @@
     "cta_heading": "Tell Us About Your Project",
     "cta_desc": "Tell us about your project and our team will get back to you within 24 hours with a tailored solution.",
     "cta_button": "Get a Free Quote"
+  },
+  "contact_page": {
+    "tag": "Contact Us",
+    "headline": "Get in touch",
+    "intro": "Reach us directly through any of the channels below or fill in the form and we'll get back to you shortly.",
+    "email_label": "Email Address",
+    "email_value": "operationssolvimate@gmail.com",
+    "phone_label": "Phone Number",
+    "phone_value": "+91 6307875230",
+    "location_label": "Office Location",
+    "location_value": "Varanasi, UP, India",
+    "hours_label": "Business Hours",
+    "hours_value": "Monday – Saturday: 9:00 AM – 6:00 PM IST\nSunday: Closed",
+    "form_title": "Send us a message",
+    "name_label": "Full Name *",
+    "name_placeholder": "John Doe",
+    "name_error": "Full name is required",
+    "phone_input_label": "Phone Number",
+    "phone_placeholder": "+91 98765 43210",
+    "email_input_label": "Email Address *",
+    "email_placeholder": "john@example.com",
+    "email_error_required": "Email address is required",
+    "email_error_invalid": "Please enter a valid email address",
+    "subject_label": "Subject",
+    "subject_default": "Project enquiry",
+    "message_label": "Message *",
+    "message_placeholder": "Tell us about your project requirements...",
+    "message_error": "Message is required",
+    "submit_button": "Send Message",
+    "submitting_button": "Sending…",
+    "success_toast": "Message sent! We'll be in touch soon.",
+    "error_toast": "Failed to send message. Please try again."
   }
 }
+

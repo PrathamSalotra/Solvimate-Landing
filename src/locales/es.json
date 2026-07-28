@@ -214,5 +214,38 @@
     "cta_heading": "Cuéntenos sobre su proyecto",
     "cta_desc": "Cuéntenos sobre su proyecto y nuestro equipo le responderá en 24 horas con una solución a medida.",
     "cta_button": "Obtener presupuesto gratis"
+  },
+  "contact_page": {
+    "tag": "Contacto",
+    "headline": "Póngase en contacto",
+    "intro": "Comuníquese directamente a través de los siguientes canales o complete el formulario y le responderemos en breve.",
+    "email_label": "Correo electrónico",
+    "email_value": "operationssolvimate@gmail.com",
+    "phone_label": "Teléfono",
+    "phone_value": "+91 6307875230",
+    "location_label": "Ubicación de la oficina",
+    "location_value": "Varanasi, UP, India",
+    "hours_label": "Horario de atención",
+    "hours_value": "Lunes – Sábado: 9:00 AM – 6:00 PM IST\nDomingo: Cerrado",
+    "form_title": "Envíenos un mensaje",
+    "name_label": "Nombre completo *",
+    "name_placeholder": "Juan Pérez",
+    "name_error": "El nombre completo es obligatorio",
+    "phone_input_label": "Teléfono",
+    "phone_placeholder": "+91 98765 43210",
+    "email_input_label": "Correo electrónico *",
+    "email_placeholder": "juan@example.com",
+    "email_error_required": "El correo electrónico es obligatorio",
+    "email_error_invalid": "Por favor, introduzca un correo electrónico válido",
+    "subject_label": "Asunto",
+    "subject_default": "Project enquiry",
+    "message_label": "Mensaje *",
+    "message_placeholder": "Cuéntenos sobre los requisitos de su proyecto...",
+    "message_error": "El mensaje es obligatorio",
+    "submit_button": "Enviar mensaje",
+    "submitting_button": "Enviando…",
+    "success_toast": "¡Mensaje enviado! Nos pondremos en contacto pronto.",
+    "error_toast": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo."
   }
 }
+

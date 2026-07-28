@@ -1,36 +1,18 @@
-'use client';
+import type { Metadata } from 'next';
+import ContactClient from './ContactClient';
 
-import React from 'react';
-import styled from 'styled-components';
-import { useLanguage } from '@/context/LanguageContext';
-
-const PageContainer = styled.main`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: ${({ theme }) => theme.foreground};
-  }
-
-  p {
-    color: ${({ theme }) => theme.textSecondary};
-    font-size: 1.125rem;
-    max-width: 700px;
-  }
-`;
+export const metadata: Metadata = {
+  title: 'Contact Us - Solvimate | Get in Touch for Language & AI Solutions',
+  description:
+    'Reach out to Solvimate via email, phone, or office location in Varanasi, India, or send us a message for your translation, dubbing, and AI data project needs.',
+  openGraph: {
+    title: 'Contact Us - Solvimate | Get in Touch for Language & AI Solutions',
+    description:
+      'Reach out to Solvimate via email, phone, or office location in Varanasi, India, or send us a message for your translation, dubbing, and AI data project needs.',
+    type: 'website',
+  },
+};
 
 export default function ContactPage() {
-  const { t } = useLanguage();
-
-  return (
-    <PageContainer>
-      <h1>{t('nav.contact')} - Solvimate</h1>
-      <p>
-        Get in touch with our team for translation, dubbing, and localization project enquiries.
-      </p>
-    </PageContainer>
-  );
+  return <ContactClient />;
 }

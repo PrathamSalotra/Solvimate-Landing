@@ -214,5 +214,38 @@
     "cta_heading": "Erzählen Sie uns von Ihrem Projekt",
     "cta_desc": "Erzählen Sie uns von Ihrem Projekt und unser Team meldet sich innerhalb von 24 Stunden mit einer maßgeschneiderten Lösung.",
     "cta_button": "Kostenloses Angebot"
+  },
+  "contact_page": {
+    "tag": "Kontakt",
+    "headline": "Kontaktieren Sie uns",
+    "intro": "Erreichen Sie uns direkt über einen der unten stehenden Kanäle oder füllen Sie das Formular aus, und wir melden uns in Kürze.",
+    "email_label": "E-Mail-Adresse",
+    "email_value": "operationssolvimate@gmail.com",
+    "phone_label": "Telefonnummer",
+    "phone_value": "+91 6307875230",
+    "location_label": "Bürostandort",
+    "location_value": "Varanasi, UP, Indien",
+    "hours_label": "Geschäftszeiten",
+    "hours_value": "Montag – Samstag: 9:00 – 18:00 Uhr IST\nSonntag: Geschlossen",
+    "form_title": "Senden Sie uns eine Nachricht",
+    "name_label": "Vollständiger Name *",
+    "name_placeholder": "Max Mustermann",
+    "name_error": "Vollständiger Name ist erforderlich",
+    "phone_input_label": "Telefonnummer",
+    "phone_placeholder": "+91 98765 43210",
+    "email_input_label": "E-Mail-Adresse *",
+    "email_placeholder": "max@example.com",
+    "email_error_required": "E-Mail-Adresse ist erforderlich",
+    "email_error_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "subject_label": "Betreff",
+    "subject_default": "Project enquiry",
+    "message_label": "Nachricht *",
+    "message_placeholder": "Erzählen Sie uns von Ihren Projektanforderungen...",
+    "message_error": "Nachricht ist erforderlich",
+    "submit_button": "Nachricht senden",
+    "submitting_button": "Wird gesendet…",
+    "success_toast": "Nachricht gesendet! Wir melden uns in Kürze bei Ihnen.",
+    "error_toast": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
   }
 }
+
