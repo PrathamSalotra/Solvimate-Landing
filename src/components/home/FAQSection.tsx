@@ -114,9 +114,9 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
   color: ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.textSecondary)};
   transform: rotate(${({ $isOpen }) => ($isOpen ? '180deg' : '0deg')});
   transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.35s ease,
+    color 0.35s ease;
   flex-shrink: 0;
 
   svg {
@@ -128,7 +128,10 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
 const AccordionPanel = styled.div<{ $isOpen: boolean }>`
   display: grid;
   grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};
-  transition: grid-template-rows 0.25s ease-out;
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  transition:
+    grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
 `;
 
 const PanelContent = styled.div`
@@ -245,7 +248,12 @@ export default function FAQSection() {
                 </AccordionHeader>
                 <AccordionPanel $isOpen={isOpen}>
                   <PanelContent>
-                    <div id={panelId} role="region" aria-labelledby={headerId} hidden={!isOpen}>
+                    <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={headerId}
+                      aria-hidden={!isOpen}
+                    >
                       <AnswerText>{t(`home.${item.answerKey}`)}</AnswerText>
                     </div>
                   </PanelContent>
