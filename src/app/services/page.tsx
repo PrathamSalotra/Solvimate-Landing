@@ -1,37 +1,18 @@
-'use client';
+import type { Metadata } from 'next';
+import ServicesClient from './ServicesClient';
 
-import React from 'react';
-import styled from 'styled-components';
-import { useLanguage } from '@/context/LanguageContext';
-
-const PageContainer = styled.main`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: ${({ theme }) => theme.foreground};
-  }
-
-  p {
-    color: ${({ theme }) => theme.textSecondary};
-    font-size: 1.125rem;
-    max-width: 700px;
-  }
-`;
+export const metadata: Metadata = {
+  title: 'Our Services - Solvimate | Translation, Dubbing & AI Data Solutions',
+  description:
+    'Explore Solvimate’s six core service sectors: Translation & Localization, Dubbing Projects, Transcription & Recording, Data Collection & Annotation, Content Development, and IT & Platform Support.',
+  openGraph: {
+    title: 'Our Services - Solvimate | Translation, Dubbing & AI Data Solutions',
+    description:
+      'Explore Solvimate’s six core service sectors: Translation & Localization, Dubbing Projects, Transcription & Recording, Data Collection & Annotation, Content Development, and IT & Platform Support.',
+    type: 'website',
+  },
+};
 
 export default function ServicesPage() {
-  const { t } = useLanguage();
-
-  return (
-    <PageContainer>
-      <h1>{t('nav.services')} - Solvimate</h1>
-      <p>
-        Explore Solvimate’s core translation, transcription, voice dubbing, and robotic video data
-        collection services.
-      </p>
-    </PageContainer>
-  );
+  return <ServicesClient />;
 }
