@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
 import Hero from '@/components/home/Hero';
 import LogoCarousel from '@/components/home/LogoCarousel';
+import ServicesSection from '@/components/home/ServicesSection';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -67,6 +68,7 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
     <HomeContainer>
       <Hero />
       <LogoCarousel />
+      <ServicesSection />
       <StatusSection>
         <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
         <TestInputWrapper>
