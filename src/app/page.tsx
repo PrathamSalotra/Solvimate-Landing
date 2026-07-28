@@ -1,7 +1,7 @@
 import { supabaseServer } from '@/lib/supabase/server';
 import HomeClient from './HomeClient';
 
-export const revalidate = 0; // Dynamic server rendering
+export const revalidate = 86400; // Longer ISR window per spec rendering-strategy decision (24 hours)
 
 export default async function Home() {
   let listingsCount = 0;

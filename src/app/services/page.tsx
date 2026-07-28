@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import ServicesClient from './ServicesClient';
 
+export const revalidate = 86400; // Longer ISR window per spec rendering-strategy decision (24 hours)
+
 export const metadata: Metadata = {
   title: 'Our Services - Solvimate | Translation, Dubbing & AI Data Solutions',
   description:
