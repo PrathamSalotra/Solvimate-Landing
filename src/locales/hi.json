@@ -66,6 +66,8 @@
     "about": "हमारे बारे में",
     "services": "सेवाएं",
     "careers": "करियर",
+    "internships": "इंटर्नशिप",
+    "programs": "कार्यक्रम",
     "contact": "संपर्क",
     "getStarted": "शुरू करें",
     "openMenu": "नेविगेशन मेनू खोलें",
@@ -292,8 +294,33 @@
     "empty_title": "वर्तमान में कोई खुला अवसर उपलब्ध नहीं है",
     "empty_desc": "हम अपनी वैश्विक भाषा और AI टीमों का निरंतर विस्तार कर रहे हैं। जल्द ही वापस देखें या हमारे ग्राहक सहायता फ़ॉर्म के माध्यम से खुला आवेदन भेजें।",
     "empty_button": "खुला आवेदन भेजें"
+  },
+  "internships_page": {
+    "tag": "इंटर्नशिप",
+    "headline": "इंटर्नशिप के अवसर",
+    "subtitle": "व्यावहारिक मार्गदर्शन के साथ भाषा, स्थानीयकरण और आर्टिफिशियल इंटेलिजेंस में अपना करियर शुरू करें।",
+    "empty_message": "No open internships at the moment. Check back soon!",
+    "view_details": "विवरण देखें",
+    "apply_button": "अभी आवेदन करें",
+    "status_open": "खुला है"
+  },
+  "programs_page": {
+    "tag": "कार्यक्रम और पथ",
+    "headline": "कार्यक्रम",
+    "subtitle": "सॉल्विमेट के साथ सहयोग करने के लिए संरचित पथों की खोज करें, चाहे आप एक अनुभवी पेशेवर, एक एजेंसी वेंडर, या एक छात्र हों।",
+    "path_jobs_title": "नौकरी के अवसर",
+    "path_jobs_desc": "दुनिया भर में भाषा विशेषज्ञों, डबिंग कलाकारों और AI डेटा मूल्यांकनकर्ताओं के लिए पूर्णकालिक, फ्रीलांस और प्रोजेक्ट आधारित भूमिकाएँ।",
+    "path_jobs_button": "खुले पद देखें",
+    "path_internships_title": "इंटर्नशिप कार्यक्रम",
+    "path_internships_desc": "अनुवाद, भाषा विज्ञान और AI डेटा एनोटेशन में व्यावहारिक मार्गदर्शन के साथ छात्रों और स्नातकों के लिए संरचित इंटर्नशिप।",
+    "path_internships_button": "इंटर्नशिप देखें",
+    "general_title": "सामान्य आवेदन",
+    "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
+    "general_apply_button": "अभी आवेदन करें",
+    "general_candidate_button": "उम्मीदवार आवेदन"
   }
 }
+
 
 
 

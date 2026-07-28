@@ -66,6 +66,8 @@
     "about": "Nosotros",
     "services": "Servicios",
     "careers": "Empleo",
+    "internships": "Pasantías",
+    "programs": "Programas",
     "contact": "Contacto",
     "getStarted": "Empezar",
     "openMenu": "Abrir menú de navegación",
@@ -292,8 +294,33 @@
     "empty_title": "No hay oportunidades abiertas actualmente",
     "empty_desc": "Continuamos expandiendo nuestros equipos globales de idiomas e IA. Vuelva pronto o envíe una solicitud abierta a través de nuestro formulario de soporte.",
     "empty_button": "Enviar solicitud abierta"
+  },
+  "internships_page": {
+    "tag": "Pasantías",
+    "headline": "Oportunidades de pasantía",
+    "subtitle": "Inicie su carrera en idiomas, localización e inteligencia artificial con mentoría práctica.",
+    "empty_message": "No open internships at the moment. Check back soon!",
+    "view_details": "Ver detalles",
+    "apply_button": "Postularse ahora",
+    "status_open": "Abierta"
+  },
+  "programs_page": {
+    "tag": "Programas y Vías",
+    "headline": "Programas",
+    "subtitle": "Descubra vías estructuradas para colaborar con Solvimate, ya sea un profesional experimentado, una agencia proveedora o un estudiante.",
+    "path_jobs_title": "Oportunidades laborales",
+    "path_jobs_desc": "Roles a tiempo completo, independientes y basados en proyectos para especialistas lingüísticos, artistas de doblaje y evaluadores de datos de IA.",
+    "path_jobs_button": "Ver puestos abiertos",
+    "path_internships_title": "Programas de pasantía",
+    "path_internships_desc": "Pasantías estructuradas para estudiantes y graduados con mentoría práctica en traducción, lingüística y anotación de datos de IA.",
+    "path_internships_button": "Explorar pasantías",
+    "general_title": "Solicitud general",
+    "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
+    "general_apply_button": "Postularse ahora",
+    "general_candidate_button": "Solicitud de candidato"
   }
 }
+
 
 
 

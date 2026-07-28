@@ -66,6 +66,8 @@
     "about": "À propos",
     "services": "Services",
     "careers": "Carrières",
+    "internships": "Stages",
+    "programs": "Programmes",
     "contact": "Contact",
     "getStarted": "Commencer",
     "openMenu": "Ouvrir le menu de navigation",
@@ -292,8 +294,33 @@
     "empty_title": "Aucune opportunité ouverte actuellement",
     "empty_desc": "Nous élargissons continuellement nos équipes mondiales en langues et en IA. Revenez bientôt ou envoyez une candidature spontanée via notre formulaire de support.",
     "empty_button": "Envoyer une candidature spontanée"
+  },
+  "internships_page": {
+    "tag": "Stages",
+    "headline": "Opportunités de stage",
+    "subtitle": "Lancez votre carrière dans les langues, la localisation et l'intelligence artificielle avec un encadrement pratique.",
+    "empty_message": "No open internships at the moment. Check back soon!",
+    "view_details": "Voir les détails",
+    "apply_button": "Postuler maintenant",
+    "status_open": "Ouvert"
+  },
+  "programs_page": {
+    "tag": "Programmes & Parcours",
+    "headline": "Programmes",
+    "subtitle": "Découvrez des parcours structurés pour collaborer avec Solvimate, que vous soyez un professionnel expérimenté, une agence prestataire ou un étudiant.",
+    "path_jobs_title": "Opportunités d'emploi",
+    "path_jobs_desc": "Rôles à temps plein, indépendants et basés sur des projets pour des spécialistes en langues, artistes de doublage et évaluateurs de données IA.",
+    "path_jobs_button": "Voir les postes ouverts",
+    "path_internships_title": "Programmes de stage",
+    "path_internships_desc": "Stages structurés pour étudiants et diplômés avec encadrement pratique en traduction, linguistique et annotation de données IA.",
+    "path_internships_button": "Parcourir les stages",
+    "general_title": "Candidature générale",
+    "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
+    "general_apply_button": "Postuler maintenant",
+    "general_candidate_button": "Candidature de candidat"
   }
 }
+
 
 
 

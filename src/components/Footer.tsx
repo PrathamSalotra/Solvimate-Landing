@@ -180,6 +180,12 @@ export default function Footer() {
                 <StyledFooterLink href="/careers">{t('nav.careers')}</StyledFooterLink>
               </li>
               <li>
+                <StyledFooterLink href="/internships">{t('nav.internships')}</StyledFooterLink>
+              </li>
+              <li>
+                <StyledFooterLink href="/programs">{t('nav.programs')}</StyledFooterLink>
+              </li>
+              <li>
                 <StyledFooterLink href="/contact">{t('nav.contact')}</StyledFooterLink>
               </li>
             </LinkList>

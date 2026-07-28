@@ -66,6 +66,8 @@
     "about": "About",
     "services": "Services",
     "careers": "Careers",
+    "internships": "Internships",
+    "programs": "Programs",
     "contact": "Contact",
     "getStarted": "Get Started",
     "openMenu": "Open navigation menu",
@@ -292,8 +294,33 @@
     "empty_title": "No Open Opportunities Currently Available",
     "empty_desc": "We are continuously expanding our global language and AI teams. Check back soon or submit an open application through our customer support form.",
     "empty_button": "Submit Open Application"
+  },
+  "internships_page": {
+    "tag": "Internships",
+    "headline": "Internship Opportunities",
+    "subtitle": "Launch your career in language, localization, and artificial intelligence with hands-on mentorship.",
+    "empty_message": "No open internships at the moment. Check back soon!",
+    "view_details": "View Details",
+    "apply_button": "Apply Now",
+    "status_open": "Open"
+  },
+  "programs_page": {
+    "tag": "Programs & Pathways",
+    "headline": "Programs",
+    "subtitle": "Discover structured pathways to collaborate with Solvimate, whether you are an experienced professional, an agency vendor, or a student.",
+    "path_jobs_title": "Job Opportunities",
+    "path_jobs_desc": "Full-time, freelance, and project-based roles for language specialists, dubbing artists, and AI data evaluators worldwide.",
+    "path_jobs_button": "View Open Positions",
+    "path_internships_title": "Internship Programs",
+    "path_internships_desc": "Structured student and graduate internships with hands-on mentorship in translation, linguistics, and AI data annotation.",
+    "path_internships_button": "Browse Internships",
+    "general_title": "General Application",
+    "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
+    "general_apply_button": "Apply Now",
+    "general_candidate_button": "Candidate Application"
   }
 }
+
 
 
 
