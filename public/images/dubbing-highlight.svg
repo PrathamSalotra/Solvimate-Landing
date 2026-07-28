@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dubBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f18" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <radialGradient id="micGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#dubBg)" />
+  <circle cx="600" cy="337" r="380" fill="url(#micGlow)" />
+
+  <!-- Studio Audio Waveform Frequencies -->
+  <g fill="url(#waveGrad)" opacity="0.85">
+    <rect x="220" y="300" width="12" height="75" rx="6" />
+    <rect x="250" y="260" width="12" height="155" rx="6" />
+    <rect x="280" y="210" width="12" height="255" rx="6" />
+    <rect x="310" y="280" width="12" height="115" rx="6" />
+    <rect x="340" y="190" width="12" height="295" rx="6" />
+    <rect x="370" y="240" width="12" height="195" rx="6" />
+    <rect x="400" y="160" width="12" height="355" rx="6" />
+    <rect x="430" y="220" width="12" height="235" rx="6" />
+    
+    <rect x="758" y="220" width="12" height="235" rx="6" />
+    <rect x="788" y="160" width="12" height="355" rx="6" />
+    <rect x="818" y="240" width="12" height="195" rx="6" />
+    <rect x="848" y="190" width="12" height="295" rx="6" />
+    <rect x="878" y="280" width="12" height="115" rx="6" />
+    <rect x="908" y="210" width="12" height="255" rx="6" />
+    <rect x="938" y="260" width="12" height="155" rx="6" />
+    <rect x="968" y="300" width="12" height="75" rx="6" />
+  </g>
+
+  <!-- Center Studio Microphone Badge -->
+  <circle cx="600" cy="337" r="110" fill="#0f172a" stroke="rgba(16, 185, 129, 0.4)" stroke-width="3" />
+  <circle cx="600" cy="337" r="90" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="8 6" />
+  <g fill="#10b981">
+    <rect x="582" y="280" width="36" height="70" rx="18" />
+    <path d="M565 315 v20 c0 20 15 35 35 35 s35-15 35-35 v-20 h-8 v20 c0 15-12 27-27 27 s-27-12-27-27 v-20 h-8 Z" fill="#60a5fa" />
+    <rect x="596" y="370" width="8" height="30" />
+    <rect x="575" y="400" width="50" height="8" rx="4" />
+  </g>
+</svg>

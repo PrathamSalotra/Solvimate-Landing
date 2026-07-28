@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="50%" stop-color="#0d1f2d" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+  <rect width="1200" height="675" fill="url(#grid)" />
+  <circle cx="600" cy="337" r="450" fill="url(#glow)" />
+
+  <!-- Global Connectivity Arcs & Nodes -->
+  <g fill="none" stroke="url(#accentGrad)" stroke-width="2" opacity="0.65">
+    <ellipse cx="600" cy="337" rx="360" ry="140" transform="rotate(-15 600 337)" stroke-dasharray="8 6"/>
+    <ellipse cx="600" cy="337" rx="280" ry="280" stroke-opacity="0.25" />
+    <ellipse cx="600" cy="337" rx="380" ry="180" transform="rotate(25 600 337)" />
+  </g>
+
+  <!-- World Nodes -->
+  <g fill="#10b981">
+    <circle cx="380" cy="240" r="8" />
+    <circle cx="520" cy="210" r="6" />
+    <circle cx="680" cy="270" r="9" />
+    <circle cx="810" cy="310" r="7" />
+    <circle cx="450" cy="410" r="8" />
+    <circle cx="730" cy="440" r="6" />
+    <circle cx="600" cy="337" r="12" fill="#3b82f6" />
+  </g>
+
+  <!-- Connecting Lines -->
+  <g stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5">
+    <line x1="380" y1="240" x2="600" y2="337" />
+    <line x1="520" y1="210" x2="600" y2="337" />
+    <line x1="680" y1="270" x2="600" y2="337" />
+    <line x1="810" y1="310" x2="600" y2="337" />
+    <line x1="450" y1="410" x2="600" y2="337" />
+    <line x1="730" y1="440" x2="600" y2="337" />
+  </g>
+
+  <!-- Pulse Rings around Center -->
+  <circle cx="600" cy="337" r="28" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
+  <circle cx="600" cy="337" r="54" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.4"/>
+</svg>

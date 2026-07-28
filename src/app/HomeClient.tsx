@@ -6,6 +6,9 @@ import { useLanguage } from '@/context/LanguageContext';
 import Hero from '@/components/home/Hero';
 import LogoCarousel from '@/components/home/LogoCarousel';
 import ServicesSection from '@/components/home/ServicesSection';
+import BannerSection from '@/components/home/BannerSection';
+import DubbingHighlight from '@/components/home/DubbingHighlight';
+import JourneySection from '@/components/home/JourneySection';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -69,6 +72,9 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
       <Hero />
       <LogoCarousel />
       <ServicesSection />
+      <BannerSection />
+      <DubbingHighlight />
+      <JourneySection />
       <StatusSection>
         <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
         <TestInputWrapper>
