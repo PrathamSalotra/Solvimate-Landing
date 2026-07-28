@@ -11,5 +11,15 @@
   "common": {
     "language": "Idioma",
     "switchLanguage": "Cambiar idioma"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "careers": "Empleo",
+    "contact": "Contacto",
+    "getStarted": "Empezar",
+    "openMenu": "Abrir menú de navegación",
+    "closeMenu": "Cerrar menú de navegación"
   }
 }

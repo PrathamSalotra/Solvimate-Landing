@@ -11,5 +11,15 @@
   "common": {
     "language": "भाषा",
     "switchLanguage": "भाषा बदलें"
+  },
+  "nav": {
+    "home": "होम",
+    "about": "हमारे बारे में",
+    "services": "सेवाएं",
+    "careers": "करियर",
+    "contact": "संपर्क",
+    "getStarted": "शुरू करें",
+    "openMenu": "नेविगेशन मेनू खोलें",
+    "closeMenu": "नेविगेशन मेनू बंद करें"
   }
 }

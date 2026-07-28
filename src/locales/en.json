@@ -11,5 +11,15 @@
   "common": {
     "language": "Language",
     "switchLanguage": "Switch Language"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "careers": "Careers",
+    "contact": "Contact",
+    "getStarted": "Get Started",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
   }
 }

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import StyledComponentsRegistry from '@/lib/registry';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
+import Navbar from '@/components/Navbar';
 import './globals.css';
 
 const geistSans = Geist({
@@ -50,7 +51,10 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <ThemeProvider>
-            <LanguageProvider>{children}</LanguageProvider>
+            <LanguageProvider>
+              <Navbar />
+              <div style={{ paddingTop: '72px' }}>{children}</div>
+            </LanguageProvider>
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
