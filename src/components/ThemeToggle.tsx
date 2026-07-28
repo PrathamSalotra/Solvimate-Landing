@@ -26,6 +26,11 @@ const ToggleButton = styled.button`
     border-color: ${({ theme }) => theme.primary};
   }
 
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.primary};
+    outline-offset: 2px;
+  }
+
   &:active {
     transform: scale(0.95);
   }

@@ -55,6 +55,9 @@ export default function RootLayout({
           <ThemeProvider>
             <LanguageProvider>
               <ToastProvider>
+                <a href="#main-content" className="skip-to-content">
+                  Skip to main content
+                </a>
                 <Navbar />
                 <div
                   style={{
@@ -64,7 +67,9 @@ export default function RootLayout({
                     flexDirection: 'column',
                   }}
                 >
-                  <div style={{ flex: 1 }}>{children}</div>
+                  <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: 'none' }}>
+                    {children}
+                  </main>
                   <Footer />
                 </div>
               </ToastProvider>

@@ -31,6 +31,11 @@ const StyledSelect = styled.select`
     background: ${({ theme }) => theme.surface};
   }
 
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.primary};
+    outline-offset: 2px;
+  }
+
   option {
     background: ${({ theme }) => theme.surface};
     color: ${({ theme }) => theme.foreground};
