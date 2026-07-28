@@ -246,6 +246,32 @@
     "submitting_button": "Enviando…",
     "success_toast": "¡Mensaje enviado! Nos pondremos en contacto pronto.",
     "error_toast": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo."
+  },
+  "customer_support": {
+    "tag": "Soporte al cliente",
+    "headline": "Acceda a expertos lingüísticos de calidad global con Solvimate",
+    "intro": "Cuéntenos sobre sus requisitos de proyecto o necesidades de soporte, y nuestros especialistas en idiomas e IA responderán en un plazo de 24 horas.",
+    "form_title": "Soporte al cliente",
+    "first_name_label": "Nombre *",
+    "first_name_placeholder": "Juan",
+    "first_name_error": "El nombre es obligatorio",
+    "last_name_label": "Apellido *",
+    "last_name_placeholder": "Pérez",
+    "last_name_error": "El apellido es obligatorio",
+    "email_label": "Correo electrónico *",
+    "email_placeholder": "juan@example.com",
+    "email_error_required": "El correo electrónico es obligatorio",
+    "email_error_invalid": "Por favor, introduzca un correo electrónico válido",
+    "subject_label": "Asunto",
+    "subject_default": "Project enquiry",
+    "message_label": "Mensaje *",
+    "message_placeholder": "Describa sus necesidades lingüísticas, de transcripción o datos de IA...",
+    "message_error": "El mensaje es obligatorio",
+    "submit_button": "Enviar solicitud",
+    "submitting_button": "Enviando…",
+    "success_toast": "Message sent successfully.",
+    "error_toast": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo."
   }
 }
+
 

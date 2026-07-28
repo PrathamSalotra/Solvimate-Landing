@@ -246,6 +246,32 @@
     "submitting_button": "भेजा जा रहा है…",
     "success_toast": "संदेश भेज दिया गया! हम जल्द ही आपसे संपर्क करेंगे।",
     "error_toast": "संदेश भेजने में विफल। कृपया पुन: प्रयास करें।"
+  },
+  "customer_support": {
+    "tag": "ग्राहक सहायता",
+    "headline": "सॉल्विमेट के साथ वैश्विक स्तर के भाषा विशेषज्ञों से जुड़ें",
+    "intro": "अपनी प्रोजेक्ट आवश्यकताओं या सहायता के बारे में बताएं, और हमारे भाषा और AI विशेषज्ञ 24 घंटे के भीतर जवाब देंगे।",
+    "form_title": "ग्राहक सहायता",
+    "first_name_label": "पहला नाम *",
+    "first_name_placeholder": "राजेश",
+    "first_name_error": "पहला नाम आवश्यक है",
+    "last_name_label": "अंतिम नाम *",
+    "last_name_placeholder": "कुमार",
+    "last_name_error": "अंतिम नाम आवश्यक है",
+    "email_label": "ईमेल पता *",
+    "email_placeholder": "rajesh@example.com",
+    "email_error_required": "ईमेल पता आवश्यक है",
+    "email_error_invalid": "कृपया एक वैध ईमेल पता दर्ज करें",
+    "subject_label": "विषय",
+    "subject_default": "Project enquiry",
+    "message_label": "संदेश *",
+    "message_placeholder": "अपनी भाषा, ट्रांसक्रिप्शन या AI डेटा आवश्यकताओं का वर्णन करें...",
+    "message_error": "संदेश आवश्यक है",
+    "submit_button": "अनुरोध भेजें",
+    "submitting_button": "भेजा जा रहा है…",
+    "success_toast": "Message sent successfully.",
+    "error_toast": "संदेश भेजने में विफल। कृपया पुन: प्रयास करें।"
   }
 }
+
 

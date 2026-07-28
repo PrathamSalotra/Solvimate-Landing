@@ -246,6 +246,32 @@
     "submitting_button": "Wird gesendet…",
     "success_toast": "Nachricht gesendet! Wir melden uns in Kürze bei Ihnen.",
     "error_toast": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+  },
+  "customer_support": {
+    "tag": "Kundensupport",
+    "headline": "Zugang zu globalen Sprachexperten mit Solvimate",
+    "intro": "Erzählen Sie uns von Ihren Projektanforderungen oder Supportanfragen, und unsere Sprach- & KI-Spezialisten antworten innerhalb von 24 Stunden.",
+    "form_title": "Kundensupport",
+    "first_name_label": "Vorname *",
+    "first_name_placeholder": "Max",
+    "first_name_error": "Vorname ist erforderlich",
+    "last_name_label": "Nachname *",
+    "last_name_placeholder": "Mustermann",
+    "last_name_error": "Nachname ist erforderlich",
+    "email_label": "E-Mail-Adresse *",
+    "email_placeholder": "max@example.com",
+    "email_error_required": "E-Mail-Adresse ist erforderlich",
+    "email_error_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "subject_label": "Betreff",
+    "subject_default": "Project enquiry",
+    "message_label": "Nachricht *",
+    "message_placeholder": "Beschreiben Sie Ihre Anforderungen für Sprache, Transkription oder KI-Daten...",
+    "message_error": "Nachricht ist erforderlich",
+    "submit_button": "Anfrage senden",
+    "submitting_button": "Wird gesendet…",
+    "success_toast": "Message sent successfully.",
+    "error_toast": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
   }
 }
+
 

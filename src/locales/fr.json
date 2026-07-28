@@ -246,6 +246,32 @@
     "submitting_button": "Envoi en cours…",
     "success_toast": "Message envoyé ! Nous vous contacterons bientôt.",
     "error_toast": "Échec de l'envoi du message. Veuillez réessayer."
+  },
+  "customer_support": {
+    "tag": "Support client",
+    "headline": "Accédez à des experts linguistiques de qualité mondiale avec Solvimate",
+    "intro": "Parlez-nous de vos exigences de projet ou de vos besoins de support, et nos spécialistes en langues et en IA vous répondront sous 24 heures.",
+    "form_title": "Support client",
+    "first_name_label": "Prénom *",
+    "first_name_placeholder": "Jean",
+    "first_name_error": "Le prénom est requis",
+    "last_name_label": "Nom *",
+    "last_name_placeholder": "Dupont",
+    "last_name_error": "Le nom est requis",
+    "email_label": "Adresse e-mail *",
+    "email_placeholder": "jean@example.com",
+    "email_error_required": "L'adresse e-mail est requise",
+    "email_error_invalid": "Veuillez entrer une adresse e-mail valide",
+    "subject_label": "Sujet",
+    "subject_default": "Project enquiry",
+    "message_label": "Message *",
+    "message_placeholder": "Décrivez vos besoins en langues, transcription ou données IA...",
+    "message_error": "Le message est requis",
+    "submit_button": "Soumettre la demande",
+    "submitting_button": "Envoi en cours…",
+    "success_toast": "Message sent successfully.",
+    "error_toast": "Échec de l'envoi du message. Veuillez réessayer."
   }
 }
+
 

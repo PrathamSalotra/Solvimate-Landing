@@ -246,6 +246,32 @@
     "submitting_button": "Sending…",
     "success_toast": "Message sent! We'll be in touch soon.",
     "error_toast": "Failed to send message. Please try again."
+  },
+  "customer_support": {
+    "tag": "Customer Support",
+    "headline": "Access Global-Quality Language Experts with Solvimate",
+    "intro": "Tell us about your project requirements or support needs, and our language & AI specialists will respond within 24 hours.",
+    "form_title": "Customer support",
+    "first_name_label": "First Name *",
+    "first_name_placeholder": "John",
+    "first_name_error": "First name is required",
+    "last_name_label": "Last Name *",
+    "last_name_placeholder": "Doe",
+    "last_name_error": "Last name is required",
+    "email_label": "Email Address *",
+    "email_placeholder": "john@example.com",
+    "email_error_required": "Email address is required",
+    "email_error_invalid": "Please enter a valid email address",
+    "subject_label": "Subject",
+    "subject_default": "Project enquiry",
+    "message_label": "Message *",
+    "message_placeholder": "Describe your language, transcription, or AI data needs...",
+    "message_error": "Message is required",
+    "submit_button": "Submit Request",
+    "submitting_button": "Sending…",
+    "success_toast": "Message sent successfully.",
+    "error_toast": "Failed to send message. Please try again."
   }
 }
+
 
