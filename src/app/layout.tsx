@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import StyledComponentsRegistry from '@/lib/registry';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { ToastProvider } from '@/context/ToastContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import './globals.css';
@@ -53,18 +54,20 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ThemeProvider>
             <LanguageProvider>
-              <Navbar />
-              <div
-                style={{
-                  paddingTop: '72px',
-                  minHeight: '100vh',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
-              >
-                <div style={{ flex: 1 }}>{children}</div>
-                <Footer />
-              </div>
+              <ToastProvider>
+                <Navbar />
+                <div
+                  style={{
+                    paddingTop: '72px',
+                    minHeight: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <div style={{ flex: 1 }}>{children}</div>
+                  <Footer />
+                </div>
+              </ToastProvider>
             </LanguageProvider>
           </ThemeProvider>
         </StyledComponentsRegistry>
