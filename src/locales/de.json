@@ -68,6 +68,7 @@
     "careers": "Karriere",
     "internships": "Praktika",
     "programs": "Programme",
+    "news": "Neuigkeiten",
     "contact": "Kontakt",
     "getStarted": "Loslegen",
     "openMenu": "Navigationsmenü öffnen",
@@ -318,8 +319,17 @@
     "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
     "general_apply_button": "Jetzt bewerben",
     "general_candidate_button": "Kandidatenbewerbung"
+  },
+  "news_page": {
+    "tag": "Presse & Updates",
+    "headline": "Neuigkeiten & Einblicke",
+    "subtitle": "Bleiben Sie auf dem Laufenden mit den neuesten Ankündigungen, Durchbrüchen bei mehrsprachiger KI und weltweiten Expansionsgeschichten von Solvimate.",
+    "empty_message": "No news articles yet.",
+    "read_more": "Artikel lesen",
+    "published_on": "Veröffentlicht am"
   }
 }
+
 
 
 

@@ -68,6 +68,7 @@
     "careers": "Carrières",
     "internships": "Stages",
     "programs": "Programmes",
+    "news": "Actualités",
     "contact": "Contact",
     "getStarted": "Commencer",
     "openMenu": "Ouvrir le menu de navigation",
@@ -318,8 +319,17 @@
     "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
     "general_apply_button": "Postuler maintenant",
     "general_candidate_button": "Candidature de candidat"
+  },
+  "news_page": {
+    "tag": "Presse & Actualités",
+    "headline": "Actualités & Insights",
+    "subtitle": "Restez informé des dernières annonces, des percées dans l'IA multilingue et des étapes d'expansion mondiale de Solvimate.",
+    "empty_message": "No news articles yet.",
+    "read_more": "Lire l'article",
+    "published_on": "Publié le"
   }
 }
+
 
 
 

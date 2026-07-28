@@ -186,6 +186,9 @@ export default function Footer() {
                 <StyledFooterLink href="/programs">{t('nav.programs')}</StyledFooterLink>
               </li>
               <li>
+                <StyledFooterLink href="/news">{t('nav.news')}</StyledFooterLink>
+              </li>
+              <li>
                 <StyledFooterLink href="/contact">{t('nav.contact')}</StyledFooterLink>
               </li>
             </LinkList>

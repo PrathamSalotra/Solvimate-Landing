@@ -68,6 +68,7 @@
     "careers": "करियर",
     "internships": "इंटर्नशिप",
     "programs": "कार्यक्रम",
+    "news": "समाचार",
     "contact": "संपर्क",
     "getStarted": "शुरू करें",
     "openMenu": "नेविगेशन मेनू खोलें",
@@ -318,8 +319,17 @@
     "general_desc": "Not sure which program fits you? Submit a general application and our talent team will match you with upcoming projects and roles.",
     "general_apply_button": "अभी आवेदन करें",
     "general_candidate_button": "उम्मीदवार आवेदन"
+  },
+  "news_page": {
+    "tag": "प्रेस और अपडेट",
+    "headline": "समाचार और विचार",
+    "subtitle": "सॉल्विमेट की नवीनतम घोषणाओं, बहुभाषी AI में सफलताओं और वैश्विक विस्तार की कहानियों से अपडेट रहें।",
+    "empty_message": "No news articles yet.",
+    "read_more": "लेख पढ़ें",
+    "published_on": "प्रकाशित तिथि"
   }
 }
+
 
 
 
