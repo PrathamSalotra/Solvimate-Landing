@@ -31,5 +31,10 @@
     "termsOfService": "Conditions d'utilisation",
     "social": "Suivez-nous",
     "copyright": "© {year} Solvimate. Tous droits réservés."
+  },
+  "notFound": {
+    "title": "404 - Page introuvable",
+    "description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
   }
 }

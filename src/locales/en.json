@@ -31,5 +31,10 @@
     "termsOfService": "Terms of Service",
     "social": "Connect With Us",
     "copyright": "© {year} Solvimate. All rights reserved."
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "backHome": "Back to Home"
   }
 }
