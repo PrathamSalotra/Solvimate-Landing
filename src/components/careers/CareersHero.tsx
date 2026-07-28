@@ -82,7 +82,7 @@ const TracksGrid = styled.div`
   width: 100%;
   margin-top: 1.5rem;
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
