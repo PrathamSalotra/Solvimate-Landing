@@ -22,7 +22,7 @@ const SectionHeader = styled.h2`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: ${({ theme }) => theme.textSecondary};
-  margin: 0 0 2.5rem;
+  margin: 0 0 1.5rem;
   text-align: center;
   padding: 0 1.5rem;
 `;
@@ -32,6 +32,7 @@ const ViewportContainer = styled.div`
   max-width: 1400px;
   overflow: hidden;
   position: relative;
+  padding: 1.25rem 0;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -55,6 +56,7 @@ const CarouselTrack = styled.div`
   display: flex;
   align-items: center;
   gap: 3.5rem;
+  padding: 0.5rem 0;
   width: max-content;
   animation: ${scrollAnimation} 30s linear infinite;
 
