@@ -45,6 +45,9 @@
     "faq3Answer": "Ja, wir arbeiten mit Solo-Erstellern, unabhängigen Lehrenden, Unternehmen und großen internationalen Firmen zusammen und bieten maßgeschneiderte Arbeitsabläufe und engagierten Support für Projekte jeder Größenordnung.",
     "faq4Question": "Können Sie Großprojekte mit knappen Terminen abwickeln?",
     "faq4Answer": "Ja, unser engagiertes Team aus Linguisten, Annotatoren und Sprechern arbeitet mit strukturierten Arbeitsabläufen und strenger Qualitätssicherung, um hochvolumige Projekte pünktlich und ohne Präzisionsverlust zu liefern.",
+    "ctaHeadline": "Schließen Sie sich uns an und entfalten Sie noch heute Ihr Potenzial.",
+    "ctaSubline": "Wir haben alles für Sie im Griff.",
+    "ctaButton": "Jetzt starten",
     "title": "Solvimate - Synchronisation & Sprachlösungen",
 
     "welcome": "Willkommen bei Solvimate. Next.js 14+ App Router Projekt initialisiert mit TypeScript, styled-components (SSR-bereit), ESLint, Prettier und Supabase-Integration.",

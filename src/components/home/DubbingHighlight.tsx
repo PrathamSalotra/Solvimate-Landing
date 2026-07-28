@@ -148,7 +148,7 @@ export default function DubbingHighlight() {
   return (
     <SectionWrapper>
       <ContentContainer>
-        <ImageContainer>
+        <ImageContainer data-gsap="image">
           <PlaceholderFallback aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
@@ -168,7 +168,7 @@ export default function DubbingHighlight() {
             />
           )}
         </ImageContainer>
-        <TextBlock>
+        <TextBlock data-gsap="heading">
           <TagPill>
             <span>&bull;</span> Dubbing Solutions
           </TagPill>

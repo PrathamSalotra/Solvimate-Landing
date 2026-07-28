@@ -192,14 +192,14 @@ export default function TestimonialsSection() {
   return (
     <SectionWrapper>
       <ContentContainer>
-        <HeaderBlock>
+        <HeaderBlock data-gsap="heading">
           <BadgePill>{t('home.testimonialsBadge')}</BadgePill>
           <HeadingText>{t('home.testimonialsHeading')}</HeadingText>
         </HeaderBlock>
 
         <GridContainer>
           {testimonials.map((item) => (
-            <TestimonialCard key={item.authorKey}>
+            <TestimonialCard key={item.authorKey} data-gsap="card">
               <QuoteTop>
                 <StarsRow aria-label="5 out of 5 stars">
                   <span>★</span>

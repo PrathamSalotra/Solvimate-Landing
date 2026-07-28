@@ -45,6 +45,9 @@
     "faq3Answer": "Sí, colaboramos con creadores independientes, educadores, empresas y grandes corporaciones internacionales, brindando flujos de trabajo personalizados y soporte dedicado para proyectos de cualquier escala.",
     "faq4Question": "¿Pueden gestionar proyectos a gran escala con plazos ajustados?",
     "faq4Answer": "Sí, nuestro equipo especializado de lingüistas, anotadores y actores de voz opera con flujos de trabajo estructurados y un riguroso control de calidad para entregar proyectos de alto volumen a tiempo y con la máxima precisión.",
+    "ctaHeadline": "Únete a nosotros y desbloquea tu potencial hoy mismo.",
+    "ctaSubline": "nosotros nos encargamos de todo.",
+    "ctaButton": "Comenzar",
     "title": "Solvimate - Soluciones de Doblaje e Idiomas",
 
     "welcome": "Bienvenido a Solvimate. Proyecto Next.js 14+ App Router inicializado con TypeScript, styled-components (listo para SSR), ESLint, Prettier e integración con Supabase.",

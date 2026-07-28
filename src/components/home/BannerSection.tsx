@@ -107,11 +107,11 @@ export default function BannerSection() {
   return (
     <SectionWrapper>
       <ContentContainer>
-        <TextBlock>
+        <TextBlock data-gsap="heading">
           <Headline>{t('home.bannerHeadline')}</Headline>
           <Description>{t('home.bannerDesc')}</Description>
         </TextBlock>
-        <ImageContainer>
+        <ImageContainer data-gsap="image">
           <PlaceholderFallback aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10" />

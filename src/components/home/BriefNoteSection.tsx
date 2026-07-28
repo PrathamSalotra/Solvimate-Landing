@@ -76,7 +76,7 @@ export default function BriefNoteSection() {
   return (
     <SectionWrapper>
       <DecorativeGlow aria-hidden="true" />
-      <ContentContainer>
+      <ContentContainer data-gsap="heading">
         <QuoteMark aria-hidden="true">&ldquo;</QuoteMark>
         <StatementText>{t('home.briefNoteStatement')}</StatementText>
         <DividerLine />

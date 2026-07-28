@@ -207,7 +207,7 @@ export default function FAQSection() {
   return (
     <SectionWrapper aria-labelledby="faq-section-heading">
       <ContentContainer>
-        <HeaderBlock>
+        <HeaderBlock data-gsap="heading">
           <BadgePill>{t('home.faqBadge')}</BadgePill>
           <HeadingText id="faq-section-heading">{t('home.faqHeading')}</HeadingText>
         </HeaderBlock>

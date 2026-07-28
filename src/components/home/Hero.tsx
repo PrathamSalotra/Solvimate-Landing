@@ -126,7 +126,7 @@ export default function Hero() {
   return (
     <HeroSectionWrapper>
       <BackgroundGlow />
-      <HeroContent>
+      <HeroContent data-gsap="heading">
         <PillBadge>{t('home.heroPill')}</PillBadge>
         <HeroHeadline>{t('home.heroHeadline')}</HeroHeadline>
         <HeroSupport>{t('home.heroSupport')}</HeroSupport>

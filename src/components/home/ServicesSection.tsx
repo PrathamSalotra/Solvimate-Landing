@@ -155,11 +155,11 @@ export default function ServicesSection() {
 
   return (
     <ServicesWrapper>
-      <SectionTitle>{t('home.servicesHeading')}</SectionTitle>
-      <SectionSubtitle>{t('home.servicesSubheading')}</SectionSubtitle>
+      <SectionTitle data-gsap="heading">{t('home.servicesHeading')}</SectionTitle>
+      <SectionSubtitle data-gsap="heading">{t('home.servicesSubheading')}</SectionSubtitle>
       <ServicesGrid>
         {services.map((svc) => (
-          <ServiceCard key={svc.key}>
+          <ServiceCard key={svc.key} data-gsap="card">
             <IconBadge>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d={svc.iconPath} />

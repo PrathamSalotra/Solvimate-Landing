@@ -12,6 +12,8 @@ import JourneySection from '@/components/home/JourneySection';
 import BriefNoteSection from '@/components/home/BriefNoteSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FAQSection from '@/components/home/FAQSection';
+import CTASection from '@/components/home/CTASection';
+import { useGSAPScrollReveal } from '@/hooks/useGSAPScrollReveal';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -69,9 +71,10 @@ const TestInput = styled.input`
 
 export default function HomeClient({ listingsCount }: { listingsCount: number }) {
   const { t } = useLanguage();
+  const containerRef = useGSAPScrollReveal<HTMLDivElement>();
 
   return (
-    <HomeContainer>
+    <HomeContainer ref={containerRef}>
       <Hero />
       <LogoCarousel />
       <ServicesSection />
@@ -81,6 +84,7 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
       <BriefNoteSection />
       <TestimonialsSection />
       <FAQSection />
+      <CTASection />
       <StatusSection>
         <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
         <TestInputWrapper>
