@@ -4,6 +4,7 @@ import StyledComponentsRegistry from '@/lib/registry';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import './globals.css';
 
 const geistSans = Geist({
@@ -53,7 +54,17 @@ export default function RootLayout({
           <ThemeProvider>
             <LanguageProvider>
               <Navbar />
-              <div style={{ paddingTop: '72px' }}>{children}</div>
+              <div
+                style={{
+                  paddingTop: '72px',
+                  minHeight: '100vh',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <div style={{ flex: 1 }}>{children}</div>
+                <Footer />
+              </div>
             </LanguageProvider>
           </ThemeProvider>
         </StyledComponentsRegistry>

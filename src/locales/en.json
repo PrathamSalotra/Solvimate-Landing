@@ -21,5 +21,15 @@
     "getStarted": "Get Started",
     "openMenu": "Open navigation menu",
     "closeMenu": "Close navigation menu"
+  },
+  "footer": {
+    "tagline": "Empowering global brands with seamless translation, transcription, and AI voice dubbing solutions.",
+    "quickLinks": "Quick Links",
+    "legal": "Legal & Sitemap",
+    "sitemap": "Sitemap",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "social": "Connect With Us",
+    "copyright": "© {year} Solvimate. All rights reserved."
   }
 }

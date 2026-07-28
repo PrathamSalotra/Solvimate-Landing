@@ -21,5 +21,15 @@
     "getStarted": "Loslegen",
     "openMenu": "Navigationsmenü öffnen",
     "closeMenu": "Navigationsmenü schließen"
+  },
+  "footer": {
+    "tagline": "Wir unterstützen globale Marken mit nahtlosen Übersetzungs-, Transkriptions- und KI-Synchronisationslösungen.",
+    "quickLinks": "Schnelllinks",
+    "legal": "Rechtliches & Sitemap",
+    "sitemap": "Sitemap",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen",
+    "social": "Folgen Sie uns",
+    "copyright": "© {year} Solvimate. Alle Rechte vorbehalten."
   }
 }

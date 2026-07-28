@@ -21,5 +21,15 @@
     "getStarted": "Commencer",
     "openMenu": "Ouvrir le menu de navigation",
     "closeMenu": "Fermer le menu de navigation"
+  },
+  "footer": {
+    "tagline": "Nous accompagnons les marques mondiales avec des solutions fluides de traduction, transcription et doublage vocal par IA.",
+    "quickLinks": "Liens rapides",
+    "legal": "Juridique & Plan du site",
+    "sitemap": "Plan du site",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "social": "Suivez-nous",
+    "copyright": "© {year} Solvimate. Tous droits réservés."
   }
 }

@@ -21,5 +21,15 @@
     "getStarted": "Empezar",
     "openMenu": "Abrir menú de navegación",
     "closeMenu": "Cerrar menú de navegación"
+  },
+  "footer": {
+    "tagline": "Potenciamos marcas globales con soluciones integrales de traducción, transcripción y doblaje de voz por IA.",
+    "quickLinks": "Enlaces rápidos",
+    "legal": "Legal y Mapa del sitio",
+    "sitemap": "Mapa del sitio",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos del Servicio",
+    "social": "Síguenos",
+    "copyright": "© {year} Solvimate. Todos los derechos reservados."
   }
 }
