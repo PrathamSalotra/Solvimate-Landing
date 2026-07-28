@@ -3,11 +3,15 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import ThemeToggle from '@/components/ThemeToggle';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
 
 const TopBar = styled.header`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
   padding: 1rem 2rem;
   width: 100%;
 `;
@@ -31,10 +35,39 @@ const StatusBadge = styled.span`
   margin-top: 0.5rem;
 `;
 
+const TestInputWrapper = styled.div`
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+`;
+
+const TestInput = styled.input`
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.border};
+  background: ${({ theme }) => theme.cardBg};
+  color: ${({ theme }) => theme.foreground};
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.primary};
+  }
+`;
+
 export default function HomeClient({ listingsCount }: { listingsCount: number }) {
+  const { t } = useLanguage();
+
   return (
     <div className={styles.page}>
       <TopBar>
+        <LanguageSwitcher />
         <ThemeToggle />
       </TopBar>
       <main className={styles.main}>
@@ -47,12 +80,15 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
           priority
         />
         <div className={styles.intro}>
-          <StyledTitle>Solvimate - Dubbing & Language Solutions</StyledTitle>
-          <p>
-            Welcome to Solvimate. Next.js 14+ App Router project initialized with TypeScript,
-            styled-components (SSR ready), ESLint, Prettier, and Supabase integration.
-          </p>
-          <StatusBadge>Server Query Verified: {listingsCount} job listings loaded</StatusBadge>
+          <StyledTitle>{t('home.title')}</StyledTitle>
+          <p>{t('home.welcome')}</p>
+          <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
+          <TestInputWrapper>
+            <label htmlFor="test-input" style={{ fontSize: '0.75rem', opacity: 0.8 }}>
+              {t('home.inputLabel')}
+            </label>
+            <TestInput id="test-input" type="text" placeholder={t('home.inputPlaceholder')} />
+          </TestInputWrapper>
         </div>
         <div className={styles.ctas}>
           <a
@@ -68,7 +104,7 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
               width={16}
               height={16}
             />
-            Deploy Now
+            {t('home.deployNow')}
           </a>
           <a
             className={styles.secondary}
@@ -76,7 +112,7 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
             target="_blank"
             rel="noopener noreferrer"
           >
-            Documentation
+            {t('home.documentation')}
           </a>
         </div>
       </main>

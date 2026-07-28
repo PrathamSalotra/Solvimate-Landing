@@ -1,0 +1,15 @@
+{
+  "home": {
+    "title": "Solvimate - डबिंग और भाषा समाधान",
+    "welcome": "Solvimate में आपका स्वागत है। TypeScript, styled-components, ESLint, Prettier और Supabase के साथ प्रारंभ किया गया Next.js 14+ प्रोजेक्ट।",
+    "serverQuery": "सर्वर क्वेरी सत्यापित: {count} नौकरी लिस्टिंग लोड की गई",
+    "deployNow": "अभी डिप्लॉय करें",
+    "documentation": "दस्तावेज़ीकरण",
+    "inputPlaceholder": "इनपुट संरक्षण का परीक्षण करने के लिए यहाँ टाइप करें...",
+    "inputLabel": "टेस्ट इनपुट (भाषा बदलने पर मान सुरक्षित रखें)"
+  },
+  "common": {
+    "language": "भाषा",
+    "switchLanguage": "भाषा बदलें"
+  }
+}

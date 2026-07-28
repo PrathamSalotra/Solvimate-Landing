@@ -1,0 +1,15 @@
+{
+  "home": {
+    "title": "Solvimate - Solutions de Doublage et Linguistiques",
+    "welcome": "Bienvenue sur Solvimate. Projet Next.js 14+ App Router initialisé avec TypeScript, styled-components (prêt pour SSR), ESLint, Prettier et intégration Supabase.",
+    "serverQuery": "Requête serveur vérifiée : {count} offres d'emploi chargées",
+    "deployNow": "Déployer maintenant",
+    "documentation": "Documentation",
+    "inputPlaceholder": "Tapez ici pour tester la conservation du texte en cours...",
+    "inputLabel": "Champ de test (valeur conservée lors du changement de langue)"
+  },
+  "common": {
+    "language": "Langue",
+    "switchLanguage": "Changer de langue"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "home": {
+    "title": "Solvimate - Synchronisation & Sprachlösungen",
+    "welcome": "Willkommen bei Solvimate. Next.js 14+ App Router Projekt initialisiert mit TypeScript, styled-components (SSR-bereit), ESLint, Prettier und Supabase-Integration.",
+    "serverQuery": "Server-Abfrage überprüft: {count} Stellenangebote geladen",
+    "deployNow": "Jetzt bereitstellen",
+    "documentation": "Dokumentation",
+    "inputPlaceholder": "Hier tippen, um die Erhaltung der Eingabe zu testen...",
+    "inputLabel": "Testeingabe (Wert beim Sprachwechsel beibehalten)"
+  },
+  "common": {
+    "language": "Sprache",
+    "switchLanguage": "Sprache wechseln"
+  }
+}
