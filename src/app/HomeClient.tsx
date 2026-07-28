@@ -2,7 +2,15 @@
 
 import Image from 'next/image';
 import styled from 'styled-components';
+import ThemeToggle from '@/components/ThemeToggle';
 import styles from './page.module.css';
+
+const TopBar = styled.header`
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+  width: 100%;
+`;
 
 const StyledTitle = styled.h1`
   font-size: 2.5rem;
@@ -26,6 +34,9 @@ const StatusBadge = styled.span`
 export default function HomeClient({ listingsCount }: { listingsCount: number }) {
   return (
     <div className={styles.page}>
+      <TopBar>
+        <ThemeToggle />
+      </TopBar>
       <main className={styles.main}>
         <Image
           className={styles.logo}
