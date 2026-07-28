@@ -9,6 +9,8 @@ import ServicesSection from '@/components/home/ServicesSection';
 import BannerSection from '@/components/home/BannerSection';
 import DubbingHighlight from '@/components/home/DubbingHighlight';
 import JourneySection from '@/components/home/JourneySection';
+import BriefNoteSection from '@/components/home/BriefNoteSection';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -75,6 +77,8 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
       <BannerSection />
       <DubbingHighlight />
       <JourneySection />
+      <BriefNoteSection />
+      <TestimonialsSection />
       <StatusSection>
         <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
         <TestInputWrapper>

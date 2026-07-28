@@ -1,0 +1,226 @@
+'use client';
+
+import React from 'react';
+import styled from 'styled-components';
+import { useLanguage } from '@/context/LanguageContext';
+
+const SectionWrapper = styled.section`
+  width: 100%;
+  padding: 6rem 1.5rem 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #047857 0%, #065f46 100%);
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem 5rem;
+  }
+`;
+
+const ContentContainer = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+  position: relative;
+  z-index: 1;
+`;
+
+const HeaderBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+`;
+
+const BadgePill = styled.span`
+  display: inline-block;
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ecfdf5;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+`;
+
+const HeadingText = styled.h2`
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+`;
+
+const GridContainer = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+`;
+
+const TestimonialCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.25rem 2rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+  min-height: 100%;
+
+  &:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.12);
+  }
+`;
+
+const QuoteTop = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
+
+const StarsRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #fbbf24;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+`;
+
+const QuoteText = styled.p`
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: #ecfdf5;
+  margin: 0;
+  font-style: normal;
+`;
+
+const AttributionFooter = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+`;
+
+const AvatarCircle = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a7f3d0 0%, #10b981 100%);
+  color: #064e3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+`;
+
+const AuthorDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`;
+
+const AuthorName = styled.h3`
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+`;
+
+const AuthorRole = styled.span`
+  font-size: 0.875rem;
+  color: #a7f3d0;
+  font-weight: 600;
+`;
+
+export default function TestimonialsSection() {
+  const { t } = useLanguage();
+
+  const testimonials = [
+    {
+      authorKey: 'testi1Author',
+      roleKey: 'testi1Role',
+      quoteKey: 'testi1Quote',
+      initials: 'CW',
+    },
+    {
+      authorKey: 'testi2Author',
+      roleKey: 'testi2Role',
+      quoteKey: 'testi2Quote',
+      initials: 'EH',
+    },
+    {
+      authorKey: 'testi3Author',
+      roleKey: 'testi3Role',
+      quoteKey: 'testi3Quote',
+      initials: 'RF',
+    },
+  ];
+
+  return (
+    <SectionWrapper>
+      <ContentContainer>
+        <HeaderBlock>
+          <BadgePill>{t('home.testimonialsBadge')}</BadgePill>
+          <HeadingText>{t('home.testimonialsHeading')}</HeadingText>
+        </HeaderBlock>
+
+        <GridContainer>
+          {testimonials.map((item) => (
+            <TestimonialCard key={item.authorKey}>
+              <QuoteTop>
+                <StarsRow aria-label="5 out of 5 stars">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                </StarsRow>
+                <QuoteText>&ldquo;{t(`home.${item.quoteKey}`)}&rdquo;</QuoteText>
+              </QuoteTop>
+              <AttributionFooter>
+                <AvatarCircle aria-hidden="true">{item.initials}</AvatarCircle>
+                <AuthorDetails>
+                  <AuthorName>{t(`home.${item.authorKey}`)}</AuthorName>
+                  <AuthorRole>{t(`home.${item.roleKey}`)}</AuthorRole>
+                </AuthorDetails>
+              </AttributionFooter>
+            </TestimonialCard>
+          ))}
+        </GridContainer>
+      </ContentContainer>
+    </SectionWrapper>
+  );
+}
