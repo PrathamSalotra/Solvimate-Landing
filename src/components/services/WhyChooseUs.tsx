@@ -30,7 +30,7 @@ const TagText = styled.span`
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.6rem;
@@ -86,8 +86,8 @@ const IconBox = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => theme.primaryText};
   display: flex;
   align-items: center;
   justify-content: center;

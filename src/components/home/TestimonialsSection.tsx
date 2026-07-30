@@ -46,7 +46,7 @@ const BadgePill = styled.span`
   border-radius: 9999px;
   background: rgba(190, 254, 114, 0.12);
   border: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -110,7 +110,7 @@ const StarsRow = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 1.125rem;
   letter-spacing: 0.1em;
 `;
@@ -161,7 +161,7 @@ const AuthorName = styled.h3`
 
 const AuthorRole = styled.span`
   font-size: 0.875rem;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-weight: 600;
 `;
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, useTheme } from 'styled-components';
 
 const waveDrift = keyframes`
   0% {
@@ -59,9 +59,11 @@ const WaveSvg = styled.svg<{
  *   a single static wave line instead of removing the element outright.
  */
 export default function AnimatedWaveBackground() {
+  const theme = useTheme();
+
   return (
     <WaveContainer aria-hidden="true" data-testid="animated-wave-background">
-      {/* Wave 1: Lime (#BEFE72 / theme.primary), 32% opacity, primary static wave fallback under reduced-motion */}
+      {/* Wave 1: Lime (#BEFE72 / theme.primaryText), 32% opacity, primary static wave fallback under reduced-motion */}
       <WaveSvg
         viewBox="0 0 2880 400"
         preserveAspectRatio="none"
@@ -72,7 +74,7 @@ export default function AnimatedWaveBackground() {
         <path
           d="M 0 200 Q 360 120 720 200 T 1440 200 T 2160 200 T 2880 200"
           fill="none"
-          stroke="#BEFE72"
+          stroke={theme.primaryText}
           strokeWidth="2.5"
           strokeLinecap="round"
         />
@@ -95,7 +97,7 @@ export default function AnimatedWaveBackground() {
         />
       </WaveSvg>
 
-      {/* Wave 3: Lime (#BEFE72), 20% opacity, different speed (32s) */}
+      {/* Wave 3: Lime (#BEFE72 / theme.primaryText), 20% opacity, different speed (32s) */}
       <WaveSvg
         viewBox="0 0 2880 400"
         preserveAspectRatio="none"
@@ -106,7 +108,7 @@ export default function AnimatedWaveBackground() {
         <path
           d="M 0 170 Q 360 260 720 170 T 1440 170 T 2160 170 T 2880 170"
           fill="none"
-          stroke="#BEFE72"
+          stroke={theme.primaryText}
           strokeWidth="1.5"
           strokeLinecap="round"
         />

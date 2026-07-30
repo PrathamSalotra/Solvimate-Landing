@@ -90,7 +90,7 @@ const PlaceholderFallback = styled.div`
     width: 48px;
     height: 48px;
     opacity: 0.75;
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 
   span {

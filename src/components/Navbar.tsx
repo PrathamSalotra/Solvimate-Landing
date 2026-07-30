@@ -86,7 +86,7 @@ const NavLinkItem = styled.li`
 const StyledNavLink = styled(Link)<{ $active?: boolean }>`
   font-size: 0.9375rem;
   font-weight: ${({ $active }) => ($active ? '600' : '500')};
-  color: ${({ theme, $active }) => ($active ? theme.primary : theme.textSecondary)};
+  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.textSecondary)};
   text-decoration: none;
   padding: 0.5rem 0;
   position: relative;
@@ -103,7 +103,7 @@ const StyledNavLink = styled(Link)<{ $active?: boolean }>`
     left: 0;
     right: 0;
     height: 2px;
-    background: ${({ theme, $active }) => ($active ? theme.primary : 'transparent')};
+    background: ${({ theme, $active }) => ($active ? theme.primaryText : 'transparent')};
     border-radius: 2px;
     transition: background-color 0.2s ease;
   }
@@ -209,14 +209,14 @@ const MobileNavLinks = styled.ul`
 const MobileNavLink = styled(Link)<{ $active?: boolean }>`
   font-size: 1.125rem;
   font-weight: ${({ $active }) => ($active ? '700' : '500')};
-  color: ${({ theme, $active }) => ($active ? theme.primary : theme.foreground)};
+  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.foreground)};
   text-decoration: none;
   display: block;
   padding: 0.5rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.border};
 
   &:hover {
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 `;
 

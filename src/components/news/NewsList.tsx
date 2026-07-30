@@ -55,7 +55,7 @@ const CardHeader = styled.div`
 const DateText = styled.time`
   font-size: 0.85rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;

@@ -37,7 +37,7 @@ const TagText = styled.span`
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   text-transform: uppercase;
   letter-spacing: 0.1em;
 `;
@@ -84,7 +84,7 @@ const StatCard = styled.div`
 const NumberValue = styled.span`
   font-size: clamp(2.5rem, 4.5vw, 3.75rem);
   font-weight: 900;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   line-height: 1.05;
   font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.02em;

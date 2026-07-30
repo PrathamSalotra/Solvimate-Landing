@@ -30,7 +30,7 @@ const TagText = styled.span`
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.6rem;
@@ -54,7 +54,7 @@ const SectionBody = styled.p`
 const PillarsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  gap: 2rem;
 
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
@@ -66,13 +66,13 @@ const PillarsGrid = styled.div`
 `;
 
 const PillarCard = styled.div`
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: 16px;
-  padding: 2rem;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
@@ -86,8 +86,8 @@ const IconCircle = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => theme.primaryText};
   display: flex;
   align-items: center;
   justify-content: center;

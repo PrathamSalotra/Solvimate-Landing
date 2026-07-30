@@ -59,11 +59,13 @@ const OpenBadge = styled.span`
   gap: 0.4rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   background: rgba(190, 254, 114, 0.1);
   border: 1px solid rgba(190, 254, 114, 0.3);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 
   &::before {
     content: '';
@@ -133,7 +135,7 @@ const ViewDetailsButton = styled.button`
 
   &:hover {
     border-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 `;
 

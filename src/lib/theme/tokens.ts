@@ -10,6 +10,7 @@ export interface ColorPalette {
   background: string;
   cardBg: string;
   border: string;
+  primaryText: string;
 }
 
 export interface SpacingTokens {
@@ -54,6 +55,7 @@ export interface ThemeTokens {
   textSecondary: string;
   primary: string;
   primaryHover: string;
+  primaryText: string;
   border: string;
   cardBg: string;
 
@@ -106,6 +108,7 @@ export const darkTheme: ThemeTokens = {
   textSecondary: '#9FB8B4', // Mist
   primary: '#BEFE72', // Lime
   primaryHover: '#37FB89', // Mint
+  primaryText: '#BEFE72', // Lime for text & SVG strokes in dark mode
   border: 'rgba(159, 184, 180, 0.25)', // Mist at 25% alpha
   cardBg: '#0A2E3D', // Surface
   colors: {
@@ -120,6 +123,7 @@ export const darkTheme: ThemeTokens = {
     background: '#001E2B',
     cardBg: '#0A2E3D',
     border: 'rgba(159, 184, 180, 0.25)',
+    primaryText: '#BEFE72',
   },
   spacing,
   radius,
@@ -131,7 +135,8 @@ export const darkTheme: ThemeTokens = {
 // - Paper (#F5FBF2) as light background
 // - Near-white (#FFFFFF) as surface for cards
 // - Ink (#001E2B) for high-contrast text
-// - Lime (#BEFE72) / Mint (#37FB89) accents unchanged
+// - Lime (#BEFE72) / Mint (#37FB89) accents unchanged for button backgrounds
+// - Black (#000000) for primaryText / SVG strokes in light mode per user requirement
 // - Darker muted teal (#2E626F) for light-mode secondary text instead of Mist (#9FB8B4),
 //   since Mist on Paper has a 2.00:1 contrast ratio (failing WCAG AA/AAA).
 //   #2E626F has a 6.79:1 contrast ratio on white and 6.45:1 on Paper (#F5FBF2), exceeding WCAG AA & AAA standards.
@@ -140,8 +145,9 @@ export const lightTheme: ThemeTokens = {
   surface: '#FFFFFF', // Near-white surface for cards
   foreground: '#001E2B', // Ink
   textSecondary: '#2E626F', // Darker Muted Teal (6.79:1 contrast on white / 6.45:1 on paper)
-  primary: '#BEFE72', // Lime
+  primary: '#BEFE72', // Lime for button backgrounds
   primaryHover: '#37FB89', // Mint
+  primaryText: '#000000', // Black (#000000) for text & SVG strokes in light mode
   border: 'rgba(0, 30, 43, 0.15)', // Ink at 15% alpha
   cardBg: '#FFFFFF', // Near-white surface for cards
   colors: {
@@ -156,6 +162,7 @@ export const lightTheme: ThemeTokens = {
     background: '#F5FBF2',
     cardBg: '#FFFFFF',
     border: 'rgba(0, 30, 43, 0.15)',
+    primaryText: '#000000',
   },
   spacing,
   radius,

@@ -39,9 +39,9 @@ const BadgePill = styled.span`
   display: inline-block;
   padding: 0.4rem 1.1rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid rgba(190, 254, 114, 0.3);
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -84,7 +84,7 @@ const AccordionHeader = styled.button<{ $isOpen: boolean }>`
   gap: 1.25rem;
   background: transparent;
   border: none;
-  color: ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.foreground)};
+  color: ${({ theme, $isOpen }) => ($isOpen ? theme.primaryText : theme.foreground)};
   font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
   font-weight: 700;
   text-align: left;
@@ -110,8 +110,8 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
   height: 32px;
   border-radius: 50%;
   background: ${({ $isOpen }) =>
-    $isOpen ? 'rgba(16, 185, 129, 0.15)' : 'rgba(128, 128, 128, 0.1)'};
-  color: ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.textSecondary)};
+    $isOpen ? 'rgba(190, 254, 114, 0.15)' : 'rgba(128, 128, 128, 0.1)'};
+  color: ${({ theme, $isOpen }) => ($isOpen ? theme.primaryText : theme.textSecondary)};
   transform: rotate(${({ $isOpen }) => ($isOpen ? '180deg' : '0deg')});
   transition:
     transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),

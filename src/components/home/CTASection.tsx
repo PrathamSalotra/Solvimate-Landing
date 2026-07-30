@@ -80,7 +80,7 @@ const Headline = styled.h2`
 const Subline = styled.p`
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 600;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   margin: 0;
   text-transform: capitalize;
   letter-spacing: 0.01em;

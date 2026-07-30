@@ -104,7 +104,7 @@ const StyledFooterLink = styled(Link)`
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 `;
 
@@ -124,7 +124,7 @@ const SocialLink = styled.a`
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 
   svg {

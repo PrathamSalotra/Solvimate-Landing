@@ -47,8 +47,8 @@ const IconCircle = styled.div`
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => theme.primaryText};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,7 @@ const ChannelValue = styled.div`
   white-space: pre-line;
 
   a {
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
     text-decoration: none;
     transition: color 0.15s ease;
 

@@ -97,7 +97,7 @@ const LogoCard = styled.div`
     width: 22px;
     height: 22px;
     fill: currentColor;
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
     flex-shrink: 0;
   }
 `;

@@ -78,12 +78,12 @@ const IconBadge = styled.div`
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid rgba(190, 254, 114, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   margin-bottom: 1.75rem;
 
   svg {
@@ -113,7 +113,7 @@ const LearnMoreLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-weight: 600;
   font-size: 0.9375rem;
   text-decoration: none;

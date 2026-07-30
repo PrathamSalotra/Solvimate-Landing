@@ -46,7 +46,7 @@ const ContentContainer = styled.div`
 const QuoteMark = styled.div`
   font-size: 3rem;
   line-height: 1;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   opacity: 0.45;
   font-family: serif;
   user-select: none;

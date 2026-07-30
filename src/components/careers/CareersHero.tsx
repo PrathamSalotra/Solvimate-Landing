@@ -50,7 +50,7 @@ const TagPill = styled.span`
   border-radius: 9999px;
   border: 1px solid rgba(16, 185, 129, 0.35);
   background: rgba(16, 185, 129, 0.08);
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -125,7 +125,7 @@ const TrackBadge = styled.span`
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
   background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
 `;
 
 const TrackDesc = styled.p`

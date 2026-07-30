@@ -73,7 +73,7 @@ const TagPill = styled.div`
   border-radius: 9999px;
   background: rgba(190, 254, 114, 0.12);
   border: 1px solid rgba(190, 254, 114, 0.35);
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -131,7 +131,7 @@ const PlaceholderFallback = styled.div`
     width: 48px;
     height: 48px;
     opacity: 0.75;
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 
   span {

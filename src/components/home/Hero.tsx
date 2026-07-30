@@ -55,7 +55,7 @@ const PillBadge = styled.div`
   padding: 0.45rem 1.25rem;
   background: rgba(190, 254, 114, 0.12);
   border: 1px solid rgba(190, 254, 114, 0.35);
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 600;

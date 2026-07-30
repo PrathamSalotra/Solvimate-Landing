@@ -72,7 +72,7 @@ const FilterButton = styled.button<{ $active?: boolean }>`
 
   &:hover {
     border-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primaryText};
   }
 `;
 
@@ -125,8 +125,8 @@ const TrackBadge = styled.span`
   letter-spacing: 0.05em;
   padding: 0.35rem 0.75rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.15);
-  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => theme.primaryText};
 `;
 
 const CategoryBadge = styled.span`
@@ -145,7 +145,7 @@ const AvailableBadge = styled.span`
   gap: 0.4rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   background: rgba(190, 254, 114, 0.1);
   border: 1px solid rgba(190, 254, 114, 0.3);
   padding: 0.35rem 0.85rem;

@@ -53,9 +53,9 @@ const TagPill = styled.span`
   gap: 0.45rem;
   padding: 0.4rem 1rem;
   border-radius: 9999px;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  background: rgba(16, 185, 129, 0.08);
-  color: ${({ theme }) => theme.primary};
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.05em;

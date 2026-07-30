@@ -67,7 +67,7 @@ const PathwayBadge = styled.span`
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -156,8 +156,8 @@ const OutlineButton = styled(Link)`
   justify-content: center;
   padding: 0.85rem 2rem;
   border-radius: 9999px;
-  border: 2px solid ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.primary};
+  border: 2px solid ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primaryText};
   background: transparent;
   font-size: 0.95rem;
   font-weight: 700;
