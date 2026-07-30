@@ -59,12 +59,17 @@ const TagPill = styled.span`
 `;
 
 const Headline = styled.h1`
-  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  font-size: clamp(2.35rem, 5vw, 4.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
+
+  @media (min-width: 1440px) {
+    font-size: 4.4rem;
+    line-height: 1.05;
+  }
 `;
 
 const SubtitleText = styled.p`

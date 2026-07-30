@@ -64,7 +64,7 @@ const PillBadge = styled.div`
 `;
 
 const HeroHeadline = styled.h1`
-  font-size: clamp(2.5rem, 6.7vw, 6rem);
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
   line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -78,7 +78,7 @@ const HeroHeadline = styled.h1`
   }
 
   @media (min-width: 1440px) {
-    font-size: 6rem;
+    font-size: 4.4rem;
     line-height: 1.05;
   }
 `;
