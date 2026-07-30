@@ -44,25 +44,36 @@ const NavContainer = styled.nav`
 const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: ${({ theme }) => theme.foreground};
+  gap: 0.65rem;
   text-decoration: none;
   flex-shrink: 0;
 `;
 
-const LogoIcon = styled.div`
-  width: 32px;
-  height: 32px;
+const LogoMarkImage = styled.img`
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
   border-radius: 8px;
-  background: ${({ theme }) => theme.primary};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.colors.ink};
-  font-weight: 800;
-  font-size: 1rem;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+const LogoWordmark = styled.span`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.foreground};
+  line-height: 1;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const DesktopNavLinks = styled.ul`
@@ -300,9 +311,9 @@ export default function Navbar() {
     <>
       <Header>
         <NavContainer aria-label="Main navigation">
-          <LogoLink href="/" onClick={closeMenu}>
-            <LogoIcon>S</LogoIcon>
-            <span>Solvimate</span>
+          <LogoLink href="/" onClick={closeMenu} aria-label="Solvimate Home">
+            <LogoMarkImage src="/logo_solvimate.webp" alt="Solvimate logo mark" width={36} height={36} />
+            <LogoWordmark>SOLVIMATE</LogoWordmark>
           </LogoLink>
 
           <DesktopNavLinks>
