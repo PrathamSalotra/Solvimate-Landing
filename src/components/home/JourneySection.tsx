@@ -88,41 +88,6 @@ const ParallaxLayer = styled.div<{ $offsetX: number; $offsetY: number }>`
   pointer-events: none;
 `;
 
-const AbstractNode = styled.div<{
-  $top: string;
-  $left: string;
-  $size: string;
-  $color: string;
-}>`
-  position: absolute;
-  top: ${({ $top }) => $top};
-  left: ${({ $left }) => $left};
-  width: ${({ $size }) => $size};
-  height: ${({ $size }) => $size};
-  border-radius: 50%;
-  background: ${({ $color }) => $color};
-  opacity: 0.25;
-  filter: blur(40px);
-`;
-
-const FloatingCard = styled.div<{ $top: string; $left: string }>`
-  position: absolute;
-  top: ${({ $top }) => $top};
-  left: ${({ $left }) => $left};
-  padding: 1.25rem;
-  background: ${({ theme }) => theme.cardBg};
-  backdrop-filter: blur(12px);
-  border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 16px;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-  pointer-events: none;
-
-  @media (max-width: 768px) {
-    padding: 0.85rem;
-  }
-`;
-
 const FloatingPill = styled.div<{ $top: string; $left: string }>`
   position: absolute;
   top: ${({ $top }) => $top};

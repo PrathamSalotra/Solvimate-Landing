@@ -90,40 +90,6 @@ const DescText = styled.p`
   margin: 0;
 `;
 
-const RequirementsList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const RequirementItem = styled.li`
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  color: ${({ theme }) => theme.foreground};
-  font-size: 0.95rem;
-
-  &::before {
-    content: '→';
-    color: ${({ theme }) => theme.primary};
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-`;
-
-const ActionCol = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 767px) {
-    width: 100%;
-    justify-content: flex-start;
-  }
-`;
-
 const DetailsBox = styled.div<{ $expanded: boolean }>`
   display: ${({ $expanded }) => ($expanded ? 'flex' : 'none')};
   flex-direction: column;

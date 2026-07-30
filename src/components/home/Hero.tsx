@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
+import AnimatedWaveBackground from '@/components/home/AnimatedWaveBackground';
 
 const HeroSectionWrapper = styled.section`
   position: relative;
@@ -29,8 +30,8 @@ const BackgroundGlow = styled.div`
   height: 500px;
   background: radial-gradient(
     circle,
-    rgba(16, 185, 129, 0.12) 0%,
-    rgba(59, 130, 246, 0.08) 40%,
+    rgba(190, 254, 114, 0.12) 0%,
+    rgba(55, 251, 137, 0.08) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -87,15 +88,6 @@ const HeroSupport = styled.p`
   font-weight: 400;
 `;
 
-const HeroCTAContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3.5rem;
-`;
-
 const CtaButton = styled(Link)`
   display: inline-flex;
   align-items: center;
@@ -116,7 +108,7 @@ const CtaButton = styled(Link)`
   &:hover {
     background: ${({ theme }) => theme.primaryHover};
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px -5px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 14px 30px -5px rgba(190, 254, 114, 0.45);
   }
 
   &:active {
@@ -130,6 +122,7 @@ export default function Hero() {
   return (
     <HeroSectionWrapper>
       <BackgroundGlow />
+      <AnimatedWaveBackground />
       <HeroContent data-gsap="heading">
         <PillBadge>{t('home.heroPill')}</PillBadge>
         <HeroHeadline>{t('home.heroHeadline')}</HeroHeadline>
