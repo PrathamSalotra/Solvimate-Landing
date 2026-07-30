@@ -105,8 +105,9 @@ const LinkList = styled.ul`
 `;
 
 const StyledFooterLink = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   color: ${({ theme }) => theme.textSecondary};
-  font-size: 0.9375rem;
+  font-size: 13px;
   text-decoration: none;
   transition: color 0.2s ease;
 
@@ -122,11 +123,12 @@ const SocialList = styled.div`
 `;
 
 const SocialLink = styled.a`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
   color: ${({ theme }) => theme.textSecondary};
-  font-size: 0.9375rem;
+  font-size: 13px;
   text-decoration: none;
   transition: color 0.2s ease;
 

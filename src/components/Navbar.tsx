@@ -8,22 +8,30 @@ import { useLanguage } from '@/context/LanguageContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 
-const Header = styled.header`
+const Header = styled.header<{ $isScrolled: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 72px;
-  background: ${({ theme }) => theme.background}dd;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid ${({ theme }) => theme.border};
+  background: ${({ theme, $isScrolled }) =>
+    $isScrolled ? `${theme.surface}f2` : `${theme.background}d9`};
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid
+    ${({ theme, $isScrolled }) => ($isScrolled ? theme.border : 'transparent')};
   z-index: 50;
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: ${({ $isScrolled }) =>
+    $isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.15)' : 'none'};
 `;
 
 const NavContainer = styled.nav`
@@ -95,9 +103,12 @@ const NavLinkItem = styled.li`
 `;
 
 const StyledNavLink = styled(Link)<{ $active?: boolean }>`
-  font-size: 0.9375rem;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 13px;
   font-weight: ${({ $active }) => ($active ? '600' : '500')};
-  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.textSecondary)};
+  letter-spacing: 0.02em;
+  color: ${({ theme, $active }) =>
+    $active ? theme.primaryText : theme.colors.mist};
   text-decoration: none;
   padding: 0.5rem 0;
   position: relative;
@@ -110,13 +121,18 @@ const StyledNavLink = styled(Link)<{ $active?: boolean }>`
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     left: 0;
     right: 0;
     height: 2px;
-    background: ${({ theme, $active }) => ($active ? theme.primaryText : 'transparent')};
+    background: ${({ theme, $active }) =>
+      $active ? theme.primary : 'transparent'};
     border-radius: 2px;
-    transition: background-color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+    transform: ${({ $active }) => ($active ? 'scaleX(1)' : 'scaleX(0)')};
+    transform-origin: left;
   }
 `;
 
@@ -140,21 +156,25 @@ const DesktopOnlyWrapper = styled.div`
 `;
 
 const CTAButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.25rem;
+  padding: 0.45rem 1.15rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.colors.ink};
-  font-size: 0.875rem;
+  font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
   white-space: nowrap;
 
   &:hover {
     background: ${({ theme }) => theme.primaryHover};
+    transform: translateY(-1px);
   }
 
   @media (max-width: 768px) {
@@ -218,16 +238,30 @@ const MobileNavLinks = styled.ul`
 `;
 
 const MobileNavLink = styled(Link)<{ $active?: boolean }>`
-  font-size: 1.125rem;
-  font-weight: ${({ $active }) => ($active ? '700' : '500')};
-  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.foreground)};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 1rem;
+  font-weight: ${({ $active }) => ($active ? '600' : '500')};
+  color: ${({ theme, $active }) =>
+    $active ? theme.primaryText : theme.colors.mist};
   text-decoration: none;
-  display: block;
-  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.border};
+  transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.primaryText};
+    color: ${({ theme }) => theme.foreground};
+  }
+
+  &::after {
+    content: '';
+    display: ${({ $active }) => ($active ? 'block' : 'none')};
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -273,8 +307,18 @@ const MobileBackdrop = styled.div<{ $isOpen: boolean }>`
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const { t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = useCallback(
     (href: string) => {
@@ -309,7 +353,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Header>
+      <Header $isScrolled={isScrolled}>
         <NavContainer aria-label="Main navigation">
           <LogoLink href="/" onClick={closeMenu} aria-label="Solvimate Home">
             <LogoMarkImage src="/logo_solvimate.webp" alt="Solvimate logo mark" width={36} height={36} />
