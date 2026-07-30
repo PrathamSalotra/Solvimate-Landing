@@ -1,3 +1,9 @@
+:root {
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: var(--font-manrope), 'Manrope', -apple-system, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
+}
+
 :root,
 [data-theme='dark'] {
   --background: #0a0a0a;
@@ -27,7 +33,9 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
