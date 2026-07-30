@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
 import Hero from '@/components/home/Hero';
-import LogoCarousel from '@/components/home/LogoCarousel';
+import LogoMarquee from '@/components/home/LogoMarquee';
 import ServicesSection from '@/components/home/ServicesSection';
 import BannerSection from '@/components/home/BannerSection';
 import DubbingHighlight from '@/components/home/DubbingHighlight';
@@ -76,7 +76,7 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
   return (
     <HomeContainer ref={containerRef}>
       <Hero />
-      <LogoCarousel />
+      <LogoMarquee />
       <ServicesSection />
       <BannerSection />
       <DubbingHighlight />
