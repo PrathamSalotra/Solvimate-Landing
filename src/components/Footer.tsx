@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
 
 const FooterWrapper = styled.footer`
-  background: ${({ theme }) => theme.cardBg};
+  font-family: ${({ theme }) => theme.fonts.body};
+  background: ${({ theme }) => theme.background};
   border-top: 1px solid ${({ theme }) => theme.border};
   color: ${({ theme }) => theme.foreground};
   width: 100%;
@@ -79,18 +80,20 @@ const LogoWordmark = styled.span`
 `;
 
 const TaglineText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   color: ${({ theme }) => theme.textSecondary};
-  font-size: 0.9375rem;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.6;
   max-width: 320px;
   margin: 0;
 `;
 
 const ColumnHeading = styled.h3`
-  font-size: 0.875rem;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   color: ${({ theme }) => theme.foreground};
   margin: 0 0 1rem;
 `;
@@ -109,10 +112,15 @@ const StyledFooterLink = styled(Link)`
   color: ${({ theme }) => theme.textSecondary};
   font-size: 13px;
   text-decoration: none;
-  transition: color 0.2s ease;
+  display: inline-block;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: ${({ theme }) => theme.primaryText};
+    transform: translateX(3px);
   }
 `;
 
@@ -130,10 +138,14 @@ const SocialLink = styled.a`
   color: ${({ theme }) => theme.textSecondary};
   font-size: 13px;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: ${({ theme }) => theme.primaryText};
+    transform: translateX(3px);
   }
 
   svg {
@@ -141,10 +153,16 @@ const SocialLink = styled.a`
     height: 18px;
     fill: currentColor;
     flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
   }
 `;
 
 const BottomBar = styled.div`
+  font-family: ${({ theme }) => theme.fonts.body};
   border-top: 1px solid ${({ theme }) => theme.border};
   padding-top: 2rem;
   display: flex;
@@ -153,7 +171,7 @@ const BottomBar = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  font-size: 0.875rem;
+  font-size: 13px;
   color: ${({ theme }) => theme.textSecondary};
 `;
 
