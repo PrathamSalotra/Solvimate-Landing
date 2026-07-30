@@ -56,11 +56,11 @@ const LogoIcon = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  background: ${({ theme }) => theme.primary};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-weight: 800;
   font-size: 1rem;
 `;
@@ -135,7 +135,7 @@ const CTAButton = styled(Link)`
   padding: 0.5rem 1.25rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
@@ -235,7 +235,7 @@ const MobileCTAButton = styled(Link)`
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;

@@ -145,9 +145,9 @@ const AvailableBadge = styled.span`
   gap: 0.4rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.1);
+  border: 1px solid rgba(190, 254, 114, 0.3);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
 
@@ -156,7 +156,7 @@ const AvailableBadge = styled.span`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #10b981;
+    background: ${({ theme }) => theme.primary};
     display: inline-block;
   }
 `;
@@ -165,7 +165,7 @@ const JobTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.3;
 `;
 
@@ -173,7 +173,7 @@ const JobDesc = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
-  margin: 0;
+  margin: 0 0 1.25rem 0;
 `;
 
 const JobFooter = styled.div`
@@ -196,7 +196,7 @@ const LangTagsRow = styled.div`
 const LangPill = styled.span`
   font-size: 0.8125rem;
   font-weight: 600;
-  padding: 0.3rem 0.75rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.background};
   border: 1px solid ${({ theme }) => theme.border};
@@ -210,17 +210,17 @@ const ApplyButton = styled(Link)`
   padding: 0.75rem 1.75rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px rgba(190, 254, 114, 0.25);
 
   &:hover {
     transform: translateY(-2px);
     background: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.4);
   }
 `;
 

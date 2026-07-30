@@ -93,11 +93,11 @@ const CTAButton = styled(Link)`
   padding: 1rem 2.5rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-weight: 700;
   font-size: 1.125rem;
   text-decoration: none;
-  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(190, 254, 114, 0.4);
   transition:
     transform 0.2s ease,
     background 0.2s ease,
@@ -106,8 +106,8 @@ const CTAButton = styled(Link)`
 
   &:hover {
     transform: translateY(-2px);
-    background: #059669;
-    box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5);
+    background: ${({ theme }) => theme.primaryHover};
+    box-shadow: 0 15px 30px -5px rgba(190, 254, 114, 0.5);
   }
 
   &:focus-visible {

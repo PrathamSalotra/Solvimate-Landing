@@ -71,9 +71,9 @@ const TagPill = styled.div`
   width: fit-content;
   padding: 0.4rem 1rem;
   border-radius: 9999px;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.35);
-  color: #3b82f6;
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  color: ${({ theme }) => theme.primary};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -123,7 +123,7 @@ const PlaceholderFallback = styled.div`
   gap: 1rem;
   padding: 2rem;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(190, 254, 114, 0.1) 0%, transparent 70%);
   color: ${({ theme }) => theme.textSecondary};
   z-index: 0;
 
@@ -131,7 +131,7 @@ const PlaceholderFallback = styled.div`
     width: 48px;
     height: 48px;
     opacity: 0.75;
-    color: #3b82f6;
+    color: ${({ theme }) => theme.primary};
   }
 
   span {

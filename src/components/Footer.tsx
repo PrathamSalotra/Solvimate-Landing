@@ -62,11 +62,11 @@ const LogoIcon = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  background: ${({ theme }) => theme.primary};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-weight: 800;
   font-size: 1rem;
 `;

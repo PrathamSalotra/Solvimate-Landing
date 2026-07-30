@@ -36,9 +36,9 @@ const StatusSection = styled.section`
 const StatusBadge = styled.span`
   display: inline-block;
   padding: 0.35rem 1rem;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #10b981;
+  background: rgba(190, 254, 114, 0.1);
+  border: 1px solid rgba(190, 254, 114, 0.3);
+  color: ${({ theme }) => theme.primary};
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 600;

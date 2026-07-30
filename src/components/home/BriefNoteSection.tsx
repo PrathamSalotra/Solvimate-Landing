@@ -10,8 +10,8 @@ const SectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, #065f46 0%, #047857 50%, #064e3b 100%);
-  color: #ffffff;
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.foreground};
   position: relative;
   overflow: hidden;
 
@@ -27,7 +27,7 @@ const DecorativeGlow = styled.div`
   width: 800px;
   height: 800px;
   transform: translateX(-50%);
-  background: radial-gradient(circle at center, rgba(52, 211, 153, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(190, 254, 114, 0.15) 0%, transparent 70%);
   pointer-events: none;
 `;
 
@@ -46,7 +46,8 @@ const ContentContainer = styled.div`
 const QuoteMark = styled.div`
   font-size: 3rem;
   line-height: 1;
-  color: rgba(167, 243, 208, 0.45);
+  color: ${({ theme }) => theme.primary};
+  opacity: 0.45;
   font-family: serif;
   user-select: none;
 `;
@@ -56,7 +57,7 @@ const StatementText = styled.h2`
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.015em;
-  color: #ffffff;
+  color: ${({ theme }) => theme.foreground};
   margin: 0;
   max-width: 900px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -66,7 +67,7 @@ const DividerLine = styled.div`
   width: 60px;
   height: 4px;
   border-radius: 2px;
-  background: #a7f3d0;
+  background: ${({ theme }) => theme.primary};
   margin-top: 0.5rem;
 `;
 

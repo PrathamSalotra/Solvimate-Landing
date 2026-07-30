@@ -10,9 +10,9 @@ const SectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #047857 0%, #065f46 100%);
-  color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.foreground};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
   position: relative;
   overflow: hidden;
 
@@ -44,9 +44,9 @@ const BadgePill = styled.span`
   display: inline-block;
   padding: 0.4rem 1.1rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: #ecfdf5;
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.primary};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -57,7 +57,7 @@ const HeadingText = styled.h2`
   font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: ${({ theme }) => theme.foreground};
   margin: 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 `;
@@ -85,9 +85,9 @@ const TestimonialCard = styled.div`
   gap: 2rem;
   padding: 2.25rem 2rem;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.09);
+  background: ${({ theme }) => theme.cardBg};
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid ${({ theme }) => theme.border};
   box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.25);
   transition:
     transform 0.25s ease,
@@ -96,7 +96,7 @@ const TestimonialCard = styled.div`
 
   &:hover {
     transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.12);
+    background: ${({ theme }) => theme.cardBg};
   }
 `;
 
@@ -110,7 +110,7 @@ const StarsRow = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: #fbbf24;
+  color: ${({ theme }) => theme.primary};
   font-size: 1.125rem;
   letter-spacing: 0.1em;
 `;
@@ -118,7 +118,7 @@ const StarsRow = styled.div`
 const QuoteText = styled.p`
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: #ecfdf5;
+  color: ${({ theme }) => theme.textSecondary};
   margin: 0;
   font-style: normal;
 `;
@@ -128,22 +128,22 @@ const AttributionFooter = styled.div`
   align-items: center;
   gap: 1rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid ${({ theme }) => theme.border};
 `;
 
 const AvatarCircle = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #a7f3d0 0%, #10b981 100%);
-  color: #064e3b;
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.colors.ink};
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 1.125rem;
   flex-shrink: 0;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid ${({ theme }) => theme.border};
 `;
 
 const AuthorDetails = styled.div`
@@ -155,13 +155,13 @@ const AuthorDetails = styled.div`
 const AuthorName = styled.h3`
   font-size: 1.125rem;
   font-weight: 700;
-  color: #ffffff;
+  color: ${({ theme }) => theme.foreground};
   margin: 0;
 `;
 
 const AuthorRole = styled.span`
   font-size: 0.875rem;
-  color: #a7f3d0;
+  color: ${({ theme }) => theme.primary};
   font-weight: 600;
 `;
 

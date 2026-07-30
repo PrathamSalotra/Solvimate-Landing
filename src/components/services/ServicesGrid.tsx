@@ -113,11 +113,24 @@ const SubItemChip = styled.span`
   gap: 0.35rem;
   padding: 0.4rem 0.85rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.22);
-  color: ${({ theme }) => theme.foreground};
   font-size: 0.825rem;
-  font-weight: 600;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.04);
+  color: ${({ theme }) => theme.foreground};
+  border: 1px solid ${({ theme }) => theme.border};
+
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+  }
+`;
+
+const SubItemDot = styled.span`
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.primary};
+  display: inline-block;
 `;
 
 interface ServiceGroupData {
@@ -224,16 +237,7 @@ export default function ServicesGrid() {
               <SubItemsContainer>
                 {item.itemKeys.map((itemKey, subIdx) => (
                   <SubItemChip key={subIdx}>
-                    <span
-                      style={{
-                        width: 5,
-                        height: 5,
-                        borderRadius: '50%',
-                        background: '#10b981',
-                        display: 'inline-block',
-                      }}
-                      aria-hidden="true"
-                    />
+                    <SubItemDot aria-hidden="true" />
                     {t(itemKey)}
                   </SubItemChip>
                 ))}

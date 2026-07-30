@@ -52,30 +52,25 @@ const PillBadge = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0.45rem 1.25rem;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #10b981;
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  color: ${({ theme }) => theme.primary};
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 4px 12px rgba(190, 254, 114, 0.1);
 `;
 
 const HeroHeadline = styled.h1`
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
-  line-height: 1.08;
+  font-size: clamp(2.35rem, 5vw, 4.4rem);
   font-weight: 800;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: ${({ theme }) => theme.foreground};
-  margin: 0 0 1.75rem;
-  max-width: 1100px;
-
-  @media (max-width: 480px) {
-    font-size: 2.5rem;
-    line-height: 1.15;
-  }
+  margin: 0 0 1.5rem 0;
+  max-width: 900px;
 
   @media (min-width: 1440px) {
     font-size: 4.4rem;
@@ -84,12 +79,21 @@ const HeroHeadline = styled.h1`
 `;
 
 const HeroSupport = styled.p`
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-size: clamp(1.125rem, 2vw, 1.35rem);
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.6;
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  margin: 0 0 2.5rem 0;
+  max-width: 680px;
   font-weight: 400;
+`;
+
+const HeroCTAContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.5rem;
 `;
 
 const CtaButton = styled(Link)`
@@ -99,11 +103,11 @@ const CtaButton = styled(Link)`
   padding: 1.125rem 2.75rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 1.125rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 25px -5px rgba(190, 254, 114, 0.35);
   transition:
     transform 0.2s ease,
     background-color 0.2s ease,

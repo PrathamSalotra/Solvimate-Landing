@@ -146,18 +146,18 @@ const SubmitButton = styled.button`
   border-radius: 9999px;
   border: none;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease,
     opacity 0.2s ease;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 6px 20px rgba(190, 254, 114, 0.35);
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     background: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 8px 25px rgba(190, 254, 114, 0.5);
   }
 
   &:disabled {

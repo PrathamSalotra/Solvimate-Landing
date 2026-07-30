@@ -21,9 +21,7 @@ const BigNumber = styled.h1`
   font-size: 7rem;
   font-weight: 900;
   line-height: 1;
-  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: ${({ theme }) => theme.primary};
   margin: 0 0 1rem;
 
   @media (max-width: 640px) {
@@ -57,7 +55,7 @@ const BackHomeButton = styled(Link)`
   padding: 0.75rem 1.75rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;

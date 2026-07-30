@@ -50,7 +50,7 @@ const ToastCard = styled.div<{ $type: ToastType }>`
   backdrop-filter: blur(12px);
   border: 1px solid
     ${({ $type, theme }) => {
-      if ($type === 'success') return 'rgba(16, 185, 129, 0.45)';
+      if ($type === 'success') return 'rgba(190, 254, 114, 0.55)';
       if ($type === 'error') return 'rgba(239, 68, 68, 0.45)';
       return theme.border;
     }};
@@ -71,11 +71,11 @@ const IconWrapper = styled.div<{ $type: ToastType }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  background: ${({ $type }) => {
-    if ($type === 'success') return '#10b981';
+  color: ${({ theme, $type }) => ($type === 'error' ? '#ffffff' : theme.colors.ink)};
+  background: ${({ theme, $type }) => {
+    if ($type === 'success') return theme.primary;
     if ($type === 'error') return '#ef4444';
-    return '#3b82f6';
+    return theme.primaryHover;
   }};
   margin-top: 0.1rem;
 

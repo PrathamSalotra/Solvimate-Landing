@@ -59,9 +59,9 @@ const OpenBadge = styled.span`
   gap: 0.4rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.1);
+  border: 1px solid rgba(190, 254, 114, 0.3);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
 
@@ -70,7 +70,7 @@ const OpenBadge = styled.span`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #10b981;
+    background: ${({ theme }) => theme.primary};
     display: inline-block;
   }
 `;
@@ -88,6 +88,40 @@ const DescText = styled.p`
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
   margin: 0;
+`;
+
+const RequirementsList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const RequirementItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: ${({ theme }) => theme.foreground};
+  font-size: 0.95rem;
+
+  &::before {
+    content: '→';
+    color: ${({ theme }) => theme.primary};
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+`;
+
+const ActionCol = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 const DetailsBox = styled.div<{ $expanded: boolean }>`
@@ -144,12 +178,12 @@ const ApplyButton = styled(Link)`
   padding: 0.75rem 1.75rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px rgba(190, 254, 114, 0.25);
 
   &:hover {
     transform: translateY(-2px);

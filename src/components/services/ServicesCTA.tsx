@@ -77,7 +77,7 @@ const QuoteButton = styled(Link)`
   padding: 1rem 2.25rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-weight: 700;
   font-size: 1.05rem;
   text-decoration: none;

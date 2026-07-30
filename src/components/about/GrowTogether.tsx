@@ -103,16 +103,16 @@ const CTAButton = styled(Link)`
   padding: 0.95rem 2rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.ink};
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 14px rgba(190, 254, 114, 0.35);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.5);
   }
 `;
 

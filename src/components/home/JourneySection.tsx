@@ -73,7 +73,7 @@ const ParallaxContainer = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 28px;
-  background: linear-gradient(135deg, #080e1a 0%, #0d1b2a 100%);
+  background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   cursor: default;
@@ -83,7 +83,65 @@ const ParallaxLayer = styled.div<{ $offsetX: number; $offsetY: number }>`
   position: absolute;
   inset: -20px;
   transform: translate3d(${({ $offsetX }) => $offsetX}px, ${({ $offsetY }) => $offsetY}px, 0);
-  transition: transform 0.15s ease-out;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  pointer-events: none;
+`;
+
+const AbstractNode = styled.div<{
+  $top: string;
+  $left: string;
+  $size: string;
+  $color: string;
+}>`
+  position: absolute;
+  top: ${({ $top }) => $top};
+  left: ${({ $left }) => $left};
+  width: ${({ $size }) => $size};
+  height: ${({ $size }) => $size};
+  border-radius: 50%;
+  background: ${({ $color }) => $color};
+  opacity: 0.25;
+  filter: blur(40px);
+`;
+
+const FloatingCard = styled.div<{ $top: string; $left: string }>`
+  position: absolute;
+  top: ${({ $top }) => $top};
+  left: ${({ $left }) => $left};
+  padding: 1.25rem;
+  background: ${({ theme }) => theme.cardBg};
+  backdrop-filter: blur(12px);
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    padding: 0.85rem;
+  }
+`;
+
+const FloatingPill = styled.div<{ $top: string; $left: string }>`
+  position: absolute;
+  top: ${({ $top }) => $top};
+  left: ${({ $left }) => $left};
+  padding: 0.6rem 1.2rem;
+  background: ${({ theme }) => theme.surface};
+  backdrop-filter: blur(8px);
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: 9999px;
+  color: ${({ theme }) => theme.foreground};
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const PlaceholderFallback = styled.div`
@@ -96,7 +154,7 @@ const PlaceholderFallback = styled.div`
   gap: 1rem;
   padding: 2rem;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(190, 254, 114, 0.12) 0%, transparent 70%);
   color: ${({ theme }) => theme.textSecondary};
   z-index: 0;
 
@@ -111,27 +169,6 @@ const PlaceholderFallback = styled.div`
     font-size: 0.9375rem;
     font-weight: 600;
     max-width: 320px;
-  }
-`;
-
-const FloatingPill = styled.div<{ $top: string; $left: string }>`
-  position: absolute;
-  top: ${({ $top }) => $top};
-  left: ${({ $left }) => $left};
-  padding: 0.6rem 1.2rem;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 9999px;
-  color: #fff;
-  font-size: 0.875rem;
-  font-weight: 700;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-  pointer-events: none;
-
-  @media (max-width: 768px) {
-    display: none;
   }
 `;
 
