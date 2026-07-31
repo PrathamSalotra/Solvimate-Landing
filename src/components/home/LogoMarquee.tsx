@@ -52,6 +52,11 @@ const MarqueeSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 228px;
+
+  @media (max-width: 768px) {
+    min-height: 196px;
+  }
 `;
 
 const SectionHeader = styled.h2`
@@ -71,6 +76,7 @@ const ViewportContainer = styled.div`
   overflow: hidden;
   position: relative;
   padding: 0.75rem 0;
+  min-height: 56px;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -79,6 +85,10 @@ const ViewportContainer = styled.div`
     transparent 100%
   );
   mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+
+  @media (max-width: 768px) {
+    min-height: 48px;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     mask-image: none !important;
@@ -91,7 +101,12 @@ const CarouselTrack = styled.div`
   display: flex;
   align-items: center;
   width: max-content;
+  min-height: 32px;
   animation: ${marqueeScroll} 28s linear infinite;
+
+  @media (max-width: 768px) {
+    min-height: 24px;
+  }
 
   &:hover,
   &:focus-within {
@@ -112,10 +127,12 @@ const LogoStrip = styled.div<{ $isDuplicate?: boolean }>`
   gap: 4.5rem;
   padding-right: 4.5rem;
   flex-shrink: 0;
+  min-height: 32px;
 
   @media (max-width: 768px) {
     gap: 3rem;
     padding-right: 3rem;
+    min-height: 24px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -176,8 +193,11 @@ export default function LogoMarquee() {
                 alt={`${logo.name} logo`}
                 title={logo.name}
                 tabIndex={0}
+                width={150}
+                height={32}
                 data-placeholder={logo.isPlaceholder ? 'true' : undefined}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
             ))}
           </LogoStrip>
@@ -188,8 +208,11 @@ export default function LogoMarquee() {
                 src={logo.src}
                 alt=""
                 title={logo.name}
+                width={150}
+                height={32}
                 data-placeholder={logo.isPlaceholder ? 'true' : undefined}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
             ))}
           </LogoStrip>
