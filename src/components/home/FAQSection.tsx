@@ -41,7 +41,7 @@ const BadgePill = styled.span`
   border-radius: 9999px;
   background: rgba(190, 254, 114, 0.12);
   border: 1px solid rgba(190, 254, 114, 0.3);
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime)};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -49,6 +49,7 @@ const BadgePill = styled.span`
 `;
 
 const HeadingText = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -65,17 +66,16 @@ const AccordionContainer = styled.div`
 
 const AccordionItem = styled.div<{ $isOpen: boolean }>`
   width: 100%;
-  border-radius: 18px;
-  background: ${({ theme }) => theme.cardBg};
-  border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.border)};
-  box-shadow: ${({ $isOpen }) => ($isOpen ? '0 12px 30px -10px rgba(16, 185, 129, 0.15)' : 'none')};
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  border-radius: ${({ theme }) => theme.radius.card};
+  background: ${({ theme }) => theme.background};
+  border: 1px solid
+    ${({ theme, $isOpen }) =>
+      $isOpen ? (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime) : theme.border};
   overflow: hidden;
 `;
 
 const AccordionHeader = styled.button<{ $isOpen: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
   width: 100%;
   padding: 1.5rem 1.75rem;
   display: flex;
@@ -84,17 +84,21 @@ const AccordionHeader = styled.button<{ $isOpen: boolean }>`
   gap: 1.25rem;
   background: transparent;
   border: none;
-  color: ${({ theme, $isOpen }) => ($isOpen ? theme.primaryText : theme.foreground)};
+  color: ${({ theme, $isOpen }) =>
+    $isOpen
+      ? theme.background === '#F5FBF2'
+        ? '#0F7A4D'
+        : theme.colors.lime
+      : theme.foreground};
   font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
   font-weight: 700;
   text-align: left;
   cursor: pointer;
   outline: none;
-  transition: color 0.2s ease;
 
   &:focus-visible {
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.primary};
-    border-radius: 18px;
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.lime};
+    border-radius: ${({ theme }) => theme.radius.card};
   }
 
   @media (max-width: 768px) {
@@ -111,12 +115,14 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
   border-radius: 50%;
   background: ${({ $isOpen }) =>
     $isOpen ? 'rgba(190, 254, 114, 0.15)' : 'rgba(128, 128, 128, 0.1)'};
-  color: ${({ theme, $isOpen }) => ($isOpen ? theme.primaryText : theme.textSecondary)};
+  color: ${({ theme, $isOpen }) =>
+    $isOpen
+      ? theme.background === '#F5FBF2'
+        ? '#0F7A4D'
+        : theme.colors.lime
+      : theme.textSecondary};
   transform: rotate(${({ $isOpen }) => ($isOpen ? '180deg' : '0deg')});
-  transition:
-    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    background 0.35s ease,
-    color 0.35s ease;
+  transition: transform 0.25s ease;
   flex-shrink: 0;
 
   svg {
@@ -126,12 +132,7 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
 `;
 
 const AccordionPanel = styled.div<{ $isOpen: boolean }>`
-  display: grid;
-  grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};
-  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-  transition:
-    grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.3s ease;
+  display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
 `;
 
 const PanelContent = styled.div`
@@ -139,15 +140,16 @@ const PanelContent = styled.div`
 `;
 
 const AnswerText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   padding: 0 1.75rem 1.5rem;
   margin: 0;
   color: ${({ theme }) => theme.textSecondary};
-  font-size: 1.0625rem;
+  font-size: 0.9375rem; /* 15px base size */
   line-height: 1.65;
 
   @media (max-width: 768px) {
     padding: 0 1.25rem 1.25rem;
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
 `;
 
