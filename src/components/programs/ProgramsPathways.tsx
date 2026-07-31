@@ -36,7 +36,7 @@ const PathwaysGrid = styled.div`
 const PathwayCard = styled.article`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 24px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.75rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@ const PathwayCard = styled.article`
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(16, 185, 129, 0.45);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
   }
 
@@ -62,12 +62,14 @@ const ContentTop = styled.div`
 `;
 
 const PathwayBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-flex;
   align-self: flex-start;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primaryText};
+  background: rgba(55, 251, 137, 0.12);
+  border: 1px solid rgba(55, 251, 137, 0.3);
+  color: ${({ theme }) => theme.primaryHover};
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -75,6 +77,7 @@ const PathwayBadge = styled.span`
 `;
 
 const PathwayTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.75rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -83,6 +86,7 @@ const PathwayTitle = styled.h2`
 `;
 
 const PathwayDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.05rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -90,6 +94,7 @@ const PathwayDesc = styled.p`
 `;
 
 const PrimaryButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -107,14 +112,14 @@ const PrimaryButton = styled(Link)`
   &:hover {
     transform: translateY(-2px);
     background: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.4);
   }
 `;
 
 const GeneralBanner = styled.div`
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  border-radius: 24px;
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -128,6 +133,7 @@ const GeneralBanner = styled.div`
 `;
 
 const GeneralTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.75rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -135,6 +141,7 @@ const GeneralTitle = styled.h3`
 `;
 
 const GeneralDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.05rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -151,6 +158,7 @@ const ButtonsRow = styled.div`
 `;
 
 const OutlineButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +173,7 @@ const OutlineButton = styled(Link)`
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(16, 185, 129, 0.1);
+    background: rgba(190, 254, 114, 0.12);
     transform: translateY(-2px);
   }
 `;

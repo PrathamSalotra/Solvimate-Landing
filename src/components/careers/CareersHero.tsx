@@ -25,7 +25,7 @@ const HeroGlow = styled.div`
   transform: translateX(-50%);
   width: 750px;
   height: 500px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(16, 185, 129, 0) 70%);
+  background: radial-gradient(circle, rgba(190, 254, 114, 0.16) 0%, rgba(190, 254, 114, 0) 70%);
   pointer-events: none;
   z-index: 0;
 `;
@@ -49,8 +49,8 @@ const TagPill = styled.span`
   gap: 0.5rem;
   padding: 0.45rem 1.15rem;
   border-radius: 9999px;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  background: rgba(190, 254, 114, 0.12);
   color: ${({ theme }) => theme.primaryText};
   font-size: 0.8125rem;
   font-weight: 500;
@@ -103,7 +103,7 @@ const TracksGrid = styled.div`
 const TrackInfoCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 1.75rem 2rem;
   text-align: left;
   display: flex;
@@ -113,11 +113,12 @@ const TrackInfoCard = styled.div`
 
   &:hover {
     transform: translateY(-3px);
-    border-color: rgba(16, 185, 129, 0.4);
+    border-color: ${({ theme }) => theme.primaryHover};
   }
 `;
 
 const TrackTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.25rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -128,15 +129,18 @@ const TrackTitle = styled.h2`
 `;
 
 const TrackBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.primaryText};
+  background: rgba(55, 251, 137, 0.12);
+  color: ${({ theme }) => theme.primaryHover};
+  border: 1px solid rgba(55, 251, 137, 0.3);
 `;
 
 const TrackDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.95rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.6;

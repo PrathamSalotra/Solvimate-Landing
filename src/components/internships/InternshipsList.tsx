@@ -27,7 +27,7 @@ const Container = styled.div`
 const InternshipCard = styled.article`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@ const InternshipCard = styled.article`
 
   &:hover {
     transform: translateY(-2px);
-    border-color: rgba(16, 185, 129, 0.4);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
   }
 
@@ -54,14 +54,15 @@ const CardHeader = styled.div`
 `;
 
 const OpenBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primaryText};
-  background: rgba(190, 254, 114, 0.1);
-  border: 1px solid rgba(190, 254, 114, 0.3);
+  color: ${({ theme }) => theme.primaryHover};
+  background: rgba(55, 251, 137, 0.12);
+  border: 1px solid rgba(55, 251, 137, 0.3);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   text-transform: uppercase;
@@ -69,15 +70,17 @@ const OpenBadge = styled.span`
 
   &::before {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: ${({ theme }) => theme.primary};
+    background: ${({ theme }) => theme.primaryHover};
     display: inline-block;
+    box-shadow: 0 0 6px ${({ theme }) => theme.primaryHover};
   }
 `;
 
 const TitleText = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -86,6 +89,7 @@ const TitleText = styled.h3`
 `;
 
 const DescText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
@@ -93,6 +97,7 @@ const DescText = styled.p`
 `;
 
 const DetailsBox = styled.div<{ $expanded: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: ${({ $expanded }) => ($expanded ? 'flex' : 'none')};
   flex-direction: column;
   gap: 0.75rem;
@@ -123,6 +128,7 @@ const ActionsGroup = styled.div`
 `;
 
 const ViewDetailsButton = styled.button`
+  font-family: ${({ theme }) => theme.fonts.body};
   padding: 0.7rem 1.4rem;
   border-radius: 9999px;
   border: 1px solid ${({ theme }) => theme.border};
@@ -140,6 +146,7 @@ const ViewDetailsButton = styled.button`
 `;
 
 const ApplyButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -156,14 +163,14 @@ const ApplyButton = styled(Link)`
   &:hover {
     transform: translateY(-2px);
     background: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.4);
   }
 `;
 
 const EmptyStateCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px dashed ${({ theme }) => theme.border};
-  border-radius: 24px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 4.5rem 2rem;
   text-align: center;
   display: flex;
@@ -173,6 +180,7 @@ const EmptyStateCard = styled.div`
 `;
 
 const EmptyMessageText = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -182,6 +190,7 @@ const EmptyMessageText = styled.h3`
 `;
 
 const EmptySubtext = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1rem;
   color: ${({ theme }) => theme.textSecondary};
   margin: 0;

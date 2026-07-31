@@ -85,7 +85,7 @@ const ListingsGrid = styled.div`
 const JobCard = styled.article`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -94,7 +94,7 @@ const JobCard = styled.article`
 
   &:hover {
     transform: translateY(-2px);
-    border-color: rgba(16, 185, 129, 0.4);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
   }
 
@@ -119,6 +119,7 @@ const BadgesGroup = styled.div`
 `;
 
 const TrackBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -130,6 +131,7 @@ const TrackBadge = styled.span`
 `;
 
 const CategoryBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.35rem 0.75rem;
@@ -140,28 +142,31 @@ const CategoryBadge = styled.span`
 `;
 
 const AvailableBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primaryText};
-  background: rgba(190, 254, 114, 0.1);
-  border: 1px solid rgba(190, 254, 114, 0.3);
+  color: ${({ theme }) => theme.primaryHover};
+  background: rgba(55, 251, 137, 0.12);
+  border: 1px solid rgba(55, 251, 137, 0.3);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
 
   &::before {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: ${({ theme }) => theme.primary};
+    background: ${({ theme }) => theme.primaryHover};
     display: inline-block;
+    box-shadow: 0 0 6px ${({ theme }) => theme.primaryHover};
   }
 `;
 
 const JobTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -170,6 +175,7 @@ const JobTitle = styled.h3`
 `;
 
 const JobDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
@@ -194,6 +200,7 @@ const LangTagsRow = styled.div`
 `;
 
 const LangPill = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.8125rem;
   font-weight: 600;
   padding: 0.35rem 0.75rem;
@@ -204,6 +211,7 @@ const LangPill = styled.span`
 `;
 
 const ApplyButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -227,7 +235,7 @@ const ApplyButton = styled(Link)`
 const EmptyStateCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px dashed ${({ theme }) => theme.border};
-  border-radius: 24px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 4rem 2rem;
   text-align: center;
   display: flex;
@@ -237,6 +245,7 @@ const EmptyStateCard = styled.div`
 `;
 
 const EmptyTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -244,6 +253,7 @@ const EmptyTitle = styled.h3`
 `;
 
 const EmptyDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.05rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;

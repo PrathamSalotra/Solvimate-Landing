@@ -26,7 +26,7 @@ const Container = styled.div`
 const ArticleCard = styled.article`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.5rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ const ArticleCard = styled.article`
 
   &:hover {
     transform: translateY(-2px);
-    border-color: rgba(16, 185, 129, 0.4);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
   }
 
@@ -53,24 +53,27 @@ const CardHeader = styled.div`
 `;
 
 const DateText = styled.time`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.85rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primary};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
 
 const SlugBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.1);
-  color: ${({ theme }) => theme.textSecondary};
-  border: 1px solid ${({ theme }) => theme.border};
+  background: rgba(55, 251, 137, 0.12);
+  color: ${({ theme }) => theme.primaryHover};
+  border: 1px solid rgba(55, 251, 137, 0.3);
 `;
 
 const TitleText = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.65rem;
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -79,6 +82,7 @@ const TitleText = styled.h2`
 `;
 
 const BodyText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.05rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.75;
@@ -89,7 +93,7 @@ const BodyText = styled.p`
 const EmptyStateCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px dashed ${({ theme }) => theme.border};
-  border-radius: 24px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 4.5rem 2rem;
   text-align: center;
   display: flex;
@@ -99,6 +103,7 @@ const EmptyStateCard = styled.div`
 `;
 
 const EmptyMessageText = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
