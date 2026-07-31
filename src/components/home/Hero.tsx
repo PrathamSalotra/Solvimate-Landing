@@ -26,16 +26,31 @@ const BackgroundGlow = styled.div`
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 80vw;
-  height: 500px;
+  width: max(80vw, 640px);
+  height: 550px;
   background: radial-gradient(
-    circle,
-    rgba(190, 254, 114, 0.12) 0%,
-    rgba(55, 251, 137, 0.08) 40%,
-    transparent 70%
+    closest-side,
+    rgba(190, 254, 114, 0.15) 0%,
+    rgba(55, 251, 137, 0.08) 50%,
+    transparent 100%
   );
+  filter: blur(30px);
   pointer-events: none;
   z-index: 0;
+
+  @media (max-width: 535px) {
+    width: 140vw;
+    min-width: 500px;
+    height: 550px;
+    top: -10%;
+    background: radial-gradient(
+      closest-side,
+      rgba(190, 254, 114, 0.18) 0%,
+      rgba(55, 251, 137, 0.08) 50%,
+      transparent 100%
+    );
+    filter: blur(40px);
+  }
 `;
 
 const HeroContent = styled.div`
