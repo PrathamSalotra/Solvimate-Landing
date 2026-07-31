@@ -39,9 +39,9 @@ const BadgePill = styled.span`
   display: inline-block;
   padding: 0.4rem 1.1rem;
   border-radius: 9999px;
-  background: rgba(190, 254, 114, 0.12);
-  border: 1px solid rgba(190, 254, 114, 0.3);
-  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime)};
+  background: ${({ theme }) => theme.accentBadgeBg};
+  border: 1px solid ${({ theme }) => theme.accentBadgeBorder};
+  color: ${({ theme }) => theme.accentText};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -70,7 +70,7 @@ const AccordionItem = styled.div<{ $isOpen: boolean }>`
   background: ${({ theme }) => theme.background};
   border: 1px solid
     ${({ theme, $isOpen }) =>
-      $isOpen ? (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime) : theme.border};
+      $isOpen ? theme.accentText : theme.border};
   overflow: hidden;
 `;
 
@@ -85,11 +85,7 @@ const AccordionHeader = styled.button<{ $isOpen: boolean }>`
   background: transparent;
   border: none;
   color: ${({ theme, $isOpen }) =>
-    $isOpen
-      ? theme.background === '#F5FBF2'
-        ? '#0F7A4D'
-        : theme.colors.lime
-      : theme.foreground};
+    $isOpen ? theme.accentText : theme.foreground};
   font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
   font-weight: 700;
   text-align: left;
@@ -97,7 +93,7 @@ const AccordionHeader = styled.button<{ $isOpen: boolean }>`
   outline: none;
 
   &:focus-visible {
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.lime};
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.primary};
     border-radius: ${({ theme }) => theme.radius.card};
   }
 
@@ -113,14 +109,10 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: ${({ $isOpen }) =>
-    $isOpen ? 'rgba(190, 254, 114, 0.15)' : 'rgba(128, 128, 128, 0.1)'};
+  background: ${({ theme, $isOpen }) =>
+    $isOpen ? theme.accentBadgeBg : 'rgba(128, 128, 128, 0.1)'};
   color: ${({ theme, $isOpen }) =>
-    $isOpen
-      ? theme.background === '#F5FBF2'
-        ? '#0F7A4D'
-        : theme.colors.lime
-      : theme.textSecondary};
+    $isOpen ? theme.accentText : theme.textSecondary};
   transform: rotate(${({ $isOpen }) => ($isOpen ? '180deg' : '0deg')});
   transition: transform 0.25s ease;
   flex-shrink: 0;

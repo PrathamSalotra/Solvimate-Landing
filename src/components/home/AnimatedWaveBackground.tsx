@@ -91,7 +91,7 @@ export default function AnimatedWaveBackground() {
         <path
           d="M 0 220 Q 360 310 720 220 T 1440 220 T 2160 220 T 2880 220"
           fill="none"
-          stroke="#37FB89"
+          stroke={theme.primaryHover}
           strokeWidth="2"
           strokeLinecap="round"
         />

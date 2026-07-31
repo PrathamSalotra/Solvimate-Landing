@@ -11,6 +11,9 @@ export interface ColorPalette {
   cardBg: string;
   border: string;
   primaryText: string;
+  accentText: string;
+  accentBadgeBg: string;
+  accentBadgeBorder: string;
 }
 
 export interface SpacingTokens {
@@ -56,6 +59,9 @@ export interface ThemeTokens {
   primary: string;
   primaryHover: string;
   primaryText: string;
+  accentText: string;
+  accentBadgeBg: string;
+  accentBadgeBorder: string;
   border: string;
   cardBg: string;
 
@@ -109,6 +115,9 @@ export const darkTheme: ThemeTokens = {
   primary: '#BEFE72', // Lime
   primaryHover: '#37FB89', // Mint
   primaryText: '#BEFE72', // Lime for text & SVG strokes in dark mode
+  accentText: '#BEFE72', // Lime accent text
+  accentBadgeBg: 'rgba(55, 251, 137, 0.12)',
+  accentBadgeBorder: 'rgba(55, 251, 137, 0.35)',
   border: 'rgba(159, 184, 180, 0.25)', // Mist at 25% alpha
   cardBg: '#0A2E3D', // Surface
   colors: {
@@ -124,6 +133,9 @@ export const darkTheme: ThemeTokens = {
     cardBg: '#0A2E3D',
     border: 'rgba(159, 184, 180, 0.25)',
     primaryText: '#BEFE72',
+    accentText: '#BEFE72',
+    accentBadgeBg: 'rgba(55, 251, 137, 0.12)',
+    accentBadgeBorder: 'rgba(55, 251, 137, 0.35)',
   },
   spacing,
   radius,
@@ -148,6 +160,9 @@ export const lightTheme: ThemeTokens = {
   primary: '#BEFE72', // Lime for button backgrounds
   primaryHover: '#37FB89', // Mint
   primaryText: '#000000', // Black (#000000) for text & SVG strokes in light mode
+  accentText: '#0F7A4D', // Dark green accent text with high contrast on light backgrounds
+  accentBadgeBg: 'rgba(55, 251, 137, 0.18)',
+  accentBadgeBorder: 'rgba(15, 122, 77, 0.3)',
   border: 'rgba(0, 30, 43, 0.15)', // Ink at 15% alpha
   cardBg: '#FFFFFF', // Near-white surface for cards
   colors: {
@@ -163,6 +178,9 @@ export const lightTheme: ThemeTokens = {
     cardBg: '#FFFFFF',
     border: 'rgba(0, 30, 43, 0.15)',
     primaryText: '#000000',
+    accentText: '#0F7A4D',
+    accentBadgeBg: 'rgba(55, 251, 137, 0.18)',
+    accentBadgeBorder: 'rgba(15, 122, 77, 0.3)',
   },
   spacing,
   radius,
@@ -174,3 +192,5 @@ export const tokens = {
   dark: darkTheme,
   light: lightTheme,
 };
+
+export default tokens;

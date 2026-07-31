@@ -155,8 +155,17 @@ function AnimatedCounter({ end, suffix = '', format = true }: CounterProps) {
 
     observer.observe(el);
 
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        setCount(end);
+      }
+    };
+    mediaQuery.addEventListener?.('change', handleMotionChange);
+
     return () => {
       observer.disconnect();
+      mediaQuery.removeEventListener?.('change', handleMotionChange);
     };
   }, [end]);
 

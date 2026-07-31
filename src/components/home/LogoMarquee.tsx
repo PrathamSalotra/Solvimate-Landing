@@ -4,33 +4,23 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
 
-/*
- * TODO [TRACKED]: Kuku FM's logo (/client-logos/kukufm.png) is flagged as a placeholder
- * pending an official transparent export. Do not ship as final without verifying transparent
- * background asset replacement.
- */
-
 interface ClientLogo {
   name: string;
   src: string;
   isPlaceholder?: boolean;
+  scale?: number;
 }
 
 const CLIENT_LOGOS: ClientLogo[] = [
-  { name: 'BayanTech', src: '/client-logos/bayantech.png' },
-  { name: 'FutureBeeAI', src: '/client-logos/futurebeeai.png' },
-  { name: 'GienTech', src: '/client-logos/gientech.png' },
-  { name: 'Josh Talks', src: '/client-logos/joshtalks.png' },
-  {
-    name: 'Kuku FM',
-    src: '/client-logos/kukufm.png',
-    // TODO [TRACKED]: Placeholder logo pending an official transparent export
-    isPlaceholder: true,
-  },
-  { name: 'OpenAI', src: '/client-logos/openai.png' },
-  { name: 'Pocket FM', src: '/client-logos/pocketfm.png' },
-  { name: 'Story TV', src: '/client-logos/storytv.png' },
-  { name: 'Uber', src: '/client-logos/uber.png' },
+  { name: 'BayanTech', src: '/client-logos/bayantech.png?v=20260731_2' },
+  { name: 'FutureBeeAI', src: '/client-logos/futurebeeai.png?v=20260731_2' },
+  { name: 'GienTech', src: '/client-logos/gientech.png?v=20260731_2' },
+  { name: 'Josh Talks', src: '/client-logos/joshtalks.png?v=20260731_2', scale: 1.4 },
+  { name: 'Kuku FM', src: '/client-logos/kukufm.png?v=20260731_2' },
+  { name: 'OpenAI', src: '/client-logos/openai.png?v=20260731_2', scale: 1.4 },
+  { name: 'Pocket FM', src: '/client-logos/pocketfm.png?v=20260731_2', scale: 1.4 },
+  { name: 'Story TV', src: '/client-logos/storytv.png?v=20260731_2', scale: 1.45 },
+  { name: 'Uber', src: '/client-logos/uber.png?v=20260731_2', scale: 1.4 },
 ];
 
 const marqueeScroll = keyframes`
@@ -151,10 +141,10 @@ const LogoStrip = styled.div<{ $isDuplicate?: boolean }>`
   }
 `;
 
-const LogoImage = styled.img`
-  height: 32px;
+const LogoImage = styled.img<{ $scale?: number }>`
+  height: ${({ $scale = 1 }) => Math.round(32 * $scale)}px;
   width: auto;
-  max-width: 150px;
+  max-width: 200px;
   object-fit: contain;
   opacity: 0.55;
   flex-shrink: 0;
@@ -167,13 +157,13 @@ const LogoImage = styled.img`
   &:hover,
   &:focus-visible {
     opacity: 1;
-    transform: scale(1.06);
+    transform: scale(1.08);
     outline: none;
   }
 
   @media (max-width: 768px) {
-    height: 24px;
-    max-width: 110px;
+    height: ${({ $scale = 1 }) => Math.round(24 * $scale)}px;
+    max-width: 140px;
   }
 `;
 
@@ -193,8 +183,9 @@ export default function LogoMarquee() {
                 alt={`${logo.name} logo`}
                 title={logo.name}
                 tabIndex={0}
+                $scale={logo.scale || 1}
                 width={150}
-                height={32}
+                height={Math.round(32 * (logo.scale || 1))}
                 data-placeholder={logo.isPlaceholder ? 'true' : undefined}
                 loading="eager"
                 decoding="async"
@@ -208,8 +199,9 @@ export default function LogoMarquee() {
                 src={logo.src}
                 alt=""
                 title={logo.name}
+                $scale={logo.scale || 1}
                 width={150}
-                height={32}
+                height={Math.round(32 * (logo.scale || 1))}
                 data-placeholder={logo.isPlaceholder ? 'true' : undefined}
                 loading="eager"
                 decoding="async"

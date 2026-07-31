@@ -89,15 +89,12 @@ const IconBadge = styled.div`
   width: 52px;
   height: 52px;
   border-radius: ${({ theme }) => theme.radius.default};
-  background: ${({ theme }) =>
-    theme.background === '#F5FBF2' ? 'rgba(55, 251, 137, 0.18)' : 'rgba(55, 251, 137, 0.12)'};
-  border: 1px solid
-    ${({ theme }) =>
-      theme.background === '#F5FBF2' ? 'rgba(15, 122, 77, 0.3)' : 'rgba(55, 251, 137, 0.35)'};
+  background: ${({ theme }) => theme.accentBadgeBg};
+  border: 1px solid ${({ theme }) => theme.accentBadgeBorder};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.mint)};
+  color: ${({ theme }) => theme.accentText};
   margin-bottom: 1.75rem;
 
   svg {

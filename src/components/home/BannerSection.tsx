@@ -87,7 +87,7 @@ const BannerOverlayBadge = styled.div`
   background: rgba(0, 30, 43, 0.85); /* Solid Ink background without blur or drop-shadow */
   border: 1px solid rgba(190, 254, 114, 0.35);
   border-radius: 9999px;
-  color: #f5fbf2; /* Paper-colored text */
+  color: ${({ theme }) => theme.colors.paper}; /* Paper-colored text */
   font-size: 0.8125rem;
   font-weight: 700;
   z-index: 3;

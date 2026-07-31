@@ -44,9 +44,9 @@ const BadgePill = styled.span`
   display: inline-block;
   padding: 0.4rem 1.1rem;
   border-radius: 9999px;
-  background: rgba(190, 254, 114, 0.12);
+  background: ${({ theme }) => theme.accentBadgeBg};
   border: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime)};
+  color: ${({ theme }) => theme.accentText};
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -59,21 +59,33 @@ const HeadingText = styled.h2`
   letter-spacing: -0.02em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
+  line-height: 1.15;
+
+  @media (max-width: 640px) {
+    font-size: 2rem;
+  }
+`;
+
+const SubtitleText = styled.p`
+  font-size: clamp(1.125rem, 2vw, 1.35rem);
+  color: ${({ theme }) => theme.textSecondary};
+  margin: 0;
+  max-width: 680px;
+  line-height: 1.6;
 `;
 
 const GridContainer = styled.div`
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  width: 100%;
 
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 `;
 
@@ -86,7 +98,7 @@ const TestimonialCard = styled.div`
   border-radius: ${({ theme }) => theme.radius.card};
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-left: 4px solid ${({ theme }) => theme.colors.lime};
+  border-left: 4px solid ${({ theme }) => theme.primary};
   box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.25);
   transition:
     transform ${({ theme }) => theme.motion.interaction} ease,
@@ -95,7 +107,7 @@ const TestimonialCard = styled.div`
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35);
   }
 `;
 
@@ -109,7 +121,7 @@ const StarsRow = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime)};
+  color: ${({ theme }) => theme.accentText};
   font-size: 1.125rem;
   letter-spacing: 0.1em;
 `;
@@ -160,7 +172,7 @@ const AuthorName = styled.h3`
 
 const AuthorRole = styled.span`
   font-size: 0.875rem;
-  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.lime)};
+  color: ${({ theme }) => theme.accentText};
   font-weight: 600;
 `;
 
