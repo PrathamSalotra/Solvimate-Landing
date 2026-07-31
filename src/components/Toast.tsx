@@ -44,14 +44,14 @@ const ToastCard = styled.div<{ $type: ToastType }>`
   align-items: flex-start;
   gap: 0.85rem;
   padding: 1rem 1.15rem;
-  border-radius: 14px;
+  border-radius: ${({ theme }) => theme.radius.card};
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
   background: ${({ theme }) => theme.cardBg};
   backdrop-filter: blur(12px);
   border: 1px solid
     ${({ $type, theme }) => {
-      if ($type === 'success') return 'rgba(190, 254, 114, 0.55)';
-      if ($type === 'error') return 'rgba(239, 68, 68, 0.45)';
+      if ($type === 'success') return 'rgba(55, 251, 137, 0.55)';
+      if ($type === 'error') return 'rgba(239, 68, 68, 0.55)';
       return theme.border;
     }};
   color: ${({ theme }) => theme.foreground};
@@ -73,9 +73,9 @@ const IconWrapper = styled.div<{ $type: ToastType }>`
   justify-content: center;
   color: ${({ theme, $type }) => ($type === 'error' ? '#ffffff' : theme.colors.ink)};
   background: ${({ theme, $type }) => {
-    if ($type === 'success') return theme.primary;
+    if ($type === 'success') return theme.primaryHover;
     if ($type === 'error') return '#ef4444';
-    return theme.primaryHover;
+    return theme.primary;
   }};
   margin-top: 0.1rem;
 
@@ -86,6 +86,7 @@ const IconWrapper = styled.div<{ $type: ToastType }>`
 `;
 
 const MessageText = styled.div`
+  font-family: ${({ theme }) => theme.fonts.body};
   flex: 1;
   font-size: 0.95rem;
   font-weight: 500;

@@ -20,7 +20,7 @@ const FormContainer = styled.div`
   margin: 0 auto;
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 24px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 3rem 3.5rem;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
 
@@ -30,6 +30,7 @@ const FormContainer = styled.div`
 `;
 
 const TitleText = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.75rem, 3vw, 2.35rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -60,12 +61,14 @@ const FieldGroup = styled.div`
 `;
 
 const LabelText = styled.label`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.95rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
 `;
 
 const StyledInput = styled.input<{ $hasError?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
   width: 100%;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
@@ -81,7 +84,7 @@ const StyledInput = styled.input<{ $hasError?: boolean }>`
     border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
     box-shadow: 0 0 0 3px
       ${({ $hasError }) =>
-        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(16, 185, 129, 0.18)'};
+        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)'};
   }
 
   &::placeholder {
@@ -91,6 +94,7 @@ const StyledInput = styled.input<{ $hasError?: boolean }>`
 `;
 
 const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
   width: 100%;
   min-height: 160px;
   padding: 0.9rem 1.15rem;
@@ -100,7 +104,6 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
-  font-family: inherit;
   resize: vertical;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
@@ -109,7 +112,7 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
     border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
     box-shadow: 0 0 0 3px
       ${({ $hasError }) =>
-        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(16, 185, 129, 0.18)'};
+        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)'};
   }
 
   &::placeholder {
@@ -119,6 +122,7 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
 `;
 
 const ErrorText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.8125rem;
   color: #ef4444;
   font-weight: 600;
@@ -133,12 +137,13 @@ const FooterRow = styled.div`
 `;
 
 const CharCounter = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.8125rem;
   color: ${({ theme }) => theme.textSecondary};
-  font-family: monospace;
 `;
 
 const SubmitButton = styled.button`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;

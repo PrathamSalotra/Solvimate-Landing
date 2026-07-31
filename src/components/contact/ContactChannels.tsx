@@ -29,7 +29,7 @@ const ChannelsContainer = styled.div`
 const ChannelCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 18px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 1.75rem;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ const ChannelCard = styled.div`
 
   &:hover {
     transform: translateY(-4px);
-    border-color: ${({ theme }) => theme.primary};
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
   }
 `;
@@ -60,6 +60,7 @@ const IconCircle = styled.div`
 `;
 
 const ChannelTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -69,6 +70,7 @@ const ChannelTitle = styled.h3`
 `;
 
 const ChannelValue = styled.div`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
