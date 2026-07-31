@@ -108,7 +108,7 @@ const StyledNavLink = styled(Link)<{ $active?: boolean }>`
   font-weight: ${({ $active }) => ($active ? '600' : '500')};
   letter-spacing: 0.02em;
   color: ${({ theme, $active }) =>
-    $active ? theme.primaryText : theme.colors.mist};
+    $active ? theme.primaryText : theme.textSecondary};
   text-decoration: none;
   padding: 0.5rem 0;
   position: relative;
@@ -242,7 +242,7 @@ const MobileNavLink = styled(Link)<{ $active?: boolean }>`
   font-size: 1rem;
   font-weight: ${({ $active }) => ($active ? '600' : '500')};
   color: ${({ theme, $active }) =>
-    $active ? theme.primaryText : theme.colors.mist};
+    $active ? theme.primaryText : theme.textSecondary};
   text-decoration: none;
   display: flex;
   align-items: center;
