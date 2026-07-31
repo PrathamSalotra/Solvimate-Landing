@@ -7,17 +7,19 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const ServicesWrapper = styled.section`
   width: 100%;
-  padding: 6rem 1.5rem;
+  padding: ${({ theme }) => `${theme.spacing.sectionDesktop} 1.5rem`};
+  background: ${({ theme }) => theme.background};
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media (max-width: 768px) {
-    padding: 4rem 1rem;
+    padding: ${({ theme }) => `${theme.spacing.sectionMobile} 1rem`};
   }
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -27,12 +29,17 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionSubtitle = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
   color: ${({ theme }) => theme.textSecondary};
   max-width: 680px;
   text-align: center;
   margin: 0 0 3.5rem;
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    margin: 0 0 2.5rem;
+  }
 `;
 
 const ServicesGrid = styled.div`
@@ -61,29 +68,36 @@ const ServiceCard = styled.div`
   padding: 2.5rem 2rem;
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    transform ${({ theme }) => theme.motion.interaction} ease,
+    border-color ${({ theme }) => theme.motion.interaction} ease,
+    box-shadow ${({ theme }) => theme.motion.interaction} ease;
 
   &:hover {
     transform: translateY(-6px);
-    border-color: ${({ theme }) => theme.primary};
-    box-shadow: 0 16px 40px -10px rgba(16, 185, 129, 0.15);
+    border-color: ${({ theme }) => theme.colors.mint};
+    box-shadow: 0 16px 40px -10px rgba(55, 251, 137, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
   }
 `;
 
 const IconBadge = styled.div`
   width: 52px;
   height: 52px;
-  border-radius: 14px;
-  background: rgba(190, 254, 114, 0.12);
-  border: 1px solid rgba(190, 254, 114, 0.3);
+  border-radius: ${({ theme }) => theme.radius.default};
+  background: ${({ theme }) =>
+    theme.background === '#F5FBF2' ? 'rgba(55, 251, 137, 0.18)' : 'rgba(55, 251, 137, 0.12)'};
+  border: 1px solid
+    ${({ theme }) =>
+      theme.background === '#F5FBF2' ? 'rgba(15, 122, 77, 0.3)' : 'rgba(55, 251, 137, 0.35)'};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => (theme.background === '#F5FBF2' ? '#0F7A4D' : theme.colors.mint)};
   margin-bottom: 1.75rem;
 
   svg {
@@ -94,6 +108,7 @@ const IconBadge = styled.div`
 `;
 
 const CardTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.375rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -102,6 +117,7 @@ const CardTitle = styled.h3`
 `;
 
 const CardDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1rem;
   line-height: 1.6;
   color: ${({ theme }) => theme.textSecondary};
@@ -110,6 +126,7 @@ const CardDesc = styled.p`
 `;
 
 const LearnMoreLink = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -118,10 +135,10 @@ const LearnMoreLink = styled(Link)`
   font-size: 0.9375rem;
   text-decoration: none;
   margin-top: auto;
-  transition: opacity 0.2s ease;
+  transition: color ${({ theme }) => theme.motion.hover} ease;
 
   &:hover {
-    opacity: 0.85;
+    color: ${({ theme }) => theme.colors.mint};
     text-decoration: underline;
   }
 `;
