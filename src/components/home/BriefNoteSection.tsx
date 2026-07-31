@@ -10,7 +10,7 @@ const SectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${({ theme }) => theme.surface};
+  background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   position: relative;
   overflow: hidden;
