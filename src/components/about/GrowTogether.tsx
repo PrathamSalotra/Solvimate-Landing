@@ -76,7 +76,10 @@ const BenefitCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -113,7 +116,9 @@ const CTAButton = styled(Link)`
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.35);
 
   &:hover {

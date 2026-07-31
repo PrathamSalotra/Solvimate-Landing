@@ -58,13 +58,9 @@ const FilterLabel = styled.span`
 const FilterButton = styled.button<{ $active?: boolean }>`
   padding: 0.55rem 1.15rem;
   border-radius: 9999px;
-  border: 1px solid
-    ${({ $active, theme }) =>
-      $active ? theme.primary : theme.border};
-  background: ${({ $active, theme }) =>
-    $active ? 'rgba(16, 185, 129, 0.12)' : theme.background};
-  color: ${({ $active, theme }) =>
-    $active ? theme.primary : theme.foreground};
+  border: 1px solid ${({ $active, theme }) => ($active ? theme.primary : theme.border)};
+  background: ${({ $active, theme }) => ($active ? 'rgba(16, 185, 129, 0.12)' : theme.background)};
+  color: ${({ $active, theme }) => ($active ? theme.primary : theme.foreground)};
   font-size: 0.875rem;
   font-weight: ${({ $active }) => ($active ? 700 : 600)};
   cursor: pointer;
@@ -90,7 +86,10 @@ const JobCard = styled.article`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -222,7 +221,10 @@ const ApplyButton = styled(Link)`
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.25);
 
   &:hover {
@@ -284,11 +286,9 @@ export default function CareersSection({ initialListings }: CareersSectionProps)
 
   const filteredListings = useMemo(() => {
     return initialListings.filter((listing) => {
-      const matchTrack =
-        activeTrack === 'all' || listing.track === activeTrack;
+      const matchTrack = activeTrack === 'all' || listing.track === activeTrack;
       const matchCat =
-        activeCategory === 'All' ||
-        listing.category.toLowerCase() === activeCategory.toLowerCase();
+        activeCategory === 'All' || listing.category.toLowerCase() === activeCategory.toLowerCase();
       return matchTrack && matchCat;
     });
   }, [initialListings, activeTrack, activeCategory]);
@@ -330,14 +330,14 @@ export default function CareersSection({ initialListings }: CareersSectionProps)
                 cat === 'All'
                   ? t('careers_page.cat_all')
                   : cat === 'Recording'
-                  ? t('careers_page.cat_recording')
-                  : cat === 'Transcription'
-                  ? t('careers_page.cat_transcription')
-                  : cat === 'Data Annotation'
-                  ? t('careers_page.cat_annotation')
-                  : cat === 'Content Creation'
-                  ? t('careers_page.cat_content')
-                  : t('careers_page.cat_robotic');
+                    ? t('careers_page.cat_recording')
+                    : cat === 'Transcription'
+                      ? t('careers_page.cat_transcription')
+                      : cat === 'Data Annotation'
+                        ? t('careers_page.cat_annotation')
+                        : cat === 'Content Creation'
+                          ? t('careers_page.cat_content')
+                          : t('careers_page.cat_robotic');
 
               return (
                 <FilterButton
@@ -368,9 +368,7 @@ export default function CareersSection({ initialListings }: CareersSectionProps)
                     <CategoryBadge>{listing.category}</CategoryBadge>
                   </BadgesGroup>
 
-                  <AvailableBadge>
-                    {t('careers_page.status_available')}
-                  </AvailableBadge>
+                  <AvailableBadge>{t('careers_page.status_available')}</AvailableBadge>
                 </JobCardHeader>
 
                 <JobTitle>{listing.title}</JobTitle>
@@ -379,16 +377,12 @@ export default function CareersSection({ initialListings }: CareersSectionProps)
                 <JobFooter>
                   <LangTagsRow>
                     {listing.languages &&
-                      listing.languages.map((lang, idx) => (
-                        <LangPill key={idx}>{lang}</LangPill>
-                      ))}
+                      listing.languages.map((lang, idx) => <LangPill key={idx}>{lang}</LangPill>)}
                   </LangTagsRow>
 
                   {/* Apply Now button pre-filling the subject with listing.title per spec */}
                   <ApplyButton
-                    href={`/customer-support?subject=${encodeURIComponent(
-                      listing.title
-                    )}`}
+                    href={`/customer-support?subject=${encodeURIComponent(listing.title)}`}
                   >
                     {t('careers_page.apply_button')}
                   </ApplyButton>

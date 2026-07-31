@@ -94,7 +94,9 @@ const CTAButton = styled(Link)`
   font-size: 0.95rem;
   text-decoration: none;
   width: fit-content;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.35);
 
   &:hover {

@@ -86,7 +86,10 @@ const QuoteButton = styled(Link)`
   text-decoration: none;
   position: relative;
   z-index: 1;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.35);
 
   &:hover {

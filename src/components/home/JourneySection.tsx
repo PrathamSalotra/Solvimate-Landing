@@ -148,7 +148,10 @@ export default function JourneySection() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       return;
     }
     const rect = e.currentTarget.getBoundingClientRect();

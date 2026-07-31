@@ -16,9 +16,7 @@ interface InternshipsClientProps {
   initialInternships: InternshipListing[];
 }
 
-export default function InternshipsClient({
-  initialInternships,
-}: InternshipsClientProps) {
+export default function InternshipsClient({ initialInternships }: InternshipsClientProps) {
   const containerRef = useGSAPScrollReveal<HTMLElement>();
 
   return (

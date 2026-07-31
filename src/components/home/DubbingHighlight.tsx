@@ -189,9 +189,7 @@ export default function DubbingHighlight() {
             />
           )}
           <ScrimOverlay aria-hidden="true" />
-          <DubbingOverlayBadge aria-hidden="true">
-            {t('home.dubbingAlt')}
-          </DubbingOverlayBadge>
+          <DubbingOverlayBadge aria-hidden="true">{t('home.dubbingAlt')}</DubbingOverlayBadge>
         </ImageContainer>
         <TextBlock data-gsap="heading">
           <TagPill>

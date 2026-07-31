@@ -109,7 +109,9 @@ const TrackInfoCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 
   &:hover {
     transform: translateY(-3px);

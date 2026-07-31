@@ -42,7 +42,10 @@ const PathwayCard = styled.article`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -106,7 +109,10 @@ const PrimaryButton = styled(Link)`
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.25);
 
   &:hover {
@@ -192,20 +198,14 @@ export default function ProgramsPathways() {
               <PathwayTitle>{t('programs_page.path_jobs_title')}</PathwayTitle>
               <PathwayDesc>{t('programs_page.path_jobs_desc')}</PathwayDesc>
             </ContentTop>
-            <PrimaryButton href="/careers">
-              {t('programs_page.path_jobs_button')}
-            </PrimaryButton>
+            <PrimaryButton href="/careers">{t('programs_page.path_jobs_button')}</PrimaryButton>
           </PathwayCard>
 
           <PathwayCard>
             <ContentTop>
               <PathwayBadge>Internship Path</PathwayBadge>
-              <PathwayTitle>
-                {t('programs_page.path_internships_title')}
-              </PathwayTitle>
-              <PathwayDesc>
-                {t('programs_page.path_internships_desc')}
-              </PathwayDesc>
+              <PathwayTitle>{t('programs_page.path_internships_title')}</PathwayTitle>
+              <PathwayDesc>{t('programs_page.path_internships_desc')}</PathwayDesc>
             </ContentTop>
             <PrimaryButton href="/internships">
               {t('programs_page.path_internships_button')}

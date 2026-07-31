@@ -30,8 +30,7 @@ const Header = styled.header<{ $isScrolled: boolean }>`
     background-color 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-  box-shadow: ${({ $isScrolled }) =>
-    $isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.15)' : 'none'};
+  box-shadow: ${({ $isScrolled }) => ($isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.15)' : 'none')};
 `;
 
 const NavContainer = styled.nav`
@@ -107,8 +106,7 @@ const StyledNavLink = styled(Link)<{ $active?: boolean }>`
   font-size: 13px;
   font-weight: ${({ $active }) => ($active ? '600' : '500')};
   letter-spacing: 0.02em;
-  color: ${({ theme, $active }) =>
-    $active ? theme.primaryText : theme.textSecondary};
+  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.textSecondary)};
   text-decoration: none;
   padding: 0.5rem 0;
   position: relative;
@@ -125,8 +123,7 @@ const StyledNavLink = styled(Link)<{ $active?: boolean }>`
     left: 0;
     right: 0;
     height: 2px;
-    background: ${({ theme, $active }) =>
-      $active ? theme.primary : 'transparent'};
+    background: ${({ theme, $active }) => ($active ? theme.primary : 'transparent')};
     border-radius: 2px;
     transition:
       background-color 0.2s ease,
@@ -241,8 +238,7 @@ const MobileNavLink = styled(Link)<{ $active?: boolean }>`
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1rem;
   font-weight: ${({ $active }) => ($active ? '600' : '500')};
-  color: ${({ theme, $active }) =>
-    $active ? theme.primaryText : theme.textSecondary};
+  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.textSecondary)};
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -356,7 +352,12 @@ export default function Navbar() {
       <Header $isScrolled={isScrolled}>
         <NavContainer aria-label="Main navigation">
           <LogoLink href="/" onClick={closeMenu} aria-label="Solvimate Home">
-            <LogoMarkImage src="/logo_solvimate.webp" alt="Solvimate logo mark" width={36} height={36} />
+            <LogoMarkImage
+              src="/logo_solvimate.webp"
+              alt="Solvimate logo mark"
+              width={36}
+              height={36}
+            />
             <LogoWordmark>SOLVIMATE</LogoWordmark>
           </LogoLink>
 

@@ -72,19 +72,19 @@ const StyledInput = styled.input<{ $hasError?: boolean }>`
   width: 100%;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
-  border: 1px solid
-    ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
+  border: 1px solid ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:focus {
     outline: none;
     border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
     box-shadow: 0 0 0 3px
-      ${({ $hasError }) =>
-        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)'};
+      ${({ $hasError }) => ($hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)')};
   }
 
   &::placeholder {
@@ -99,20 +99,20 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
   min-height: 160px;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
-  border: 1px solid
-    ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
+  border: 1px solid ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
   resize: vertical;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:focus {
     outline: none;
     border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
     box-shadow: 0 0 0 3px
-      ${({ $hasError }) =>
-        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)'};
+      ${({ $hasError }) => ($hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)')};
   }
 
   &::placeholder {
@@ -155,7 +155,10 @@ const SubmitButton = styled.button`
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
     opacity 0.2s ease;
   box-shadow: 0 6px 20px rgba(190, 254, 114, 0.35);
 
@@ -326,9 +329,7 @@ export default function CustomerSupportForm() {
                 }}
                 $hasError={Boolean(errors.firstName)}
                 aria-invalid={Boolean(errors.firstName)}
-                aria-describedby={
-                  errors.firstName ? 'customer-first-name-error' : undefined
-                }
+                aria-describedby={errors.firstName ? 'customer-first-name-error' : undefined}
               />
               {errors.firstName && (
                 <ErrorText id="customer-first-name-error" role="alert">
@@ -354,9 +355,7 @@ export default function CustomerSupportForm() {
                 }}
                 $hasError={Boolean(errors.lastName)}
                 aria-invalid={Boolean(errors.lastName)}
-                aria-describedby={
-                  errors.lastName ? 'customer-last-name-error' : undefined
-                }
+                aria-describedby={errors.lastName ? 'customer-last-name-error' : undefined}
               />
               {errors.lastName && (
                 <ErrorText id="customer-last-name-error" role="alert">
@@ -368,9 +367,7 @@ export default function CustomerSupportForm() {
 
           <FieldRow>
             <FieldGroup>
-              <LabelText htmlFor="customer-email">
-                {t('customer_support.email_label')}
-              </LabelText>
+              <LabelText htmlFor="customer-email">{t('customer_support.email_label')}</LabelText>
               <StyledInput
                 id="customer-email"
                 type="email"
@@ -408,9 +405,7 @@ export default function CustomerSupportForm() {
           </FieldRow>
 
           <FieldGroup>
-            <LabelText htmlFor="customer-message">
-              {t('customer_support.message_label')}
-            </LabelText>
+            <LabelText htmlFor="customer-message">{t('customer_support.message_label')}</LabelText>
             <StyledTextArea
               id="customer-message"
               maxLength={2000}
@@ -424,9 +419,7 @@ export default function CustomerSupportForm() {
               }}
               $hasError={Boolean(errors.message)}
               aria-invalid={Boolean(errors.message)}
-              aria-describedby={
-                errors.message ? 'customer-message-error' : undefined
-              }
+              aria-describedby={errors.message ? 'customer-message-error' : undefined}
             />
             {errors.message && (
               <ErrorText id="customer-message-error" role="alert">
@@ -438,11 +431,7 @@ export default function CustomerSupportForm() {
           <FooterRow>
             <CharCounter>{message.length} / 2000</CharCounter>
 
-            <SubmitButton
-              type="submit"
-              disabled={isSubmitting}
-              aria-disabled={isSubmitting}
-            >
+            <SubmitButton type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
               {isSubmitting
                 ? t('customer_support.submitting_button')
                 : t('customer_support.submit_button')}

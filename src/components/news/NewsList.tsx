@@ -31,7 +31,10 @@ const ArticleCard = styled.article`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -151,9 +154,7 @@ export default function NewsList({ initialArticles }: NewsListProps) {
         ) : (
           /* MUST match spec exactly when zero rows: "No news articles yet." */
           <EmptyStateCard>
-            <EmptyMessageText>
-              {t('news_page.empty_message')}
-            </EmptyMessageText>
+            <EmptyMessageText>{t('news_page.empty_message')}</EmptyMessageText>
           </EmptyStateCard>
         )}
       </Container>

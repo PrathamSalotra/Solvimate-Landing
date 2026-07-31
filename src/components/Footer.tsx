@@ -185,7 +185,12 @@ export default function Footer() {
         <FooterGrid>
           <BrandColumn>
             <LogoLink href="/" aria-label="Solvimate Home">
-              <LogoMarkImage src="/logo_solvimate.webp" alt="Solvimate logo mark" width={36} height={36} />
+              <LogoMarkImage
+                src="/logo_solvimate.webp"
+                alt="Solvimate logo mark"
+                width={36}
+                height={36}
+              />
               <LogoWordmark>SOLVIMATE</LogoWordmark>
             </LogoLink>
             <TaglineText>{t('footer.tagline')}</TaglineText>

@@ -32,7 +32,10 @@ const InternshipCard = styled.article`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -157,7 +160,10 @@ const ApplyButton = styled(Link)`
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.25);
 
   &:hover {
@@ -200,9 +206,7 @@ interface InternshipsListProps {
   initialInternships: InternshipListing[];
 }
 
-export default function InternshipsList({
-  initialInternships,
-}: InternshipsListProps) {
+export default function InternshipsList({ initialInternships }: InternshipsListProps) {
   const { t } = useLanguage();
   const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
 
@@ -227,26 +231,19 @@ export default function InternshipsList({
               <DetailsBox $expanded={Boolean(expandedIds[item.id])}>
                 <strong>Program Requirements & Mentorship Overview:</strong>
                 <span>
-                  This structured internship includes hands-on mentorship from senior Solvimate linguists and AI engineers, real-world project deliverables, and flexible remote scheduling.
+                  This structured internship includes hands-on mentorship from senior Solvimate
+                  linguists and AI engineers, real-world project deliverables, and flexible remote
+                  scheduling.
                 </span>
               </DetailsBox>
 
               <CardFooter>
                 <ActionsGroup>
-                  <ViewDetailsButton
-                    type="button"
-                    onClick={() => toggleDetails(item.id)}
-                  >
-                    {expandedIds[item.id]
-                      ? 'Hide Details'
-                      : t('internships_page.view_details')}
+                  <ViewDetailsButton type="button" onClick={() => toggleDetails(item.id)}>
+                    {expandedIds[item.id] ? 'Hide Details' : t('internships_page.view_details')}
                   </ViewDetailsButton>
 
-                  <ApplyButton
-                    href={`/customer-support?subject=${encodeURIComponent(
-                      item.title
-                    )}`}
-                  >
+                  <ApplyButton href={`/customer-support?subject=${encodeURIComponent(item.title)}`}>
                     {t('internships_page.apply_button')}
                   </ApplyButton>
                 </ActionsGroup>
@@ -256,11 +253,10 @@ export default function InternshipsList({
         ) : (
           /* MUST match spec exactly when zero rows: "No open internships at the moment. Check back soon!" */
           <EmptyStateCard>
-            <EmptyMessageText>
-              {t('internships_page.empty_message')}
-            </EmptyMessageText>
+            <EmptyMessageText>{t('internships_page.empty_message')}</EmptyMessageText>
             <EmptySubtext>
-              Want to get notified about future openings? Explore our pathways or submit a general inquiry.
+              Want to get notified about future openings? Explore our pathways or submit a general
+              inquiry.
             </EmptySubtext>
             <ApplyButton href="/programs">View Programs</ApplyButton>
           </EmptyStateCard>

@@ -68,9 +68,7 @@ const AccordionItem = styled.div<{ $isOpen: boolean }>`
   width: 100%;
   border-radius: ${({ theme }) => theme.radius.card};
   background: ${({ theme }) => theme.background};
-  border: 1px solid
-    ${({ theme, $isOpen }) =>
-      $isOpen ? theme.accentText : theme.border};
+  border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.accentText : theme.border)};
   overflow: hidden;
 `;
 
@@ -84,8 +82,7 @@ const AccordionHeader = styled.button<{ $isOpen: boolean }>`
   gap: 1.25rem;
   background: transparent;
   border: none;
-  color: ${({ theme, $isOpen }) =>
-    $isOpen ? theme.accentText : theme.foreground};
+  color: ${({ theme, $isOpen }) => ($isOpen ? theme.accentText : theme.foreground)};
   font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
   font-weight: 700;
   text-align: left;
@@ -111,8 +108,7 @@ const ChevronIcon = styled.span<{ $isOpen: boolean }>`
   border-radius: 50%;
   background: ${({ theme, $isOpen }) =>
     $isOpen ? theme.accentBadgeBg : 'rgba(128, 128, 128, 0.1)'};
-  color: ${({ theme, $isOpen }) =>
-    $isOpen ? theme.accentText : theme.textSecondary};
+  color: ${({ theme, $isOpen }) => ($isOpen ? theme.accentText : theme.textSecondary)};
   transform: rotate(${({ $isOpen }) => ($isOpen ? '180deg' : '0deg')});
   transition: transform 0.25s ease;
   flex-shrink: 0;

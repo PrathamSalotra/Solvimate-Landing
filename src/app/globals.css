@@ -6,14 +6,14 @@
 
 :root,
 [data-theme='dark'] {
-  --background: #001E2B;
-  --foreground: #F5FBF2;
+  --background: #001e2b;
+  --foreground: #f5fbf2;
   color-scheme: dark;
 }
 
 [data-theme='light'] {
-  --background: #F5FBF2;
-  --foreground: #001E2B;
+  --background: #f5fbf2;
+  --foreground: #001e2b;
   color-scheme: light;
 }
 

@@ -102,7 +102,7 @@ export default function AnimatedWaveBackground() {
         viewBox="0 0 2880 400"
         preserveAspectRatio="none"
         $duration="32s"
-        $opacity={0.20}
+        $opacity={0.2}
         $isSecondary={true}
       >
         <path

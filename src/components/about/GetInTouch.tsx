@@ -74,7 +74,9 @@ const ContactCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -129,7 +131,9 @@ const PrimaryButton = styled(Link)`
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(190, 254, 114, 0.35);
 
   &:hover {
@@ -151,7 +155,9 @@ const SecondaryButton = styled(Link)`
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 
   &:hover {
     border-color: ${({ theme }) => theme.primary};

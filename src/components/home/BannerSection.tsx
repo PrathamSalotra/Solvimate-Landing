@@ -153,9 +153,7 @@ export default function BannerSection() {
             />
           )}
           <ScrimOverlay aria-hidden="true" />
-          <BannerOverlayBadge aria-hidden="true">
-            {t('home.bannerAlt')}
-          </BannerOverlayBadge>
+          <BannerOverlayBadge aria-hidden="true">{t('home.bannerAlt')}</BannerOverlayBadge>
         </ImageContainer>
       </ContentContainer>
     </SectionWrapper>

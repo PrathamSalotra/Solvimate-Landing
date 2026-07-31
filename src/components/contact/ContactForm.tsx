@@ -72,19 +72,19 @@ const StyledInput = styled.input<{ $hasError?: boolean }>`
   width: 100%;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
-  border: 1px solid
-    ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
+  border: 1px solid ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:focus {
     outline: none;
     border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
     box-shadow: 0 0 0 3px
-      ${({ $hasError }) =>
-        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)'};
+      ${({ $hasError }) => ($hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)')};
   }
 
   &::placeholder {
@@ -99,20 +99,20 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
   min-height: 160px;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
-  border: 1px solid
-    ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
+  border: 1px solid ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
   resize: vertical;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:focus {
     outline: none;
     border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
     box-shadow: 0 0 0 3px
-      ${({ $hasError }) =>
-        $hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)'};
+      ${({ $hasError }) => ($hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)')};
   }
 
   &::placeholder {
@@ -154,7 +154,10 @@ const SubmitButton = styled.button`
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
     opacity 0.2s ease;
   box-shadow: 0 6px 20px rgba(190, 254, 114, 0.35);
 
@@ -285,9 +288,7 @@ export default function ContactForm() {
 
           <FieldRow>
             <FieldGroup>
-              <LabelText htmlFor="contact-name">
-                {t('contact_page.name_label')}
-              </LabelText>
+              <LabelText htmlFor="contact-name">{t('contact_page.name_label')}</LabelText>
               <StyledInput
                 id="contact-name"
                 type="text"
@@ -309,9 +310,7 @@ export default function ContactForm() {
             </FieldGroup>
 
             <FieldGroup>
-              <LabelText htmlFor="contact-phone">
-                {t('contact_page.phone_input_label')}
-              </LabelText>
+              <LabelText htmlFor="contact-phone">{t('contact_page.phone_input_label')}</LabelText>
               <StyledInput
                 id="contact-phone"
                 type="tel"
@@ -324,9 +323,7 @@ export default function ContactForm() {
 
           <FieldRow>
             <FieldGroup>
-              <LabelText htmlFor="contact-email">
-                {t('contact_page.email_input_label')}
-              </LabelText>
+              <LabelText htmlFor="contact-email">{t('contact_page.email_input_label')}</LabelText>
               <StyledInput
                 id="contact-email"
                 type="email"
@@ -348,9 +345,7 @@ export default function ContactForm() {
             </FieldGroup>
 
             <FieldGroup>
-              <LabelText htmlFor="contact-subject">
-                {t('contact_page.subject_label')}
-              </LabelText>
+              <LabelText htmlFor="contact-subject">{t('contact_page.subject_label')}</LabelText>
               <StyledInput
                 id="contact-subject"
                 type="text"
@@ -362,9 +357,7 @@ export default function ContactForm() {
           </FieldRow>
 
           <FieldGroup>
-            <LabelText htmlFor="contact-message">
-              {t('contact_page.message_label')}
-            </LabelText>
+            <LabelText htmlFor="contact-message">{t('contact_page.message_label')}</LabelText>
             <StyledTextArea
               id="contact-message"
               maxLength={2000}
@@ -388,14 +381,8 @@ export default function ContactForm() {
           <FooterRow>
             <CharCounter>{message.length} / 2000</CharCounter>
 
-            <SubmitButton
-              type="submit"
-              disabled={isSubmitting}
-              aria-disabled={isSubmitting}
-            >
-              {isSubmitting
-                ? t('contact_page.submitting_button')
-                : t('contact_page.submit_button')}
+            <SubmitButton type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
+              {isSubmitting ? t('contact_page.submitting_button') : t('contact_page.submit_button')}
             </SubmitButton>
           </FooterRow>
         </StyledForm>

@@ -74,7 +74,10 @@ const StatCard = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -120,7 +123,9 @@ function AnimatedCounter({ end, suffix = '', format = true }: CounterProps) {
         if (entry.isIntersecting && !hasAnimatedRef.current) {
           hasAnimatedRef.current = true;
 
-          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+          ).matches;
           if (prefersReducedMotion) {
             setCount(end);
             observer.disconnect();

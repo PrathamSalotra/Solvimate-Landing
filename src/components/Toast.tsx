@@ -45,7 +45,9 @@ const ToastCard = styled.div<{ $type: ToastType }>`
   gap: 0.85rem;
   padding: 1rem 1.15rem;
   border-radius: ${({ theme }) => theme.radius.card};
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.08);
   background: ${({ theme }) => theme.cardBg};
   backdrop-filter: blur(12px);
   border: 1px solid
@@ -56,7 +58,9 @@ const ToastCard = styled.div<{ $type: ToastType }>`
     }};
   color: ${({ theme }) => theme.foreground};
   animation: ${slideDown} 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -107,7 +111,9 @@ const DismissButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
 
   &:hover {
     color: ${({ theme }) => theme.foreground};
@@ -189,7 +195,13 @@ export function ToastItem({ toast, onDismiss }: ToastItemProps) {
         aria-label="Close notification"
         onClick={() => onDismiss(toast.id)}
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>

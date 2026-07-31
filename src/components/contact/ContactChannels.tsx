@@ -34,7 +34,10 @@ const ChannelCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -103,9 +106,7 @@ export default function ContactChannels() {
           </IconCircle>
           <ChannelTitle>{t('contact_page.email_label')}</ChannelTitle>
           <ChannelValue>
-            <a href="mailto:operationssolvimate@gmail.com">
-              {t('contact_page.email_value')}
-            </a>
+            <a href="mailto:operationssolvimate@gmail.com">{t('contact_page.email_value')}</a>
           </ChannelValue>
         </ChannelCard>
 
@@ -117,9 +118,7 @@ export default function ContactChannels() {
           </IconCircle>
           <ChannelTitle>{t('contact_page.phone_label')}</ChannelTitle>
           <ChannelValue>
-            <a href="tel:+916307875230">
-              {t('contact_page.phone_value')}
-            </a>
+            <a href="tel:+916307875230">{t('contact_page.phone_value')}</a>
           </ChannelValue>
         </ChannelCard>
 

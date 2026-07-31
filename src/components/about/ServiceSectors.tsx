@@ -76,7 +76,10 @@ const SectorCard = styled.div`
   flex-direction: column;
   gap: 0.85rem;
   overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-4px);
