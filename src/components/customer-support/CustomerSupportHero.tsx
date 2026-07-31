@@ -43,28 +43,35 @@ const HeroContainer = styled.div`
 `;
 
 const TagPill = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1.15rem;
+  gap: 0.45rem;
+  padding: 0.4rem 1rem;
   border-radius: 9999px;
   border: 1px solid rgba(190, 254, 114, 0.35);
   background: rgba(190, 254, 114, 0.12);
   color: ${({ theme }) => theme.primaryText};
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   backdrop-filter: blur(8px);
 `;
 
 const Headline = styled.h1`
-  font-size: clamp(2.35rem, 5vw, 4.4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2.125rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.15;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.625rem;
+    line-height: 1.2;
+  }
 
   @media (min-width: 1440px) {
     font-size: 4.4rem;
@@ -73,7 +80,8 @@ const Headline = styled.h1`
 `;
 
 const IntroText = styled.p`
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
   max-width: 720px;

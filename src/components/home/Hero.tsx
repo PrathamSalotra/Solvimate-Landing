@@ -49,6 +49,7 @@ const HeroContent = styled.div`
 `;
 
 const PillBadge = styled.div`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -57,21 +58,28 @@ const PillBadge = styled.div`
   border: 1px solid rgba(190, 254, 114, 0.35);
   color: ${({ theme }) => theme.primaryText};
   border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(190, 254, 114, 0.1);
 `;
 
 const HeroHeadline = styled.h1`
-  font-size: clamp(2.35rem, 5vw, 4.4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2.125rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.15;
   color: ${({ theme }) => theme.foreground};
   margin: 0 0 1.5rem 0;
   max-width: 900px;
+
+  @media (max-width: 768px) {
+    font-size: 1.625rem;
+    line-height: 1.2;
+  }
 
   @media (min-width: 1440px) {
     font-size: 4.4rem;
@@ -80,7 +88,8 @@ const HeroHeadline = styled.h1`
 `;
 
 const HeroSupport = styled.p`
-  font-size: clamp(1.125rem, 2vw, 1.35rem);
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.6;
   margin: 0 0 2.5rem 0;
@@ -89,6 +98,7 @@ const HeroSupport = styled.p`
 `;
 
 const CtaButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
