@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 const SectionWrapper = styled.section`
   width: 100%;
   padding: 5rem 1.5rem;
-  background: ${({ theme }) => theme.cardBg};
+  background: ${({ theme }) => theme.background};
   border-top: 1px solid ${({ theme }) => theme.border};
   border-bottom: 1px solid ${({ theme }) => theme.border};
 
@@ -27,6 +27,7 @@ const HeaderGroup = styled.div`
 `;
 
 const TagText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -37,6 +38,7 @@ const TagText = styled.span`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -45,6 +47,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionBody = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -68,7 +71,7 @@ const PillarsGrid = styled.div`
 const PillarCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
@@ -77,7 +80,7 @@ const PillarCard = styled.div`
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(16, 185, 129, 0.45);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   }
 `;
@@ -99,6 +102,7 @@ const IconCircle = styled.div`
 `;
 
 const CardTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.2rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -106,6 +110,7 @@ const CardTitle = styled.h3`
 `;
 
 const CardText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.95rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.6;

@@ -25,7 +25,7 @@ const BackgroundGlow = styled.div`
   transform: translateX(-50%);
   width: 750px;
   height: 520px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0) 70%);
+  background: radial-gradient(circle, rgba(190, 254, 114, 0.15) 0%, rgba(190, 254, 114, 0) 70%);
   pointer-events: none;
   z-index: 0;
 `;
@@ -116,12 +116,12 @@ const ComplianceBadge = styled.span`
   gap: 0.5rem;
   padding: 0.35rem 0.9rem;
   border-radius: 8px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: ${({ theme }) => theme.primary};
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  color: ${({ theme }) => theme.primaryText};
   font-size: 0.825rem;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: ${({ theme }) => theme.fonts.mono};
 `;
 
 export default function AboutHero() {

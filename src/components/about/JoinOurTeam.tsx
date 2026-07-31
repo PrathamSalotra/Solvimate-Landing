@@ -36,6 +36,7 @@ const ContentColumn = styled.div`
 `;
 
 const TagText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -45,6 +46,7 @@ const TagText = styled.span`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -53,6 +55,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionBody = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -67,6 +70,7 @@ const RoleChips = styled.div`
 `;
 
 const RoleChip = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   padding: 0.4rem 0.9rem;
   border-radius: 8px;
   background: ${({ theme }) => theme.cardBg};
@@ -77,6 +81,7 @@ const RoleChip = styled.span`
 `;
 
 const CTAButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -94,14 +99,14 @@ const CTAButton = styled(Link)`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.45);
   }
 `;
 
 const StatsCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -120,6 +125,7 @@ const StatItem = styled.div`
 `;
 
 const StatNumber = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 900;
   color: ${({ theme }) => theme.primary};
@@ -127,6 +133,7 @@ const StatNumber = styled.span`
 `;
 
 const StatLabel = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.875rem;
   font-weight: 600;
   color: ${({ theme }) => theme.textSecondary};

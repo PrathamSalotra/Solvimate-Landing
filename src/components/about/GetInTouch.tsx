@@ -8,9 +8,9 @@ import { useLanguage } from '@/context/LanguageContext';
 const SectionWrapper = styled.section`
   width: 100%;
   padding: 5.5rem 1.5rem;
-  background: rgba(16, 185, 129, 0.08);
-  border-top: 1px solid rgba(16, 185, 129, 0.25);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+  background: ${({ theme }) => theme.background};
+  border-top: 1px solid ${({ theme }) => theme.border};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
 
   @media (max-width: 768px) {
     padding: 4rem 1rem;
@@ -28,6 +28,7 @@ const HeaderGroup = styled.div`
 `;
 
 const TagText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -38,6 +39,7 @@ const TagText = styled.span`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -46,6 +48,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionBody = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -66,7 +69,7 @@ const ContactGrid = styled.div`
 const ContactCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
@@ -80,6 +83,7 @@ const ContactCard = styled.div`
 `;
 
 const ContactLabel = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.825rem;
   font-weight: 700;
   color: ${({ theme }) => theme.primary};
@@ -88,6 +92,7 @@ const ContactLabel = styled.span`
 `;
 
 const ContactValueLink = styled.a`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -100,6 +105,7 @@ const ContactValueLink = styled.a`
 `;
 
 const ContactValueText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.05rem;
   font-weight: 600;
   color: ${({ theme }) => theme.foreground};
@@ -112,6 +118,7 @@ const CTAButtonsRow = styled.div`
 `;
 
 const PrimaryButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -127,11 +134,12 @@ const PrimaryButton = styled(Link)`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.5);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.45);
   }
 `;
 
 const SecondaryButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -147,7 +155,7 @@ const SecondaryButton = styled(Link)`
 
   &:hover {
     border-color: ${({ theme }) => theme.primary};
-    background: rgba(16, 185, 129, 0.08);
+    background: rgba(190, 254, 114, 0.12);
   }
 `;
 

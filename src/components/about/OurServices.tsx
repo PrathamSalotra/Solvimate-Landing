@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 const SectionWrapper = styled.section`
   width: 100%;
   padding: 5.5rem 1.5rem;
-  background: ${({ theme }) => theme.cardBg};
+  background: ${({ theme }) => theme.background};
   border-top: 1px solid ${({ theme }) => theme.border};
   border-bottom: 1px solid ${({ theme }) => theme.border};
 
@@ -27,6 +27,7 @@ const HeaderGroup = styled.div`
 `;
 
 const TagText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -37,6 +38,7 @@ const TagText = styled.span`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -45,6 +47,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionBody = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -62,9 +65,9 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -73,7 +76,7 @@ const ServiceCard = styled.div`
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(16, 185, 129, 0.45);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   }
 `;
@@ -93,6 +96,7 @@ const Dot = styled.span`
 `;
 
 const ServiceTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.25rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -106,11 +110,12 @@ const ChipsList = styled.div`
 `;
 
 const Chip = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-block;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.22);
+  background: rgba(190, 254, 114, 0.12);
+  border: 1px solid rgba(190, 254, 114, 0.25);
   color: ${({ theme }) => theme.foreground};
   font-size: 0.85rem;
   font-weight: 500;

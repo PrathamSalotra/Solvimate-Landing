@@ -25,6 +25,7 @@ const HeaderGroup = styled.div`
 `;
 
 const TagText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -35,6 +36,7 @@ const TagText = styled.span`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -43,6 +45,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionBody = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.7;
@@ -67,7 +70,7 @@ const SectorCard = styled.div`
   position: relative;
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -83,17 +86,19 @@ const SectorCard = styled.div`
 `;
 
 const NumberBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   position: absolute;
   top: 1rem;
   right: 1.25rem;
   font-size: 2.25rem;
   font-weight: 900;
-  color: rgba(16, 185, 129, 0.12);
+  color: rgba(190, 254, 114, 0.15);
   line-height: 1;
   pointer-events: none;
 `;
 
 const SectorTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.225rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -102,6 +107,7 @@ const SectorTitle = styled.h3`
 `;
 
 const SectorDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.95rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
