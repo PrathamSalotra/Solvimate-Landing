@@ -75,8 +75,15 @@ const ParallaxContainer = styled.div`
   border-radius: 28px;
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   cursor: default;
+`;
+
+const ScrimOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 30, 43, 0.5); /* Solid low-opacity Ink overlay, not a drop shadow */
+  z-index: 2;
+  pointer-events: none;
 `;
 
 const ParallaxLayer = styled.div<{ $offsetX: number; $offsetY: number }>`
@@ -93,15 +100,13 @@ const FloatingPill = styled.div<{ $top: string; $left: string }>`
   top: ${({ $top }) => $top};
   left: ${({ $left }) => $left};
   padding: 0.6rem 1.2rem;
-  background: ${({ theme }) => theme.surface};
-  backdrop-filter: blur(8px);
-  border: 1px solid ${({ theme }) => theme.border};
+  background: rgba(0, 30, 43, 0.85); /* Solid Ink background without blur or drop-shadow */
+  border: 1px solid rgba(190, 254, 114, 0.35);
   border-radius: 9999px;
-  color: ${({ theme }) => theme.foreground};
+  color: #f5fbf2; /* Paper-colored text */
   font-size: 0.875rem;
   font-weight: 700;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
 
   @media (max-width: 768px) {
@@ -195,6 +200,8 @@ export default function JourneySection() {
               />
             )}
           </ParallaxLayer>
+
+          <ScrimOverlay aria-hidden="true" />
 
           <FloatingPill $top="15%" $left="8%">
             Learn Continuously

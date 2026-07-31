@@ -47,11 +47,32 @@ const ImageContainer = styled.div`
     rgba(16, 185, 129, 0.15) 100%
   );
   border: 1px solid ${({ theme }) => theme.border};
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
-
   @media (max-width: 992px) {
     order: 2;
   }
+`;
+
+const ScrimOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 30, 43, 0.5); /* Solid low-opacity Ink overlay, not a drop shadow */
+  z-index: 2;
+  pointer-events: none;
+`;
+
+const DubbingOverlayBadge = styled.div`
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 30, 43, 0.85); /* Solid Ink background without blur or drop-shadow */
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  border-radius: 9999px;
+  color: #f5fbf2; /* Paper-colored text */
+  font-size: 0.8125rem;
+  font-weight: 700;
+  z-index: 3;
+  pointer-events: none;
 `;
 
 const TextBlock = styled.div`
@@ -167,6 +188,10 @@ export default function DubbingHighlight() {
               onError={() => setImgError(true)}
             />
           )}
+          <ScrimOverlay aria-hidden="true" />
+          <DubbingOverlayBadge aria-hidden="true">
+            {t('home.dubbingAlt')}
+          </DubbingOverlayBadge>
         </ImageContainer>
         <TextBlock data-gsap="heading">
           <TagPill>
