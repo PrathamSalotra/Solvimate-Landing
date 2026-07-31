@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 const GridWrapper = styled.section`
   width: 100%;
   padding: 5rem 1.5rem;
-  background: ${({ theme }) => theme.cardBg};
+  background: ${({ theme }) => theme.background};
   border-top: 1px solid ${({ theme }) => theme.border};
   border-bottom: 1px solid ${({ theme }) => theme.border};
 
@@ -37,9 +37,9 @@ const CardsGrid = styled.div`
 
 const GroupCard = styled.div`
   position: relative;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ const GroupCard = styled.div`
 
   &:hover {
     transform: translateY(-5px);
-    border-color: rgba(16, 185, 129, 0.45);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
   }
 `;
@@ -60,10 +60,10 @@ const IconHeader = styled.div`
 `;
 
 const NumberBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 1.5rem;
   font-weight: 900;
-  color: rgba(16, 185, 129, 0.35);
-  font-family: 'Courier New', monospace;
+  color: rgba(190, 254, 114, 0.35);
 `;
 
 const IconCircle = styled.div`
@@ -83,6 +83,7 @@ const IconCircle = styled.div`
 `;
 
 const CardTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.35rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
@@ -91,6 +92,7 @@ const CardTitle = styled.h2`
 `;
 
 const CardDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.95rem;
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
@@ -108,6 +110,7 @@ const SubItemsContainer = styled.div`
 `;
 
 const SubItemChip = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;

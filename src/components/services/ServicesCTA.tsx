@@ -20,8 +20,8 @@ const SectionWrapper = styled.section`
 const BannerCard = styled.div`
   max-width: 1000px;
   width: 100%;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 28px;
   padding: 4rem 3rem;
   display: flex;
@@ -43,13 +43,14 @@ const GlowSpot = styled.div`
   width: 450px;
   height: 450px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 70%);
+  background: radial-gradient(circle, rgba(190, 254, 114, 0.15) 0%, rgba(190, 254, 114, 0) 70%);
   top: -50%;
   right: -20%;
   pointer-events: none;
 `;
 
 const Headline = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -61,6 +62,7 @@ const Headline = styled.h2`
 `;
 
 const Description = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   color: ${({ theme }) => theme.textSecondary};
   line-height: 1.65;
@@ -71,6 +73,7 @@ const Description = styled.p`
 `;
 
 const QuoteButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -84,12 +87,12 @@ const QuoteButton = styled(Link)`
   position: relative;
   z-index: 1;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 14px rgba(190, 254, 114, 0.35);
 
   &:hover {
     transform: translateY(-2px);
     background: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 8px 26px rgba(16, 185, 129, 0.55);
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.45);
   }
 
   &:focus-visible {

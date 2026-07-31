@@ -34,15 +34,17 @@ const HeaderGroup = styled.div`
 `;
 
 const TagText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-block;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primary};
   text-transform: uppercase;
   letter-spacing: 0.1em;
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.foreground};
@@ -65,7 +67,7 @@ const GridBox = styled.div`
 const StatCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.card};
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
@@ -76,21 +78,22 @@ const StatCard = styled.div`
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(16, 185, 129, 0.45);
+    border-color: ${({ theme }) => theme.primaryHover};
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
   }
 `;
 
 const NumberValue = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: clamp(2.5rem, 4.5vw, 3.75rem);
   font-weight: 900;
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primary};
   line-height: 1.05;
-  font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.02em;
 `;
 
 const StatLabel = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1.05rem;
   font-weight: 700;
   color: ${({ theme }) => theme.foreground};
