@@ -27,11 +27,11 @@ const CardContainer = styled.div`
   border-radius: 32px;
   background: linear-gradient(
     135deg,
-    rgba(16, 185, 129, 0.15) 0%,
-    rgba(5, 150, 105, 0.25) 50%,
-    rgba(16, 185, 129, 0.1) 100%
+    rgba(190, 254, 114, 0.15) 0%,
+    rgba(55, 251, 137, 0.2) 50%,
+    rgba(190, 254, 114, 0.1) 100%
   );
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  border: 1px solid rgba(190, 254, 114, 0.35);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ const BackgroundGlow = styled.div`
   width: 600px;
   height: 600px;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(52, 211, 153, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(190, 254, 114, 0.18) 0%, transparent 70%);
   pointer-events: none;
 `;
 
@@ -68,6 +68,7 @@ const TextBlock = styled.div`
 `;
 
 const Headline = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.2;
@@ -78,6 +79,7 @@ const Headline = styled.h2`
 `;
 
 const Subline = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 600;
   color: ${({ theme }) => theme.primaryText};
@@ -87,27 +89,32 @@ const Subline = styled.p`
 `;
 
 const CTAButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2.5rem;
+  padding: 1.125rem 2.75rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.colors.ink};
-  font-weight: 700;
   font-size: 1.125rem;
+  font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 25px -5px rgba(190, 254, 114, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(190, 254, 114, 0.35);
   transition:
     transform 0.2s ease,
-    background 0.2s ease,
+    background-color 0.2s ease,
     box-shadow 0.2s ease;
   z-index: 1;
 
   &:hover {
-    transform: translateY(-2px);
     background: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 15px 30px -5px rgba(190, 254, 114, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -5px rgba(190, 254, 114, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 
   &:focus-visible {
