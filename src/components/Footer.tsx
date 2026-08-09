@@ -119,7 +119,7 @@ const StyledFooterLink = styled(Link)`
 
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => theme.primaryText};
+    color: ${({ theme }) => (theme.colors.background === '#001E2B' ? theme.colors.lime : theme.accentText)};
     transform: translateX(3px);
   }
 `;
@@ -144,7 +144,7 @@ const SocialLink = styled.a`
 
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => theme.primaryText};
+    color: ${({ theme }) => (theme.colors.background === '#001E2B' ? theme.colors.lime : theme.accentText)};
     transform: translateX(3px);
   }
 
