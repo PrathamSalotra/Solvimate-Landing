@@ -21,8 +21,9 @@ const ServicesWrapper = styled.section`
 const SectionTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0 0 1rem;
   text-align: center;
@@ -107,7 +108,8 @@ const IconBadge = styled.div`
 const CardTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.375rem;
-  font-weight: 700;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0 0 1rem;
   line-height: 1.3;

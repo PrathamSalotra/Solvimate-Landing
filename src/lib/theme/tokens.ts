@@ -74,9 +74,9 @@ export interface ThemeTokens {
 }
 
 const fonts: FontTokens = {
-  display: 'var(--font-display), var(--font-space-grotesk), "Space Grotesk", sans-serif',
-  body: 'var(--font-body), var(--font-manrope), "Manrope", sans-serif',
-  mono: 'var(--font-mono), var(--font-ibm-plex-mono), "IBM Plex Mono", monospace',
+  display: 'var(--font-body), var(--font-inter-tight), "Inter Tight", sans-serif',
+  body: 'var(--font-body), var(--font-inter-tight), "Inter Tight", sans-serif',
+  mono: 'var(--font-body), var(--font-inter-tight), "Inter Tight", sans-serif',
 };
 
 const spacing: SpacingTokens = {

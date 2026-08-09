@@ -70,9 +70,10 @@ const TextBlock = styled.div`
 const Headline = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   max-width: 800px;

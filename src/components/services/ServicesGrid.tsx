@@ -88,7 +88,8 @@ const IconCircle = styled.div`
 const CardTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   line-height: 1.3;

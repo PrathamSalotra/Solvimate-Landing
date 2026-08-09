@@ -82,7 +82,8 @@ const PathwayBadge = styled.span`
 const PathwayTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.75rem;
-  font-weight: 800;
+  font-weight: 500;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   line-height: 1.25;
@@ -141,7 +142,8 @@ const GeneralBanner = styled.div`
 const GeneralTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.75rem;
-  font-weight: 800;
+  font-weight: 500;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
 `;

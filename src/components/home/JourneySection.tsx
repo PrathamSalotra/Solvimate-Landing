@@ -52,8 +52,9 @@ const TagBadge = styled.span`
 
 const Headline = styled.h2`
   font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
 `;

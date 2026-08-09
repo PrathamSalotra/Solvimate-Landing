@@ -76,8 +76,9 @@ const DotIndicator = styled.span`
 const Headline = styled.h1`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.125rem, 3.5vw, 2.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   line-height: 1.15;
   color: ${({ theme }) => theme.foreground};
   margin: 0;

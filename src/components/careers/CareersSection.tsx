@@ -167,7 +167,8 @@ const AvailableBadge = styled.span`
 const JobTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
@@ -249,7 +250,8 @@ const EmptyStateCard = styled.div`
 const EmptyTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
 `;

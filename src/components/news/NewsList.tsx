@@ -78,7 +78,8 @@ const SlugBadge = styled.span`
 const TitleText = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.65rem;
-  font-weight: 800;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   line-height: 1.35;

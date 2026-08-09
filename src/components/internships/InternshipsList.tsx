@@ -85,7 +85,8 @@ const OpenBadge = styled.span`
 const TitleText = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   line-height: 1.3;
@@ -188,7 +189,8 @@ const EmptyStateCard = styled.div`
 const EmptyMessageText = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-  font-weight: 700;
+  font-weight: 500;
+  word-spacing: 0.06em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   max-width: 600px;

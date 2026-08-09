@@ -51,9 +51,10 @@ const MarqueeSection = styled.section`
 
 const SectionHeader = styled.h2`
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.textSecondary};
   margin: 0 0 2rem;
   text-align: center;

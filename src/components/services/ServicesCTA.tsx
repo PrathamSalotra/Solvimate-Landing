@@ -52,7 +52,9 @@ const GlowSpot = styled.div`
 const Headline = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   line-height: 1.2;
   margin: 0;

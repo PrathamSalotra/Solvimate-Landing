@@ -103,9 +103,10 @@ const TagPill = styled.div`
 
 const Headline = styled.h2`
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
 `;

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Manrope, IBM_Plex_Mono } from 'next/font/google';
+import { Inter_Tight } from 'next/font/google';
 import StyledComponentsRegistry from '@/lib/registry';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
@@ -8,24 +8,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import './globals.css';
 
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+const interTight = Inter_Tight({
+  variable: '--font-inter-tight',
   subsets: ['latin'],
-  weight: ['500', '600'],
-  display: 'swap',
-});
-
-const manrope = Manrope({
-  variable: '--font-manrope',
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  display: 'swap',
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: '--font-ibm-plex-mono',
-  subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -56,7 +42,7 @@ export default function RootLayout({
       lang="en"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${manrope.variable} ${ibmPlexMono.variable}`}
+      className={interTight.variable}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

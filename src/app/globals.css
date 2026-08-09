@@ -1,7 +1,7 @@
 :root {
-  --font-display: var(--font-space-grotesk), 'Space Grotesk', -apple-system, sans-serif;
-  --font-body: var(--font-manrope), 'Manrope', -apple-system, sans-serif;
-  --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
+  --font-display: var(--font-inter-tight), 'Inter Tight', -apple-system, sans-serif;
+  --font-body: var(--font-inter-tight), 'Inter Tight', -apple-system, sans-serif;
+  --font-mono: var(--font-inter-tight), 'Inter Tight', -apple-system, sans-serif;
 }
 
 :root,

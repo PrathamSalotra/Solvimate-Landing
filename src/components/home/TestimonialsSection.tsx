@@ -55,8 +55,9 @@ const BadgePill = styled.span`
 
 const HeadingText = styled.h2`
   font-size: clamp(2.25rem, 4vw, 3.25rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
   line-height: 1.15;
@@ -165,7 +166,8 @@ const AuthorDetails = styled.div`
 
 const AuthorName = styled.h3`
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 500;
+  word-spacing: 0.04em;
   color: ${({ theme }) => theme.foreground};
   margin: 0;
 `;
