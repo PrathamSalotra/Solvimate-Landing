@@ -16,7 +16,12 @@ const CLIENT_LOGOS: ClientLogo[] = [
   { name: 'FutureBeeAI', src: '/client-logos/futurebeeai.png?v=20260731_2' },
   { name: 'GienTech', src: '/client-logos/gientech.png?v=20260731_2' },
   { name: 'Josh Talks', src: '/client-logos/joshtalks.png?v=20260731_2', scale: 1.4 },
-  { name: 'Kuku FM', src: '/client-logos/kukufm.png?v=20260731_2' },
+  {
+    name: 'Kuku FM',
+    src: '/client-logos/kukufm.png?v=20260731_2',
+    // TODO [TRACKED]: Kuku FM logo flagged as placeholder pending official transparent export
+    isPlaceholder: true,
+  },
   { name: 'OpenAI', src: '/client-logos/openai.png?v=20260731_2', scale: 1.4 },
   { name: 'Pocket FM', src: '/client-logos/pocketfm.png?v=20260731_2', scale: 1.4 },
   { name: 'Story TV', src: '/client-logos/storytv.png?v=20260731_2', scale: 1.45 },
@@ -147,18 +152,14 @@ const LogoImage = styled.img<{ $scale?: number }>`
   width: auto;
   max-width: 200px;
   object-fit: contain;
-  opacity: 0.55;
+  opacity: 1;
   flex-shrink: 0;
   cursor: pointer;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    filter 0.25s ease;
+  transition: transform 0.25s ease;
 
   &:hover,
   &:focus-visible {
-    opacity: 1;
-    transform: scale(1.08);
+    transform: scale(1.04);
     outline: none;
   }
 
