@@ -12,6 +12,8 @@ const FooterWrapper = styled.footer`
   color: ${({ theme }) => theme.foreground};
   width: 100%;
   margin-top: auto;
+  position: relative;
+  z-index: 20;
 `;
 
 const FooterContainer = styled.div`
@@ -119,7 +121,7 @@ const StyledFooterLink = styled(Link)`
 
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => (theme.colors.background === '#001E2B' ? theme.colors.lime : theme.accentText)};
+    color: ${({ theme }) => (theme.isDark ? theme.colors.lime : theme.accentText)};
     transform: translateX(3px);
   }
 `;
@@ -144,7 +146,7 @@ const SocialLink = styled.a`
 
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => (theme.colors.background === '#001E2B' ? theme.colors.lime : theme.accentText)};
+    color: ${({ theme }) => (theme.isDark ? theme.colors.lime : theme.accentText)};
     transform: translateX(3px);
   }
 

@@ -9,7 +9,7 @@ const HeroWrapper = styled.section`
   padding: 6.5rem 1.5rem 4.5rem;
   display: flex;
   justify-content: center;
-  background: ${({ theme }) => theme.background};
+  background: transparent;
   position: relative;
   overflow: hidden;
 
@@ -72,11 +72,6 @@ const Headline = styled.h1`
   @media (max-width: 768px) {
     font-size: 1.625rem;
     line-height: 1.2;
-  }
-
-  @media (min-width: 1440px) {
-    font-size: 4.4rem;
-    line-height: 1.05;
   }
 `;
 

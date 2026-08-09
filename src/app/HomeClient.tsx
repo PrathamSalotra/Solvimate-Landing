@@ -13,6 +13,7 @@ import BriefNoteSection from '@/components/home/BriefNoteSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FAQSection from '@/components/home/FAQSection';
 import CTASection from '@/components/home/CTASection';
+import AnimatedWaveBackground from '@/components/home/AnimatedWaveBackground';
 import { useGSAPScrollReveal } from '@/hooks/useGSAPScrollReveal';
 
 const HomeContainer = styled.div`
@@ -20,6 +21,20 @@ const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
+`;
+
+const FixedWaveBackgroundContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  overflow: hidden;
 `;
 
 const StatusSection = styled.section`
@@ -31,6 +46,8 @@ const StatusSection = styled.section`
   align-items: center;
   gap: 1.5rem;
   border-top: 1px solid ${({ theme }) => theme.border};
+  position: relative;
+  z-index: 2;
 `;
 
 const StatusBadge = styled.span`
@@ -75,6 +92,9 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
 
   return (
     <HomeContainer ref={containerRef}>
+      <FixedWaveBackgroundContainer aria-hidden="true">
+        <AnimatedWaveBackground />
+      </FixedWaveBackgroundContainer>
       <Hero />
       <LogoMarquee />
       <ServicesSection />

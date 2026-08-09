@@ -10,6 +10,8 @@ const SectionWrapper = styled.section`
   width: 100%;
   padding: 2rem 1.5rem 6.5rem;
   background: ${({ theme }) => theme.background};
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     padding: 1.5rem 1rem 5rem;
@@ -22,6 +24,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  position: relative;
+  z-index: 2;
 `;
 
 const FilterBar = styled.div`
@@ -86,6 +90,8 @@ const JobCard = styled.article`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  position: relative;
+  z-index: 2;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,

@@ -9,8 +9,9 @@ const HeroWrapper = styled.section`
   padding: 6.5rem 1.5rem 4rem;
   display: flex;
   justify-content: center;
-  background: ${({ theme }) => theme.background};
+  background: transparent;
   position: relative;
+  z-index: 2;
   overflow: hidden;
 
   @media (max-width: 768px) {

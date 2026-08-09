@@ -9,6 +9,8 @@ const FormWrapper = styled.section`
   width: 100%;
   padding: 3rem 1.5rem 6.5rem;
   background: ${({ theme }) => theme.background};
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     padding: 2.5rem 1rem 5rem;
@@ -23,6 +25,8 @@ const FormContainer = styled.div`
   border-radius: ${({ theme }) => theme.radius.card};
   padding: 3rem 3.5rem;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 640px) {
     padding: 2.25rem 1.5rem;
@@ -74,7 +78,7 @@ const StyledInput = styled.input<{ $hasError?: boolean }>`
   width: 100%;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
-  border: 1px solid ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
+  border: 1px solid ${({ $hasError, theme }) => ($hasError ? theme.error : theme.border)};
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
@@ -84,7 +88,7 @@ const StyledInput = styled.input<{ $hasError?: boolean }>`
 
   &:focus {
     outline: none;
-    border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
+    border-color: ${({ $hasError, theme }) => ($hasError ? theme.error : theme.primary)};
     box-shadow: 0 0 0 3px
       ${({ $hasError }) => ($hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)')};
   }
@@ -101,7 +105,7 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
   min-height: 160px;
   padding: 0.9rem 1.15rem;
   border-radius: 12px;
-  border: 1px solid ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.border)};
+  border: 1px solid ${({ $hasError, theme }) => ($hasError ? theme.error : theme.border)};
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.95rem;
@@ -112,7 +116,7 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
 
   &:focus {
     outline: none;
-    border-color: ${({ $hasError, theme }) => ($hasError ? '#ef4444' : theme.primary)};
+    border-color: ${({ $hasError, theme }) => ($hasError ? theme.error : theme.primary)};
     box-shadow: 0 0 0 3px
       ${({ $hasError }) => ($hasError ? 'rgba(239, 68, 68, 0.18)' : 'rgba(190, 254, 114, 0.25)')};
   }
@@ -126,7 +130,7 @@ const StyledTextArea = styled.textarea<{ $hasError?: boolean }>`
 const ErrorText = styled.span`
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.8125rem;
-  color: #ef4444;
+  color: ${({ theme }) => theme.error};
   font-weight: 600;
 `;
 

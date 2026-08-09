@@ -10,6 +10,8 @@ const GridWrapper = styled.section`
   background: ${({ theme }) => theme.background};
   border-top: 1px solid ${({ theme }) => theme.border};
   border-bottom: 1px solid ${({ theme }) => theme.border};
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     padding: 4rem 1rem;
@@ -19,6 +21,8 @@ const GridWrapper = styled.section`
 const GridContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 `;
 
 const CardsGrid = styled.div`
@@ -37,6 +41,7 @@ const CardsGrid = styled.div`
 
 const GroupCard = styled.div`
   position: relative;
+  z-index: 2;
   background: ${({ theme }) => theme.cardBg};
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
@@ -66,7 +71,7 @@ const NumberBadge = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 1.5rem;
   font-weight: 900;
-  color: ${({ theme }) => (theme.colors.background === '#001E2B' ? 'rgba(190, 254, 114, 0.45)' : '#000000')};
+  color: ${({ theme }) => theme.numberTag};
 `;
 
 const IconCircle = styled.div`

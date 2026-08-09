@@ -14,6 +14,8 @@ export interface ColorPalette {
   accentText: string;
   accentBadgeBg: string;
   accentBadgeBorder: string;
+  error: string;
+  numberTag: string;
 }
 
 export interface SpacingTokens {
@@ -52,6 +54,7 @@ export interface FontTokens {
 
 export interface ThemeTokens {
   // Existing top-level aliases for backwards compatibility across components
+  isDark: boolean;
   background: string;
   surface: string;
   foreground: string;
@@ -64,6 +67,8 @@ export interface ThemeTokens {
   accentBadgeBorder: string;
   border: string;
   cardBg: string;
+  error: string;
+  numberTag: string;
 
   // Structured token groups from UI Design Specification
   colors: ColorPalette;
@@ -108,6 +113,7 @@ const motion: MotionTokens = {
 };
 
 export const darkTheme: ThemeTokens = {
+  isDark: true,
   background: '#001E2B', // Ink
   surface: '#0A2E3D', // Surface
   foreground: '#F5FBF2', // Paper
@@ -120,6 +126,8 @@ export const darkTheme: ThemeTokens = {
   accentBadgeBorder: 'rgba(55, 251, 137, 0.35)',
   border: 'rgba(159, 184, 180, 0.25)', // Mist at 25% alpha
   cardBg: '#0A2E3D', // Surface
+  error: '#EF4444',
+  numberTag: 'rgba(190, 254, 114, 0.45)',
   colors: {
     ink: '#001E2B',
     surface: '#0A2E3D',
@@ -136,6 +144,8 @@ export const darkTheme: ThemeTokens = {
     accentText: '#BEFE72',
     accentBadgeBg: 'rgba(55, 251, 137, 0.12)',
     accentBadgeBorder: 'rgba(55, 251, 137, 0.35)',
+    error: '#EF4444',
+    numberTag: 'rgba(190, 254, 114, 0.45)',
   },
   spacing,
   radius,
@@ -143,28 +153,22 @@ export const darkTheme: ThemeTokens = {
   fonts,
 };
 
-// NOTE: The UI design spec is dark-first. For light mode, we map:
-// - Paper (#F5FBF2) as light background
-// - Near-white (#FFFFFF) as surface for cards
-// - Ink (#001E2B) for high-contrast text
-// - Lime (#BEFE72) / Mint (#37FB89) accents unchanged for button backgrounds
-// - Black (#000000) for primaryText / SVG strokes in light mode per user requirement
-// - Darker muted teal (#2E626F) for light-mode secondary text instead of Mist (#9FB8B4),
-//   since Mist on Paper has a 2.00:1 contrast ratio (failing WCAG AA/AAA).
-//   #2E626F has a 6.79:1 contrast ratio on white and 6.45:1 on Paper (#F5FBF2), exceeding WCAG AA & AAA standards.
 export const lightTheme: ThemeTokens = {
+  isDark: false,
   background: '#F5FBF2', // Paper
   surface: '#FFFFFF', // Near-white surface for cards
   foreground: '#001E2B', // Ink
-  textSecondary: '#2E626F', // Darker Muted Teal (6.79:1 contrast on white / 6.45:1 on paper)
+  textSecondary: '#2E626F', // Darker Muted Teal
   primary: '#BEFE72', // Lime for button backgrounds
   primaryHover: '#37FB89', // Mint
-  primaryText: '#000000', // Black (#000000) for text & SVG strokes in light mode
-  accentText: '#0F7A4D', // Dark green accent text with high contrast on light backgrounds
+  primaryText: '#000000', // Black for text & SVG strokes in light mode
+  accentText: '#0F7A4D', // Dark green accent text
   accentBadgeBg: 'rgba(55, 251, 137, 0.18)',
   accentBadgeBorder: 'rgba(15, 122, 77, 0.3)',
   border: 'rgba(0, 30, 43, 0.15)', // Ink at 15% alpha
   cardBg: '#FFFFFF', // Near-white surface for cards
+  error: '#DC2626',
+  numberTag: '#000000',
   colors: {
     ink: '#001E2B',
     surface: '#FFFFFF',
@@ -181,6 +185,8 @@ export const lightTheme: ThemeTokens = {
     accentText: '#0F7A4D',
     accentBadgeBg: 'rgba(55, 251, 137, 0.18)',
     accentBadgeBorder: 'rgba(15, 122, 77, 0.3)',
+    error: '#DC2626',
+    numberTag: '#000000',
   },
   spacing,
   radius,

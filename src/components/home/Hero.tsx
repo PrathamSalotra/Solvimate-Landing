@@ -4,10 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
-import AnimatedWaveBackground from '@/components/home/AnimatedWaveBackground';
 
 const HeroSectionWrapper = styled.section`
   position: relative;
+  z-index: 2;
   width: 100%;
   padding: 6rem 1.5rem 5rem;
   display: flex;
@@ -15,6 +15,7 @@ const HeroSectionWrapper = styled.section`
   align-items: center;
   text-align: center;
   overflow: hidden;
+  background: transparent;
 
   @media (max-width: 768px) {
     padding: 4.5rem 1rem 3.5rem;
@@ -148,7 +149,6 @@ export default function Hero() {
   return (
     <HeroSectionWrapper>
       <BackgroundGlow />
-      <AnimatedWaveBackground />
       <HeroContent data-gsap="heading">
         <PillBadge>{t('home.heroPill')}</PillBadge>
         <HeroHeadline>{t('home.heroHeadline')}</HeroHeadline>

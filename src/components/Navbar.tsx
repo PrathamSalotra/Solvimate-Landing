@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
@@ -90,6 +90,7 @@ const DesktopNavLinks = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  position: relative;
 
   @media (max-width: 768px) {
     display: none;
@@ -115,21 +116,27 @@ const StyledNavLink = styled(Link)<{ $active?: boolean }>`
   &:hover {
     color: ${({ theme }) => theme.foreground};
   }
+`;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: ${({ theme, $active }) => ($active ? theme.primary : 'transparent')};
-    border-radius: 2px;
-    transition:
-      background-color 0.2s ease,
-      transform 0.2s ease;
-    transform: ${({ $active }) => ($active ? 'scaleX(1)' : 'scaleX(0)')};
-    transform-origin: left;
+const ActiveIndicator = styled.div<{ $left: number; $width: number; $ready: boolean }>`
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: ${({ $width }) => $width}px;
+  transform: translateX(${({ $left }) => $left}px);
+  background: ${({ theme }) => theme.primary};
+  border-radius: 2px;
+  box-shadow: 0 0 8px ${({ theme }) => theme.primary};
+  pointer-events: none;
+  opacity: ${({ $ready, $width }) => ($ready && $width > 0 ? 1 : 0)};
+  transition: ${({ $ready }) =>
+    $ready
+      ? 'transform 250ms cubic-bezier(0.16, 1, 0.3, 1), width 250ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms ease'
+      : 'none'};
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
   }
 `;
 
@@ -207,21 +214,34 @@ const HamburgerButton = styled.button`
 
 const MobileMenuDrawer = styled.div<{ $isOpen: boolean }>`
   display: none;
-  position: fixed;
-  top: 72px;
-  left: 0;
-  right: 0;
-  background: ${({ theme }) => theme.background};
-  border-bottom: 1px solid ${({ theme }) => theme.border};
-  padding: 1.5rem 1.25rem;
-  flex-direction: column;
-  gap: 1.25rem;
-  z-index: 40;
-  max-height: calc(100vh - 72px);
-  overflow-y: auto;
 
   @media (max-width: 768px) {
-    display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
+    display: flex;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: ${({ theme }) => theme.surface};
+    border-bottom: 1px solid ${({ theme }) => theme.border};
+    padding: 1.5rem 1.25rem 2rem;
+    flex-direction: column;
+    gap: 1.25rem;
+    z-index: 40;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-12px)')};
+    transition:
+      transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 250ms ease,
+      visibility 250ms;
+    pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
   }
 `;
 
@@ -288,16 +308,24 @@ const MobileCTAButton = styled(Link)`
 
 const MobileBackdrop = styled.div<{ $isOpen: boolean }>`
   display: none;
-  position: fixed;
-  top: 72px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 39;
 
   @media (max-width: 768px) {
-    display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+    display: block;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 39;
+    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transition:
+      opacity 250ms ease,
+      visibility 250ms;
+    pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   }
 `;
 
@@ -306,6 +334,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const { t } = useLanguage();
+
+  const navContainerRef = React.useRef<HTMLUListElement | null>(null);
+  const navLinksRef = React.useRef<Map<string, HTMLAnchorElement | null>>(new Map());
+
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -328,6 +362,50 @@ export default function Navbar() {
     setIsOpen(false);
   }, []);
 
+  const navItems = useMemo(
+    () => [
+      { href: '/', label: t('nav.home') },
+      { href: '/about', label: t('nav.about') },
+      { href: '/services', label: t('nav.services') },
+      { href: '/careers', label: t('nav.careers') },
+      { href: '/contact', label: t('nav.contact') },
+    ],
+    [t]
+  );
+
+  const updateIndicator = useCallback(() => {
+    if (!navContainerRef.current) return;
+    const containerRect = navContainerRef.current.getBoundingClientRect();
+
+    const activeItem = navItems.find((item) => isActive(item.href));
+    const activeHref = activeItem ? activeItem.href : '/';
+    const activeEl = navLinksRef.current.get(activeHref);
+
+    if (activeEl) {
+      const activeRect = activeEl.getBoundingClientRect();
+      const left = activeRect.left - containerRect.left;
+      const width = activeRect.width;
+
+      setIndicatorStyle({ left, width });
+      setIsReady(true);
+    }
+  }, [isActive, navItems]);
+
+  useEffect(() => {
+    updateIndicator();
+    const handleResize = () => updateIndicator();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [pathname, updateIndicator]);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined' && document.fonts) {
+      document.fonts.ready.then(() => {
+        updateIndicator();
+      });
+    }
+  }, [updateIndicator]);
+
   // Keyboard accessibility: Escape key closes the mobile menu
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -338,14 +416,6 @@ export default function Navbar() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, closeMenu]);
-
-  const navItems = [
-    { href: '/', label: t('nav.home') },
-    { href: '/about', label: t('nav.about') },
-    { href: '/services', label: t('nav.services') },
-    { href: '/careers', label: t('nav.careers') },
-    { href: '/contact', label: t('nav.contact') },
-  ];
 
   return (
     <>
@@ -361,10 +431,15 @@ export default function Navbar() {
             <LogoWordmark>SOLVIMATE</LogoWordmark>
           </LogoLink>
 
-          <DesktopNavLinks>
+          <DesktopNavLinks ref={navContainerRef}>
             {navItems.map((item) => (
               <NavLinkItem key={item.href}>
                 <StyledNavLink
+                  ref={(el) => {
+                    if (el) {
+                      navLinksRef.current.set(item.href, el);
+                    }
+                  }}
                   href={item.href}
                   $active={isActive(item.href)}
                   aria-current={isActive(item.href) ? 'page' : undefined}
@@ -373,6 +448,12 @@ export default function Navbar() {
                 </StyledNavLink>
               </NavLinkItem>
             ))}
+            <ActiveIndicator
+              $left={indicatorStyle.left}
+              $width={indicatorStyle.width}
+              $ready={isReady}
+              aria-hidden="true"
+            />
           </DesktopNavLinks>
 
           <RightActions>

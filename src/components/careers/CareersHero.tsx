@@ -7,11 +7,12 @@ import { useLanguage } from '@/context/LanguageContext';
 const HeroWrapper = styled.section`
   width: 100%;
   padding: 6.5rem 1.5rem 3.5rem;
-  background: ${({ theme }) => theme.background};
+  background: transparent;
   display: flex;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 
   @media (max-width: 768px) {
     padding: 5rem 1rem 2.5rem;
@@ -39,7 +40,7 @@ const HeroContainer = styled.div`
   text-align: center;
   gap: 1.25rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const TagPill = styled.span`
@@ -73,11 +74,6 @@ const Headline = styled.h1`
     font-size: 1.625rem;
     line-height: 1.2;
   }
-
-  @media (min-width: 1440px) {
-    font-size: 4.4rem;
-    line-height: 1.05;
-  }
 `;
 
 const SubtitleText = styled.p`
@@ -110,6 +106,8 @@ const TrackInfoCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
+  z-index: 2;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;

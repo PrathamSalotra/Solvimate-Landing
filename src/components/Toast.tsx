@@ -75,10 +75,10 @@ const IconWrapper = styled.div<{ $type: ToastType }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme, $type }) => ($type === 'error' ? '#ffffff' : theme.colors.ink)};
+  color: ${({ theme, $type }) => ($type === 'error' ? theme.colors.paper : theme.colors.ink)};
   background: ${({ theme, $type }) => {
     if ($type === 'success') return theme.primaryHover;
-    if ($type === 'error') return '#ef4444';
+    if ($type === 'error') return theme.error;
     return theme.primary;
   }};
   margin-top: 0.1rem;

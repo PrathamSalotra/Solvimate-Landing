@@ -115,7 +115,7 @@ const NumberBadge = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 1.5rem;
   font-weight: 700;
-  color: ${({ theme }) => (theme.colors.background === '#001E2B' ? 'rgba(190, 254, 114, 0.45)' : '#000000')};
+  color: ${({ theme }) => theme.numberTag};
 `;
 
 const CardTitle = styled.h3`

@@ -9,8 +9,9 @@ const HeroWrapper = styled.section`
   padding: 6.5rem 1.5rem 4.5rem;
   display: flex;
   justify-content: center;
-  background: ${({ theme }) => theme.background};
+  background: transparent;
   position: relative;
+  z-index: 2;
   overflow: hidden;
 
   @media (max-width: 768px) {
@@ -111,18 +112,18 @@ const BadgeRow = styled.div`
   margin-top: 0.5rem;
 `;
 
-const ComplianceBadge = styled.span`
+const ComplianceBadge = styled.div`
+  font-family: ${({ theme }) => theme.fonts.mono};
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
+  padding: 0.45rem 1.1rem;
   border-radius: 8px;
-  background: rgba(190, 254, 114, 0.12);
-  border: 1px solid rgba(190, 254, 114, 0.35);
-  color: ${({ theme }) => theme.primaryText};
-  font-size: 0.825rem;
-  font-weight: 700;
-  font-family: ${({ theme }) => theme.fonts.mono};
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px solid ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.foreground};
+  font-size: 0.85rem;
+  font-weight: 600;
 `;
 
 export default function AboutHero() {
@@ -135,7 +136,7 @@ export default function AboutHero() {
         <PillRow>
           <TagPill>
             <DotIndicator />
-            {t('about.tagEdtech')}
+            {t('about.tagCompany')}
           </TagPill>
           <TagPill>
             <DotIndicator />

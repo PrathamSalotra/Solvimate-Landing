@@ -8,6 +8,8 @@ const ChannelsWrapper = styled.section`
   width: 100%;
   padding: 2.5rem 1.5rem 4rem;
   background: ${({ theme }) => theme.background};
+  position: relative;
+  z-index: 2;
 `;
 
 const ChannelsContainer = styled.div`
@@ -28,6 +30,8 @@ const ChannelsContainer = styled.div`
 
 const ChannelCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
+  position: relative;
+  z-index: 2;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
   padding: 2.25rem 1.75rem;
