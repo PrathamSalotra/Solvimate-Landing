@@ -86,6 +86,13 @@ const ServiceCard = styled.div`
   }
 `;
 
+const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+`;
+
 const IconBadge = styled.div`
   width: 52px;
   height: 52px;
@@ -95,14 +102,20 @@ const IconBadge = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.accentText};
-  margin-bottom: 1.75rem;
+  color: ${({ theme }) => theme.colors.mint};
 
   svg {
     width: 26px;
     height: 26px;
     fill: currentColor;
   }
+`;
+
+const NumberBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: ${({ theme }) => (theme.colors.background === '#001E2B' ? 'rgba(190, 254, 114, 0.45)' : '#000000')};
 `;
 
 const CardTitle = styled.h3`
@@ -148,6 +161,7 @@ export default function ServicesSection() {
   const services = [
     {
       key: 'service1',
+      number: '01',
       title: t('home.service1Title'),
       desc: t('home.service1Desc'),
       iconPath:
@@ -155,6 +169,7 @@ export default function ServicesSection() {
     },
     {
       key: 'service2',
+      number: '02',
       title: t('home.service2Title'),
       desc: t('home.service2Desc'),
       iconPath:
@@ -162,6 +177,7 @@ export default function ServicesSection() {
     },
     {
       key: 'service3',
+      number: '03',
       title: t('home.service3Title'),
       desc: t('home.service3Desc'),
       iconPath:
@@ -176,11 +192,14 @@ export default function ServicesSection() {
       <ServicesGrid>
         {services.map((svc) => (
           <ServiceCard key={svc.key} data-gsap="card">
-            <IconBadge>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d={svc.iconPath} />
-              </svg>
-            </IconBadge>
+            <CardHeader>
+              <IconBadge>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d={svc.iconPath} />
+                </svg>
+              </IconBadge>
+              <NumberBadge aria-hidden="true">{svc.number}</NumberBadge>
+            </CardHeader>
             <CardTitle>{svc.title}</CardTitle>
             <CardDesc>{svc.desc}</CardDesc>
             <LearnMoreLink href="/services">{t('home.serviceLearnMore')} &rarr;</LearnMoreLink>

@@ -97,7 +97,7 @@ const NumberBadge = styled.span`
   right: 1.25rem;
   font-size: 2.25rem;
   font-weight: 900;
-  color: rgba(190, 254, 114, 0.15);
+  color: ${({ theme }) => (theme.colors.background === '#001E2B' ? 'rgba(190, 254, 114, 0.35)' : '#000000')};
   line-height: 1;
   pointer-events: none;
 `;

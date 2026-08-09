@@ -66,7 +66,7 @@ const NumberBadge = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 1.5rem;
   font-weight: 900;
-  color: rgba(190, 254, 114, 0.35);
+  color: ${({ theme }) => (theme.colors.background === '#001E2B' ? 'rgba(190, 254, 114, 0.45)' : '#000000')};
 `;
 
 const IconCircle = styled.div`
