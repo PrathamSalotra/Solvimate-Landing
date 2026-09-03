@@ -15,16 +15,17 @@ const TriggerButton = styled.button<{ $isOpen: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
   height: 38px;
+  min-width: 44px;
   box-sizing: border-box;
   background: ${({ theme }) => theme.surface};
   color: ${({ theme }) => theme.foreground};
   border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.border)};
-  border-radius: 9999px;
-  padding: 0 1rem;
-  font-size: 13px;
-  font-weight: 500;
+  border-radius: 10px;
+  padding: 0 0.85rem;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   line-height: 1;
   cursor: pointer;
   outline: none;
@@ -81,8 +82,8 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
   padding: 0.5rem;
   background: ${({ theme }) => theme.surface};
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   z-index: 100;
 
   /* Desktop layout: compact popover anchored below trigger */
@@ -90,11 +91,11 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    min-width: 160px;
+    min-width: 170px;
     opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
     visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
     transform: ${({ $isOpen }) =>
-      $isOpen ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(-4px)'};
+    $isOpen ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(-4px)'};
     transform-origin: top right;
     transition:
       opacity 180ms ease,
@@ -176,13 +177,13 @@ const OptionButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   border: none;
   background: ${({ $isSelected }) => ($isSelected ? 'rgba(190, 254, 114, 0.12)' : 'transparent')};
   color: ${({ theme, $isSelected }) => ($isSelected ? theme.primary : theme.foreground)};
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: ${({ $isSelected }) => ($isSelected ? 700 : 500)};
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   text-align: left;
   transition:
@@ -205,12 +206,12 @@ const CheckIcon = styled.svg`
   fill: none;
 `;
 
-const LANGUAGE_OPTIONS: { code: Locale; label: string }[] = [
-  { code: 'en', label: 'English' },
-  { code: 'de', label: 'Deutsch' },
-  { code: 'es', label: 'Español' },
-  { code: 'fr', label: 'Français' },
-  { code: 'hi', label: 'हिन्दी' },
+const LANGUAGE_OPTIONS: { code: Locale; label: string; shortCode: string }[] = [
+  { code: 'en', label: 'English', shortCode: 'EN' },
+  { code: 'hi', label: 'हिंदी', shortCode: 'HI' },
+  { code: 'es', label: 'Español', shortCode: 'ES' },
+  { code: 'fr', label: 'Français', shortCode: 'FR' },
+  { code: 'de', label: 'Deutsch', shortCode: 'DE' },
 ];
 
 export default function LanguageSwitcher() {
@@ -220,8 +221,8 @@ export default function LanguageSwitcher() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const currentLabel =
-    LANGUAGE_OPTIONS.find((lang) => lang.code === locale)?.label || 'English';
+  const currentShortCode =
+    LANGUAGE_OPTIONS.find((lang) => lang.code === locale)?.shortCode || 'EN';
 
   const toggleDropdown = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -259,14 +260,12 @@ export default function LanguageSwitcher() {
       triggerRef.current?.focus();
     } else if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && isOpen) {
       event.preventDefault();
-      const currentIndex = optionRefs.current.findIndex(
-        (el) => el === document.activeElement
-      );
-      let nextIndex = 0;
+      const currentIndex = LANGUAGE_OPTIONS.findIndex((lang) => lang.code === locale);
+      let nextIndex = currentIndex;
       if (event.key === 'ArrowDown') {
-        nextIndex = currentIndex < LANGUAGE_OPTIONS.length - 1 ? currentIndex + 1 : 0;
+        nextIndex = (currentIndex + 1) % LANGUAGE_OPTIONS.length;
       } else {
-        nextIndex = currentIndex > 0 ? currentIndex - 1 : LANGUAGE_OPTIONS.length - 1;
+        nextIndex = (currentIndex - 1 + LANGUAGE_OPTIONS.length) % LANGUAGE_OPTIONS.length;
       }
       optionRefs.current[nextIndex]?.focus();
     }
@@ -284,10 +283,7 @@ export default function LanguageSwitcher() {
         aria-label="Select language"
         title="Select language"
       >
-        <span>{currentLabel}</span>
-        <ArrowIcon $isOpen={isOpen} viewBox="0 0 24 24" aria-hidden="true">
-          <polyline points="6 9 12 15 18 9" />
-        </ArrowIcon>
+        <span>{currentShortCode}</span>
       </TriggerButton>
 
       <MobileBackdrop $isOpen={isOpen} onClick={closeDropdown} aria-hidden="true" />
