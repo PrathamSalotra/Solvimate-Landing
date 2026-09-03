@@ -14,16 +14,21 @@ const TriggerButton = styled.button<{ $isOpen: boolean }>`
   font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  height: 38px;
+  box-sizing: border-box;
   background: ${({ theme }) => theme.surface};
   color: ${({ theme }) => theme.foreground};
   border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.border)};
   border-radius: 9999px;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  padding: 0 1rem;
+  font-size: 13px;
   font-weight: 500;
+  line-height: 1;
   cursor: pointer;
   outline: none;
+  flex-shrink: 0;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,

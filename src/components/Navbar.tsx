@@ -164,13 +164,17 @@ const CTAButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.45rem 1.15rem;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 1.25rem;
   border-radius: 9999px;
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.colors.ink};
   font-size: 13px;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
+  flex-shrink: 0;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
@@ -190,22 +194,24 @@ const HamburgerButton = styled.button`
   display: none;
   background: transparent;
   border: 1px solid ${({ theme }) => theme.border};
-  border-radius: 8px;
-  width: 40px;
-  height: 40px;
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.foreground};
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
 
   @media (max-width: 768px) {
     display: inline-flex;
   }
 
   svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     stroke: currentColor;
     stroke-width: 2;
     fill: none;

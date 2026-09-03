@@ -9,12 +9,14 @@ const ToggleButton = styled.button`
   color: ${({ theme }) => theme.foreground};
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -36,8 +38,8 @@ const ToggleButton = styled.button`
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
