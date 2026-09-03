@@ -62,14 +62,18 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   height: auto;
   min-height: 100%;
   padding: 2.5rem 2rem;
-  background: ${({ theme }) => theme.cardBg};
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
   transition:
     transform ${({ theme }) => theme.motion.interaction} ease,
     border-color ${({ theme }) => theme.motion.interaction} ease,
@@ -78,7 +82,7 @@ const ServiceCard = styled.div`
   &:hover {
     transform: translateY(-6px);
     border-color: ${({ theme }) => theme.colors.mint};
-    box-shadow: 0 16px 40px -10px rgba(55, 251, 137, 0.15);
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 18px 45px rgba(0, 0, 0, 0.4)' : '0 18px 45px rgba(0, 0, 0, 0.12)')};
   }
 
   @media (max-width: 768px) {
