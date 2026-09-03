@@ -70,9 +70,12 @@ const SectorsGrid = styled.div`
 
 const SectorCard = styled.div`
   position: relative;
-  background: ${({ theme }) => theme.cardBg};
+  z-index: 2;
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
   padding: 2.25rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -86,7 +89,7 @@ const SectorCard = styled.div`
   &:hover {
     transform: translateY(-4px);
     border-color: ${({ theme }) => theme.primary};
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 18px 45px rgba(0, 0, 0, 0.4)' : '0 18px 45px rgba(0, 0, 0, 0.12)')};
   }
 `;
 

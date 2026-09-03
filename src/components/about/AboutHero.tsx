@@ -119,8 +119,10 @@ const ComplianceBadge = styled.div`
   gap: 0.5rem;
   padding: 0.45rem 1.1rem;
   border-radius: 8px;
-  background: ${({ theme }) => theme.cardBg};
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 8px 24px rgba(0, 0, 0, 0.25)' : '0 8px 24px rgba(0, 0, 0, 0.08)')};
   color: ${({ theme }) => theme.foreground};
   font-size: 0.85rem;
   font-weight: 600;

@@ -12,6 +12,8 @@ const SectionWrapper = styled.section`
   align-items: center;
   background: ${({ theme }) => theme.background};
   border-bottom: 1px solid ${({ theme }) => theme.border};
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     padding: 4rem 1rem 5rem;
@@ -25,6 +27,8 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  position: relative;
+  z-index: 2;
 `;
 
 const HeaderBlock = styled.div`
@@ -66,11 +70,24 @@ const AccordionContainer = styled.div`
 `;
 
 const AccordionItem = styled.div<{ $isOpen: boolean }>`
+  position: relative;
+  z-index: 2;
   width: 100%;
   border-radius: ${({ theme }) => theme.radius.card};
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.accentText : theme.border)};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
   overflow: hidden;
+  transition:
+    border-color ${({ theme }) => theme.motion.interaction} ease,
+    box-shadow ${({ theme }) => theme.motion.interaction} ease,
+    transform ${({ theme }) => theme.motion.interaction} ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.accentText};
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 16px 40px rgba(0, 0, 0, 0.35)' : '0 16px 40px rgba(0, 0, 0, 0.12)')};
+  }
 `;
 
 const AccordionHeader = styled.button<{ $isOpen: boolean }>`
