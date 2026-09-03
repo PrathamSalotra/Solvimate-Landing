@@ -98,23 +98,27 @@ const TracksGrid = styled.div`
 `;
 
 const TrackInfoCard = styled.div`
-  background: ${({ theme }) => theme.cardBg};
+  position: relative;
+  z-index: 2;
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
   padding: 1.75rem 2rem;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  position: relative;
-  z-index: 2;
   transition:
     transform 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-3px);
     border-color: ${({ theme }) => theme.primaryHover};
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 18px 45px rgba(0, 0, 0, 0.4)' : '0 18px 45px rgba(0, 0, 0, 0.12)')};
   }
 `;
 

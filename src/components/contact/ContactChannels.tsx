@@ -29,11 +29,13 @@ const ChannelsContainer = styled.div`
 `;
 
 const ChannelCard = styled.div`
-  background: ${({ theme }) => theme.cardBg};
   position: relative;
   z-index: 2;
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
   padding: 2.25rem 1.75rem;
   display: flex;
   flex-direction: column;
@@ -46,7 +48,7 @@ const ChannelCard = styled.div`
   &:hover {
     transform: translateY(-4px);
     border-color: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 18px 45px rgba(0, 0, 0, 0.4)' : '0 18px 45px rgba(0, 0, 0, 0.12)')};
   }
 `;
 

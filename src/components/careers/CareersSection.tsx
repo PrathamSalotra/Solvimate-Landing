@@ -83,15 +83,17 @@ const ListingsGrid = styled.div`
 `;
 
 const JobCard = styled.article`
-  background: ${({ theme }) => theme.cardBg};
+  position: relative;
+  z-index: 2;
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
   padding: 2.25rem 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  position: relative;
-  z-index: 2;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
@@ -100,7 +102,7 @@ const JobCard = styled.article`
   &:hover {
     transform: translateY(-2px);
     border-color: ${({ theme }) => theme.primaryHover};
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 18px 45px rgba(0, 0, 0, 0.4)' : '0 18px 45px rgba(0, 0, 0, 0.12)')};
   }
 
   @media (max-width: 640px) {
