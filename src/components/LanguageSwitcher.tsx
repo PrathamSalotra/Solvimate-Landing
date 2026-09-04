@@ -12,49 +12,34 @@ const SwitcherWrapper = styled.div`
 
 const TriggerButton = styled.button<{ $isOpen: boolean }>`
   font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 13px;
+  font-weight: ${({ $isOpen }) => ($isOpen ? '600' : '500')};
+  letter-spacing: 0.02em;
+  color: ${({ theme, $isOpen }) =>
+    $isOpen ? (theme.isDark ? theme.colors.mint : theme.accentText) : theme.textSecondary};
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  height: 38px;
-  min-width: 44px;
-  box-sizing: border-box;
-  background: ${({ theme }) => theme.surface};
-  color: ${({ theme }) => theme.foreground};
-  border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.primary : theme.border)};
-  border-radius: 10px;
-  padding: 0 0.85rem;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
+  gap: 0.35rem;
   cursor: pointer;
+  transition: color 0.2s ease;
   outline: none;
-  flex-shrink: 0;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
 
-  &:hover,
-  &:focus-visible {
-    border-color: ${({ theme }) => theme.primary};
-    background: ${({ theme }) => theme.cardBg};
+  &:hover {
+    color: ${({ theme }) => theme.foreground};
   }
 
-  &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.primary};
-    outline-offset: 2px;
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    transition: transform 0.2s ease;
+    transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
   }
-`;
-
-const ArrowIcon = styled.svg<{ $isOpen: boolean }>`
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
-  transition: transform 0.2s ease;
-  transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
 `;
 
 const MobileBackdrop = styled.div<{ $isOpen: boolean }>`
@@ -81,27 +66,46 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
   margin: 0;
   padding: 0.5rem;
   background: ${({ theme }) => theme.surface};
-  border: 1px solid ${({ theme }) => theme.border};
+  border: 1px solid
+    ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
   border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ theme }) =>
+    theme.isDark
+      ? '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(55, 251, 137, 0.12)'
+      : '0 12px 32px rgba(0, 0, 0, 0.12)'};
   z-index: 100;
 
   /* Desktop layout: compact popover anchored below trigger */
   @media (min-width: 769px) {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 14px);
     right: 0;
     min-width: 170px;
     opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
     visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
     transform: ${({ $isOpen }) =>
-    $isOpen ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(-4px)'};
+      $isOpen ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(-8px)'};
     transform-origin: top right;
     transition:
-      opacity 180ms ease,
-      transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 180ms;
+      opacity 200ms ease,
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 200ms;
     pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 18px;
+      transform: rotate(45deg);
+      width: 10px;
+      height: 10px;
+      background: ${({ theme }) => theme.surface};
+      border-top: 1px solid
+        ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+      border-left: 1px solid
+        ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+    }
   }
 
   /* Mobile layout: bottom-anchored full-width panel sheet */
@@ -115,6 +119,8 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
     border-radius: 20px 20px 0 0;
     padding: 1.25rem 1.25rem 2rem;
     box-sizing: border-box;
+    background: ${({ theme }) => (theme.isDark ? '#001E2B' : theme.surface)};
+    border-top: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
     opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
     visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
     transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0%)' : 'translateY(100%)')};
@@ -177,23 +183,47 @@ const OptionButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.7rem 0.9rem;
-  border: none;
-  background: ${({ $isSelected }) => ($isSelected ? 'rgba(190, 254, 114, 0.12)' : 'transparent')};
-  color: ${({ theme, $isSelected }) => ($isSelected ? theme.primary : theme.foreground)};
-  font-size: 0.9375rem;
-  font-weight: ${({ $isSelected }) => ($isSelected ? 700 : 500)};
-  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid
+    ${({ theme, $isSelected }) =>
+      $isSelected
+        ? theme.isDark
+          ? 'rgba(55, 251, 137, 0.25)'
+          : 'rgba(15, 122, 77, 0.2)'
+        : 'transparent'};
+  background: ${({ theme, $isSelected }) =>
+    $isSelected
+      ? theme.isDark
+        ? 'rgba(55, 251, 137, 0.12)'
+        : 'rgba(15, 122, 77, 0.08)'
+      : 'transparent'};
+  color: ${({ theme, $isSelected }) =>
+    $isSelected
+      ? theme.isDark
+        ? theme.colors.mint
+        : theme.accentText
+      : theme.foreground};
+  font-size: 0.9rem;
+  font-weight: ${({ $isSelected }) => ($isSelected ? 600 : 500)};
+  border-radius: 12px;
   cursor: pointer;
   text-align: left;
   transition:
     background-color 0.15s ease,
-    color 0.15s ease;
+    color 0.15s ease,
+    border-color 0.15s ease;
 
   &:hover,
   &:focus-visible {
-    background: rgba(190, 254, 114, 0.16);
-    color: ${({ theme }) => theme.primaryText};
+    background: ${({ theme, $isSelected }) =>
+      $isSelected
+        ? theme.isDark
+          ? 'rgba(55, 251, 137, 0.16)'
+          : 'rgba(15, 122, 77, 0.12)'
+        : theme.isDark
+        ? 'rgba(255, 255, 255, 0.06)'
+        : 'rgba(0, 0, 0, 0.04)'};
+    color: ${({ theme }) => theme.foreground};
     outline: none;
   }
 `;
@@ -201,7 +231,7 @@ const OptionButton = styled.button<{ $isSelected: boolean }>`
 const CheckIcon = styled.svg`
   width: 16px;
   height: 16px;
-  stroke: currentColor;
+  stroke: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
   stroke-width: 2.5;
   fill: none;
 `;
@@ -284,6 +314,9 @@ export default function LanguageSwitcher() {
         title="Select language"
       >
         <span>{currentShortCode}</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </TriggerButton>
 
       <MobileBackdrop $isOpen={isOpen} onClick={closeDropdown} aria-hidden="true" />
