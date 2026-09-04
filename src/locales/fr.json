@@ -75,7 +75,16 @@
     "verifyCertificateDesc": "Vérifiez l'authenticité d'un certificat Solvimate",
     "getStarted": "Commencer",
     "openMenu": "Ouvrir le menu de navigation",
-    "closeMenu": "Fermer le menu de navigation"
+    "closeMenu": "Fermer le menu de navigation",
+    "pages": "Pages",
+    "opportunities": "Opportunités",
+    "servicesGroup": "Services",
+    "jobs": "Emplois",
+    "candidateForm": "Formulaire Candidat",
+    "ourServices": "Nos Services",
+    "vendorForm": "Formulaire Prestataire",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre"
   },
   "footer": {
     "tagline": "Nous accompagnons les marques mondiales avec des solutions fluides de traduction, transcription et doublage vocal par IA.",
@@ -330,5 +339,28 @@
     "empty_message": "No news articles yet.",
     "read_more": "Lire l'article",
     "published_on": "Publié le"
+  },
+  "verify_page": {
+    "trust_layer_badge": "COUCHE DE CONFIANCE SOLVIMATE",
+    "title": "Recherche & Vérification de Certificat",
+    "subtitle": "Saisissez l'identifiant de votre certificat pour valider instantanément son authenticité sur Solvimate. Chaque recherche est liée à une URL de vérification permanente.",
+    "search_card_title": "Rechercher par ID de certificat",
+    "search_card_subtext": "Cette recherche redirige vers la page officielle de vérification du certificat saisi.",
+    "field_label": "ID du Certificat",
+    "field_help": "Utilisez uniquement des lettres majuscules, des chiffres et des tirets. Longueur minimale : 6.",
+    "button_verify": "Vérifier le certificat",
+    "button_verifying": "Vérification en cours...",
+    "how_it_works_title": "Comment ça marche",
+    "how_it_works_subtext": "La vérification est instantanée et se réfère au même registre de production que la validation par QR code.",
+    "format_example_title": "Exemple de format",
+    "format_example_desc": "Essayez un ID comme SVM26-A8X9Q2 pour accéder directement à la vue de vérification.",
+    "permanent_url_title": "URL Permanente",
+    "permanent_url_desc": "Chaque certificat correspond à une URL permanente telle que solvimate.com/verify/{id}.",
+    "trust_signal_title": "Signal de Confiance",
+    "trust_signal_desc": "S'il est invalide, la page indique clairement la révocation ou l'absence d'enregistrement.",
+    "authentic_title": "Certificat Solvimate Authentique",
+    "not_found_title": "Enregistrement de certificat introuvable",
+    "authentic_detail": "Le certificat #{id} est vérifié et actif dans le registre officiel des titres Solvimate.",
+    "not_found_detail": "Aucun certificat correspondant à l'ID \"{id}\" n'a été trouvé. La longueur minimale est de 6 caractères."
   }
 }

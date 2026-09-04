@@ -75,7 +75,16 @@
     "verifyCertificateDesc": "Check the authenticity of a Solvimate certificate",
     "getStarted": "Get Started",
     "openMenu": "Open navigation menu",
-    "closeMenu": "Close navigation menu"
+    "closeMenu": "Close navigation menu",
+    "pages": "Pages",
+    "opportunities": "Opportunities",
+    "servicesGroup": "Services",
+    "jobs": "Jobs",
+    "candidateForm": "Candidate Form",
+    "ourServices": "Our Services",
+    "vendorForm": "Vendor Form",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode"
   },
   "footer": {
     "tagline": "Empowering global brands with seamless translation, transcription, and AI voice dubbing solutions.",
@@ -330,5 +339,28 @@
     "empty_message": "No news articles yet.",
     "read_more": "Read Article",
     "published_on": "Published on"
+  },
+  "verify_page": {
+    "trust_layer_badge": "SOLVIMATE TRUST LAYER",
+    "title": "Certificate Search & Verification",
+    "subtitle": "Enter your certificate ID to instantly validate authenticity on Solvimate. Every lookup is mapped to a permanent verification URL.",
+    "search_card_title": "Search by Certificate ID",
+    "search_card_subtext": "This lookup redirects to the official verification page of the entered certificate.",
+    "field_label": "Certificate ID",
+    "field_help": "Use uppercase letters, numbers, and hyphen only. Minimum length: 6.",
+    "button_verify": "Verify Certificate",
+    "button_verifying": "Verifying...",
+    "how_it_works_title": "How It Works",
+    "how_it_works_subtext": "Verification is instant and references the same production record used for QR validation.",
+    "format_example_title": "Format Example",
+    "format_example_desc": "Try an ID like SVM26-A8X9Q2 to jump directly into verification view.",
+    "permanent_url_title": "Permanent URL",
+    "permanent_url_desc": "Each certificate maps to a permanent URL such as solvimate.com/verify/{id}.",
+    "trust_signal_title": "Trust Signal",
+    "trust_signal_desc": "If invalid, the page clearly marks revocation or missing certificate records.",
+    "authentic_title": "Authentic Solvimate Certificate",
+    "not_found_title": "Certificate Record Not Found",
+    "authentic_detail": "Certificate #{id} is verified and active in the official Solvimate credential registry.",
+    "not_found_detail": "No certificate matching ID \"{id}\" was found. Minimum length is 6 characters."
   }
 }

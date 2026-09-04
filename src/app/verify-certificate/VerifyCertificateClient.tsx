@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useLanguage } from '@/context/LanguageContext';
 
 const SectionWrapper = styled.section`
   width: 100%;
@@ -287,6 +288,7 @@ export default function VerifyCertificateClient() {
   const [certId, setCertId] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
   const [result, setResult] = useState<{ searched: boolean; isValid: boolean; id: string } | null>(null);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -308,25 +310,21 @@ export default function VerifyCertificateClient() {
       <PageContainer>
         {/* Header Banner Card */}
         <HeaderCard>
-          <PillBadge>SOLVIMATE TRUST LAYER</PillBadge>
-          <MainHeading>Certificate Search & Verification</MainHeading>
-          <HeaderSubtitle>
-            Enter your certificate ID to instantly validate authenticity on Solvimate. Every lookup is mapped to a permanent verification URL.
-          </HeaderSubtitle>
+          <PillBadge>{t('verify_page.trust_layer_badge')}</PillBadge>
+          <MainHeading>{t('verify_page.title')}</MainHeading>
+          <HeaderSubtitle>{t('verify_page.subtitle')}</HeaderSubtitle>
         </HeaderCard>
 
         {/* Bottom 2-Column Grid */}
         <ContentGrid>
           {/* Left Column: Search by Certificate ID */}
           <Card>
-            <SectionTitle>Search by Certificate ID</SectionTitle>
-            <SectionSubtext>
-              This lookup redirects to the official verification page of the entered certificate.
-            </SectionSubtext>
+            <SectionTitle>{t('verify_page.search_card_title')}</SectionTitle>
+            <SectionSubtext>{t('verify_page.search_card_subtext')}</SectionSubtext>
 
             <Form onSubmit={handleSubmit}>
               <InputGroup>
-                <FieldLabel htmlFor="certId">Certificate ID</FieldLabel>
+                <FieldLabel htmlFor="certId">{t('verify_page.field_label')}</FieldLabel>
                 <Input
                   id="certId"
                   type="text"
@@ -335,11 +333,11 @@ export default function VerifyCertificateClient() {
                   onChange={(e) => setCertId(e.target.value)}
                   required
                 />
-                <HelpText>Use uppercase letters, numbers, and hyphen only. Minimum length: 6.</HelpText>
+                <HelpText>{t('verify_page.field_help')}</HelpText>
               </InputGroup>
 
               <SubmitButton type="submit">
-                {isVerifying ? 'Verifying...' : 'Verify Certificate'}
+                {isVerifying ? t('verify_page.button_verifying') : t('verify_page.button_verify')}
               </SubmitButton>
             </Form>
 
@@ -352,7 +350,7 @@ export default function VerifyCertificateClient() {
                         <path d="M22 11.08V12a10 10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
-                      Authentic Solvimate Certificate
+                      {t('verify_page.authentic_title')}
                     </>
                   ) : (
                     <>
@@ -361,14 +359,14 @@ export default function VerifyCertificateClient() {
                         <line x1="15" y1="9" x2="9" y2="15" />
                         <line x1="9" y1="9" x2="15" y2="15" />
                       </svg>
-                      Certificate Record Not Found
+                      {t('verify_page.not_found_title')}
                     </>
                   )}
                 </StatusTitle>
                 <StatusDetail>
                   {result.isValid
-                    ? `Certificate #${result.id} is verified and active in the official Solvimate credential registry.`
-                    : `No certificate matching ID "${result.id}" was found. Minimum length is 6 characters.`}
+                    ? t('verify_page.authentic_detail', { id: result.id })
+                    : t('verify_page.not_found_detail', { id: result.id })}
                 </StatusDetail>
               </ResultCard>
             )}
@@ -376,31 +374,23 @@ export default function VerifyCertificateClient() {
 
           {/* Right Column: How It Works */}
           <Card>
-            <SectionTitle>How It Works</SectionTitle>
-            <SectionSubtext>
-              Verification is instant and references the same production record used for QR validation.
-            </SectionSubtext>
+            <SectionTitle>{t('verify_page.how_it_works_title')}</SectionTitle>
+            <SectionSubtext>{t('verify_page.how_it_works_subtext')}</SectionSubtext>
 
             <InfoBoxesContainer>
               <InfoBox>
-                <InfoBoxTitle>Format Example</InfoBoxTitle>
-                <InfoBoxDesc>
-                  Try an ID like SVM26-A8X9Q2 to jump directly into verification view.
-                </InfoBoxDesc>
+                <InfoBoxTitle>{t('verify_page.format_example_title')}</InfoBoxTitle>
+                <InfoBoxDesc>{t('verify_page.format_example_desc')}</InfoBoxDesc>
               </InfoBox>
 
               <InfoBox>
-                <InfoBoxTitle>Permanent URL</InfoBoxTitle>
-                <InfoBoxDesc>
-                  Each certificate maps to a permanent URL such as solvimate.com/verify/{'{id}'}.
-                </InfoBoxDesc>
+                <InfoBoxTitle>{t('verify_page.permanent_url_title')}</InfoBoxTitle>
+                <InfoBoxDesc>{t('verify_page.permanent_url_desc')}</InfoBoxDesc>
               </InfoBox>
 
               <InfoBox>
-                <InfoBoxTitle>Trust Signal</InfoBoxTitle>
-                <InfoBoxDesc>
-                  If invalid, the page clearly marks revocation or missing certificate records.
-                </InfoBoxDesc>
+                <InfoBoxTitle>{t('verify_page.trust_signal_title')}</InfoBoxTitle>
+                <InfoBoxDesc>{t('verify_page.trust_signal_desc')}</InfoBoxDesc>
               </InfoBox>
             </InfoBoxesContainer>
           </Card>
@@ -409,3 +399,4 @@ export default function VerifyCertificateClient() {
     </SectionWrapper>
   );
 }
+

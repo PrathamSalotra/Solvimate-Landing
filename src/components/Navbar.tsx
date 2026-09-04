@@ -876,66 +876,66 @@ export default function Navbar() {
 
         <DrawerBody>
           <DrawerSection>
-            <DrawerSectionTitle>PAGES</DrawerSectionTitle>
+            <DrawerSectionTitle>{t('nav.pages')}</DrawerSectionTitle>
             <DrawerLinkItem href="/" $active={isActive('/')} onClick={closeMenu}>
-              Home
+              {t('nav.home')}
             </DrawerLinkItem>
             <DrawerLinkItem href="/about" $active={isActive('/about')} onClick={closeMenu}>
-              About
+              {t('nav.about')}
             </DrawerLinkItem>
             <DrawerLinkItem href="/programs" $active={isActive('/programs')} onClick={closeMenu}>
-              Programs
+              {t('nav.programs')}
             </DrawerLinkItem>
             <DrawerLinkItem href="/contact" $active={isActive('/contact')} onClick={closeMenu}>
-              Contact
+              {t('nav.contact')}
             </DrawerLinkItem>
           </DrawerSection>
 
           <DrawerSection>
-            <DrawerSectionTitle>OPPORTUNITIES</DrawerSectionTitle>
+            <DrawerSectionTitle>{t('nav.opportunities')}</DrawerSectionTitle>
             <DrawerLinkItem href="/internships" $active={isActive('/internships')} onClick={closeMenu}>
               {isActive('/internships') && <span className="bullet-dot" />}
-              Internships
+              {t('nav.internships')}
             </DrawerLinkItem>
             <DrawerLinkItem href="/careers" $active={isActive('/careers')} onClick={closeMenu}>
-              Jobs
+              {t('nav.jobs')}
             </DrawerLinkItem>
             <DrawerLinkItem
               href="/customer-support?subject=Candidate%20Application"
               $active={pathname.includes('Candidate')}
               onClick={closeMenu}
             >
-              Candidate Form
+              {t('nav.candidateForm')}
             </DrawerLinkItem>
           </DrawerSection>
 
           <DrawerSection>
-            <DrawerSectionTitle>SERVICES</DrawerSectionTitle>
+            <DrawerSectionTitle>{t('nav.servicesGroup')}</DrawerSectionTitle>
             <DrawerLinkItem href="/services" $active={isActive('/services')} onClick={closeMenu}>
-              Our Services
+              {t('nav.ourServices')}
             </DrawerLinkItem>
             <DrawerLinkItem
               href="/customer-support?subject=Vendor%20Application"
               $active={pathname.includes('Vendor')}
               onClick={closeMenu}
             >
-              Vendor Form
+              {t('nav.vendorForm')}
             </DrawerLinkItem>
           </DrawerSection>
 
           <DrawerSection>
-            <DrawerSectionTitle>MORE</DrawerSectionTitle>
+            <DrawerSectionTitle>{t('nav.more')}</DrawerSectionTitle>
             <DrawerLinkItem
               href="/verify-certificate"
               $active={isActive('/verify-certificate')}
               onClick={closeMenu}
             >
-              Verify Certificate
+              {t('nav.verifyCertificate')}
             </DrawerLinkItem>
           </DrawerSection>
 
           <DrawerSection>
-            <DrawerSectionTitle>LANGUAGE / भाषा</DrawerSectionTitle>
+            <DrawerSectionTitle>{t('common.language')}</DrawerSectionTitle>
             <LanguageChipRow>
               {(['en', 'hi', 'es', 'fr', 'de'] as Locale[]).map((lang) => (
                 <LanguageChip
@@ -965,20 +965,20 @@ export default function Navbar() {
                   <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                   <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </svg>
-                Light mode
+                {t('nav.lightMode')}
               </>
             ) : (
               <>
                 <svg viewBox="0 0 24 24">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
-                Dark mode
+                {t('nav.darkMode')}
               </>
             )}
           </DrawerThemeToggleBtn>
 
           <DrawerCTABtn href="/verify-certificate" onClick={closeMenu}>
-            Verify Certificate
+            {t('nav.verifyCertificate')}
             <svg viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
