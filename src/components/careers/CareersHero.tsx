@@ -139,9 +139,9 @@ const TrackBadge = styled.span`
   font-weight: 700;
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
-  background: rgba(55, 251, 137, 0.12);
-  color: ${({ theme }) => theme.primaryHover};
-  border: 1px solid rgba(55, 251, 137, 0.3);
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.accentText)};
+  border: 1px solid rgba(190, 254, 114, 0.35);
 `;
 
 const TrackDesc = styled.p`

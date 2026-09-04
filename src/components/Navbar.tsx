@@ -4,7 +4,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage, Locale } from '@/context/LanguageContext';
+import { useTheme } from '@/context/ThemeContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 
@@ -43,7 +44,7 @@ const NavContainer = styled.nav`
   padding: 0 1.5rem;
   box-sizing: border-box;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding: 0 1rem;
   }
 `;
@@ -63,7 +64,7 @@ const LogoMarkImage = styled.img`
   border-radius: 8px;
   flex-shrink: 0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 32px;
     height: 32px;
   }
@@ -92,7 +93,7 @@ const DesktopNavLinks = styled.ul`
   padding: 0;
   position: relative;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -145,7 +146,7 @@ const RightActions = styled.div`
   align-items: center;
   gap: 0.75rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     gap: 0.5rem;
   }
 `;
@@ -154,7 +155,7 @@ const DesktopOnlyWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -185,7 +186,7 @@ const CTAButton = styled(Link)`
     transform: translateY(-1px);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -205,7 +206,7 @@ const HamburgerButton = styled.button`
   padding: 0;
   flex-shrink: 0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: inline-flex;
   }
 
@@ -215,123 +216,6 @@ const HamburgerButton = styled.button`
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
-  }
-`;
-
-const MobileMenuDrawer = styled.div<{ $isOpen: boolean }>`
-  display: none;
-
-  @media (max-width: 768px) {
-    display: flex;
-    position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: ${({ theme }) => theme.surface};
-    border-bottom: 1px solid ${({ theme }) => theme.border};
-    padding: 1.5rem 1.25rem 2rem;
-    flex-direction: column;
-    gap: 1.25rem;
-    z-index: 40;
-    max-height: calc(100vh - 72px);
-    overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-    transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-12px)')};
-    transition:
-      transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 250ms ease,
-      visibility 250ms;
-    pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none !important;
-  }
-`;
-
-const MobileNavLinks = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`;
-
-const MobileNavLink = styled(Link)<{ $active?: boolean }>`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 1rem;
-  font-weight: ${({ $active }) => ($active ? '600' : '500')};
-  color: ${({ theme, $active }) => ($active ? theme.primaryText : theme.textSecondary)};
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.border};
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.foreground};
-  }
-
-  &::after {
-    content: '';
-    display: ${({ $active }) => ($active ? 'block' : 'none')};
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: ${({ theme }) => theme.primary};
-  }
-`;
-
-const MobileActionsRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.5rem;
-`;
-
-const MobileCTAButton = styled(Link)`
-  display: block;
-  text-align: center;
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  background: ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.colors.ink};
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-
-  &:hover {
-    background: ${({ theme }) => theme.primaryHover};
-  }
-`;
-
-const MobileBackdrop = styled.div<{ $isOpen: boolean }>`
-  display: none;
-
-  @media (max-width: 768px) {
-    display: block;
-    position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 39;
-    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-    transition:
-      opacity 250ms ease,
-      visibility 250ms;
-    pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   }
 `;
 
@@ -476,12 +360,292 @@ const DropdownItemDesc = styled.span`
   line-height: 1.35;
 `;
 
+// Slide-Over Right Drawer Components
+const DrawerBackdrop = styled.div<{ $isOpen: boolean }>`
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99;
+    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transition:
+      opacity 300ms ease,
+      visibility 300ms;
+    pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+  }
+`;
+
+const DrawerPanel = styled.aside<{ $isOpen: boolean }>`
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 340px;
+    max-width: 85vw;
+    background: ${({ theme }) => (theme.isDark ? '#001E2B' : theme.surface)};
+    border-left: 1px solid ${({ theme }) => theme.border};
+    z-index: 100;
+    flex-direction: column;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transition:
+      transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 300ms;
+    pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
+  }
+`;
+
+const DrawerHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.border};
+`;
+
+const DrawerLogoTitle = styled.span`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.foreground};
+`;
+
+const DrawerCloseButton = styled.button`
+  background: transparent;
+  border: none;
+  color: ${({ theme }) => theme.textSecondary};
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.foreground};
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+`;
+
+const DrawerBody = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.border};
+    border-radius: 4px;
+  }
+`;
+
+const DrawerSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const DrawerSectionTitle = styled.div`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.textSecondary};
+  margin-bottom: 0.2rem;
+`;
+
+const DrawerLinkItem = styled(Link)<{ $active?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.95rem;
+  font-weight: ${({ $active }) => ($active ? '600' : '500')};
+  color: ${({ theme, $active }) => ($active ? theme.foreground : theme.textSecondary)};
+  text-decoration: none;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: ${({ theme, $active }) =>
+    $active ? (theme.isDark ? 'rgba(55, 251, 137, 0.12)' : 'rgba(15, 122, 77, 0.08)') : 'transparent'};
+  border: 1px solid
+    ${({ theme, $active }) =>
+      $active ? (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : 'rgba(15, 122, 77, 0.2)') : 'transparent'};
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.foreground};
+    background: ${({ theme, $active }) =>
+      $active
+        ? theme.isDark
+          ? 'rgba(55, 251, 137, 0.16)'
+          : 'rgba(15, 122, 77, 0.12)'
+        : theme.isDark
+        ? 'rgba(255, 255, 255, 0.04)'
+        : 'rgba(0, 0, 0, 0.03)'};
+  }
+
+  .bullet-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
+    flex-shrink: 0;
+  }
+`;
+
+const LanguageChipRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+`;
+
+const LanguageChip = styled.button<{ $active: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid
+    ${({ theme, $active }) =>
+      $active
+        ? theme.isDark
+          ? theme.colors.mint
+          : theme.accentText
+        : theme.border};
+  background: ${({ theme, $active }) =>
+    $active
+      ? theme.isDark
+        ? 'rgba(55, 251, 137, 0.15)'
+        : 'rgba(15, 122, 77, 0.1)'
+      : 'transparent'};
+  color: ${({ theme, $active }) =>
+    $active
+      ? theme.isDark
+        ? theme.colors.mint
+        : theme.accentText
+      : theme.textSecondary};
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.foreground};
+    border-color: ${({ theme }) => theme.foreground};
+  }
+`;
+
+const DrawerFooter = styled.div`
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid ${({ theme }) => theme.border};
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background: ${({ theme }) => (theme.isDark ? '#001E2B' : theme.surface)};
+`;
+
+const DrawerThemeToggleBtn = styled.button`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.textSecondary};
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.foreground};
+    border-color: ${({ theme }) => theme.foreground};
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+  }
+`;
+
+const DrawerCTABtn = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #001e2b;
+  background: #befe72;
+  border-radius: 9999px;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px -4px rgba(190, 254, 114, 0.35);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: #37fb89;
+    transform: translateY(-1px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+  }
+`;
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const { t, locale, setLocale } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const navContainerRef = React.useRef<HTMLUListElement | null>(null);
   const navLinksRef = React.useRef<Map<string, HTMLAnchorElement | null>>(new Map());
@@ -697,51 +861,131 @@ export default function Navbar() {
         </NavContainer>
       </Header>
 
-      <MobileBackdrop $isOpen={isOpen} onClick={closeMenu} aria-hidden="true" />
+      <DrawerBackdrop $isOpen={isOpen} onClick={closeMenu} aria-hidden="true" />
 
-      <MobileMenuDrawer
-        id="mobile-nav"
-        $isOpen={isOpen}
-        role="navigation"
-        aria-label="Mobile navigation"
-      >
-        <MobileNavLinks>
-          {mainNavItems.map((item) => (
-            <li key={item.href}>
-              <MobileNavLink
-                href={item.href}
-                $active={isActive(item.href)}
-                aria-current={isActive(item.href) ? 'page' : undefined}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </MobileNavLink>
-            </li>
-          ))}
+      <DrawerPanel id="mobile-nav" $isOpen={isOpen} role="navigation" aria-label="Side navigation">
+        <DrawerHeader>
+          <DrawerLogoTitle>SOLVIMATE</DrawerLogoTitle>
+          <DrawerCloseButton onClick={closeMenu} aria-label="Close navigation">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </DrawerCloseButton>
+        </DrawerHeader>
 
-          <li>
-            <MobileNavLink
-              href="/verify-certificate"
-              $active={isActive('/verify-certificate')}
-              aria-current={isActive('/verify-certificate') ? 'page' : undefined}
+        <DrawerBody>
+          <DrawerSection>
+            <DrawerSectionTitle>PAGES</DrawerSectionTitle>
+            <DrawerLinkItem href="/" $active={isActive('/')} onClick={closeMenu}>
+              Home
+            </DrawerLinkItem>
+            <DrawerLinkItem href="/about" $active={isActive('/about')} onClick={closeMenu}>
+              About
+            </DrawerLinkItem>
+            <DrawerLinkItem href="/programs" $active={isActive('/programs')} onClick={closeMenu}>
+              Programs
+            </DrawerLinkItem>
+            <DrawerLinkItem href="/contact" $active={isActive('/contact')} onClick={closeMenu}>
+              Contact
+            </DrawerLinkItem>
+          </DrawerSection>
+
+          <DrawerSection>
+            <DrawerSectionTitle>OPPORTUNITIES</DrawerSectionTitle>
+            <DrawerLinkItem href="/internships" $active={isActive('/internships')} onClick={closeMenu}>
+              {isActive('/internships') && <span className="bullet-dot" />}
+              Internships
+            </DrawerLinkItem>
+            <DrawerLinkItem href="/careers" $active={isActive('/careers')} onClick={closeMenu}>
+              Jobs
+            </DrawerLinkItem>
+            <DrawerLinkItem
+              href="/customer-support?subject=Candidate%20Application"
+              $active={pathname.includes('Candidate')}
               onClick={closeMenu}
             >
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ color: 'var(--mint-color, #37FB89)', fontWeight: 700 }}>→</span>
-                {t('nav.verifyCertificate')}
-              </span>
-            </MobileNavLink>
-          </li>
-        </MobileNavLinks>
+              Candidate Form
+            </DrawerLinkItem>
+          </DrawerSection>
 
-        <MobileActionsRow>
-          <LanguageSwitcher />
-        </MobileActionsRow>
+          <DrawerSection>
+            <DrawerSectionTitle>SERVICES</DrawerSectionTitle>
+            <DrawerLinkItem href="/services" $active={isActive('/services')} onClick={closeMenu}>
+              Our Services
+            </DrawerLinkItem>
+            <DrawerLinkItem
+              href="/customer-support?subject=Vendor%20Application"
+              $active={pathname.includes('Vendor')}
+              onClick={closeMenu}
+            >
+              Vendor Form
+            </DrawerLinkItem>
+          </DrawerSection>
 
-        <MobileCTAButton href="/contact" onClick={closeMenu}>
-          {t('nav.getStarted')}
-        </MobileCTAButton>
-      </MobileMenuDrawer>
+          <DrawerSection>
+            <DrawerSectionTitle>MORE</DrawerSectionTitle>
+            <DrawerLinkItem
+              href="/verify-certificate"
+              $active={isActive('/verify-certificate')}
+              onClick={closeMenu}
+            >
+              Verify Certificate
+            </DrawerLinkItem>
+          </DrawerSection>
+
+          <DrawerSection>
+            <DrawerSectionTitle>LANGUAGE / भाषा</DrawerSectionTitle>
+            <LanguageChipRow>
+              {(['en', 'hi', 'es', 'fr', 'de'] as Locale[]).map((lang) => (
+                <LanguageChip
+                  key={lang}
+                  $active={locale === lang}
+                  onClick={() => setLocale(lang)}
+                >
+                  {lang.toUpperCase()}
+                </LanguageChip>
+              ))}
+            </LanguageChipRow>
+          </DrawerSection>
+        </DrawerBody>
+
+        <DrawerFooter>
+          <DrawerThemeToggleBtn onClick={toggleTheme}>
+            {theme === 'dark' ? (
+              <>
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5" />
+                  <line x1="12" y1="1" x2="12" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" />
+                  <line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+                Light mode
+              </>
+            ) : (
+              <>
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                Dark mode
+              </>
+            )}
+          </DrawerThemeToggleBtn>
+
+          <DrawerCTABtn href="/verify-certificate" onClick={closeMenu}>
+            Verify Certificate
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </DrawerCTABtn>
+        </DrawerFooter>
+      </DrawerPanel>
     </>
   );
 }

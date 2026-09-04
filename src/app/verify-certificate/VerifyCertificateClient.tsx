@@ -2,28 +2,18 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
-const PageWrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.foreground};
-`;
-
-const MainContent = styled.main`
-  flex: 1;
-  padding-top: 110px;
-  padding-bottom: 90px;
+const SectionWrapper = styled.section`
+  width: 100%;
+  padding: 3rem 1.5rem 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem 4rem;
+  }
 `;
 
 const PageContainer = styled.div`
@@ -60,7 +50,7 @@ const PillBadge = styled.div`
   border-radius: 9999px;
   background-color: ${({ theme }) => theme.accentBadgeBg};
   border: 1px solid ${({ theme }) => theme.accentBadgeBorder};
-  color: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
+  color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.accentText)};
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -192,11 +182,11 @@ const HelpText = styled.span`
 const SubmitButton = styled.button`
   width: 100%;
   height: 48px;
-  border-radius: 12px;
-  background: ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.colors.ink};
-  font-size: 0.95rem;
-  font-weight: 600;
+  border-radius: 9999px;
+  background: #BEFE72;
+  color: #001E2B;
+  font-size: 0.98rem;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   display: inline-flex;
@@ -204,17 +194,20 @@ const SubmitButton = styled.button`
   justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 10px 25px -5px rgba(190, 254, 114, 0.35);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.primaryHover};
-    transform: translateY(-1px);
+    background: #37FB89;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -5px rgba(190, 254, 114, 0.45);
   }
 
-  &:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    transform: none;
+  &:active {
+    transform: translateY(0);
   }
 `;
 
@@ -238,7 +231,7 @@ const InfoBox = styled.div`
 const InfoBoxTitle = styled.div`
   font-size: 0.88rem;
   font-weight: 700;
-  color: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
+  color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.accentText)};
 `;
 
 const InfoBoxDesc = styled.div`
@@ -311,112 +304,108 @@ export default function VerifyCertificateClient() {
   };
 
   return (
-    <PageWrapper>
-      <Navbar />
-      <MainContent>
-        <PageContainer>
-          {/* Header Banner Card */}
-          <HeaderCard>
-            <PillBadge>SOLVIMATE TRUST LAYER</PillBadge>
-            <MainHeading>Certificate Search & Verification</MainHeading>
-            <HeaderSubtitle>
-              Enter your certificate ID to instantly validate authenticity on Solvimate. Every lookup is mapped to a permanent verification URL.
-            </HeaderSubtitle>
-          </HeaderCard>
+    <SectionWrapper>
+      <PageContainer>
+        {/* Header Banner Card */}
+        <HeaderCard>
+          <PillBadge>SOLVIMATE TRUST LAYER</PillBadge>
+          <MainHeading>Certificate Search & Verification</MainHeading>
+          <HeaderSubtitle>
+            Enter your certificate ID to instantly validate authenticity on Solvimate. Every lookup is mapped to a permanent verification URL.
+          </HeaderSubtitle>
+        </HeaderCard>
 
-          {/* Bottom 2-Column Grid */}
-          <ContentGrid>
-            {/* Left Column: Search by Certificate ID */}
-            <Card>
-              <SectionTitle>Search by Certificate ID</SectionTitle>
-              <SectionSubtext>
-                This lookup redirects to the official verification page of the entered certificate.
-              </SectionSubtext>
+        {/* Bottom 2-Column Grid */}
+        <ContentGrid>
+          {/* Left Column: Search by Certificate ID */}
+          <Card>
+            <SectionTitle>Search by Certificate ID</SectionTitle>
+            <SectionSubtext>
+              This lookup redirects to the official verification page of the entered certificate.
+            </SectionSubtext>
 
-              <Form onSubmit={handleSubmit}>
-                <InputGroup>
-                  <FieldLabel htmlFor="certId">Certificate ID</FieldLabel>
-                  <Input
-                    id="certId"
-                    type="text"
-                    placeholder="SVM26-A8X9Q2"
-                    value={certId}
-                    onChange={(e) => setCertId(e.target.value)}
-                    required
-                  />
-                  <HelpText>Use uppercase letters, numbers, and hyphen only. Minimum length: 6.</HelpText>
-                </InputGroup>
+            <Form onSubmit={handleSubmit}>
+              <InputGroup>
+                <FieldLabel htmlFor="certId">Certificate ID</FieldLabel>
+                <Input
+                  id="certId"
+                  type="text"
+                  placeholder="SVM26-A8X9Q2"
+                  value={certId}
+                  onChange={(e) => setCertId(e.target.value)}
+                  required
+                />
+                <HelpText>Use uppercase letters, numbers, and hyphen only. Minimum length: 6.</HelpText>
+              </InputGroup>
 
-                <SubmitButton type="submit" disabled={isVerifying || !certId.trim()}>
-                  {isVerifying ? 'Verifying...' : 'Verify Certificate'}
-                </SubmitButton>
-              </Form>
+              <SubmitButton type="submit">
+                {isVerifying ? 'Verifying...' : 'Verify Certificate'}
+              </SubmitButton>
+            </Form>
 
-              {result && result.searched && (
-                <ResultCard $isValid={result.isValid}>
-                  <StatusTitle $isValid={result.isValid}>
-                    {result.isValid ? (
-                      <>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M22 11.08V12a10 10 10 0 1 1-5.93-9.14" />
-                          <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>
-                        Authentic Solvimate Certificate
-                      </>
-                    ) : (
-                      <>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <circle cx="12" cy="12" r="10" />
-                          <line x1="15" y1="9" x2="9" y2="15" />
-                          <line x1="9" y1="9" x2="15" y2="15" />
-                        </svg>
-                        Certificate Record Not Found
-                      </>
-                    )}
-                  </StatusTitle>
-                  <StatusDetail>
-                    {result.isValid
-                      ? `Certificate #${result.id} is verified and active in the official Solvimate credential registry.`
-                      : `No certificate matching ID "${result.id}" was found. Minimum length is 6 characters.`}
-                  </StatusDetail>
-                </ResultCard>
-              )}
-            </Card>
+            {result && result.searched && (
+              <ResultCard $isValid={result.isValid}>
+                <StatusTitle $isValid={result.isValid}>
+                  {result.isValid ? (
+                    <>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M22 11.08V12a10 10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </svg>
+                      Authentic Solvimate Certificate
+                    </>
+                  ) : (
+                    <>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="15" y1="9" x2="9" y2="15" />
+                        <line x1="9" y1="9" x2="15" y2="15" />
+                      </svg>
+                      Certificate Record Not Found
+                    </>
+                  )}
+                </StatusTitle>
+                <StatusDetail>
+                  {result.isValid
+                    ? `Certificate #${result.id} is verified and active in the official Solvimate credential registry.`
+                    : `No certificate matching ID "${result.id}" was found. Minimum length is 6 characters.`}
+                </StatusDetail>
+              </ResultCard>
+            )}
+          </Card>
 
-            {/* Right Column: How It Works */}
-            <Card>
-              <SectionTitle>How It Works</SectionTitle>
-              <SectionSubtext>
-                Verification is instant and references the same production record used for QR validation.
-              </SectionSubtext>
+          {/* Right Column: How It Works */}
+          <Card>
+            <SectionTitle>How It Works</SectionTitle>
+            <SectionSubtext>
+              Verification is instant and references the same production record used for QR validation.
+            </SectionSubtext>
 
-              <InfoBoxesContainer>
-                <InfoBox>
-                  <InfoBoxTitle>Format Example</InfoBoxTitle>
-                  <InfoBoxDesc>
-                    Try an ID like SVM26-A8X9Q2 to jump directly into verification view.
-                  </InfoBoxDesc>
-                </InfoBox>
+            <InfoBoxesContainer>
+              <InfoBox>
+                <InfoBoxTitle>Format Example</InfoBoxTitle>
+                <InfoBoxDesc>
+                  Try an ID like SVM26-A8X9Q2 to jump directly into verification view.
+                </InfoBoxDesc>
+              </InfoBox>
 
-                <InfoBox>
-                  <InfoBoxTitle>Permanent URL</InfoBoxTitle>
-                  <InfoBoxDesc>
-                    Each certificate maps to a permanent URL such as solvimate.com/verify/{'{id}'}.
-                  </InfoBoxDesc>
-                </InfoBox>
+              <InfoBox>
+                <InfoBoxTitle>Permanent URL</InfoBoxTitle>
+                <InfoBoxDesc>
+                  Each certificate maps to a permanent URL such as solvimate.com/verify/{'{id}'}.
+                </InfoBoxDesc>
+              </InfoBox>
 
-                <InfoBox>
-                  <InfoBoxTitle>Trust Signal</InfoBoxTitle>
-                  <InfoBoxDesc>
-                    If invalid, the page clearly marks revocation or missing certificate records.
-                  </InfoBoxDesc>
-                </InfoBox>
-              </InfoBoxesContainer>
-            </Card>
-          </ContentGrid>
-        </PageContainer>
-      </MainContent>
-      <Footer />
-    </PageWrapper>
+              <InfoBox>
+                <InfoBoxTitle>Trust Signal</InfoBoxTitle>
+                <InfoBoxDesc>
+                  If invalid, the page clearly marks revocation or missing certificate records.
+                </InfoBoxDesc>
+              </InfoBox>
+            </InfoBoxesContainer>
+          </Card>
+        </ContentGrid>
+      </PageContainer>
+    </SectionWrapper>
   );
 }
