@@ -160,12 +160,15 @@ const Input = styled.input`
   font-family: ${({ theme }) => theme.fonts.mono};
   color: ${({ theme }) => theme.foreground};
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-sizing: border-box;
 
   &:focus {
     border-color: ${({ theme }) => theme.primary};
-    box-shadow: 0 0 0 3px ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.15)' : 'rgba(15, 122, 77, 0.15)')};
+    box-shadow: 0 0 0 3px
+      ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.15)' : 'rgba(15, 122, 77, 0.15)')};
   }
 
   &::placeholder {
@@ -184,8 +187,8 @@ const SubmitButton = styled.button`
   width: 100%;
   height: 48px;
   border-radius: 9999px;
-  background: #BEFE72;
-  color: #001E2B;
+  background: #befe72;
+  color: #001e2b;
   font-size: 0.98rem;
   font-weight: 700;
   border: none;
@@ -202,7 +205,7 @@ const SubmitButton = styled.button`
     box-shadow 0.2s ease;
 
   &:hover {
-    background: #37FB89;
+    background: #37fb89;
     transform: translateY(-2px);
     box-shadow: 0 14px 30px -5px rgba(190, 254, 114, 0.45);
   }
@@ -271,11 +274,7 @@ const StatusTitle = styled.div<{ $isValid: boolean }>`
   font-weight: 600;
   font-size: 0.95rem;
   color: ${({ theme, $isValid }) =>
-    $isValid
-      ? theme.isDark
-        ? theme.colors.mint
-        : theme.accentText
-      : theme.error};
+    $isValid ? (theme.isDark ? theme.colors.mint : theme.accentText) : theme.error};
 `;
 
 const StatusDetail = styled.div`
@@ -287,7 +286,9 @@ const StatusDetail = styled.div`
 export default function VerifyCertificateClient() {
   const [certId, setCertId] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
-  const [result, setResult] = useState<{ searched: boolean; isValid: boolean; id: string } | null>(null);
+  const [result, setResult] = useState<{ searched: boolean; isValid: boolean; id: string } | null>(
+    null
+  );
   const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -346,7 +347,14 @@ export default function VerifyCertificateClient() {
                 <StatusTitle $isValid={result.isValid}>
                   {result.isValid ? (
                     <>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
                         <path d="M22 11.08V12a10 10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
@@ -354,7 +362,14 @@ export default function VerifyCertificateClient() {
                     </>
                   ) : (
                     <>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
                         <circle cx="12" cy="12" r="10" />
                         <line x1="15" y1="9" x2="9" y2="15" />
                         <line x1="9" y1="9" x2="15" y2="15" />
@@ -399,4 +414,3 @@ export default function VerifyCertificateClient() {
     </SectionWrapper>
   );
 }
-

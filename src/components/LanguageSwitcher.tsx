@@ -16,7 +16,7 @@ const TriggerButton = styled.button<{ $isOpen: boolean }>`
   font-weight: ${({ $isOpen }) => ($isOpen ? '600' : '500')};
   letter-spacing: 0.02em;
   color: ${({ theme, $isOpen }) =>
-    $isOpen ? (theme.isDark ? theme.colors.mint : theme.accentText) : theme.textSecondary};
+    $isOpen ? (theme.isDark ? '#BEFE72' : theme.accentText) : theme.textSecondary};
   background: transparent;
   border: none;
   padding: 0.5rem 0;
@@ -28,7 +28,7 @@ const TriggerButton = styled.button<{ $isOpen: boolean }>`
   outline: none;
 
   &:hover {
-    color: ${({ theme }) => theme.foreground};
+    color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.foreground)};
   }
 
   svg {
@@ -67,12 +67,12 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
   padding: 0.5rem;
   background: ${({ theme }) => theme.surface};
   border: 1px solid
-    ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+    ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
   border-radius: 16px;
   box-shadow: ${({ theme }) =>
     theme.isDark
-      ? '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(55, 251, 137, 0.12)'
-      : '0 12px 32px rgba(0, 0, 0, 0.12)'};
+      ? '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(190, 254, 114, 0.15)'
+      : '0 12px 32px rgba(190, 254, 114, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08)'};
   z-index: 100;
 
   /* Desktop layout: compact popover anchored below trigger */
@@ -102,9 +102,9 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
       height: 10px;
       background: ${({ theme }) => theme.surface};
       border-top: 1px solid
-        ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+        ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
       border-left: 1px solid
-        ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+        ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
     }
   }
 
@@ -120,7 +120,8 @@ const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
     padding: 1.25rem 1.25rem 2rem;
     box-sizing: border-box;
     background: ${({ theme }) => (theme.isDark ? '#001E2B' : theme.surface)};
-    border-top: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+    border-top: 1px solid
+      ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
     opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
     visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
     transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0%)' : 'translateY(100%)')};
@@ -188,21 +189,17 @@ const OptionButton = styled.button<{ $isSelected: boolean }>`
     ${({ theme, $isSelected }) =>
       $isSelected
         ? theme.isDark
-          ? 'rgba(55, 251, 137, 0.25)'
-          : 'rgba(15, 122, 77, 0.2)'
+          ? 'rgba(190, 254, 114, 0.35)'
+          : 'rgba(190, 254, 114, 0.3)'
         : 'transparent'};
   background: ${({ theme, $isSelected }) =>
     $isSelected
       ? theme.isDark
-        ? 'rgba(55, 251, 137, 0.12)'
-        : 'rgba(15, 122, 77, 0.08)'
+        ? 'rgba(190, 254, 114, 0.15)'
+        : 'rgba(190, 254, 114, 0.12)'
       : 'transparent'};
   color: ${({ theme, $isSelected }) =>
-    $isSelected
-      ? theme.isDark
-        ? theme.colors.mint
-        : theme.accentText
-      : theme.foreground};
+    $isSelected ? (theme.isDark ? '#BEFE72' : theme.accentText) : theme.foreground};
   font-size: 0.9rem;
   font-weight: ${({ $isSelected }) => ($isSelected ? 600 : 500)};
   border-radius: 12px;
@@ -218,12 +215,13 @@ const OptionButton = styled.button<{ $isSelected: boolean }>`
     background: ${({ theme, $isSelected }) =>
       $isSelected
         ? theme.isDark
-          ? 'rgba(55, 251, 137, 0.16)'
-          : 'rgba(15, 122, 77, 0.12)'
+          ? 'rgba(190, 254, 114, 0.22)'
+          : 'rgba(190, 254, 114, 0.18)'
         : theme.isDark
-        ? 'rgba(255, 255, 255, 0.06)'
-        : 'rgba(0, 0, 0, 0.04)'};
-    color: ${({ theme }) => theme.foreground};
+          ? 'rgba(190, 254, 114, 0.08)'
+          : 'rgba(190, 254, 114, 0.1)'};
+    color: ${({ theme, $isSelected }) =>
+      $isSelected || theme.isDark ? '#BEFE72' : theme.foreground};
     outline: none;
   }
 `;
@@ -231,7 +229,7 @@ const OptionButton = styled.button<{ $isSelected: boolean }>`
 const CheckIcon = styled.svg`
   width: 16px;
   height: 16px;
-  stroke: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
+  stroke: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.accentText)};
   stroke-width: 2.5;
   fill: none;
 `;
@@ -251,8 +249,7 @@ export default function LanguageSwitcher() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const currentShortCode =
-    LANGUAGE_OPTIONS.find((lang) => lang.code === locale)?.shortCode || 'EN';
+  const currentShortCode = LANGUAGE_OPTIONS.find((lang) => lang.code === locale)?.shortCode || 'EN';
 
   const toggleDropdown = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -324,11 +321,7 @@ export default function LanguageSwitcher() {
       <DropdownMenu $isOpen={isOpen} role="listbox" aria-label="Languages">
         <MobileHeader>
           <span>Select Language</span>
-          <CloseButton
-            type="button"
-            onClick={closeDropdown}
-            aria-label="Close language menu"
-          >
+          <CloseButton type="button" onClick={closeDropdown} aria-label="Close language menu">
             <svg
               width="20"
               height="20"

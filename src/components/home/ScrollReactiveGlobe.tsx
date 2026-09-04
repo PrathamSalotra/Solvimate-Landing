@@ -86,7 +86,7 @@ export default function ScrollReactiveGlobe() {
       mapBrightness: isDark ? 10 : 6,
       // Dark mode: bright mint/teal continents [0.22, 0.55, 0.45]
       // Light mode: continents #2A362E ([0.165, 0.212, 0.180]), water/glow is dark mode continent color ([0.22, 0.55, 0.45])
-      baseColor: isDark ? [0.22, 0.55, 0.45] : [0.90, 0.98, 0.90],
+      baseColor: isDark ? [0.22, 0.55, 0.45] : [0.9, 0.98, 0.9],
       markerColor: isDark ? [0.74, 0.99, 0.44] : [0.165, 0.212, 0.18],
       glowColor: isDark ? [0.22, 0.98, 0.54] : [0.22, 0.55, 0.45],
       markers: [
@@ -116,10 +116,7 @@ export default function ScrollReactiveGlobe() {
           velocity.current += addedVelocity;
 
           // Clamp velocity to sane maximum
-          velocity.current = Math.max(
-            Math.min(velocity.current, MAX_VELOCITY),
-            -MAX_VELOCITY
-          );
+          velocity.current = Math.max(Math.min(velocity.current, MAX_VELOCITY), -MAX_VELOCITY);
         }
 
         // Smooth physical decay toward idle speed

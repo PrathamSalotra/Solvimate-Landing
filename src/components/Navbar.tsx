@@ -233,7 +233,7 @@ const MoreTriggerButton = styled.button<{ $active?: boolean; $isOpen?: boolean }
   font-weight: ${({ $active, $isOpen }) => ($active || $isOpen ? '600' : '500')};
   letter-spacing: 0.02em;
   color: ${({ theme, $active, $isOpen }) =>
-    $active || $isOpen ? theme.primaryText : theme.textSecondary};
+    $active || $isOpen ? (theme.isDark ? '#BEFE72' : theme.primaryText) : theme.textSecondary};
   background: transparent;
   border: none;
   padding: 0.5rem 0;
@@ -244,7 +244,7 @@ const MoreTriggerButton = styled.button<{ $active?: boolean; $isOpen?: boolean }
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.foreground};
+    color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.foreground)};
   }
 
   svg {
@@ -266,13 +266,13 @@ const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   width: 290px;
   background: ${({ theme }) => theme.surface};
   border: 1px solid
-    ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+    ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
   border-radius: 16px;
   padding: 0.75rem;
   box-shadow: ${({ theme }) =>
     theme.isDark
-      ? '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(55, 251, 137, 0.12)'
-      : '0 12px 32px rgba(0, 0, 0, 0.12)'};
+      ? '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(190, 254, 114, 0.15)'
+      : '0 12px 32px rgba(190, 254, 114, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08)'};
   z-index: 100;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
@@ -292,9 +292,9 @@ const DropdownMenu = styled.div<{ $isOpen: boolean }>`
     height: 10px;
     background: ${({ theme }) => theme.surface};
     border-top: 1px solid
-      ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+      ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
     border-left: 1px solid
-      ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+      ${({ theme }) => (theme.isDark ? 'rgba(190, 254, 114, 0.3)' : 'rgba(190, 254, 114, 0.35)')};
   }
 `;
 
@@ -312,7 +312,7 @@ const DropdownItemLink = styled(Link)`
 
   &:hover {
     background: ${({ theme }) =>
-      theme.isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.04)'};
+      theme.isDark ? 'rgba(190, 254, 114, 0.12)' : 'rgba(190, 254, 114, 0.15)'};
   }
 
   &:hover .arrow-icon-svg {
@@ -325,7 +325,7 @@ const DropdownIconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 1px;
-  color: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
+  color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.accentText)};
   flex-shrink: 0;
 
   .arrow-icon-svg {
@@ -499,10 +499,18 @@ const DrawerLinkItem = styled(Link)<{ $active?: boolean }>`
   align-items: center;
   gap: 0.6rem;
   background: ${({ theme, $active }) =>
-    $active ? (theme.isDark ? 'rgba(55, 251, 137, 0.12)' : 'rgba(15, 122, 77, 0.08)') : 'transparent'};
+    $active
+      ? theme.isDark
+        ? 'rgba(55, 251, 137, 0.12)'
+        : 'rgba(15, 122, 77, 0.08)'
+      : 'transparent'};
   border: 1px solid
     ${({ theme, $active }) =>
-      $active ? (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : 'rgba(15, 122, 77, 0.2)') : 'transparent'};
+      $active
+        ? theme.isDark
+          ? 'rgba(55, 251, 137, 0.25)'
+          : 'rgba(15, 122, 77, 0.2)'
+        : 'transparent'};
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
@@ -515,8 +523,8 @@ const DrawerLinkItem = styled(Link)<{ $active?: boolean }>`
           ? 'rgba(55, 251, 137, 0.16)'
           : 'rgba(15, 122, 77, 0.12)'
         : theme.isDark
-        ? 'rgba(255, 255, 255, 0.04)'
-        : 'rgba(0, 0, 0, 0.03)'};
+          ? 'rgba(255, 255, 255, 0.04)'
+          : 'rgba(0, 0, 0, 0.03)'};
   }
 
   .bullet-dot {
@@ -543,29 +551,21 @@ const LanguageChip = styled.button<{ $active: boolean }>`
   border-radius: 9999px;
   border: 1px solid
     ${({ theme, $active }) =>
-      $active
-        ? theme.isDark
-          ? theme.colors.mint
-          : theme.accentText
-        : theme.border};
+      $active ? (theme.isDark ? '#BEFE72' : theme.accentText) : theme.border};
   background: ${({ theme, $active }) =>
     $active
       ? theme.isDark
-        ? 'rgba(55, 251, 137, 0.15)'
-        : 'rgba(15, 122, 77, 0.1)'
+        ? 'rgba(190, 254, 114, 0.18)'
+        : 'rgba(190, 254, 114, 0.12)'
       : 'transparent'};
   color: ${({ theme, $active }) =>
-    $active
-      ? theme.isDark
-        ? theme.colors.mint
-        : theme.accentText
-      : theme.textSecondary};
+    $active ? (theme.isDark ? '#BEFE72' : theme.accentText) : theme.textSecondary};
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.foreground};
-    border-color: ${({ theme }) => theme.foreground};
+    color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.foreground)};
+    border-color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.foreground)};
   }
 `;
 
@@ -784,7 +784,10 @@ export default function Navbar() {
               <MoreTriggerButton
                 ref={(el) => {
                   if (el) {
-                    navLinksRef.current.set('/verify-certificate', el as unknown as HTMLAnchorElement);
+                    navLinksRef.current.set(
+                      '/verify-certificate',
+                      el as unknown as HTMLAnchorElement
+                    );
                   }
                 }}
                 type="button"
@@ -893,7 +896,11 @@ export default function Navbar() {
 
           <DrawerSection>
             <DrawerSectionTitle>{t('nav.opportunities')}</DrawerSectionTitle>
-            <DrawerLinkItem href="/internships" $active={isActive('/internships')} onClick={closeMenu}>
+            <DrawerLinkItem
+              href="/internships"
+              $active={isActive('/internships')}
+              onClick={closeMenu}
+            >
               {isActive('/internships') && <span className="bullet-dot" />}
               {t('nav.internships')}
             </DrawerLinkItem>
@@ -938,11 +945,7 @@ export default function Navbar() {
             <DrawerSectionTitle>{t('common.language')}</DrawerSectionTitle>
             <LanguageChipRow>
               {(['en', 'hi', 'es', 'fr', 'de'] as Locale[]).map((lang) => (
-                <LanguageChip
-                  key={lang}
-                  $active={locale === lang}
-                  onClick={() => setLocale(lang)}
-                >
+                <LanguageChip key={lang} $active={locale === lang} onClick={() => setLocale(lang)}>
                   {lang.toUpperCase()}
                 </LanguageChip>
               ))}

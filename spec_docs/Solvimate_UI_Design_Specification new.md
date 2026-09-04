@@ -1,6 +1,6 @@
 # Solvimate — UI/UX redesign specification
 
-**Scope:** frontend/visual layer only. Nothing here changes the data model, API routes, Supabase schema, or auth defined in `Solvimate_Technical_Specification.md` — that document stays in effect unchanged. This spec governs *how* the pages built in `Solvimate_Implementation_Plan.md` are styled, not what they do.
+**Scope:** frontend/visual layer only. Nothing here changes the data model, API routes, Supabase schema, or auth defined in `Solvimate_Technical_Specification.md` — that document stays in effect unchanged. This spec governs _how_ the pages built in `Solvimate_Implementation_Plan.md` are styled, not what they do.
 
 **Reference:** the live site at solvimate.com (fetched directly for this spec) for current structure and copy, plus the uploaded logo file for the palette anchor.
 
@@ -18,30 +18,30 @@
 
 ## 2. Why this isn't generic, despite the palette
 
-A near-black background with one bright accent color is one of the three patterns AI design tools reach for by default when nothing constrains the choice. Here, it isn't a default — it's the literal palette specified in the brief, so the goal isn't to avoid it, it's to execute it with enough specificity that it doesn't *read* as the default anyway. Three choices carry that weight: the type pairing (not Inter/system-sans at every size), the waveform motif being drawn from what the company actually does rather than being decorative, and a genuinely restrained type scale rather than the oversized hero text pattern the original site (and most marketing sites) use.
+A near-black background with one bright accent color is one of the three patterns AI design tools reach for by default when nothing constrains the choice. Here, it isn't a default — it's the literal palette specified in the brief, so the goal isn't to avoid it, it's to execute it with enough specificity that it doesn't _read_ as the default anyway. Three choices carry that weight: the type pairing (not Inter/system-sans at every size), the waveform motif being drawn from what the company actually does rather than being decorative, and a genuinely restrained type scale rather than the oversized hero text pattern the original site (and most marketing sites) use.
 
 ## 3. Design tokens
 
 ### Color
 
-| Token | Hex | Role |
-|---|---|---|
-| Ink | `#001E2B` | Primary dark background |
-| Surface | `#0A2E3D` | Elevated cards, nav-on-scroll, modal backgrounds |
-| Lime | `#BEFE72` | Primary accent — CTAs, active states, the logo mark itself |
-| Mint | `#37FB89` | Secondary accent — hover states, the second waveform layer, data highlights |
-| Mist | `#9FB8B4` | Muted text on dark surfaces, secondary nav labels, borders |
-| Paper | `#F5FBF2` | Light-mode surface / high-contrast text on Ink |
+| Token   | Hex       | Role                                                                        |
+| ------- | --------- | --------------------------------------------------------------------------- |
+| Ink     | `#001E2B` | Primary dark background                                                     |
+| Surface | `#0A2E3D` | Elevated cards, nav-on-scroll, modal backgrounds                            |
+| Lime    | `#BEFE72` | Primary accent — CTAs, active states, the logo mark itself                  |
+| Mint    | `#37FB89` | Secondary accent — hover states, the second waveform layer, data highlights |
+| Mist    | `#9FB8B4` | Muted text on dark surfaces, secondary nav labels, borders                  |
+| Paper   | `#F5FBF2` | Light-mode surface / high-contrast text on Ink                              |
 
 Contrast pairing: text on Lime or Mint uses Ink (`#001E2B`), never black or white — same logic as the "use the darkest shade from the same family" rule any UI token system follows, just anchored to this palette instead of a generic one.
 
 ### Typography
 
-| Role | Face | Notes |
-|---|---|---|
-| Display | Space Grotesk, 500/600 | Headlines only. Hero H1 ≈ 34–40px desktop / 26px mobile — deliberately smaller than the original's ~96px (6rem) hero, per the brief |
-| Body | Inter Tight, 400/500 | Everything else — paragraphs, nav, buttons. Base size 15px, down from a typical 16–18px, for the smaller/tighter feel requested. Replaces the original Manrope recommendation, per explicit request. |
-| Utility/mono | IBM Plex Mono, 400/500 | Eyebrow labels, stat callouts, form field hints |
+| Role         | Face                   | Notes                                                                                                                                                                                                |
+| ------------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Display      | Space Grotesk, 500/600 | Headlines only. Hero H1 ≈ 34–40px desktop / 26px mobile — deliberately smaller than the original's ~96px (6rem) hero, per the brief                                                                  |
+| Body         | Inter Tight, 400/500   | Everything else — paragraphs, nav, buttons. Base size 15px, down from a typical 16–18px, for the smaller/tighter feel requested. Replaces the original Manrope recommendation, per explicit request. |
+| Utility/mono | IBM Plex Mono, 400/500 | Eyebrow labels, stat callouts, form field hints                                                                                                                                                      |
 
 All three are freely available via Google Fonts — no licensing step needed before implementation.
 
@@ -58,6 +58,7 @@ All three are freely available via Google Fonts — no licensing step needed bef
 **Where it lives:** the hero only. Repeating it on every section turns a signature into wallpaper — restraint is part of what keeps it from looking AI-generated by default.
 
 **Implementation notes:**
+
 - Pure CSS `transform: translateX()` keyframe loop on SVG elements positioned `absolute`, `pointer-events: none`, sitting behind a `position: relative` content layer.
 - No dependency on GSAP for this specific effect — GSAP stays reserved for the scroll-triggered reveals already planned in the implementation plan; this is simpler and shouldn't compete with that budget.
 - Respects `prefers-reduced-motion`: when set, the animation is disabled entirely (not slowed) and a single static wave line renders instead, so the visual identity is still present without the motion.
