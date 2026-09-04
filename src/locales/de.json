@@ -70,6 +70,9 @@
     "programs": "Programme",
     "news": "Neuigkeiten",
     "contact": "Kontakt",
+    "more": "Mehr",
+    "verifyCertificate": "Zertifikat verifizieren",
+    "verifyCertificateDesc": "Überprüfen Sie die Echtheit eines Solvimate-Zertifikats",
     "getStarted": "Loslegen",
     "openMenu": "Navigationsmenü öffnen",
     "closeMenu": "Navigationsmenü schließen"

@@ -335,14 +335,157 @@ const MobileBackdrop = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
+const MoreContainer = styled.li`
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+`;
+
+const MoreTriggerButton = styled.button<{ $active?: boolean; $isOpen?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 13px;
+  font-weight: ${({ $active, $isOpen }) => ($active || $isOpen ? '600' : '500')};
+  letter-spacing: 0.02em;
+  color: ${({ theme, $active, $isOpen }) =>
+    $active || $isOpen ? theme.primaryText : theme.textSecondary};
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.foreground};
+  }
+
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    transition: transform 0.2s ease;
+    transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+  }
+`;
+
+const DropdownMenu = styled.div<{ $isOpen: boolean }>`
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-8px)')};
+  width: 290px;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid
+    ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: ${({ theme }) =>
+    theme.isDark
+      ? '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(55, 251, 137, 0.12)'
+      : '0 12px 32px rgba(0, 0, 0, 0.12)'};
+  z-index: 100;
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 200ms ease,
+    visibility 200ms;
+  pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: ${({ theme }) => theme.surface};
+    border-top: 1px solid
+      ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+    border-left: 1px solid
+      ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+  }
+`;
+
+const DropdownItemLink = styled(Link)`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  background: transparent;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background: ${({ theme }) =>
+      theme.isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.04)'};
+  }
+
+  &:hover .arrow-icon-svg {
+    transform: translateX(3px);
+  }
+`;
+
+const DropdownIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  color: ${({ theme }) => (theme.isDark ? theme.colors.mint : theme.accentText)};
+  flex-shrink: 0;
+
+  .arrow-icon-svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    transition: transform 0.2s ease;
+  }
+`;
+
+const DropdownTextCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+`;
+
+const DropdownItemTitle = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 14px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.foreground};
+  line-height: 1.2;
+`;
+
+const DropdownItemDesc = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.35;
+`;
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const { t } = useLanguage();
 
   const navContainerRef = React.useRef<HTMLUListElement | null>(null);
   const navLinksRef = React.useRef<Map<string, HTMLAnchorElement | null>>(new Map());
+  const moreContainerRef = React.useRef<HTMLLIElement | null>(null);
 
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const [isReady, setIsReady] = useState(false);
@@ -366,24 +509,36 @@ export default function Navbar() {
 
   const closeMenu = useCallback(() => {
     setIsOpen(false);
+    setIsMoreOpen(false);
   }, []);
 
-  const navItems = useMemo(
+  const mainNavItems = useMemo(
     () => [
       { href: '/', label: t('nav.home') },
       { href: '/about', label: t('nav.about') },
       { href: '/services', label: t('nav.services') },
+    ],
+    [t]
+  );
+
+  const endNavItems = useMemo(
+    () => [
       { href: '/careers', label: t('nav.careers') },
       { href: '/contact', label: t('nav.contact') },
     ],
     [t]
   );
 
+  const allNavItems = useMemo(
+    () => [...mainNavItems, { href: '/verify-certificate', label: t('nav.more') }, ...endNavItems],
+    [mainNavItems, endNavItems, t]
+  );
+
   const updateIndicator = useCallback(() => {
     if (!navContainerRef.current) return;
     const containerRect = navContainerRef.current.getBoundingClientRect();
 
-    const activeItem = navItems.find((item) => isActive(item.href));
+    const activeItem = allNavItems.find((item) => isActive(item.href));
     const activeHref = activeItem ? activeItem.href : '/';
     const activeEl = navLinksRef.current.get(activeHref);
 
@@ -395,7 +550,7 @@ export default function Navbar() {
       setIndicatorStyle({ left, width });
       setIsReady(true);
     }
-  }, [isActive, navItems]);
+  }, [isActive, allNavItems]);
 
   useEffect(() => {
     updateIndicator();
@@ -412,16 +567,28 @@ export default function Navbar() {
     }
   }, [updateIndicator]);
 
-  // Keyboard accessibility: Escape key closes the mobile menu
+  // Click outside to close More dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (moreContainerRef.current && !moreContainerRef.current.contains(event.target as Node)) {
+        setIsMoreOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Keyboard accessibility: Escape key closes menus
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
-        closeMenu();
+      if (event.key === 'Escape') {
+        if (isMoreOpen) setIsMoreOpen(false);
+        if (isOpen) closeMenu();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, closeMenu]);
+  }, [isOpen, isMoreOpen, closeMenu]);
 
   return (
     <>
@@ -438,7 +605,7 @@ export default function Navbar() {
           </LogoLink>
 
           <DesktopNavLinks ref={navContainerRef}>
-            {navItems.map((item) => (
+            {mainNavItems.map((item) => (
               <NavLinkItem key={item.href}>
                 <StyledNavLink
                   ref={(el) => {
@@ -454,6 +621,68 @@ export default function Navbar() {
                 </StyledNavLink>
               </NavLinkItem>
             ))}
+
+            <MoreContainer
+              ref={moreContainerRef}
+              onMouseEnter={() => setIsMoreOpen(true)}
+              onMouseLeave={() => setIsMoreOpen(false)}
+            >
+              <MoreTriggerButton
+                ref={(el) => {
+                  if (el) {
+                    navLinksRef.current.set('/verify-certificate', el as unknown as HTMLAnchorElement);
+                  }
+                }}
+                type="button"
+                onClick={() => setIsMoreOpen((prev) => !prev)}
+                $active={isActive('/verify-certificate')}
+                $isOpen={isMoreOpen}
+                aria-expanded={isMoreOpen}
+                aria-haspopup="true"
+              >
+                {t('nav.more')}
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </MoreTriggerButton>
+
+              <DropdownMenu $isOpen={isMoreOpen} role="menu" aria-label="More options">
+                <DropdownItemLink
+                  href="/verify-certificate"
+                  role="menuitem"
+                  onClick={() => setIsMoreOpen(false)}
+                >
+                  <DropdownIconWrapper>
+                    <svg className="arrow-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </DropdownIconWrapper>
+                  <DropdownTextCol>
+                    <DropdownItemTitle>{t('nav.verifyCertificate')}</DropdownItemTitle>
+                    <DropdownItemDesc>{t('nav.verifyCertificateDesc')}</DropdownItemDesc>
+                  </DropdownTextCol>
+                </DropdownItemLink>
+              </DropdownMenu>
+            </MoreContainer>
+
+            {endNavItems.map((item) => (
+              <NavLinkItem key={item.href}>
+                <StyledNavLink
+                  ref={(el) => {
+                    if (el) {
+                      navLinksRef.current.set(item.href, el);
+                    }
+                  }}
+                  href={item.href}
+                  $active={isActive(item.href)}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </StyledNavLink>
+              </NavLinkItem>
+            ))}
+
             <ActiveIndicator
               $left={indicatorStyle.left}
               $width={indicatorStyle.width}
@@ -504,7 +733,34 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         <MobileNavLinks>
-          {navItems.map((item) => (
+          {mainNavItems.map((item) => (
+            <li key={item.href}>
+              <MobileNavLink
+                href={item.href}
+                $active={isActive(item.href)}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </MobileNavLink>
+            </li>
+          ))}
+
+          <li>
+            <MobileNavLink
+              href="/verify-certificate"
+              $active={isActive('/verify-certificate')}
+              aria-current={isActive('/verify-certificate') ? 'page' : undefined}
+              onClick={closeMenu}
+            >
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ color: 'var(--mint-color, #37FB89)', fontWeight: 700 }}>→</span>
+                {t('nav.verifyCertificate')}
+              </span>
+            </MobileNavLink>
+          </li>
+
+          {endNavItems.map((item) => (
             <li key={item.href}>
               <MobileNavLink
                 href={item.href}
