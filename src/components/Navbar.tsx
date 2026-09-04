@@ -517,12 +517,6 @@ export default function Navbar() {
       { href: '/', label: t('nav.home') },
       { href: '/about', label: t('nav.about') },
       { href: '/services', label: t('nav.services') },
-    ],
-    [t]
-  );
-
-  const endNavItems = useMemo(
-    () => [
       { href: '/careers', label: t('nav.careers') },
       { href: '/contact', label: t('nav.contact') },
     ],
@@ -530,8 +524,8 @@ export default function Navbar() {
   );
 
   const allNavItems = useMemo(
-    () => [...mainNavItems, { href: '/verify-certificate', label: t('nav.more') }, ...endNavItems],
-    [mainNavItems, endNavItems, t]
+    () => [...mainNavItems, { href: '/verify-certificate', label: t('nav.more') }],
+    [mainNavItems, t]
   );
 
   const updateIndicator = useCallback(() => {
@@ -622,11 +616,7 @@ export default function Navbar() {
               </NavLinkItem>
             ))}
 
-            <MoreContainer
-              ref={moreContainerRef}
-              onMouseEnter={() => setIsMoreOpen(true)}
-              onMouseLeave={() => setIsMoreOpen(false)}
-            >
+            <MoreContainer ref={moreContainerRef}>
               <MoreTriggerButton
                 ref={(el) => {
                   if (el) {
@@ -665,23 +655,6 @@ export default function Navbar() {
                 </DropdownItemLink>
               </DropdownMenu>
             </MoreContainer>
-
-            {endNavItems.map((item) => (
-              <NavLinkItem key={item.href}>
-                <StyledNavLink
-                  ref={(el) => {
-                    if (el) {
-                      navLinksRef.current.set(item.href, el);
-                    }
-                  }}
-                  href={item.href}
-                  $active={isActive(item.href)}
-                  aria-current={isActive(item.href) ? 'page' : undefined}
-                >
-                  {item.label}
-                </StyledNavLink>
-              </NavLinkItem>
-            ))}
 
             <ActiveIndicator
               $left={indicatorStyle.left}
@@ -759,19 +732,6 @@ export default function Navbar() {
               </span>
             </MobileNavLink>
           </li>
-
-          {endNavItems.map((item) => (
-            <li key={item.href}>
-              <MobileNavLink
-                href={item.href}
-                $active={isActive(item.href)}
-                aria-current={isActive(item.href) ? 'page' : undefined}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </MobileNavLink>
-            </li>
-          ))}
         </MobileNavLinks>
 
         <MobileActionsRow>
