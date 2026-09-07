@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import styled from 'styled-components';
 import InternshipsHero from '@/components/internships/InternshipsHero';
 import InternshipsList from '@/components/internships/InternshipsList';
 import { useGSAPScrollReveal } from '@/hooks/useGSAPScrollReveal';
 import type { InternshipListing } from './page';
-
-const MainWrapper = styled.main`
-  width: 100%;
-  overflow-x: hidden;
-`;
+import { MainWrapper } from './InternshipsClient.styles';
 
 interface InternshipsClientProps {
   initialInternships: InternshipListing[];

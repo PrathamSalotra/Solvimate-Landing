@@ -1,0 +1,184 @@
+import Link from 'next/link';
+import styled, { keyframes, css } from 'styled-components';
+
+export const SectionWrapper = styled.section`
+  width: 100%;
+  padding: 2rem 1.5rem 6.5rem;
+  background: ${({ theme }) => theme.background};
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 5rem;
+  }
+`;
+
+export const Container = styled.div`
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+`;
+
+export const PathwaysGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const PathwayCard = styled.article`
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.card};
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: ${({ theme }) => theme.primaryHover};
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+  }
+
+  @media (max-width: 640px) {
+    padding: 2rem 1.5rem;
+  }
+`;
+
+export const ContentTop = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const PathwayBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(55, 251, 137, 0.12);
+  border: 1px solid rgba(55, 251, 137, 0.3);
+  color: ${({ theme }) => theme.primaryHover};
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+`;
+
+export const PathwayTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: 1.75rem;
+  font-weight: 500;
+  word-spacing: 0.08em;
+  color: ${({ theme }) => theme.foreground};
+  margin: 0;
+  line-height: 1.25;
+`;
+
+export const PathwayDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 1.05rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.7;
+  margin: 0;
+`;
+
+export const PrimaryButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.colors.ink};
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(190, 254, 114, 0.25);
+
+  &:hover {
+    transform: translateY(-2px);
+    background: ${({ theme }) => theme.primaryHover};
+    box-shadow: 0 6px 20px rgba(190, 254, 114, 0.4);
+  }
+`;
+
+export const GeneralBanner = styled.div`
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.card};
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+
+  @media (max-width: 640px) {
+    padding: 2.25rem 1.5rem;
+  }
+`;
+
+export const GeneralTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: 1.75rem;
+  font-weight: 500;
+  word-spacing: 0.08em;
+  color: ${({ theme }) => theme.foreground};
+  margin: 0;
+`;
+
+export const GeneralDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 1.05rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0;
+`;
+
+export const ButtonsRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+export const OutlineButton = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.body};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  border: 2px solid ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primaryText};
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(190, 254, 114, 0.12);
+    transform: translateY(-2px);
+  }
+`;
+

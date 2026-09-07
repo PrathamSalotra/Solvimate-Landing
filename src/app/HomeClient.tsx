@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import styled from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
 import Hero from '@/components/home/Hero';
 import LogoMarquee from '@/components/home/LogoMarquee';
@@ -15,76 +14,14 @@ import FAQSection from '@/components/home/FAQSection';
 import CTASection from '@/components/home/CTASection';
 import AnimatedWaveBackground from '@/components/home/AnimatedWaveBackground';
 import { useGSAPScrollReveal } from '@/hooks/useGSAPScrollReveal';
-
-const HomeContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-`;
-
-const FixedWaveBackgroundContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.35;
-  overflow: hidden;
-`;
-
-const StatusSection = styled.section`
-  max-width: 1200px;
-  width: 100%;
-  padding: 2rem 1.5rem 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  border-top: 1px solid ${({ theme }) => theme.border};
-  position: relative;
-  z-index: 2;
-`;
-
-const StatusBadge = styled.span`
-  display: inline-block;
-  padding: 0.35rem 1rem;
-  background: rgba(190, 254, 114, 0.1);
-  border: 1px solid rgba(190, 254, 114, 0.3);
-  color: ${({ theme }) => theme.primary};
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-`;
-
-const TestInputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 420px;
-`;
-
-const TestInput = styled.input`
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.border};
-  background: ${({ theme }) => theme.cardBg};
-  color: ${({ theme }) => theme.foreground};
-  font-size: 0.875rem;
-  outline: none;
-  transition: border-color 0.2s ease;
-
-  &:focus {
-    border-color: ${({ theme }) => theme.primary};
-  }
-`;
+import {
+  HomeContainer,
+  FixedWaveBackgroundContainer,
+  StatusSection,
+  StatusBadge,
+  TestInputWrapper,
+  TestInput,
+} from './HomeClient.styles';
 
 export default function HomeClient({ listingsCount }: { listingsCount: number }) {
   const { t } = useLanguage();

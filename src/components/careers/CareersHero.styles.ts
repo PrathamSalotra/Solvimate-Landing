@@ -1,0 +1,149 @@
+import styled, { keyframes, css } from 'styled-components';
+
+export const HeroWrapper = styled.section`
+  width: 100%;
+  padding: 6.5rem 1.5rem 3.5rem;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 5rem 1rem 2.5rem;
+  }
+`;
+
+export const HeroGlow = styled.div`
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 750px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(190, 254, 114, 0.16) 0%, rgba(190, 254, 114, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+`;
+
+export const HeroContainer = styled.div`
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+`;
+
+export const TagPill = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(190, 254, 114, 0.35);
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => theme.primaryText};
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+`;
+
+export const Headline = styled.h1`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2.125rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-spacing: 0.08em;
+  line-height: 1.15;
+  color: ${({ theme }) => theme.foreground};
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.625rem;
+    line-height: 1.2;
+  }
+`;
+
+export const SubtitleText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.7;
+  max-width: 740px;
+  margin: 0;
+`;
+
+export const TracksGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const TrackInfoCard = styled.div`
+  position: relative;
+  z-index: 2;
+  background: ${({ theme }) => theme.surface};
+  opacity: 1;
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.card};
+  box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
+  padding: 1.75rem 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: ${({ theme }) => theme.primaryHover};
+    box-shadow: ${({ theme }) => (theme.isDark ? '0 18px 45px rgba(0, 0, 0, 0.4)' : '0 18px 45px rgba(0, 0, 0, 0.12)')};
+  }
+`;
+
+export const TrackTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: ${({ theme }) => theme.foreground};
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const TrackBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(190, 254, 114, 0.12);
+  color: ${({ theme }) => (theme.isDark ? '#BEFE72' : theme.accentText)};
+  border: 1px solid rgba(190, 254, 114, 0.35);
+`;
+
+export const TrackDesc = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.6;
+  margin: 0;
+`;

@@ -1,0 +1,110 @@
+import styled, { keyframes, css } from 'styled-components';
+
+export const SectionWrapper = styled.section`
+  width: 100%;
+  padding: 2rem 1.5rem 6.5rem;
+  background: ${({ theme }) => theme.background};
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 5rem;
+  }
+`;
+
+export const Container = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+export const ArticleCard = styled.article`
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.card};
+  padding: 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: ${({ theme }) => theme.primaryHover};
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (max-width: 640px) {
+    padding: 1.75rem 1.5rem;
+  }
+`;
+
+export const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+export const DateText = styled.time`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.primary};
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+`;
+
+export const SlugBadge = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(55, 251, 137, 0.12);
+  color: ${({ theme }) => theme.primaryHover};
+  border: 1px solid rgba(55, 251, 137, 0.3);
+`;
+
+export const TitleText = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: 1.65rem;
+  font-weight: 500;
+  word-spacing: 0.06em;
+  color: ${({ theme }) => theme.foreground};
+  margin: 0;
+  line-height: 1.35;
+`;
+
+export const BodyText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 1.05rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.75;
+  margin: 0;
+  white-space: pre-line;
+`;
+
+export const EmptyStateCard = styled.div`
+  background: ${({ theme }) => theme.cardBg};
+  border: 1px dashed ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.card};
+  padding: 4.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+`;
+
+export const EmptyMessageText = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: ${({ theme }) => theme.foreground};
+  margin: 0;
+`;

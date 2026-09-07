@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import styled from 'styled-components';
 import NewsHero from '@/components/news/NewsHero';
 import NewsList from '@/components/news/NewsList';
 import { useGSAPScrollReveal } from '@/hooks/useGSAPScrollReveal';
 import type { NewsArticle } from './page';
-
-const MainWrapper = styled.main`
-  width: 100%;
-  overflow-x: hidden;
-`;
+import { MainWrapper } from './NewsClient.styles';
 
 interface NewsClientProps {
   initialArticles: NewsArticle[];
