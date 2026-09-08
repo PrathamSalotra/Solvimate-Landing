@@ -68,6 +68,12 @@ export default function Footer() {
               <li>
                 <StyledFooterLink href="/contact">{t('nav.contact')}</StyledFooterLink>
               </li>
+              <li>
+                <StyledFooterLink href="/verify-certificate">{t('nav.verifyCertificate')}</StyledFooterLink>
+              </li>
+              <li>
+                <StyledFooterLink href="/admin">{t('nav.admin')}</StyledFooterLink>
+              </li>
             </LinkList>
           </div>
 

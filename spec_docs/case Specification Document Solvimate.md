@@ -12,10 +12,11 @@ A marketing and lead-capture website for **Solvimate**, a company providing tran
 
 ### 2.1 Global Shell & Navigation
 
-- Fixed top navigation bar with the Solvimate logo (links home), nav links: **Home, About, Services, Careers, Contact**, a **Get Started** CTA button, a language switcher, and a dark/light theme toggle.
+- Fixed top navigation bar with the Solvimate logo (links home), nav links: **Home, About, Services, Careers, Contact**, a **More** dropdown menu (containing **Verify Certificate** and **Admin** [links to `/admin`]), a **Get Started** CTA button, a language switcher, and a dark/light theme toggle.
+- Mobile side navigation drawer: structured into sections for **Pages** (Home, About, Programs, Contact), **Opportunities** (Internships, Jobs, Candidate Form), **Services** (Our Services, Vendor Form), **More** (Verify Certificate, Admin), language selector chips, and theme toggle.
 - Language switcher supports: **English, Deutsch, Español, Français, हिंदी (Hindi)**. Selected language is remembered across pages and reloads.
 - Theme toggle switches between dark (default) and light. Choice is saved in `localStorage` under key `solvimate-theme` and applied before first paint to avoid a flash.
-- Footer on every page containing: company tagline ("At Solvimate, we empower you to confidently connect with the world."), **Quick Links** (Sitemap, Privacy Policy, Terms of Service, plus main pages), and social links: **LinkedIn** (linkedin.com/company/solvimate-grow-together), **X/Twitter**, **Instagram**.
+- Footer on every page containing: company tagline ("At Solvimate, we empower you to confidently connect with the world."), **Quick Links** (Sitemap, Privacy Policy, Terms of Service, main pages, and **Admin**), and social links: **LinkedIn** (linkedin.com/company/solvimate-grow-together), **X/Twitter**, **Instagram**.
 - A 404 / not-found page for unknown routes.
 
 ### 2.2 Home Page
@@ -79,9 +80,27 @@ A marketing and lead-capture website for **Solvimate**, a company providing tran
 - **Send us a message** form with fields: Full Name (required), Phone, Email, Subject (default "Project enquiry"), Message. Submit button posts JSON to `/api/contact`.
 
 ### 2.9 Customer Form Page
-
+ 
 - Heading "Access Global-Quality Language Experts with Solvimate" / "Customer support".
 - Form fields: First Name, Last Name, Email, Subject, Message. Submit posts JSON to `/api/contact`.
+
+### 2.10 Admin Portal
+
+- **Scope & Routing:** Operates under a protected sub-route (`/admin`), containing `/admin/login`, `/admin/verify`, `/admin/dashboard`, `/admin/certificates`, `/admin/cms`, `/admin/analytics`, and `/admin/settings`.
+- **Navigation Access:** Accessible via the **More** dropdown in desktop navigation, the **More** section in the mobile drawer, and the footer **Quick Links** as **Admin**.
+- **Authentication Flow (NextAuth + OTP):**
+  - Whitelist: Admins are pre-provisioned via an email whitelist with roles (`manager` or `super_admin`).
+  - Step 1 (Login): Centered card with Admin Email and Password. On first login for whitelisted emails, any password (min 8 chars) is accepted and saved; subsequent logins require this password.
+  - Step 2 (OTP Verification): Requires a 6-digit code dispatched to the admin's email via Resend (10-minute expiry, 5-attempt limit, 30-second cooldown timer).
+  - Middleware: Next.js middleware guards all `/admin/*` routes (redirecting unauthenticated users to `/admin/login`).
+- **Admin Shell & Layout:**
+  - Fixed left sidebar: Dashboard (`/admin/dashboard`), Certificates (`/admin/certificates`), Content CMS (`/admin/cms`), Analytics (`/admin/analytics`), and Settings (`/admin/settings`).
+  - Top header: Dynamic page title/subtitle, logged-in admin email, role badge, current date, and Sign Out button.
+- **Core Admin Modules:**
+  - **Dashboard:** Metrics cards (Total Certificates, Verified, Revoked, Verification Count), verification volume analytics, recent certificate activity feed, and quick actions.
+  - **Certificates Module:** Two-step certificate provisioning (PDF/PNG file upload to Cloudinary + candidate metadata & badge assignment saved to MongoDB) and live recent certificates sidebar.
+  - **Content CMS:** CRUD interface for managing job listings, vendor applications, internships, and news articles.
+  - **Settings:** Account details view, and admin role/access management for `super_admin`.
 
 ---
 
@@ -111,6 +130,8 @@ The original Solvimate site has **no live chat widget** (no Intercom/Tawk/WhatsA
 - **Performance:** Images use Next.js image optimization; fonts preloaded; animations must not block first paint.
 - **SEO:** Each page sets its own title and meta description; the home meta description is "Building the future of AI".
 - **Legal:** Footer must link to Privacy Policy and Terms of Service pages (content to be drafted).
+- **Admin Portal & Auth:** Protected sub-route at `/admin/*` requiring NextAuth.js credentials + 6-digit OTP dispatched via Resend to whitelisted admin emails. Route access guarded by Next.js middleware.
+- **Admin Data Persistence & Storage:** MongoDB for admin credentials/roles and certificate records; Cloudinary for certificate file (PDF/PNG) storage.
 
 ---
 
@@ -175,3 +196,10 @@ The original Solvimate site has **no live chat widget** (no Intercom/Tawk/WhatsA
 **Data**
 
 - Contact submissions are saved to the Supabase database with timestamp and field values, protected by RLS so only authenticated admins can read them.
+
+**Admin Portal & Navigation**
+
+- "Admin" option is accessible in the desktop "More" dropdown, mobile drawer "More" section, and footer Quick Links.
+- Unauthenticated requests to protected `/admin/*` routes are intercepted by middleware and redirected to `/admin/login`.
+- Whitelisted administrators complete the two-step login (password + OTP) to receive a secure NextAuth session.
+- Authenticated managers and super-admins can access the dashboard, issue certificates with Cloudinary uploads, and manage CMS content.

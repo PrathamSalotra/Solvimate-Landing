@@ -73,6 +73,8 @@
     "more": "Plus",
     "verifyCertificate": "Vérifier le certificat",
     "verifyCertificateDesc": "Vérifiez l'authenticité d'un certificat Solvimate",
+    "admin": "Administration",
+    "adminDesc": "Accédez au portail administratif et au tableau de bord",
     "getStarted": "Commencer",
     "openMenu": "Ouvrir le menu de navigation",
     "closeMenu": "Fermer le menu de navigation",

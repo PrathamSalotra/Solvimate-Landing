@@ -73,6 +73,8 @@
     "more": "अधिक",
     "verifyCertificate": "प्रमाणपत्र सत्यापित करें",
     "verifyCertificateDesc": "Solvimate प्रमाणपत्र की प्रामाणिकता जांचें",
+    "admin": "एडमिन",
+    "adminDesc": "प्रशासनिक पोर्टल और प्रबंधन डैशबोर्ड तक पहुंचें",
     "getStarted": "शुरू करें",
     "openMenu": "नेविगेशन मेनू खोलें",
     "closeMenu": "नेविगेशन मेनू बंद करें",

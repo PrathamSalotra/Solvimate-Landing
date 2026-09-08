@@ -96,7 +96,11 @@ export default function Navbar() {
   );
 
   const allNavItems = useMemo(
-    () => [...mainNavItems, { href: '/verify-certificate', label: t('nav.more') }],
+    () => [
+      ...mainNavItems,
+      { href: '/verify-certificate', label: t('nav.more') },
+      { href: '/admin', label: t('nav.more') },
+    ],
     [mainNavItems, t]
   );
 
@@ -196,11 +200,15 @@ export default function Navbar() {
                       '/verify-certificate',
                       el as unknown as HTMLAnchorElement
                     );
+                    navLinksRef.current.set(
+                      '/admin',
+                      el as unknown as HTMLAnchorElement
+                    );
                   }
                 }}
                 type="button"
                 onClick={() => setIsMoreOpen((prev) => !prev)}
-                $active={isActive('/verify-certificate')}
+                $active={isActive('/verify-certificate') || isActive('/admin')}
                 $isOpen={isMoreOpen}
                 aria-expanded={isMoreOpen}
                 aria-haspopup="true"
@@ -226,6 +234,23 @@ export default function Navbar() {
                   <DropdownTextCol>
                     <DropdownItemTitle>{t('nav.verifyCertificate')}</DropdownItemTitle>
                     <DropdownItemDesc>{t('nav.verifyCertificateDesc')}</DropdownItemDesc>
+                  </DropdownTextCol>
+                </DropdownItemLink>
+
+                <DropdownItemLink
+                  href="/admin"
+                  role="menuitem"
+                  onClick={() => setIsMoreOpen(false)}
+                >
+                  <DropdownIconWrapper>
+                    <svg className="arrow-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </DropdownIconWrapper>
+                  <DropdownTextCol>
+                    <DropdownItemTitle>{t('nav.admin')}</DropdownItemTitle>
+                    <DropdownItemDesc>{t('nav.adminDesc')}</DropdownItemDesc>
                   </DropdownTextCol>
                 </DropdownItemLink>
               </DropdownMenu>
@@ -346,6 +371,13 @@ export default function Navbar() {
               onClick={closeMenu}
             >
               {t('nav.verifyCertificate')}
+            </DrawerLinkItem>
+            <DrawerLinkItem
+              href="/admin"
+              $active={isActive('/admin')}
+              onClick={closeMenu}
+            >
+              {t('nav.admin')}
             </DrawerLinkItem>
           </DrawerSection>
 
