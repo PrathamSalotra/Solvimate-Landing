@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Solvimate
 
-## Getting Started
+Solvimate is a Next.js application for translation, transcription, dubbing, certificate verification, careers, and admin content operations.
 
-First, run the development server:
+## Requirements
+
+- Node.js 20.9 or later
+- npm 10 or later
+- MongoDB database
+- Supabase project for contact form and related integrations
+
+Optional services are required for specific features:
+
+- Cloudinary for certificate asset uploads
+- Resend for admin OTP and email notifications
+
+## Clone And Install
+
+```bash
+git clone https://github.com/PrathamSalotra/Solvimate-Landing.git
+cd Solvimate-Landing
+npm install
+```
+
+## Environment Setup
+
+Create a local environment file:
+
+```bash
+Copy-Item .env.local.example .env.local
+```
+
+On macOS or Linux, use:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Open `.env.local` and configure the following values:
+
+```env
+# MongoDB
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/solvimate
+
+# NextAuth
+NEXTAUTH_SECRET=replace-with-a-long-random-secret
+
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+
+# Cloudinary, used for certificate uploads
+CLOUDINARY_CLOUD_NAME=your-cloud-name
+CLOUDINARY_API_KEY=your-cloudinary-api-key
+CLOUDINARY_API_SECRET=your-cloudinary-api-secret
+
+# Resend, used for admin OTP and email notifications
+RESEND_API_KEY=re_your_resend_api_key
+RESEND_FROM_EMAIL=Solvimate <operations@solvimate.com>
+```
+
+Never commit `.env.local` or expose service-role, database, Cloudinary secret, Resend, or NextAuth credentials in client-side code.
+
+## Run Locally
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Useful routes include:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` - public landing page
+- `/careers` - active job and internship openings
+- `/verify-certificate` - certificate verification form
+- `/admin/login` - admin login
+- `/admin/dashboard` - admin dashboard
+- `/admin/certificates` - certificate management
+- `/admin/cms` - content management
+- `/admin/analytics` - certificate analytics
+- `/admin/settings` - admin session and access settings
 
-## Learn More
+## Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev          # Start the development server
+npm run build        # Create a production build
+npm run start        # Start the production server
+npm run lint         # Run ESLint
+npm run format       # Format the repository with Prettier
+npm run format:check # Check formatting without changing files
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Production Run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Build and start the application with:
 
-## Deploy on Vercel
+```bash
+npm run build
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The production server uses the environment variables from `.env.local` or the hosting provider's environment configuration.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```text
+src/
+  app/                 Next.js App Router pages and API routes
+  components/          Public page components
+  features/            Admin and feature-specific components
+  models/              MongoDB/Mongoose models
+  services/            Database and business logic services
+  context/             Theme, language, and toast providers
+  lib/                 Auth, database, storage, and utility helpers
+supabase/
+  migrations/          Supabase database migrations
+public/                Static assets
+```
+
+## Troubleshooting
+
+### MongoDB connection errors
+
+Check that `MONGODB_URI` is set, the MongoDB user has access to the database, and your IP address is allowed by the MongoDB network rules.
+
+### Admin OTP emails are not sent
+
+Check `RESEND_API_KEY` and `RESEND_FROM_EMAIL`. In development, verify that the configured sender is permitted by Resend.
+
+### Certificate uploads fail
+
+Check all three Cloudinary variables and confirm that the Cloudinary account is active.
+
+### Port 3000 is already in use
+
+Run Next.js on another port:
+
+```bash
+npm run dev -- -p 3001
+```

@@ -76,8 +76,6 @@ export default function CareersSection({ initialListings }: CareersSectionProps)
 
                 <OpeningDetails>
                   <OpeningDetail><span>Department</span><strong>{listing.department || 'General'}</strong></OpeningDetail>
-                  <OpeningDetail><span>Duration</span><strong>{listing.duration || 'Ongoing'}</strong></OpeningDetail>
-                  <OpeningDetail><span>Location</span><strong>{listing.location || 'Flexible'}</strong></OpeningDetail>
                   <OpeningDetail><span>Mode</span><strong>{listing.mode}</strong></OpeningDetail>
                 </OpeningDetails>
 
