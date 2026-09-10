@@ -6,7 +6,6 @@ import {
   HeaderContainer,
   TopRow,
   TopLeft,
-  TopRight,
   HeadingGroup,
   TitleGroup,
   Eyebrow,

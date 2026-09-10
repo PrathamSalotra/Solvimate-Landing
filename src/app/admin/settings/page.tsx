@@ -11,9 +11,9 @@ import AdminLayout from "@/features/dashboard/layouts/AdminLayout";
 export default async function SettingsServerPage() {
   const session = await getServerSession(authOptions);
   const sessionEmail = session?.user?.email ?? "";
-  const sessionRole = (session?.user as any)?.role ?? "";
+  const sessionRole = (session?.user as { role?: string } | undefined)?.role ?? "";
 
-  if (!sessionEmail || !ADMIN_ROLES.includes(sessionRole as any)) {
+  if (!sessionEmail || !ADMIN_ROLES.includes(sessionRole as (typeof ADMIN_ROLES)[number])) {
     redirect("/admin/login?callbackUrl=/admin/settings");
   }
 
@@ -32,6 +32,8 @@ export default async function SettingsServerPage() {
   return (
     <AdminLayout>
       <SettingsPage
+        email={sessionEmail}
+        role={sessionRole}
         lastLoginAt={lastLoginAt}
         admins={admins}
       />
