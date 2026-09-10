@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter_Tight } from 'next/font/google';
+import { Inter_Tight, Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import StyledComponentsRegistry from '@/lib/registry';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
@@ -12,6 +12,20 @@ const interTight = Inter_Tight({
   variable: '--font-inter-tight',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  display: 'swap',
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: '--font-ibm-plex-mono',
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
@@ -38,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning className={interTight.variable}>
+    <html lang="en" data-theme="dark" suppressHydrationWarning className={`${interTight.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

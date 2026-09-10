@@ -38,24 +38,59 @@ import {
 export default function VerifyCertificateClient() {
   const [certId, setCertId] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
-  const [result, setResult] = useState<{ searched: boolean; isValid: boolean; id: string } | null>(
-    null
-  );
+  const [result, setResult] = useState<{
+    searched: boolean;
+    isValid: boolean;
+    isRevoked?: boolean;
+    certificate?: any;
+    error?: string;
+  } | null>(null);
   const { t } = useLanguage();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!certId.trim()) return;
+    const id = certId.trim().toUpperCase();
+    if (!id) return;
 
     setIsVerifying(true);
-    setTimeout(() => {
-      setIsVerifying(false);
+    setResult(null);
+
+    try {
+      const response = await fetch(`/api/verify/${id}`);
+      const responseData = await response.json();
+
+      if (!response.ok || !responseData.ok) {
+        setResult({
+          searched: true,
+          isValid: false,
+          error: responseData.message || t('verify_page.not_found_detail', { id }),
+        });
+      } else {
+        const cert = responseData.data.certificate;
+        if (cert.status === 'revoked') {
+          setResult({
+            searched: true,
+            isValid: false,
+            isRevoked: true,
+            certificate: cert,
+          });
+        } else {
+          setResult({
+            searched: true,
+            isValid: true,
+            certificate: cert,
+          });
+        }
+      }
+    } catch (err) {
       setResult({
         searched: true,
-        isValid: certId.trim().length >= 6,
-        id: certId.trim().toUpperCase(),
+        isValid: false,
+        error: "Unable to connect to verification server.",
       });
-    }, 550);
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   return (
@@ -112,6 +147,22 @@ export default function VerifyCertificateClient() {
                       </svg>
                       {t('verify_page.authentic_title')}
                     </>
+                  ) : result.isRevoked ? (
+                    <>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                      </svg>
+                      Certificate Revoked
+                    </>
                   ) : (
                     <>
                       <svg
@@ -131,10 +182,34 @@ export default function VerifyCertificateClient() {
                   )}
                 </StatusTitle>
                 <StatusDetail>
-                  {result.isValid
-                    ? t('verify_page.authentic_detail', { id: result.id })
-                    : t('verify_page.not_found_detail', { id: result.id })}
+                  {result.isValid && result.certificate
+                    ? `${t('verify_page.authentic_detail', { id: result.certificate.verificationId })} Issued to ${result.certificate.candidateName} for ${result.certificate.internshipRole}.`
+                    : result.isRevoked && result.certificate
+                    ? `This certificate (${result.certificate.verificationId}) issued to ${result.certificate.candidateName} has been officially revoked by the administration and is no longer valid.`
+                    : result.error || t('verify_page.not_found_detail', { id: certId })}
                 </StatusDetail>
+                {result.isValid && result.certificate?.certificatePdfUrl && (
+                  <div style={{ marginTop: '16px' }}>
+                    <a
+                      href={result.certificate.certificatePdfUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        display: 'inline-block',
+                        padding: '8px 16px',
+                        background: 'rgba(55, 251, 137, 0.15)',
+                        color: '#37fb89',
+                        textDecoration: 'none',
+                        borderRadius: '6px',
+                        fontWeight: '600',
+                        fontSize: '0.9rem',
+                        border: '1px solid rgba(55, 251, 137, 0.3)'
+                      }}
+                    >
+                      Download Original PDF
+                    </a>
+                  </div>
+                )}
               </ResultCard>
             )}
           </Card>

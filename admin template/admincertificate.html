@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+
+      main>:first-child {
+        margin-top: 0 !important;
+      }
+
+      main>:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script
+    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#005312", "on-primary-fixed": "#002204", "primary-fixed-dim": "#48e258", "on-error-container": "#ffdad6", "on-tertiary": "#033900", "on-background": "#d2e6ee", "surface-container-high": "#1b2c33", "on-surface-variant": "#bccbb6", "secondary-fixed-dim": "#a5cdd9", "background": "#04161c", "secondary-container": "#274e59", "on-tertiary-fixed": "#012200", "on-secondary-fixed": "#001f26", "on-primary": "#00390a", "surface": "#04161c", "outline": "#869581", "inverse-primary": "#006e1c", "secondary": "#a5cdd9", "error": "#ffb4ab", "on-primary-container": "#006d1b", "inverse-surface": "#d2e6ee", "on-secondary": "#09353f", "surface-container-low": "#0c1e24", "on-tertiary-container": "#0c6d00", "on-error": "#690005", "surface-container-highest": "#26373e", "secondary-fixed": "#c1e9f6", "primary": "#d5ffcc", "surface-tint": "#48e258", "tertiary": "#d5ffc4", "primary-container": "#5cf467", "on-tertiary-fixed-variant": "#075300", "error-container": "#93000a", "tertiary-container": "#78f15e", "surface-container": "#102228", "surface-dim": "#04161c", "tertiary-fixed": "#83fd68", "primary-fixed": "#70ff76", "on-secondary-container": "#98bfcb", "surface-bright": "#2a3c42", "outline-variant": "#3d4a3a", "on-surface": "#d2e6ee", "inverse-on-surface": "#213339", "on-secondary-fixed-variant": "#254c56", "surface-container-lowest": "#001016", "surface-variant": "#26373e", "tertiary-fixed-dim": "#67e04f" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.75rem", "sidebar-width": "15rem", "space-2xl": "3rem", "gutter-mobile": "0.75rem", "space-xl": "2rem", "space-2xs": "0.25rem", "space-xs": "0.5rem", "space-md": "1rem", "gutter-desktop": "1.25rem", "margin-mobile": "1rem", "margin-desktop": "2rem" }, "fontFamily": { "code-mono": ["JetBrains Mono"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-sm": ["Inter"], "display-lg-mobile": ["Inter"], "label-caps": ["Inter"], "display-lg": ["Inter"], "stat-counter": ["Inter"], "headline-md": ["Inter"], "headline-xl-mobile": ["Inter"], "headline-xl": ["Inter"] }, "fontSize": { "code-mono": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "stat-counter": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface antialiased">
+  <aside
+    class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low z-50 flex flex-col justify-between p-space-md border-r border-outline-variant/30 shadow-[0_4px_24px_rgba(0,16,22,0.6)]">
+    <div class="flex flex-col gap-space-lg">
+      <div class="flex items-center gap-space-sm px-space-xs"><img alt="logo_solvimate.webp"
+          class="h-8 w-auto object-contain"
+          src="https://lh3.googleusercontent.com/aida/AEtjO1Xy6jwnet_FfE0schwEm4N92vFXTHjb2XgHxJWdJhyQ6a7F3lbG9alnnAdE3Cr9f6kZhnQwV9Xbk88mdFzk4wXhd_iNd9NR9vfBG4yE1cm3ffm5SkiJ32CZ3Sx27fcYcOLkIfI6oh7x2Sym2NgzUSfsXkZpvM4FxW6wbSxht0H6CzTuTIjWxPVNPyiX6zfeUOjN0tq883F_otsOIjv8ebMVDmkMyH72ufeJrfKarHD5U65u0FUiNdryAk8p-yTnVb5AMeWE2yHtAA">
+        <div class="flex flex-col leading-none"><span
+            class="font-headline-md text-label-sm tracking-wider font-bold text-primary uppercase">SOLVIMATE
+            OS</span><span
+            class="font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase mt-space-2xs">ADMIN
+            OPERATIONS</span></div>
+      </div>
+      <nav class="flex flex-col gap-space-xs"
+        data-active-classes="bg-surface-container-highest text-primary-container font-semibold border-l-2 border-primary-container shadow-[0_0_16px_rgba(92,244,103,0.15)]">
+        <a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group"
+          data-path="dashboard" href="#"><span
+            class="material-symbols-outlined text-xl transition-colors group-hover:text-primary">dashboard</span><span
+            class="font-body-md text-label-sm">Dashboard</span></a><a aria-current="page"
+          class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg transition-all group bg-surface-container-highest text-primary-container font-semibold border-l-2 border-primary-container shadow-[0_0_16px_rgba(92,244,103,0.15)]"
+          data-path="certificates" href="#"><span
+            class="material-symbols-outlined text-xl transition-colors group-hover:text-primary">verified</span><span
+            class="font-body-md text-label-sm">Certificates</span></a><a
+          class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group"
+          data-path="content-cms" href="#"><span
+            class="material-symbols-outlined text-xl transition-colors group-hover:text-primary">article</span><span
+            class="font-body-md text-label-sm">Content CMS</span></a><a
+          class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group"
+          data-path="analytics" href="#"><span
+            class="material-symbols-outlined text-xl transition-colors group-hover:text-primary">monitoring</span><span
+            class="font-body-md text-label-sm">Analytics</span></a><a
+          class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group"
+          data-path="settings" href="#"><span
+            class="material-symbols-outlined text-xl transition-colors group-hover:text-primary">settings</span><span
+            class="font-body-md text-label-sm">Settings</span></a></nav>
+    </div>
+    <div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container border border-outline-variant/30">
+      <div class="flex items-center justify-between"><span
+          class="font-code-mono text-[10px] text-on-surface-variant tracking-wider uppercase">CLUSTER
+          AP-SOUTH-1</span><span class="flex h-2 w-2 relative"><span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span
+            class="relative inline-flex rounded-full h-2 w-2 bg-primary-container shadow-[0_0_8px_#5cf467]"></span></span>
+      </div>
+      <div class="flex items-center justify-between"><span
+          class="font-code-mono text-label-sm font-semibold text-primary">NODE_ONLINE</span><span
+          class="font-code-mono text-label-sm text-secondary font-medium">99.98%</span></div>
+      <div class="flex items-center gap-space-2xs text-secondary text-[10px] font-code-mono"><span
+          class="material-symbols-outlined text-xs text-primary">shield</span><span>SECURE ENCLAVE</span></div>
+    </div>
+  </aside>
+  <div class="pl-sidebar-width min-h-screen flex flex-col">
+    <header
+      class="fixed top-0 left-sidebar-width right-0 h-16 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 z-40 px-gutter-desktop flex items-center justify-between">
+      <div class="flex items-center gap-space-sm"><img alt="logo_solvimate.webp" class="h-8 w-auto object-contain"
+          src="https://lh3.googleusercontent.com/aida/AEtjO1Xy6jwnet_FfE0schwEm4N92vFXTHjb2XgHxJWdJhyQ6a7F3lbG9alnnAdE3Cr9f6kZhnQwV9Xbk88mdFzk4wXhd_iNd9NR9vfBG4yE1cm3ffm5SkiJ32CZ3Sx27fcYcOLkIfI6oh7x2Sym2NgzUSfsXkZpvM4FxW6wbSxht0H6CzTuTIjWxPVNPyiX6zfeUOjN0tq883F_otsOIjv8ebMVDmkMyH72ufeJrfKarHD5U65u0FUiNdryAk8p-yTnVb5AMeWE2yHtAA">
+        <div class="flex items-center gap-space-xs font-code-mono text-label-sm text-on-surface-variant"><span
+            class="text-secondary hover:text-on-surface cursor-pointer transition-colors">Solvimate Ops</span><span
+            class="text-outline">/</span><span class="text-on-surface font-medium">Control Plane</span></div><span
+          class="hidden xl:inline-block w-1 h-1 rounded-full bg-outline-variant"></span><span
+          class="hidden xl:inline-block font-code-mono text-label-sm text-outline">Wednesday, September 9, 2026</span>
+      </div>
+      <div class="flex items-center gap-space-md">
+        <div class="flex items-center gap-space-sm">
+          <div class="flex flex-col items-end leading-tight">
+            <div class="flex items-center gap-space-xs"><span
+                class="font-code-mono text-label-sm text-on-surface font-medium">prathamsalotra@proton.me</span><span
+                class="px-space-xs py-0.5 rounded-full bg-surface-container-highest border border-primary-container/30 text-primary-container font-label-caps text-[10px] font-bold tracking-wider">MANAGER</span>
+            </div>
+          </div><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant/50"
+            src="https://lh3.googleusercontent.com/aida/AEtjO1VPmpbDsbJFnbxXJexWkGLMksKovt_HCF-HguMFucmAVjgxovi54c4D7c6Qi7BQty0zbSW7KIz--5OOQKAK4NHAtdbziUHrgraaY2aXTFtJJOcCNYmvm5SGt4bYkVCSHykQ8xA6NdE-u9whtJJc9yugue3_1yLas2odesG6KVIYd1N-2AJpHyQTkpzELrT_e5VBVOfyyRklsq86UQfcR0zBNuTEp5V-DMomfKZSP3CS10jC9C7r-P5NKlc">
+        </div><button
+          class="flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-error border border-outline-variant/30 hover:border-error/40 transition-all font-body-md text-label-sm"
+          type="button"><span class="material-symbols-outlined text-sm">logout</span><span>Sign Out</span></button>
+      </div>
+    </header>
+    <main class="relative pt-16 w-full px-margin-desktop bg-background flex-1">
+      <div class="max-w-7xl mx-auto flex flex-col w-full pb-space-2xl gap-space-xl pt-space-md">
+        <!-- Clean Header Section -->
+        <section
+          class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-sm border-b border-outline-variant/30">
+          <div class="flex flex-col gap-space-2xs">
+            <div
+              class="inline-flex items-center gap-space-xs self-start px-space-sm py-1 rounded-full bg-surface-container-high text-primary-container font-code-mono text-label-caps uppercase tracking-wider">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-container shadow-[0_0_8px_#5cf467] animate-pulse"></span>
+              <span>Certificate Operations</span>
+              <span class="text-outline">•</span>
+              <span class="text-secondary">Registry Ingest v2.4</span>
+            </div>
+            <h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight mt-1">Admin
+              Certificate Upload</h1>
+            <p class="font-body-md text-on-surface-variant max-w-2xl leading-relaxed text-sm">
+              Ingest verifiable credentials directly into the encrypted registry. Cloudinary media lake and MongoDB
+              Atlas state activate atomically upon confirmation.
+            </p>
+          </div>
+          <div class="flex items-center gap-space-xs shrink-0 self-start md:self-end">
+            <div
+              class="inline-flex items-center gap-2 px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+              <span class="material-symbols-outlined text-base text-primary-container">cloud_done</span>
+              <div class="flex flex-col leading-tight">
+                <span class="font-code-mono text-[10px] text-on-surface-variant uppercase tracking-wider">Media
+                  Pipeline</span>
+                <span class="font-code-mono text-xs font-semibold text-on-surface">Cloudinary Engine</span>
+              </div>
+            </div>
+            <div
+              class="inline-flex items-center gap-2 px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+              <span class="material-symbols-outlined text-base text-secondary">database</span>
+              <div class="flex flex-col leading-tight">
+                <span
+                  class="font-code-mono text-[10px] text-on-surface-variant uppercase tracking-wider">Persistence</span>
+                <span class="font-code-mono text-xs font-semibold text-on-surface">Atlas Verified</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- 12-Column Split Workspace -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+          <!-- LEFT WORKSPACE: Staging & Form (7 Cols) -->
+          <div class="xl:col-span-7 flex flex-col gap-space-xl">
+            <!-- CARD 1: File Staging & Upload -->
+            <section
+              class="rounded-xl bg-surface-container-low border border-outline-variant/30 p-space-lg shadow-sm flex flex-col gap-space-md">
+              <div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/20">
+                <div class="flex items-center gap-space-xs">
+                  <span
+                    class="flex items-center justify-center w-6 h-6 rounded-full bg-primary-container text-on-primary-fixed font-code-mono text-xs font-bold">1</span>
+                  <h2 class="font-headline-md text-headline-md font-semibold text-on-surface text-lg">Certificate File
+                    Staging &amp; Upload</h2>
+                </div>
+                <span
+                  class="inline-flex items-center gap-1 font-code-mono text-[11px] text-primary-container bg-surface-container-highest px-space-xs py-0.5 rounded border border-primary-container/20">
+                  <span class="material-symbols-outlined text-xs">lock</span> SHA-256 SECURED
+                </span>
+              </div>
+              <!-- Target ID & File Ingestion Box -->
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+                <div class="md:col-span-5 flex flex-col gap-1.5">
+                  <div class="flex items-center justify-between">
+                    <label class="font-code-mono text-xs text-on-surface font-medium" for="ingest-cert-id">Certificate
+                      ID <span class="text-error">*</span></label>
+                    <span class="font-code-mono text-[10px] text-secondary uppercase">SVM26-XXXXXX</span>
+                  </div>
+                  <div class="relative">
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-code-mono text-sm px-space-md py-2.5 rounded-lg border border-outline-variant/40 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      id="ingest-cert-id" placeholder="SVM26-A8X9Q2" type="text" value="SVM26-A8X9Q2">
+                    <span
+                      class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-primary-container text-base">check_circle</span>
+                  </div>
+                </div>
+                <div class="md:col-span-7 flex flex-col gap-1.5">
+                  <span class="font-code-mono text-xs text-on-surface font-medium">Payload Artifact (.PDF / .PNG)</span>
+                  <div
+                    class="p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-between gap-space-sm shadow-inner">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                      <div
+                        class="w-9 h-9 rounded-md bg-surface-container flex items-center justify-center text-primary shrink-0">
+                        <span class="material-symbols-outlined text-xl">picture_as_pdf</span>
+                      </div>
+                      <div class="flex flex-col min-w-0 leading-tight">
+                        <span
+                          class="font-code-mono text-xs font-medium text-on-surface truncate">SVM26_A8X9Q2_Final.pdf</span>
+                        <span class="font-code-mono text-[11px] text-on-surface-variant">1.8 MB • Ready to stream</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      <button
+                        class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-mono text-xs transition-colors"
+                        type="button">
+                        Replace
+                      </button>
+                      <button
+                        class="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-primary-container text-on-primary-fixed font-code-mono text-xs font-semibold hover:bg-tertiary-container shadow-[0_0_12px_rgba(92,244,103,0.3)] transition-all"
+                        type="button">
+                        <span class="material-symbols-outlined text-sm">cloud_upload</span>
+                        <span>Upload</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- CARD 2: Candidate & Credential Metadata -->
+            <section
+              class="rounded-xl bg-surface-container-low border border-outline-variant/30 p-space-lg shadow-sm flex flex-col gap-space-lg">
+              <div
+                class="flex items-center justify-between pb-space-xs border-b border-outline-variant/20 flex-wrap gap-2">
+                <div class="flex items-center gap-space-xs">
+                  <span
+                    class="flex items-center justify-center w-6 h-6 rounded-full bg-primary-container text-on-primary-fixed font-code-mono text-xs font-bold">2</span>
+                  <h2 class="font-headline-md text-headline-md font-semibold text-on-surface text-lg">Candidate &amp;
+                    Credential Metadata</h2>
+                </div>
+                <div
+                  class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-highest text-primary-container font-code-mono text-[11px]">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+                  <span>ATOMIC STATE SYNC</span>
+                </div>
+              </div>
+              <!-- Permanent Verification URL Highlight -->
+              <div
+                class="p-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-between gap-space-xs">
+                <div class="flex items-center gap-space-xs min-w-0">
+                  <span class="material-symbols-outlined text-secondary text-lg">link</span>
+                  <div class="flex items-center gap-2 text-xs font-code-mono truncate">
+                    <span class="text-on-surface-variant uppercase text-[10px] tracking-wider">Verification URL:</span>
+                    <span class="text-primary font-semibold truncate" id="verif-endpoint">/verify/SVM26-A8X9Q2</span>
+                  </div>
+                </div>
+                <button
+                  class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-secondary hover:text-on-surface font-code-mono text-xs transition-colors"
+                  onclick="navigator.clipboard.writeText('https://verify.solvimate.com/verify/SVM26-A8X9Q2')"
+                  type="button">
+                  <span class="material-symbols-outlined text-sm">content_copy</span>
+                  <span>Copy URL</span>
+                </button>
+              </div>
+              <!-- Form Inputs Grid -->
+              <form class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-space-md gap-y-space-sm">
+                  <!-- Candidate Name -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Candidate Name <span
+                        class="text-error">*</span></label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="text" value="Aarav Sharma">
+                  </div>
+                  <!-- Candidate Email -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Email Address <span
+                        class="text-error">*</span></label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-code-mono text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="email" value="aarav.sharma@domain.in">
+                  </div>
+                  <!-- Phone -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Phone Number</label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-code-mono text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="tel" value="+91 98201 44510">
+                  </div>
+                  <!-- Internship Role -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Internship Role <span
+                        class="text-error">*</span></label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="text" value="AI Intern">
+                  </div>
+                  <!-- Department -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Department <span
+                        class="text-error">*</span></label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="text" value="Engineering">
+                  </div>
+                  <!-- Organization -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Organization <span
+                        class="text-error">*</span></label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="text" value="Solvimate">
+                  </div>
+                  <!-- Issue Date -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Issue Date <span
+                        class="text-error">*</span></label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-code-mono text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="date" value="2026-08-01">
+                  </div>
+                  <!-- Duration -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Duration</label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="text" value="3 months">
+                  </div>
+                  <!-- Start Date -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Start Date</label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-code-mono text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="date" value="2026-05-01">
+                  </div>
+                  <!-- End Date -->
+                  <div class="flex flex-col gap-1">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">End Date</label>
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface font-code-mono text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                      type="date" value="2026-07-31">
+                  </div>
+                </div>
+                <!-- Performance Summary / Description -->
+                <div class="flex flex-col gap-1 pt-1">
+                  <div class="flex items-center justify-between">
+                    <label class="font-code-mono text-xs text-on-surface font-medium">Performance Summary &amp;
+                      Milestones</label>
+                    <span class="font-code-mono text-[10px] text-on-surface-variant">PASSPORT READY</span>
+                  </div>
+                  <textarea
+                    class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm p-space-md rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner resize-none"
+                    rows="3">Completed internship milestones in agentic workflows, deep learning pipelines, and backend microservices.</textarea>
+                </div>
+                <!-- Merit Recognitions & Badges -->
+                <div class="flex flex-col gap-space-xs pt-1">
+                  <label class="font-code-mono text-xs text-on-surface font-medium">Merit Badges</label>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs">
+                    <label
+                      class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container/40 cursor-pointer select-none transition-all">
+                      <input checked="" class="w-4 h-4 accent-[#5cf467] rounded" type="checkbox">
+                      <span class="font-body-md text-xs text-on-surface">Best Performer</span>
+                    </label>
+                    <label
+                      class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container/40 cursor-pointer select-none transition-all">
+                      <input class="w-4 h-4 accent-[#5cf467] rounded" type="checkbox">
+                      <span class="font-body-md text-xs text-on-surface">Team Leader</span>
+                    </label>
+                    <label
+                      class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container/40 cursor-pointer select-none transition-all">
+                      <input checked="" class="w-4 h-4 accent-[#5cf467] rounded" type="checkbox">
+                      <span class="font-body-md text-xs text-on-surface">Fast Learner</span>
+                    </label>
+                    <label
+                      class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container/40 cursor-pointer select-none transition-all">
+                      <input class="w-4 h-4 accent-[#5cf467] rounded" type="checkbox">
+                      <span class="font-body-md text-xs text-on-surface">Innovation Star</span>
+                    </label>
+                  </div>
+                </div>
+                <!-- Custom Badges Input -->
+                <div class="flex flex-col gap-1">
+                  <label class="font-code-mono text-xs text-on-surface font-medium">Custom Tags</label>
+                  <input
+                    class="w-full bg-surface-container-lowest text-on-surface font-body-md text-sm px-space-md py-2 rounded-lg border border-outline-variant/30 focus:border-primary-container focus:outline-none focus:bg-surface-container transition-all shadow-inner"
+                    placeholder="e.g. Hackathon Finalist, LLM Lead" type="text">
+                </div>
+                <!-- Action Footer -->
+                <div class="flex items-center justify-between pt-space-sm border-t border-outline-variant/20 mt-1">
+                  <div class="flex items-center gap-1.5 text-secondary font-code-mono text-[11px]">
+                    <span class="material-symbols-outlined text-sm text-primary">verified_user</span>
+                    <span>SIGNED PROTOCOL 0x88F</span>
+                  </div>
+                  <button
+                    class="flex items-center gap-2 px-space-xl py-2.5 rounded-full bg-primary-container text-on-primary-fixed font-headline-md text-xs font-bold tracking-wide hover:bg-tertiary-container shadow-[0_0_20px_rgba(92,244,103,0.35)] transition-all"
+                    type="button">
+                    <span class="material-symbols-outlined text-base">save</span>
+                    <span>Save Certificate Metadata</span>
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+          <!-- RIGHT WORKSPACE: Telemetry & Recent Feed (5 Cols) -->
+          <div class="xl:col-span-5 flex flex-col gap-space-lg">
+            <!-- Recent Certificates Table Container -->
+            <section
+              class="rounded-xl bg-surface-container-low border border-outline-variant/30 p-space-md shadow-sm flex flex-col gap-space-md">
+              <div class="flex items-center justify-between pb-space-2xs border-b border-outline-variant/20">
+                <div class="flex items-center gap-2">
+                  <span class="relative flex h-2 w-2">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+                  </span>
+                  <h2 class="font-headline-md text-headline-md font-semibold text-on-surface text-base">Recent
+                    Certificates</h2>
+                </div>
+                <span
+                  class="font-code-mono text-[10px] text-primary-container bg-surface-container-highest px-space-xs py-0.5 rounded border border-primary-container/20 uppercase tracking-wider font-semibold">
+                  LIVE SYNC
+                </span>
+              </div>
+              <!-- Metric Micro-cards -->
+              <div class="grid grid-cols-3 gap-space-xs">
+                <div
+                  class="flex flex-col items-center justify-center p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/20">
+                  <span class="font-code-mono text-[10px] text-on-surface-variant uppercase tracking-wider">TOTAL
+                    ISSUED</span>
+                  <span class="font-stat-counter text-xl font-bold text-on-surface mt-0.5">1,492</span>
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/20">
+                  <span class="font-code-mono text-[10px] text-on-surface-variant uppercase tracking-wider">VALID
+                    RATIO</span>
+                  <span class="font-stat-counter text-xl font-bold text-primary-container mt-0.5">100%</span>
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/20">
+                  <span
+                    class="font-code-mono text-[10px] text-on-surface-variant uppercase tracking-wider">LATENCY</span>
+                  <span class="font-stat-counter text-xl font-bold text-secondary mt-0.5">42ms</span>
+                </div>
+              </div>
+              <!-- Clean Filter Search -->
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-base">search</span>
+                <input
+                  class="w-full bg-surface-container-lowest text-on-surface font-body-md text-xs pl-9 pr-space-md py-2 rounded-lg border border-outline-variant/30 placeholder-outline focus:outline-none focus:border-primary-container focus:bg-surface-container transition-all shadow-inner"
+                  id="cert-table-filter" placeholder="Filter candidate, ID or role..." type="text">
+              </div>
+              <!-- Elegant Telemetry Table -->
+              <div
+                class="rounded-lg bg-surface-container-lowest border border-outline-variant/20 overflow-hidden shadow-inner">
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left font-body-md text-xs">
+                    <thead
+                      class="bg-surface-container/70 font-code-mono text-[10px] text-on-surface-variant uppercase tracking-wider">
+                      <tr>
+                        <th class="py-2 px-3 font-semibold">ID</th>
+                        <th class="py-2 px-3 font-semibold">CANDIDATE</th>
+                        <th class="py-2 px-3 font-semibold">ROLE</th>
+                        <th class="py-2 px-3 font-semibold text-right">STATUS</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-surface-container font-code-mono text-xs" id="recent-certs-body">
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-T3R7W8XM</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">
+                          Priyanshu Patel</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Project
+                          Coordinator</td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-M2T8Q6ZW</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">
+                          Thanushree M</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Web
+                          Development</td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-N7K1T6XP</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">Rakesh
+                          K. Pandey</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Gen AI Intern
+                        </td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-M8T1Q7ZW</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">N
+                          Tejeswar Reddy</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Gen AI Intern
+                        </td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-B2R9Y4QM</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">Amit
+                          Pathak</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Web
+                          Development</td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-L4V7R1XB</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">Heerath
+                          Bhat</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Web
+                          Development</td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-surface-container-high/40 transition-colors cursor-pointer group">
+                        <td class="py-2.5 px-3 text-primary font-semibold flex items-center gap-1">
+                          <span
+                            class="material-symbols-outlined text-[10px] text-secondary opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                          <span>SVM26-Q2W8N4ZT</span>
+                        </td>
+                        <td class="py-2.5 px-3 font-body-md text-on-surface font-medium truncate max-w-[110px]">Girija
+                          Halagali</td>
+                        <td class="py-2.5 px-3 text-on-surface-variant text-[11px] truncate max-w-[90px]">Web
+                          Development</td>
+                        <td class="py-2.5 px-3 text-right">
+                          <span
+                            class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-container/10 text-primary-container text-[9px] font-bold tracking-wider uppercase">
+                            <span class="w-1 h-1 rounded-full bg-primary-container"></span> ACTIVE
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- Archive Link -->
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-code-mono text-[11px] text-on-surface-variant">7 active records shown</span>
+                <a class="font-code-mono text-xs text-primary hover:text-primary-container flex items-center gap-1 transition-colors"
+                  href="#">
+                  <span>View Full Archive</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </section>
+            <!-- Security Perimeter Badge -->
+            <div
+              class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-center gap-space-sm">
+              <div
+                class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0">
+                <span class="material-symbols-outlined text-sm text-primary">verified</span>
+              </div>
+              <div class="flex flex-col leading-tight">
+                <span class="font-code-mono text-[10px] text-secondary tracking-widest uppercase font-bold">Perimeter
+                  Verification</span>
+                <span class="font-code-mono text-[11px] text-on-surface-variant">SHA-256 HMAC ON COMMIT • TLS 1.3
+                  ENCRYPTED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const filterInput = document.getElementById('cert-table-filter');
+        const tableRows = document.querySelectorAll('#recent-certs-body tr');
+        if (filterInput && tableRows.length) {
+          filterInput.addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase().trim();
+            tableRows.forEach(row => {
+              const text = row.innerText.toLowerCase();
+              row.style.display = text.includes(q) ? '' : 'none';
+            });
+          });
+        }
+      </script>
+    </main>
+  </div>
+</body>
+
+</html>

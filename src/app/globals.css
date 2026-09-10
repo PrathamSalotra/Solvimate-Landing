@@ -1,19 +1,31 @@
 :root {
-  --font-display: var(--font-inter-tight), 'Inter Tight', -apple-system, sans-serif;
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', -apple-system, sans-serif;
   --font-body: var(--font-inter-tight), 'Inter Tight', -apple-system, sans-serif;
-  --font-mono: var(--font-inter-tight), 'Inter Tight', -apple-system, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
 }
 
 :root,
 [data-theme='dark'] {
   --background: #001e2b;
+  --surface: #0a2e3d;
   --foreground: #f5fbf2;
+  --ink: #001e2b;
+  --lime: #befe72;
+  --mint: #37fb89;
+  --mist: #9fb8b4;
+  --paper: #f5fbf2;
   color-scheme: dark;
 }
 
 [data-theme='light'] {
   --background: #f5fbf2;
+  --surface: #ffffff;
   --foreground: #001e2b;
+  --ink: #001e2b;
+  --lime: #befe72;
+  --mint: #37fb89;
+  --mist: #9fb8b4;
+  --paper: #f5fbf2;
   color-scheme: light;
 }
 

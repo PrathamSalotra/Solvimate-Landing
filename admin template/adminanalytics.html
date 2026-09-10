@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        @layer base {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+
+            main>:first-child {
+                margin-top: 0 !important;
+            }
+
+            main>:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#005312",
+                        "surface": "#04161c",
+                        "on-secondary-fixed-variant": "#254c56",
+                        "on-tertiary-fixed": "#012200",
+                        "error": "#ffb4ab",
+                        "outline": "#869581",
+                        "on-secondary-container": "#98bfcb",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#002204",
+                        "secondary-container": "#274e59",
+                        "on-tertiary-container": "#0c6d00",
+                        "on-primary-container": "#006d1b",
+                        "surface-variant": "#26373e",
+                        "surface-dim": "#04161c",
+                        "surface-tint": "#48e258",
+                        "inverse-primary": "#006e1c",
+                        "secondary-fixed-dim": "#a5cdd9",
+                        "on-tertiary": "#033900",
+                        "inverse-on-surface": "#213339",
+                        "primary-fixed": "#70ff76",
+                        "surface-container-low": "#0c1e24",
+                        "on-secondary": "#09353f",
+                        "secondary-fixed": "#c1e9f6",
+                        "surface-container": "#102228",
+                        "on-tertiary-fixed-variant": "#075300",
+                        "inverse-surface": "#d2e6ee",
+                        "tertiary-fixed": "#83fd68",
+                        "primary": "#d5ffcc",
+                        "tertiary-container": "#78f15e",
+                        "surface-bright": "#2a3c42",
+                        "tertiary": "#d5ffc4",
+                        "surface-container-lowest": "#001016",
+                        "on-primary": "#00390a",
+                        "surface-container-high": "#1b2c33",
+                        "primary-fixed-dim": "#48e258",
+                        "surface-container-highest": "#26373e",
+                        "outline-variant": "#3d4a3a",
+                        "tertiary-fixed-dim": "#67e04f",
+                        "on-surface": "#d2e6ee",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "primary-container": "#5cf467",
+                        "on-surface-variant": "#bccbb6",
+                        "on-background": "#d2e6ee",
+                        "background": "#04161c",
+                        "secondary": "#a5cdd9",
+                        "on-secondary-fixed": "#001f26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "0.75rem",
+                        "space-lg": "1.5rem",
+                        "gutter-desktop": "1.25rem",
+                        "margin-mobile": "1rem",
+                        "sidebar-width": "15rem",
+                        "space-xs": "0.5rem",
+                        "space-2xl": "3rem",
+                        "space-md": "1rem",
+                        "space-2xs": "0.25rem",
+                        "space-xl": "2rem",
+                        "margin-desktop": "2rem",
+                        "space-sm": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "code-mono": ["JetBrains Mono"],
+                        "headline-xl-mobile": ["Inter"],
+                        "stat-counter": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "code-mono": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-xl-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "stat-counter": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+                        "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }</script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen">
+    <aside
+        class="fixed left-0 top-0 bottom-0 w-sidebar-width bg-surface-container-low z-40 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.2)]">
+        <div class="flex flex-col">
+            <div
+                class="h-16 px-space-md flex items-center gap-space-xs bg-surface-container-lowest/60 backdrop-blur-xl">
+                <img alt="logo_solvimate.webp" class="h-8 w-auto object-contain"
+                    src="https://lh3.googleusercontent.com/aida/AEtjO1Xy6jwnet_FfE0schwEm4N92vFXTHjb2XgHxJWdJhyQ6a7F3lbG9alnnAdE3Cr9f6kZhnQwV9Xbk88mdFzk4wXhd_iNd9NR9vfBG4yE1cm3ffm5SkiJ32CZ3Sx27fcYcOLkIfI6oh7x2Sym2NgzUSfsXkZpvM4FxW6wbSxht0H6CzTuTIjWxPVNPyiX6zfeUOjN0tq883F_otsOIjv8ebMVDmkMyH72ufeJrfKarHD5U65u0FUiNdryAk8p-yTnVb5AMeWE2yHtAA" />
+                <div class="flex flex-col"><span
+                        class="font-headline-md text-sm font-bold tracking-tight text-on-surface leading-tight">Solvimate
+                        Ops</span><span
+                        class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Control
+                        Plane</span></div>
+            </div>
+            <div class="px-space-md pt-space-md pb-space-xs"><span
+                    class="font-label-caps text-label-caps uppercase tracking-wider text-outline">Operations</span>
+            </div>
+            <nav class="px-space-xs flex flex-col gap-1"
+                data-active-classes="bg-surface-container-high text-primary-container font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r">
+                <a class="flex items-center gap-space-xs px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all"
+                    data-path="dashboard" href="#"><span
+                        class="material-symbols-outlined text-lg leading-none">dashboard</span><span
+                        class="font-body-md text-body-md">Dashboard</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all"
+                    data-path="certificates" href="#"><span
+                        class="material-symbols-outlined text-lg leading-none">verified_user</span><span
+                        class="font-body-md text-body-md">Certificates</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all"
+                    data-path="content-cms" href="#"><span
+                        class="material-symbols-outlined text-lg leading-none">dataset</span><span
+                        class="font-body-md text-body-md">Content CMS</span></a><a aria-current="page"
+                    class="flex items-center gap-space-xs px-space-sm py-2 rounded transition-all bg-surface-container-high text-primary-container font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r"
+                    data-path="analytics" href="#"><span
+                        class="material-symbols-outlined text-lg leading-none">monitoring</span><span
+                        class="font-body-md text-body-md">Analytics</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all"
+                    data-path="settings" href="#"><span
+                        class="material-symbols-outlined text-lg leading-none">tune</span><span
+                        class="font-body-md text-body-md">Settings</span></a></nav>
+        </div>
+        <div class="p-space-md bg-surface-container-lowest/80 flex flex-col gap-space-xs">
+            <div class="flex items-center justify-between"><span
+                    class="font-label-caps text-label-caps uppercase text-outline">System Status</span><span
+                    class="flex h-2 w-2 relative"><span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span
+                        class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span></div>
+            <div class="bg-surface-container px-space-sm py-space-xs rounded flex flex-col gap-1">
+                <div class="flex items-center justify-between font-code-mono text-code-mono"><span
+                        class="text-secondary">NODE_ONLINE</span><span
+                        class="text-primary-container font-bold">99.98%</span></div>
+                <div class="flex items-center justify-between font-code-mono text-code-mono text-xs"><span
+                        class="text-outline">REGION</span><span class="text-on-surface-variant">AP-SOUTH-1</span></div>
+                <div
+                    class="flex items-center gap-1 mt-1 font-label-caps text-label-caps uppercase text-on-secondary-container">
+                    <span class="material-symbols-outlined text-xs leading-none">lock</span><span>Secure Enclave</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <div class="pl-sidebar-width">
+        <header
+            class="fixed top-0 left-sidebar-width right-0 h-16 bg-surface/85 backdrop-blur-xl z-30 shadow-[0_1px_8px_rgba(0,0,0,0.15)] flex items-center justify-between px-space-xl">
+            <div class="flex items-center gap-space-sm">
+                <div class="flex items-center gap-space-2xs text-on-surface-variant font-body-md text-body-md"><span
+                        class="text-outline hover:text-on-surface cursor-pointer">Console</span><span
+                        class="material-symbols-outlined text-xs leading-none text-outline">chevron_right</span><span
+                        class="text-primary font-semibold">Operations</span></div><span
+                    class="inline-block w-1 h-1 rounded-full bg-outline-variant mx-1"></span>
+                <div class="flex items-center gap-1 font-code-mono text-code-mono text-secondary-fixed-dim"><span
+                        class="material-symbols-outlined text-sm leading-none">calendar_today</span><span>Wednesday,
+                        September 9, 2026</span></div>
+            </div>
+            <div class="flex items-center gap-space-lg">
+                <div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-full"><span
+                        class="h-2 w-2 rounded-full bg-primary-container"></span><span
+                        class="font-label-caps text-label-caps text-on-secondary-container uppercase">Perimeter
+                        Active</span></div>
+                <div class="flex items-center gap-space-sm">
+                    <div class="flex flex-col items-end text-right"><span
+                            class="font-body-md text-body-md font-medium text-on-surface leading-tight">prathamsalotra@proton.me</span><span
+                            class="font-label-caps text-label-caps uppercase tracking-wider text-primary-container leading-tight">MANAGER</span>
+                    </div><img alt="Profile" class="w-8 h-8 rounded-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida/AEtjO1VPmpbDsbJFnbxXJexWkGLMksKovt_HCF-HguMFucmAVjgxovi54c4D7c6Qi7BQty0zbSW7KIz--5OOQKAK4NHAtdbziUHrgraaY2aXTFtJJOcCNYmvm5SGt4bYkVCSHykQ8xA6NdE-u9whtJJc9yugue3_1yLas2odesG6KVIYd1N-2AJpHyQTkpzELrT_e5VBVOfyyRklsq86UQfcR0zBNuTEp5V-DMomfKZSP3CS10jC9C7r-P5NKlc" /><a
+                        class="flex items-center gap-1 font-label-sm text-label-sm text-outline hover:text-error transition-colors ml-space-xs"
+                        data-path="login" href="#" title="Sign Out"><span
+                            class="material-symbols-outlined text-base leading-none">logout</span></a>
+                </div>
+            </div>
+        </header>
+        <main class="w-full pt-16 bg-surface min-h-screen px-space-xl pb-space-2xl">
+            <div class="flex flex-col w-full">
+                <!-- Top Command & Header Strip -->
+                <section class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md pb-space-lg">
+                    <div class="flex flex-col gap-space-2xs">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-primary-container font-label-caps text-label-caps uppercase tracking-wider">
+                                <span class="h-1.5 w-1.5 rounded-full bg-primary-container animate-pulse"></span>
+                                Insights / Telemetry_Engine_v2
+                            </span>
+                            <span class="text-outline text-xs font-code-mono">v4.8.2-prod</span>
+                        </div>
+                        <h1 class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight">
+                            Analytics</h1>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                            Real-time certificate issuance trajectories, verification velocity, cryptographic audit
+                            traces, and lifecycle governance.
+                        </p>
+                    </div>
+                    <!-- Telemetry Diagnostic Badges -->
+                    <div class="flex flex-wrap items-center gap-space-xs">
+                        <div
+                            class="flex items-center gap-2 px-space-sm py-2 rounded-lg bg-surface-container-low shadow-sm">
+                            <span class="material-symbols-outlined text-primary-container text-sm">verified</span>
+                            <div class="flex flex-col">
+                                <span class="font-label-caps text-label-caps text-outline uppercase">Global
+                                    Integrity</span>
+                                <span class="font-code-mono text-code-mono text-primary-container font-bold">100.0%
+                                    SECURE</span>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 px-space-sm py-2 rounded-lg bg-surface-container-low shadow-sm">
+                            <span class="material-symbols-outlined text-secondary text-sm">speed</span>
+                            <div class="flex flex-col">
+                                <span class="font-label-caps text-label-caps text-outline uppercase">Edge Latency</span>
+                                <span class="font-code-mono text-code-mono text-secondary font-bold">42ms
+                                    RESPONSE</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Top Analytics Bento Grid -->
+                <section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
+                    <!-- Left Card: Certificate Health & Dispersion -->
+                    <div
+                        class="lg:col-span-7 bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden">
+                        <!-- Glow ambient backdrop -->
+                        <div
+                            class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/5 rounded-full blur-3xl pointer-events-none">
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between gap-space-sm mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-primary-container text-xl">vital_signs</span>
+                                    <h2 class="font-headline-md text-headline-md text-on-surface font-semibold">
+                                        Certificate Health</h2>
+                                </div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest font-label-caps text-label-caps uppercase text-primary tracking-wider">
+                                    <span class="h-2 w-2 rounded-full bg-primary-container"></span> Live Telemetry
+                                </span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">
+                                Status split and cryptographic verification engagement across all active credentials.
+                            </p>
+                            <!-- Metrics Bars -->
+                            <div class="space-y-space-md">
+                                <!-- Active Bar -->
+                                <div class="flex flex-col gap-1.5">
+                                    <div class="flex justify-between items-center font-body-md text-body-md">
+                                        <span class="text-on-surface font-medium flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                                            Active Credentials
+                                        </span>
+                                        <span class="font-code-mono text-code-mono font-bold text-primary-container">35
+                                            <span class="text-outline font-normal">(100%)</span></span>
+                                    </div>
+                                    <div
+                                        class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden p-0.5">
+                                        <div class="h-full rounded-full bg-primary-container shadow-[0_0_12px_rgba(92,244,103,0.6)] transition-all duration-1000 ease-out"
+                                            style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Revoked Bar -->
+                                <div class="flex flex-col gap-1.5">
+                                    <div class="flex justify-between items-center font-body-md text-body-md">
+                                        <span class="text-on-surface font-medium flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-error"></span>
+                                            Revoked / Quarantined
+                                        </span>
+                                        <span class="font-code-mono text-code-mono font-medium text-outline">0 <span
+                                                class="text-outline-variant font-normal">(0%)</span></span>
+                                    </div>
+                                    <div class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden">
+                                        <div class="h-full rounded-full bg-error/30 transition-all duration-500"
+                                            style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Verified at least once -->
+                                <div class="flex flex-col gap-1.5">
+                                    <div class="flex justify-between items-center font-body-md text-body-md">
+                                        <span class="text-on-surface font-medium flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+                                            Verified At Least Once
+                                        </span>
+                                        <span
+                                            class="font-code-mono text-code-mono font-bold text-secondary-fixed-dim">35
+                                            <span class="text-outline font-normal">(100%)</span></span>
+                                    </div>
+                                    <div
+                                        class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden p-0.5">
+                                        <div class="h-full rounded-full bg-gradient-to-r from-primary-container to-secondary-fixed-dim shadow-[0_0_10px_rgba(165,205,217,0.4)] transition-all duration-1000 ease-out"
+                                            style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer Micro-Stats Strip -->
+                        <div
+                            class="mt-space-lg pt-space-md flex flex-wrap items-center justify-between gap-space-xs text-xs font-code-mono text-on-surface-variant bg-surface-container-lowest/50 rounded-lg p-space-sm">
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-primary-container">shield</span>
+                                <span>Zero Signature Collisions</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-secondary">database</span>
+                                <span>Ledger Depth: 4,096 bit RSA / ECC</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Card: Verification Velocity Curve -->
+                    <div
+                        class="lg:col-span-5 bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden">
+                        <!-- Glow ambient backdrop -->
+                        <div
+                            class="absolute -bottom-10 -left-10 w-44 h-44 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none">
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between gap-space-sm mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary text-xl">query_stats</span>
+                                    <h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Audit
+                                        Velocity</h2>
+                                </div>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-surface-container-high text-secondary-fixed font-code-mono text-xs font-semibold">
+                                    24H WINDOW
+                                </span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+                                Aggregate public verifier hits and API endpoint requests across distributed relays.
+                            </p>
+                            <!-- Velocity Stat Pill -->
+                            <div class="flex items-baseline gap-space-sm mb-space-sm">
+                                <span
+                                    class="font-stat-counter text-stat-counter font-extrabold text-on-surface tracking-tight">54</span>
+                                <span
+                                    class="font-body-md text-body-md text-primary-container font-semibold flex items-center">
+                                    <span class="material-symbols-outlined text-base leading-none">trending_up</span>
+                                    +18.4% this week
+                                </span>
+                            </div>
+                            <!-- Inline SVG Sparkline Curve Chart -->
+                            <div class="w-full h-28 my-2 relative">
+                                <svg class="w-full h-full overflow-visible" fill="none" preserveaspectratio="none"
+                                    viewbox="0 0 320 90">
+                                    <defs>
+                                        <lineargradient id="velocityGrad" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#5cf467" stop-opacity="0.32"></stop>
+                                            <stop offset="100%" stop-color="#5cf467" stop-opacity="0.0"></stop>
+                                        </lineargradient>
+                                    </defs>
+                                    <!-- Area Fill -->
+                                    <path d="M0,75 Q35,68 70,55 T140,42 T210,50 T260,20 T320,12 L320,90 L0,90 Z"
+                                        fill="url(#velocityGrad)"></path>
+                                    <!-- Velocity Line -->
+                                    <path class="drop-shadow-[0_0_8px_rgba(92,244,103,0.8)]"
+                                        d="M0,75 Q35,68 70,55 T140,42 T210,50 T260,20 T320,12" stroke="#5cf467"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+                                    <!-- Key Pulsing Nodes -->
+                                    <circle cx="140" cy="42" fill="#5cf467" r="3.5"></circle>
+                                    <circle cx="260" cy="20" fill="#5cf467" r="3.5"></circle>
+                                    <circle class="animate-ping" cx="320" cy="12" fill="#5cf467" opacity="0.6" r="5">
+                                    </circle>
+                                    <circle cx="320" cy="12" fill="#04161c" r="4" stroke="#5cf467" stroke-width="2.5">
+                                    </circle>
+                                </svg>
+                            </div>
+                            <div class="flex justify-between text-xs font-code-mono text-outline pt-1">
+                                <span>00:00 UTC</span>
+                                <span>08:00 UTC</span>
+                                <span>16:00 UTC</span>
+                                <span class="text-primary-container font-semibold">NOW</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-space-md pt-space-xs flex items-center justify-between text-xs font-code-mono text-secondary-fixed-dim">
+                            <span class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">public</span> Global Edge CDN
+                            </span>
+                            <span class="text-primary-container font-semibold">SYNCED • 0 PACKET LOSS</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Main Management & Data Records Panel -->
+                <section class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col gap-space-lg">
+                    <!-- Header with Search and Filter Toolbar -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+                        <div class="flex flex-col">
+                            <h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">
+                                Certificate Management</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant">
+                                Search credentials, monitor verifier resonance, and enforce instant revoking authority.
+                            </p>
+                        </div>
+                        <!-- Real-time Filter Field -->
+                        <div class="relative w-full md:w-80">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg pointer-events-none">search</span>
+                            <input
+                                class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md pl-10 pr-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-primary-container/40 transition-all"
+                                id="cert-search" placeholder="Search ID, name, email, role..." type="text" />
+                        </div>
+                    </div>
+                    <!-- Table Container (Horizontal Scroll for Responsive Rigidity) -->
+                    <div class="overflow-x-auto rounded-lg bg-surface-container-lowest/60">
+                        <table class="w-full text-left border-collapse" id="cert-table">
+                            <thead>
+                                <tr
+                                    class="bg-surface-container-high/80 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                                    <th class="py-3.5 px-space-md">ID</th>
+                                    <th class="py-3.5 px-space-md">Candidate</th>
+                                    <th class="py-3.5 px-space-md">Role</th>
+                                    <th class="py-3.5 px-space-md text-center">Views</th>
+                                    <th class="py-3.5 px-space-md text-center">Status</th>
+                                    <th class="py-3.5 px-space-md text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y-0 text-on-surface font-body-md text-body-md font-normal"
+                                id="cert-tbody">
+                                <!-- Row 1 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-T3R7W8XM</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Priyanshu Patel</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Project Coordinator</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">2x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-T3R7W8XM')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-M2T8Q6ZW</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Thanushree M</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Web Development</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">5x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-M2T8Q6ZW')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-N7K1T6XP</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Rakesh Kumar Pandey</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Gen AI Intern</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">7x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-N7K1T6XP')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 4 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-M8T1Q7ZW</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">N TEJESWAR REDDY</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Gen AI Intern</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">6x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-M8T1Q7ZW')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 5 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-B2R9Y4QM</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Amit pathak</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Web Development</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">7x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-B2R9Y4QM')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 6 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-L4V7R1XB</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Heerath Bhat</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Web Development</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">9x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-L4V7R1XB')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 7 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-Q2W8N4ZT</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">GIRIJA HALAGALI</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Web Development</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">2x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-Q2W8N4ZT')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 8 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-Y9C3X7KV</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">MONISH GOWDA M</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Frontend Developer</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">6x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-Y9C3X7KV')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 9 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-X8L5N2ZT</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Sunny</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Web Development</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">3x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-X8L5N2ZT')">Revoke</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 10 -->
+                                <tr class="hover:bg-surface-container/60 transition-colors group">
+                                    <td
+                                        class="py-3 px-space-md font-code-mono text-code-mono text-secondary font-semibold group-hover:text-primary-container transition-colors">
+                                        SVM26-J6W1P7KF</td>
+                                    <td class="py-3 px-space-md font-medium text-on-surface">Suvansh Sudan</td>
+                                    <td class="py-3 px-space-md text-on-surface-variant">Web Development</td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-primary font-code-mono text-xs font-bold">7x</span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-caps text-label-caps font-bold">
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#5cf467]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-space-md text-right">
+                                        <button
+                                            class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container hover:bg-error-container hover:text-on-error-container text-outline hover:text-error transition-all"
+                                            onclick="handleRevoke(this, 'SVM26-J6W1P7KF')">Revoke</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination & Audit Summary Footer -->
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs text-on-surface-variant">
+                        <div class="flex items-center gap-2 font-code-mono text-code-mono text-outline">
+                            <span>Showing <strong class="text-on-surface">1</strong> to <strong
+                                    class="text-on-surface">10</strong> of <strong class="text-on-surface">35</strong>
+                                items</span>
+                            <span class="hidden sm:inline text-outline-variant">•</span>
+                            <span class="hidden sm:inline text-xs text-secondary">Verified Cache Hits: 100%</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="px-4 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-outline hover:text-on-surface font-label-sm text-label-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                                disabled="">
+                                Prev
+                            </button>
+                            <button
+                                class="px-4 py-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm font-bold text-on-surface transition-all shadow-sm">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <script>
+                // Search Filter Interaction
+                document.getElementById('cert-search')?.addEventListener('input', function (e) {
+                    const query = e.target.value.toLowerCase();
+                    const rows = document.querySelectorAll('#cert-tbody tr');
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(query) ? '' : 'none';
+                    });
+                });
+
+                // Dynamic Revoke Micro-interaction
+                function handleRevoke(button, certId) {
+                    if (confirm(`Confirm revocation protocol for credential ID: ${certId}?`)) {
+                        const row = button.closest('tr');
+                        const statusBadge = row.querySelector('td:nth-child(5) span');
+
+                        statusBadge.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error/15 text-error font-label-caps text-label-caps font-bold';
+                        statusBadge.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-error"></span> REVOKED';
+
+                        button.textContent = 'Revoked';
+                        button.disabled = true;
+                        button.className = 'px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container-lowest text-outline-variant cursor-not-allowed';
+                    }
+                }
+            </script>
+        </main>
+    </div>
+</body>
+
+</html>
