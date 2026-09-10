@@ -6,7 +6,7 @@ import {
   SectionCard,
   HeaderRow,
   TitleBlock,
-  SearchInput,
+  SearchWrap,
   TableWrap,
   Table,
   EmptyState,
@@ -30,13 +30,6 @@ export interface DashboardCertificate {
 interface CertificateManagementTableProps {
   initialCertificates: DashboardCertificate[];
   totalInitial: number;
-}
-
-function formatDateTime(value: string | Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
 }
 
 export default function CertificateManagementTable({
@@ -115,16 +108,19 @@ export default function CertificateManagementTable({
       <HeaderRow>
         <TitleBlock>
           <h2>Certificate Management</h2>
-          <p>Search certificates, view verification velocity, and manage active/revoked status.</p>
+          <p>Search credentials, monitor verifier resonance, and enforce instant revoking authority.</p>
         </TitleBlock>
-        <SearchInput
-          placeholder="Search ID, name, email, role..."
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setPage(1);
-          }}
-        />
+        <SearchWrap>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input
+            placeholder="Search ID, name, email, role..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPage(1);
+            }}
+          />
+        </SearchWrap>
       </HeaderRow>
 
       <TableWrap>
@@ -155,7 +151,9 @@ export default function CertificateManagementTable({
             ) : (
               certificates.map((cert) => (
                 <tr key={cert.verificationId}>
-                  <td>{cert.verificationId}</td>
+                  <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}>
+                    {cert.verificationId}
+                  </td>
                   <td>{cert.candidateName}</td>
                   <td>{cert.internshipRole}</td>
                   <td>
@@ -163,7 +161,8 @@ export default function CertificateManagementTable({
                   </td>
                   <td>
                     <StatusBadge $variant={cert.status === "active" ? "active" : "revoked"}>
-                      {cert.status}
+                      <div className="dot" />
+                      {cert.status === "active" ? "ACTIVE" : "REVOKED"}
                     </StatusBadge>
                   </td>
                   <td>
@@ -189,7 +188,7 @@ export default function CertificateManagementTable({
       {totalPages > 1 && (
         <PaginationContainer>
           <p>
-            Showing {(page - 1) * 10 + 1} to {Math.min(page * 10, total)} of {total}
+            Showing <strong>{(page - 1) * 10 + 1}</strong> to <strong>{Math.min(page * 10, total)}</strong> of <strong>{total}</strong> items
           </p>
           <div>
             <PageButton disabled={page === 1} onClick={() => setPage((p) => p - 1)}>

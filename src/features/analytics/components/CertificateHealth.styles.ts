@@ -1,24 +1,38 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(55, 251, 137, 0.2);
-  border-radius: 16px;
-  background: linear-gradient(170deg, rgba(1, 55, 51, 0.9), rgba(0, 30, 43, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: var(--surface);
   padding: 24px;
-  height: 100%;
+  margin-bottom: 24px;
+
+  @media (max-width: 580px) {
+    padding: 16px;
+  }
+`;
+
+export const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
 `;
 
 export const SectionTitle = styled.h2`
-  margin: 0 0 8px;
-  color: #ffffff;
-  font-size: 1.1rem;
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
 `;
 
 export const SectionSubtext = styled.p`
   margin: 0 0 24px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--mist);
   font-size: 0.85rem;
   line-height: 1.5;
+  max-width: 600px;
 `;
 
 export const StatusGrid = styled.div`
@@ -38,43 +52,54 @@ export const StatusLabelRow = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.85);
+  .label-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  p:last-child {
-    font-weight: 600;
-    color: #ffffff;
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot.lime { background-color: var(--lime); }
+  .dot.red { background-color: #ff7070; }
+  .dot.blue { background-color: var(--lime); }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  span.value {
+    font-weight: 700;
+    color: var(--foreground);
+    font-size: 0.9rem;
+  }
+
+  span.pct {
+    color: var(--mist);
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
   }
 `;
 
 export const StatusTrack = styled.div`
   width: 100%;
-  height: 8px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
   overflow: hidden;
 `;
 
-export const StatusFillActive = styled.div`
+export const StatusFill = styled.div<{ $color?: string }>`
   height: 100%;
-  background: #37fb89;
-  border-radius: 4px;
-  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-`;
-
-export const StatusFillRevoked = styled.div`
-  height: 100%;
-  background: #ff7070;
-  border-radius: 4px;
-  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-`;
-
-export const StatusFillNeutral = styled.div`
-  height: 100%;
-  background: #3ba1ff;
-  border-radius: 4px;
+  background: ${(props) => props.$color || "var(--lime)"};
+  border-radius: 3px;
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 `;

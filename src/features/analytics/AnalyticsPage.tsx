@@ -7,7 +7,7 @@ import CertificateHealth from "./components/CertificateHealth";
 import CertificateManagementTable, {
   DashboardCertificate,
 } from "./components/CertificateManagementTable";
-import { PageContainer, TwoColumnGrid } from "./AnalyticsPage.styles";
+import { PageContainer } from "./AnalyticsPage.styles";
 
 interface AnalyticsPageProps {
   analytics: {
@@ -30,16 +30,13 @@ export default function AnalyticsPage({
         <DashboardHeader
           eyebrow="INSIGHTS"
           title="Analytics"
-          subtitle="Certificate issuance trends, verification engagement, and management."
+          subtitle="Real-time certificate issuance trajectories, verification velocity, cryptographic audit traces, and lifecycle governance."
         />
 
-        <TwoColumnGrid>
-          <CertificateHealth
-            statusBreakdown={analytics.statusBreakdown}
-            verificationEngagement={analytics.verificationEngagement}
-          />
-          {/* We could add MonthlyIssuance or DepartmentBreakdown here in the future */}
-        </TwoColumnGrid>
+        <CertificateHealth
+          statusBreakdown={analytics.statusBreakdown}
+          verificationEngagement={analytics.verificationEngagement}
+        />
 
         <CertificateManagementTable
           initialCertificates={initialCertificates}

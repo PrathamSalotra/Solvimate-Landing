@@ -1,14 +1,13 @@
 import {
   SectionCard,
+  SectionHeader,
   SectionTitle,
   SectionSubtext,
   StatusGrid,
   StatusRow,
   StatusLabelRow,
   StatusTrack,
-  StatusFillActive,
-  StatusFillRevoked,
-  StatusFillNeutral,
+  StatusFill,
 } from "./CertificateHealth.styles";
 
 function percent(part: number, total: number) {
@@ -37,50 +36,72 @@ export default function CertificateHealth({
 
   return (
     <SectionCard>
-      <SectionTitle>Certificate Health</SectionTitle>
+      <SectionHeader>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <SectionTitle>Certificate Health</SectionTitle>
+      </SectionHeader>
       <SectionSubtext>
-        Status split and verification engagement across all certificates.
+        Status split and cryptographic verification engagement across all active credentials.
       </SectionSubtext>
 
       <StatusGrid>
+        {/* Active Credentials */}
         <StatusRow>
           <StatusLabelRow>
-            <p>Active</p>
-            <p>
-              {statusBreakdown.active} ({percent(statusBreakdown.active, totalStatus)}%)
-            </p>
+            <div className="label-group">
+              <div className="dot lime" />
+              <p>Active Credentials</p>
+            </div>
+            <div>
+              <span className="value">{statusBreakdown.active} </span>
+              <span className="pct">({percent(statusBreakdown.active, totalStatus)}%)</span>
+            </div>
           </StatusLabelRow>
           <StatusTrack>
-            <StatusFillActive
+            <StatusFill
+              $color="var(--lime)"
               style={{ width: `${percent(statusBreakdown.active, totalStatus)}%` }}
             />
           </StatusTrack>
         </StatusRow>
 
+        {/* Revoked / Quarantined */}
         <StatusRow>
           <StatusLabelRow>
-            <p>Revoked</p>
-            <p>
-              {statusBreakdown.revoked} ({percent(statusBreakdown.revoked, totalStatus)}%)
-            </p>
+            <div className="label-group">
+              <div className="dot red" />
+              <p>Revoked / Quarantined</p>
+            </div>
+            <div>
+              <span className="value">{statusBreakdown.revoked} </span>
+              <span className="pct">({percent(statusBreakdown.revoked, totalStatus)}%)</span>
+            </div>
           </StatusLabelRow>
           <StatusTrack>
-            <StatusFillRevoked
+            <StatusFill
+              $color="#ff7070"
               style={{ width: `${percent(statusBreakdown.revoked, totalStatus)}%` }}
             />
           </StatusTrack>
         </StatusRow>
 
+        {/* Verified At Least Once */}
         <StatusRow>
           <StatusLabelRow>
-            <p>Verified at least once</p>
-            <p>
-              {verificationEngagement.verifiedAtLeastOnce} (
-              {percent(verificationEngagement.verifiedAtLeastOnce, totalEngagement)}%)
-            </p>
+            <div className="label-group">
+              <div className="dot blue" />
+              <p>Verified At Least Once</p>
+            </div>
+            <div>
+              <span className="value">{verificationEngagement.verifiedAtLeastOnce} </span>
+              <span className="pct">
+                ({percent(verificationEngagement.verifiedAtLeastOnce, totalEngagement)}%)
+              </span>
+            </div>
           </StatusLabelRow>
           <StatusTrack>
-            <StatusFillNeutral
+            <StatusFill
+              $color="var(--lime)"
               style={{
                 width: `${percent(
                   verificationEngagement.verifiedAtLeastOnce,
