@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(55, 251, 137, 0.2);
-  border-radius: 16px;
-  background: linear-gradient(170deg, rgba(1, 55, 51, 0.9), rgba(0, 30, 43, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: var(--surface);
   padding: 24px;
   margin-bottom: 24px;
 
@@ -12,76 +12,190 @@ export const SectionCard = styled.section`
   }
 `;
 
-export const SectionTitle = styled.h2`
-  margin: 0 0 8px;
-  color: #ffffff;
-  font-size: 1.1rem;
-`;
-
-export const SectionDescription = styled.p`
-  margin: 0 0 20px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
-  line-height: 1.5;
-`;
-
-export const UploadRow = styled.div`
+export const SectionHeader = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
 `;
 
-export const TextInput = styled.input`
-  flex: 1;
-  min-width: 200px;
-  padding: 10px 14px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+export const TitleGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
+export const StepBadge = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+`;
+
+export const SectionTitle = styled.h2`
+  margin: 0;
+  color: var(--foreground);
+  font-size: 1.2rem;
+  font-weight: 600;
+`;
+
+export const UploadGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+`;
+
+export const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--mist);
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    span {
+      color: #ff7070;
+    }
+
+    span.value {
+      margin-left: auto;
+      color: var(--lime);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--foreground);
+      font-size: 0.95rem;
+      font-family: var(--font-mono);
+      transition: all 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    svg {
+      position: absolute;
+      right: 12px;
+    }
+  }
+`;
+
+export const UploadZone = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  color: #ffffff;
-  font-size: 0.9rem;
+  padding: 12px 16px;
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      color: var(--mist);
+    }
+  }
+`;
+
+export const FileDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+
+  span.name {
+    color: var(--foreground);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  span.size {
+    color: var(--mist);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+  }
+`;
+
+export const ActionButtons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const ReplaceButton = styled.button`
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--mist);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
   transition: all 0.2s ease;
 
-  &:focus {
-    outline: none;
-    border-color: rgba(55, 251, 137, 0.6);
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.3);
-  }
-`;
-
-export const FileInput = styled.input`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.85rem;
-  
-  &::file-selector-button {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    cursor: pointer;
-    margin-right: 12px;
-    transition: background 0.2s ease;
-  }
-
-  &::file-selector-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--foreground);
   }
 `;
 
 export const PrimaryButton = styled.button`
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 600;
   border: none;
-  color: #001e2b;
-  background: linear-gradient(140deg, #37fb89, #00d672);
+  color: var(--ink);
+  background: var(--lime);
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.1s ease;
 
@@ -103,37 +217,4 @@ export const ErrorText = styled.p`
   margin: 12px 0 0;
   color: #ff7070;
   font-size: 0.85rem;
-`;
-
-export const UploadMeta = styled.div`
-  margin-top: 20px;
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(55, 251, 137, 0.3);
-  border-radius: 8px;
-
-  p {
-    margin: 0 0 8px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.85rem;
-
-    strong {
-      color: #ffffff;
-    }
-  }
-
-  p:last-of-type {
-    margin-bottom: 12px;
-  }
-`;
-
-export const LinkUrl = styled.a`
-  color: #37fb89;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;

@@ -6,15 +6,18 @@ import { UploadAssetResult } from "@/services/upload.service";
 import { RecentCertificateItem } from "./RecentCertificatesPanel";
 import {
   SectionCard,
+  SectionHeader,
+  TitleGroup,
+  StepBadge,
   SectionTitle,
-  SectionDescription,
-  PreviewBlock,
   FormGrid,
+  FormInner,
   Field,
   BadgeGroup,
   BadgeOptions,
   BadgeOption,
   FormActions,
+  ProtocolLabel,
   PrimaryButton,
   ErrorText,
   SuccessText,
@@ -176,18 +179,15 @@ export default function CertificateDetailsForm({
 
   return (
     <SectionCard>
-      <SectionTitle>2. Save Certificate Metadata</SectionTitle>
-      <SectionDescription>
-        This step saves certificate metadata only. Existing certificate file and QR remain
-        unchanged.
-      </SectionDescription>
-
-      <PreviewBlock>
-        <p>Verification URL (permanent):</p>
-        <code>/verify/{"{CERTIFICATE_ID}"}</code>
-      </PreviewBlock>
+      <SectionHeader>
+        <TitleGroup>
+          <StepBadge>2</StepBadge>
+          <SectionTitle>Candidate & Credential Metadata</SectionTitle>
+        </TitleGroup>
+      </SectionHeader>
 
       <FormGrid onSubmit={onSubmit} noValidate>
+        <FormInner>
         <Field>
           <span>Certificate ID *</span>
           <input
@@ -269,16 +269,16 @@ export default function CertificateDetailsForm({
         </Field>
 
         <Field $fullWidth>
-          <span>Description</span>
+          <span>Performance Summary & Milestones</span>
           <textarea
             rows={3}
-            placeholder="Completed internship milestones..."
+            placeholder="Completed internship milestones in agentic workflows, deep learning pipelines..."
             {...register("description")}
           />
         </Field>
 
         <BadgeGroup>
-          <legend>Badges</legend>
+          <legend>Merit Badges</legend>
           <BadgeOptions>
             {DEFAULT_BADGES.map((badge) => (
               <BadgeOption key={badge}>
@@ -287,21 +287,30 @@ export default function CertificateDetailsForm({
               </BadgeOption>
             ))}
           </BadgeOptions>
-          <input
-            placeholder="Custom badges (comma-separated)"
-            style={{ width: "100%" }}
-            {...register("customBadges")}
-          />
+          <Field $fullWidth>
+            <span>Custom Tags</span>
+            <input
+              placeholder="e.g. Hackathon Finalist, LLM Lead"
+              style={{ width: "100%" }}
+              {...register("customBadges")}
+            />
+          </Field>
         </BadgeGroup>
 
+        {submitError && <ErrorText style={{ gridColumn: '1 / -1' }}>{submitError}</ErrorText>}
+        {successMessage && <SuccessText style={{ gridColumn: '1 / -1' }}>{successMessage}</SuccessText>}
+        </FormInner>
+
         <FormActions>
+          <ProtocolLabel>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            SIGNED PROTOCOL 0x88F
+          </ProtocolLabel>
           <PrimaryButton type="submit" disabled={isSubmitting}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
             {isSubmitting ? "Saving..." : "Save Certificate Metadata"}
           </PrimaryButton>
         </FormActions>
-
-        {submitError && <ErrorText>{submitError}</ErrorText>}
-        {successMessage && <SuccessText>{successMessage}</SuccessText>}
       </FormGrid>
     </SectionCard>
   );
