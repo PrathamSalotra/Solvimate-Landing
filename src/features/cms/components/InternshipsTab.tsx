@@ -5,13 +5,22 @@ import toast from "react-hot-toast";
 import {
   SectionCard,
   SectionHeaderRow,
+  SectionTitleGroup,
+  SectionTitle,
+  SectionSubtitle,
   PrimaryButton,
   TableWrap,
   Table,
   StatusBadgeButton,
+  DeleteButton,
+  EmptyState,
 } from "../CmsDashboard.styles";
 
-export default function InternshipsTab() {
+interface InternshipsTabProps {
+  onCountChange?: (count: number) => void;
+}
+
+export default function InternshipsTab({ onCountChange }: InternshipsTabProps) {
   const [internships, setInternships] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +28,10 @@ export default function InternshipsTab() {
     fetch("/api/cms/internships")
       .then((r) => r.json())
       .then((data) => {
-        if (data.ok) setInternships(data.data.internships);
+        if (data.ok) {
+          setInternships(data.data.internships);
+          onCountChange?.(data.data.internships.length);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -59,7 +71,9 @@ export default function InternshipsTab() {
       });
       const json = await res.json();
       if (res.ok && json.ok) {
-        setInternships([json.data.internship, ...internships]);
+        const updated = [json.data.internship, ...internships];
+        setInternships(updated);
+        onCountChange?.(updated.length);
         toast.success("Internship added.");
       }
     } catch (err) {
@@ -71,7 +85,9 @@ export default function InternshipsTab() {
     if (!confirm("Are you sure?")) return;
     try {
       await fetch(`/api/cms/internships/${id}`, { method: "DELETE" });
-      setInternships(internships.filter((j) => j.id !== id));
+      const updated = internships.filter((j) => j.id !== id);
+      setInternships(updated);
+      onCountChange?.(updated.length);
       toast.success("Deleted.");
     } catch (err) {
       toast.error("Failed to delete.");
@@ -81,8 +97,17 @@ export default function InternshipsTab() {
   return (
     <SectionCard>
       <SectionHeaderRow>
-        <h2>Internship Openings</h2>
-        <PrimaryButton onClick={handleAdd}>Add Internship</PrimaryButton>
+        <SectionTitleGroup>
+          <div className="dot" />
+          <div>
+            <SectionTitle>Internship Openings</SectionTitle>
+            <SectionSubtitle>LIVE PRODUCTION REGISTRY</SectionSubtitle>
+          </div>
+        </SectionTitleGroup>
+        <PrimaryButton onClick={handleAdd}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Internship
+        </PrimaryButton>
       </SectionHeaderRow>
 
       <TableWrap>
@@ -98,37 +123,33 @@ export default function InternshipsTab() {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={4}>Loading...</td>
+                <EmptyState colSpan={4}>Loading...</EmptyState>
               </tr>
             ) : internships.length === 0 ? (
               <tr>
-                <td colSpan={4}>No internships found.</td>
+                <EmptyState colSpan={4}>No internships found.</EmptyState>
               </tr>
             ) : (
               internships.map((item) => (
                 <tr key={item.id}>
                   <td>{item.title}</td>
-                  <td>{item.department}</td>
+                  <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                    {item.department}
+                  </td>
                   <td>
                     <StatusBadgeButton
                       $isActive={item.isActive}
                       onClick={() => handleToggle(item)}
                     >
-                      {item.isActive ? "Active" : "Closed"}
+                      <div className="dot" />
+                      {item.isActive ? "ACTIVE" : "CLOSED"}
                     </StatusBadgeButton>
                   </td>
                   <td>
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        color: "#ff7070",
-                        cursor: "pointer",
-                      }}
-                    >
+                    <DeleteButton onClick={() => handleDelete(item.id)}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                       Delete
-                    </button>
+                    </DeleteButton>
                   </td>
                 </tr>
               ))

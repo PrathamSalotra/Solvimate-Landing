@@ -5,13 +5,22 @@ import toast from "react-hot-toast";
 import {
   SectionCard,
   SectionHeaderRow,
+  SectionTitleGroup,
+  SectionTitle,
+  SectionSubtitle,
   PrimaryButton,
   TableWrap,
   Table,
   StatusBadgeButton,
+  DeleteButton,
+  EmptyState,
 } from "../CmsDashboard.styles";
 
-export default function JobsTab() {
+interface JobsTabProps {
+  onCountChange?: (count: number) => void;
+}
+
+export default function JobsTab({ onCountChange }: JobsTabProps) {
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +28,10 @@ export default function JobsTab() {
     fetch("/api/cms/jobs")
       .then((r) => r.json())
       .then((data) => {
-        if (data.ok) setJobs(data.data.jobs);
+        if (data.ok) {
+          setJobs(data.data.jobs);
+          onCountChange?.(data.data.jobs.length);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -59,7 +71,9 @@ export default function JobsTab() {
       });
       const json = await res.json();
       if (res.ok && json.ok) {
-        setJobs([json.data.job, ...jobs]);
+        const updated = [json.data.job, ...jobs];
+        setJobs(updated);
+        onCountChange?.(updated.length);
         toast.success("Job added.");
       }
     } catch (err) {
@@ -71,7 +85,9 @@ export default function JobsTab() {
     if (!confirm("Are you sure?")) return;
     try {
       await fetch(`/api/cms/jobs/${id}`, { method: "DELETE" });
-      setJobs(jobs.filter((j) => j.id !== id));
+      const updated = jobs.filter((j) => j.id !== id);
+      setJobs(updated);
+      onCountChange?.(updated.length);
       toast.success("Deleted.");
     } catch (err) {
       toast.error("Failed to delete.");
@@ -81,8 +97,17 @@ export default function JobsTab() {
   return (
     <SectionCard>
       <SectionHeaderRow>
-        <h2>Careers Listings</h2>
-        <PrimaryButton onClick={handleAdd}>Add Job</PrimaryButton>
+        <SectionTitleGroup>
+          <div className="dot" />
+          <div>
+            <SectionTitle>Careers Listings</SectionTitle>
+            <SectionSubtitle>LIVE PRODUCTION REGISTRY</SectionSubtitle>
+          </div>
+        </SectionTitleGroup>
+        <PrimaryButton onClick={handleAdd}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Job
+        </PrimaryButton>
       </SectionHeaderRow>
 
       <TableWrap>
@@ -98,37 +123,33 @@ export default function JobsTab() {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={4}>Loading...</td>
+                <EmptyState colSpan={4}>Loading...</EmptyState>
               </tr>
             ) : jobs.length === 0 ? (
               <tr>
-                <td colSpan={4}>No jobs found.</td>
+                <EmptyState colSpan={4}>No jobs found.</EmptyState>
               </tr>
             ) : (
               jobs.map((job) => (
                 <tr key={job.id}>
                   <td>{job.title}</td>
-                  <td>{job.department}</td>
+                  <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                    {job.department}
+                  </td>
                   <td>
                     <StatusBadgeButton
                       $isActive={job.isActive}
                       onClick={() => handleToggle(job)}
                     >
-                      {job.isActive ? "Active" : "Draft"}
+                      <div className="dot" />
+                      {job.isActive ? "ACTIVE" : "DRAFT"}
                     </StatusBadgeButton>
                   </td>
                   <td>
-                    <button
-                      onClick={() => handleDelete(job.id)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        color: "#ff7070",
-                        cursor: "pointer",
-                      }}
-                    >
+                    <DeleteButton onClick={() => handleDelete(job.id)}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                       Delete
-                    </button>
+                    </DeleteButton>
                   </td>
                 </tr>
               ))

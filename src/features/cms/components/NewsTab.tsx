@@ -5,13 +5,22 @@ import toast from "react-hot-toast";
 import {
   SectionCard,
   SectionHeaderRow,
+  SectionTitleGroup,
+  SectionTitle,
+  SectionSubtitle,
   PrimaryButton,
   TableWrap,
   Table,
   StatusBadgeButton,
+  DeleteButton,
+  EmptyState,
 } from "../CmsDashboard.styles";
 
-export default function NewsTab() {
+interface NewsTabProps {
+  onCountChange?: (count: number) => void;
+}
+
+export default function NewsTab({ onCountChange }: NewsTabProps) {
   const [news, setNews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +28,10 @@ export default function NewsTab() {
     fetch("/api/cms/news")
       .then((r) => r.json())
       .then((data) => {
-        if (data.ok) setNews(data.data.news);
+        if (data.ok) {
+          setNews(data.data.news);
+          onCountChange?.(data.data.news.length);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -59,10 +71,12 @@ export default function NewsTab() {
       });
       const json = await res.json();
       if (res.ok && json.ok) {
-        setNews([json.data.news, ...news]);
+        const updated = [json.data.news, ...news];
+        setNews(updated);
+        onCountChange?.(updated.length);
         toast.success("News added.");
       } else {
-         toast.error(json.message || "Failed to add.");
+        toast.error(json.message || "Failed to add.");
       }
     } catch (err) {
       toast.error("Failed to add.");
@@ -73,7 +87,9 @@ export default function NewsTab() {
     if (!confirm("Are you sure?")) return;
     try {
       await fetch(`/api/cms/news/${id}`, { method: "DELETE" });
-      setNews(news.filter((j) => j.id !== id));
+      const updated = news.filter((j) => j.id !== id);
+      setNews(updated);
+      onCountChange?.(updated.length);
       toast.success("Deleted.");
     } catch (err) {
       toast.error("Failed to delete.");
@@ -83,8 +99,17 @@ export default function NewsTab() {
   return (
     <SectionCard>
       <SectionHeaderRow>
-        <h2>News Articles</h2>
-        <PrimaryButton onClick={handleAdd}>Add News</PrimaryButton>
+        <SectionTitleGroup>
+          <div className="dot" />
+          <div>
+            <SectionTitle>News Articles</SectionTitle>
+            <SectionSubtitle>CONTENT FEED</SectionSubtitle>
+          </div>
+        </SectionTitleGroup>
+        <PrimaryButton onClick={handleAdd}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add News
+        </PrimaryButton>
       </SectionHeaderRow>
 
       <TableWrap>
@@ -100,37 +125,33 @@ export default function NewsTab() {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={4}>Loading...</td>
+                <EmptyState colSpan={4}>Loading...</EmptyState>
               </tr>
             ) : news.length === 0 ? (
               <tr>
-                <td colSpan={4}>No news found.</td>
+                <EmptyState colSpan={4}>No news found.</EmptyState>
               </tr>
             ) : (
               news.map((item) => (
                 <tr key={item.id}>
                   <td>{item.title}</td>
-                  <td>{item.slug}</td>
+                  <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--mist)" }}>
+                    /{item.slug}
+                  </td>
                   <td>
                     <StatusBadgeButton
                       $isActive={item.isPublished}
                       onClick={() => handleToggle(item)}
                     >
-                      {item.isPublished ? "Published" : "Draft"}
+                      <div className="dot" />
+                      {item.isPublished ? "PUBLISHED" : "DRAFT"}
                     </StatusBadgeButton>
                   </td>
                   <td>
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        color: "#ff7070",
-                        cursor: "pointer",
-                      }}
-                    >
+                    <DeleteButton onClick={() => handleDelete(item.id)}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                       Delete
-                    </button>
+                    </DeleteButton>
                   </td>
                 </tr>
               ))
