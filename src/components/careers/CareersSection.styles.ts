@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 
 export const SectionWrapper = styled.section`
   width: 100%;
@@ -72,9 +72,21 @@ export const FilterButton = styled.button<{ $active?: boolean }>`
 `;
 
 export const ListingsGrid = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
+
+  @media (max-width: 1060px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: 820px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const JobCard = styled.article`
@@ -85,7 +97,7 @@ export const JobCard = styled.article`
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.radius.card};
   box-shadow: ${({ theme }) => (theme.isDark ? '0 10px 30px rgba(0, 0, 0, 0.25)' : '0 10px 30px rgba(0, 0, 0, 0.08)')};
-  padding: 2.25rem 2.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -101,7 +113,7 @@ export const JobCard = styled.article`
   }
 
   @media (max-width: 640px) {
-    padding: 1.75rem 1.25rem;
+    padding: 1.35rem;
   }
 `;
 
@@ -120,7 +132,7 @@ export const BadgesGroup = styled.div`
   gap: 0.5rem;
 `;
 
-export const TrackBadge = styled.span`
+export const TypeBadge = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.75rem;
   font-weight: 700;
@@ -132,15 +144,44 @@ export const TrackBadge = styled.span`
   color: ${({ theme }) => theme.primaryText};
 `;
 
-export const CategoryBadge = styled.span`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.35rem 0.75rem;
-  border-radius: 9999px;
-  background: ${({ theme }) => theme.background};
-  border: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.textSecondary};
+export const OpeningDetails = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-top: 1px solid ${({ theme }) => theme.border};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
+
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const OpeningDetail = styled.div`
+  min-width: 0;
+
+  span {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: ${({ theme }) => theme.textSecondary};
+    font-family: ${({ theme }) => theme.fonts.mono};
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+  }
+
+  strong {
+    display: block;
+    overflow: hidden;
+    color: ${({ theme }) => theme.foreground};
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 export const AvailableBadge = styled.span`
@@ -195,24 +236,6 @@ export const JobFooter = styled.div`
   border-top: 1px solid ${({ theme }) => theme.border};
 `;
 
-export const LangTagsRow = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-export const LangPill = styled.span`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.8125rem;
-  font-weight: 600;
-  padding: 0.35rem 0.75rem;
-  border-radius: 9999px;
-  background: ${({ theme }) => theme.background};
-  border: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.foreground};
-`;
-
 export const ApplyButton = styled(Link)`
   font-family: ${({ theme }) => theme.fonts.body};
   display: inline-flex;
@@ -225,6 +248,8 @@ export const ApplyButton = styled(Link)`
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
+  width: 100%;
+  margin-top: auto;
   transition:
     transform 0.2s ease,
     background-color 0.2s ease,

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { supabaseServer } from '@/lib/supabase/server';
+import { listInternships, listJobs } from '@/services/cms.service';
 import CareersClient from './CareersClient';
 
 export const revalidate = 60; // Short revalidation window per spec §5.5
@@ -7,12 +7,12 @@ export const revalidate = 60; // Short revalidation window per spec §5.5
 export interface JobListing {
   id: string;
   title: string;
-  track: 'candidate' | 'vendor';
-  category: string;
-  languages: string[];
-  status: 'available' | 'closed';
+  type: 'job' | 'internship';
+  department?: string;
   description: string;
-  created_at: string;
+  duration?: string;
+  location?: string;
+  mode: 'remote' | 'onsite' | 'hybrid';
 }
 
 export const metadata: Metadata = {
@@ -29,20 +29,35 @@ export const metadata: Metadata = {
 
 async function getJobListings(): Promise<JobListing[]> {
   try {
-    const { data, error } = await supabaseServer
-      .from('job_listings')
-      .select('*')
-      .eq('status', 'available')
-      .order('created_at', { ascending: false });
+    const [jobs, internships] = await Promise.all([listJobs(), listInternships()]);
 
-    if (error) {
-      console.error('[Careers Page] Supabase error fetching job_listings:', error.message);
-      return [];
-    }
-
-    return (data as JobListing[]) || [];
+    return [
+      ...jobs
+        .filter((listing) => listing.isActive)
+        .map((listing) => ({
+          id: listing.id,
+          title: listing.title,
+          type: 'job' as const,
+          department: listing.department,
+          description: listing.description,
+          location: listing.location,
+          mode: listing.mode,
+        })),
+      ...internships
+        .filter((listing) => listing.isActive)
+        .map((listing) => ({
+          id: listing.id,
+          title: listing.title,
+          type: 'internship' as const,
+          department: listing.department,
+          description: listing.description,
+          duration: listing.duration,
+          location: listing.location,
+          mode: listing.mode,
+        })),
+    ];
   } catch (err) {
-    console.error('[Careers Page] Unexpected error fetching listings:', err);
+    console.error('[Careers Page] Error fetching openings:', err);
     return [];
   }
 }
