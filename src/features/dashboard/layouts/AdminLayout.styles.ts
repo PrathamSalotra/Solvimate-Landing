@@ -4,6 +4,11 @@ export const PageContainer = styled.main`
   min-height: 100vh;
   padding: 28px 16px 40px;
   background: var(--background);
+  font-family: "Inter Tight", "Inter Tight Fallback", "Inter Tight", -apple-system, sans-serif, "Inter Tight", "Inter Tight Fallback", "Inter Tight", sans-serif;
+
+  --font-body: "Inter Tight", "Inter Tight Fallback", "Inter Tight", -apple-system, sans-serif, "Inter Tight", "Inter Tight Fallback", "Inter Tight", sans-serif;
+  --font-display: "Inter Tight", "Inter Tight Fallback", "Inter Tight", -apple-system, sans-serif, "Inter Tight", "Inter Tight Fallback", "Inter Tight", sans-serif;
+  --font-mono: "Inter Tight", "Inter Tight Fallback", "Inter Tight", -apple-system, sans-serif, "Inter Tight", "Inter Tight Fallback", "Inter Tight", sans-serif;
 
   @media (max-width: 580px) {
     padding: 16px 10px 30px;
