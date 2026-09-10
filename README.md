@@ -7,7 +7,6 @@ Solvimate is a Next.js application for translation, transcription, dubbing, cert
 - Node.js 20.9 or later
 - npm 10 or later
 - MongoDB database
-- Supabase project for contact form and related integrations
 
 Optional services are required for specific features:
 
@@ -45,11 +44,6 @@ MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/solvimate
 # NextAuth
 NEXTAUTH_SECRET=replace-with-a-long-random-secret
 
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-
 # Cloudinary, used for certificate uploads
 CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-cloudinary-api-key
@@ -58,6 +52,7 @@ CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 # Resend, used for admin OTP and email notifications
 RESEND_API_KEY=re_your_resend_api_key
 RESEND_FROM_EMAIL=Solvimate <operations@solvimate.com>
+RESEND_CONTACT_EMAIL=your-inbox@example.com
 ```
 
 Never commit `.env.local` or expose service-role, database, Cloudinary secret, Resend, or NextAuth credentials in client-side code.
@@ -117,8 +112,6 @@ src/
   services/            Database and business logic services
   context/             Theme, language, and toast providers
   lib/                 Auth, database, storage, and utility helpers
-supabase/
-  migrations/          Supabase database migrations
 public/                Static assets
 ```
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { supabaseServer } from '@/lib/supabase/server';
+import { listInternships } from '@/services/cms.service';
 import InternshipsClient from './InternshipsClient';
 
 export const revalidate = 60; // Short ISR window per spec §5.5
@@ -26,20 +26,19 @@ export const metadata: Metadata = {
 
 async function getInternships(): Promise<InternshipListing[]> {
   try {
-    const { data, error } = await supabaseServer
-      .from('internships')
-      .select('*')
-      .eq('status', 'open')
-      .order('created_at', { ascending: false });
+    const internships = await listInternships();
 
-    if (error) {
-      console.error('[Internships Page] Supabase error fetching internships:', error.message);
-      return [];
-    }
-
-    return (data as InternshipListing[]) || [];
+    return internships
+      .filter((internship) => internship.isActive)
+      .map((internship) => ({
+        id: internship.id,
+        title: internship.title,
+        description: internship.description,
+        status: 'open' as const,
+        created_at: internship.createdAt || new Date().toISOString(),
+      }));
   } catch (err) {
-    console.error('[Internships Page] Unexpected error fetching internships:', err);
+    console.error('[Internships Page] Error fetching internships:', err);
     return [];
   }
 }

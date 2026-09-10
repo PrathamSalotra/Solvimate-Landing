@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { supabaseServer } from '@/lib/supabase/server';
+import { listNews } from '@/services/cms.service';
 import NewsClient from './NewsClient';
 
 export const revalidate = 60; // Short ISR revalidation window per spec §5.5
@@ -28,20 +28,21 @@ export const metadata: Metadata = {
 
 async function getPublishedNews(): Promise<NewsArticle[]> {
   try {
-    const { data, error } = await supabaseServer
-      .from('news_articles')
-      .select('*')
-      .eq('is_published', true)
-      .order('published_at', { ascending: false });
+    const news = await listNews();
 
-    if (error) {
-      console.error('[News Page] Supabase error fetching news_articles:', error.message);
-      return [];
-    }
-
-    return (data as NewsArticle[]) || [];
+    return news
+      .filter((article) => article.isPublished)
+      .map((article) => ({
+        id: article.id,
+        title: article.title,
+        slug: article.slug,
+        body: article.excerpt || article.content,
+        is_published: article.isPublished,
+        published_at: article.publishedAt,
+        created_at: article.createdAt,
+      }));
   } catch (err) {
-    console.error('[News Page] Unexpected error fetching news_articles:', err);
+    console.error('[News Page] Error fetching news:', err);
     return [];
   }
 }

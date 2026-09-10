@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import {
   SidebarContainer,
-  SidebarBrand,
   SidebarList,
   SidebarItem,
   SidebarLinkActive,
@@ -78,20 +77,6 @@ export default function DashboardSidebar() {
         </SidebarList>
       </div>
       
-      <div style={{ marginTop: 'auto', paddingTop: '40px' }}>
-        <p style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--mist)', letterSpacing: '0.5px', marginBottom: '8px' }}>Cluster AP-South-1</p>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--mint)', boxShadow: '0 0 8px var(--mint)' }}></div>
-            <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--paper)' }}>NODE_ONLINE</span>
-          </div>
-          <span style={{ fontSize: '12px', color: 'var(--mist)', fontFamily: 'var(--font-mono)' }}>99.98%</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mist)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span style={{ fontSize: '11px', color: 'var(--mist)' }}>SECURE ENCLAVE</span>
-        </div>
-      </div>
     </SidebarContainer>
   );
 }
