@@ -174,7 +174,7 @@ export const lightTheme: ThemeTokens = {
     surface: '#FFFFFF',
     lime: '#BEFE72',
     mint: '#37FB89',
-    mist: '#9FB8B4',
+    mist: '#2E626F',
     paper: '#F5FBF2',
     textOnAccent: '#001E2B',
     secondaryText: '#2E626F',

@@ -49,12 +49,21 @@ export const StatIconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 28px;
   width: 28px;
   height: 28px;
+  line-height: 0;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--mist);
+
+  svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+  }
 
   &.highlight {
     background: rgba(55, 251, 137, 0.1);
