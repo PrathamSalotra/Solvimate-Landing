@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
   padding: 0; /* padding handled internally */
@@ -16,7 +16,7 @@ export const SectionHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 24px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  border-bottom: 1px dashed var(--border);
 `;
 
 export const TitleGroup = styled.div`
@@ -79,8 +79,8 @@ export const Field = styled.label<{ $fullWidth?: boolean }>`
   input,
   textarea {
     padding: 12px 14px;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--foreground);
     font-size: 0.95rem;
@@ -89,11 +89,12 @@ export const Field = styled.label<{ $fullWidth?: boolean }>`
 
     &:focus {
       outline: none;
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: var(--mist);
     }
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.2);
+      color: var(--mist);
+      opacity: 0.5;
     }
   }
 
@@ -130,13 +131,13 @@ export const BadgeOption = styled.label`
   gap: 8px;
   cursor: pointer;
   padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
   border-radius: 6px;
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-hover);
   }
 
   input[type="checkbox"] {
@@ -154,9 +155,9 @@ export const BadgeOption = styled.label`
 `;
 
 export const FormActions = styled.div`
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--surface-alt);
   padding: 16px 24px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  border-top: 1px dashed var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;

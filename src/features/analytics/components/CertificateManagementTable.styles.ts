@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
   padding: 24px;
@@ -52,8 +52,8 @@ export const SearchWrap = styled.div`
   input {
     width: 100%;
     padding: 10px 14px 10px 40px;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--foreground);
     font-size: 0.85rem;
@@ -61,11 +61,12 @@ export const SearchWrap = styled.div`
 
     &:focus {
       outline: none;
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: var(--mist);
     }
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--mist);
+      opacity: 0.5;
     }
   }
 `;
@@ -83,7 +84,7 @@ export const Table = styled.table`
   td {
     padding: 14px 12px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   th {
@@ -110,7 +111,7 @@ export const Table = styled.table`
   }
 
   tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-hover);
   }
 `;
 
@@ -154,8 +155,8 @@ export const StatusBadge = styled.span<{ $variant: "active" | "revoked" }>`
     props.$variant === "active"
       ? `
         color: var(--lime);
-        background: rgba(190, 254, 115, 0.08);
-        border: 1px solid rgba(190, 254, 115, 0.2);
+        background: color-mix(in srgb, var(--lime) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--lime) 20%, transparent);
 
         .dot {
           background-color: var(--lime);
@@ -163,8 +164,8 @@ export const StatusBadge = styled.span<{ $variant: "active" | "revoked" }>`
       `
       : `
         color: #ff7070;
-        background: rgba(255, 112, 112, 0.08);
-        border: 1px solid rgba(255, 112, 112, 0.2);
+        background: color-mix(in srgb, #ff7070 8%, transparent);
+        border: 1px solid color-mix(in srgb, #ff7070 20%, transparent);
 
         .dot {
           background-color: #ff7070;
@@ -178,15 +179,15 @@ export const ToggleButton = styled.button<{ $isRevoked: boolean }>`
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
   color: var(--foreground);
   font-family: var(--font-body);
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--surface-hover);
+    border-color: var(--mist);
   }
 
   &:disabled {
@@ -201,7 +202,7 @@ export const PaginationContainer = styled.div`
   align-items: center;
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-subtle);
 
   p {
     color: var(--mist);
@@ -223,7 +224,7 @@ export const PaginationContainer = styled.div`
 export const PageButton = styled.button`
   padding: 6px 14px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   background: transparent;
   color: var(--foreground);
   font-size: 0.8rem;
@@ -232,7 +233,7 @@ export const PageButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-hover);
   }
 
   &:disabled {

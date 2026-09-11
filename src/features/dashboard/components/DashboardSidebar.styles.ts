@@ -5,9 +5,12 @@ export const SidebarContainer = styled.aside`
   background: transparent;
   padding: 18px;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  @media (max-width: 580px) {
-    padding: 10px;
+  @media (max-width: 1024px) {
+    display: none !important;
   }
 `;
 

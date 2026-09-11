@@ -22,7 +22,7 @@ export const LayoutGrid = styled.div`
   grid-template-columns: 250px minmax(0, 1fr);
   gap: 16px;
 
-  @media (max-width: 1020px) {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
 `;

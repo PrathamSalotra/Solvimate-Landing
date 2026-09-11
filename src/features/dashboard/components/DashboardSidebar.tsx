@@ -41,7 +41,7 @@ export default function DashboardSidebar() {
   const pathname = usePathname();
 
   return (
-    <SidebarContainer style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <SidebarContainer>
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '32px', color: 'var(--lime)' }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>

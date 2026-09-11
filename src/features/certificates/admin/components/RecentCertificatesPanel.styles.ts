@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
   padding: 24px;
@@ -44,7 +44,8 @@ export const SectionTitle = styled.h2`
 `;
 
 export const EmptyState = styled.p`
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--mist);
+  opacity: 0.6;
   font-size: 0.85rem;
 `;
 
@@ -56,8 +57,8 @@ export const StatsGrid = styled.div`
 `;
 
 export const StatCard = styled.div`
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface-alt);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 12px;
   display: flex;
@@ -101,7 +102,7 @@ export const SearchWrap = styled.div`
     padding: 10px 10px 10px 36px;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border);
     color: var(--foreground);
     font-size: 0.85rem;
 
@@ -111,7 +112,8 @@ export const SearchWrap = styled.div`
     }
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--mist);
+      opacity: 0.5;
     }
   }
 `;
@@ -129,7 +131,7 @@ export const Table = styled.table`
   td {
     padding: 12px 8px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   th {
@@ -151,7 +153,7 @@ export const Table = styled.table`
   }
 
   tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-hover);
   }
 `;
 
@@ -197,8 +199,8 @@ export const TableFooter = styled.div`
 `;
 
 export const PerimeterCard = styled.div`
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 16px;
   display: flex;

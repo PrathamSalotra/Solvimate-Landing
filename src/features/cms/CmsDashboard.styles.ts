@@ -12,7 +12,7 @@ export const TabsContainer = styled.div`
   display: flex;
   gap: 6px;
   margin-bottom: 24px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--surface-alt);
   padding: 4px;
   border-radius: 10px;
   width: fit-content;
@@ -36,7 +36,7 @@ export const TabButton = styled.button<{ $active: boolean }>`
 
   &:hover {
     color: ${(props) => (props.$active ? "var(--ink)" : "var(--foreground)")};
-    background: ${(props) => (props.$active ? "var(--lime)" : "rgba(255, 255, 255, 0.05)")};
+    background: ${(props) => (props.$active ? "var(--lime)" : "var(--surface-hover)")};
   }
 `;
 
@@ -51,13 +51,13 @@ export const TabCount = styled.span<{ $active: boolean }>`
   font-size: 0.7rem;
   font-weight: 700;
   font-family: var(--font-mono);
-  background: ${(props) => (props.$active ? "rgba(0, 30, 43, 0.2)" : "rgba(255, 255, 255, 0.08)")};
+  background: ${(props) => (props.$active ? "var(--surface-alt)" : "var(--surface-hover)")};
   color: ${(props) => (props.$active ? "var(--ink)" : "var(--mist)")};
 `;
 
 /* ── Section Card ── */
 export const SectionCard = styled.section`
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
   padding: 24px;
@@ -147,7 +147,7 @@ export const Table = styled.table`
   td {
     padding: 14px 12px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   th {
@@ -172,7 +172,7 @@ export const Table = styled.table`
   }
 
   tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-hover);
   }
 `;
 
@@ -202,8 +202,8 @@ export const StatusBadgeButton = styled.button<{ $isActive: boolean }>`
     props.$isActive
       ? `
         color: var(--lime);
-        background: rgba(190, 254, 115, 0.08);
-        border: 1px solid rgba(190, 254, 115, 0.2);
+        background: color-mix(in srgb, var(--lime) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--lime) 20%, transparent);
 
         .dot {
           background-color: var(--lime);
@@ -211,8 +211,8 @@ export const StatusBadgeButton = styled.button<{ $isActive: boolean }>`
       `
       : `
         color: var(--mist);
-        background: rgba(159, 184, 180, 0.08);
-        border: 1px solid rgba(159, 184, 180, 0.2);
+        background: color-mix(in srgb, var(--mist) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--mist) 20%, transparent);
 
         .dot {
           background-color: var(--mist);
@@ -246,7 +246,7 @@ export const DeleteButton = styled.button`
 
   &:hover {
     color: #ff7070;
-    background: rgba(255, 112, 112, 0.08);
+    background: color-mix(in srgb, #ff7070 8%, transparent);
   }
 `;
 

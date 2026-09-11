@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
   padding: 24px;
@@ -18,7 +18,7 @@ export const SectionHeader = styled.div`
   align-items: center;
   margin-bottom: 24px;
   padding-bottom: 20px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  border-bottom: 1px dashed var(--border);
 `;
 
 export const TitleGroup = styled.div`
@@ -52,7 +52,7 @@ export const UploadGrid = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--surface-alt);
   border-radius: 12px;
   padding: 16px;
 `;
@@ -90,8 +90,8 @@ export const InputGroup = styled.div`
     input {
       width: 100%;
       padding: 12px 14px;
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
       border-radius: 8px;
       color: var(--foreground);
       font-size: 0.95rem;
@@ -100,11 +100,12 @@ export const InputGroup = styled.div`
 
       &:focus {
         outline: none;
-        border-color: rgba(255, 255, 255, 0.3);
+        border-color: var(--mist);
       }
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.2);
+        color: var(--mist);
+        opacity: 0.5;
       }
     }
 
@@ -119,8 +120,8 @@ export const UploadZone = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
+  background: var(--surface-hover);
+  border: 1px dashed var(--border);
   border-radius: 8px;
   padding: 12px 16px;
 
@@ -128,7 +129,7 @@ export const UploadZone = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-hover);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,7 +173,7 @@ export const ReplaceButton = styled.button`
   padding: 8px 12px;
   border-radius: 6px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border);
   color: var(--mist);
   font-size: 0.8rem;
   font-weight: 500;
@@ -180,7 +181,7 @@ export const ReplaceButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-hover);
     color: var(--foreground);
   }
 `;

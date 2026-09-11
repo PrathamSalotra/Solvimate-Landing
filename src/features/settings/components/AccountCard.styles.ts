@@ -13,14 +13,14 @@ export const AccountLayout = styled.div`
 
 export const SessionCard = styled.section`
   min-width: 0;
-  border: 1px solid rgba(55, 251, 137, 0.08);
+  border: 1px solid var(--border-subtle);
   border-radius: 10px;
-  background: linear-gradient(110deg, rgba(10, 46, 61, 0.98), rgba(10, 46, 61, 0.76));
+  background: var(--surface);
   padding: 22px;
 `;
 
 export const ActionCard = styled(SessionCard)`
-  background: rgba(10, 46, 61, 0.82);
+  background: var(--surface-alt);
 `;
 
 export const SessionHeading = styled.div`
@@ -38,7 +38,7 @@ export const SessionBadge = styled.span<{ $danger?: boolean }>`
   place-items: center;
   border-radius: 7px;
   color: ${({ $danger }) => ($danger ? "#ff9a9a" : "var(--lime)")};
-  background: ${({ $danger }) => ($danger ? "rgba(255, 112, 112, 0.08)" : "rgba(55, 251, 137, 0.08)")};
+  background: ${({ $danger }) => ($danger ? "color-mix(in srgb, #ff9a9a 8%, transparent)" : "color-mix(in srgb, var(--lime) 8%, transparent)")};
 
   svg {
     width: 17px;
@@ -48,7 +48,7 @@ export const SessionBadge = styled.span<{ $danger?: boolean }>`
 
 export const SessionTitle = styled.h2`
   margin: 0;
-  color: var(--paper);
+  color: var(--foreground);
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
@@ -80,7 +80,7 @@ export const AccountItem = styled.div`
   min-width: 0;
   padding: 13px 14px;
   border-radius: 6px;
-  background: rgba(0, 30, 43, 0.34);
+  background: var(--surface-alt);
 `;
 
 export const AccountLabel = styled.p`
@@ -95,7 +95,7 @@ export const AccountLabel = styled.p`
 export const AccountValue = styled.p`
   overflow: hidden;
   margin: 0;
-  color: var(--paper);
+  color: var(--foreground);
   font-size: 0.78rem;
   font-weight: 500;
   text-overflow: ellipsis;
@@ -108,20 +108,20 @@ export const SecurityNote = styled.div`
   margin-bottom: 28px;
   padding: 13px;
   border-radius: 6px;
-  background: rgba(0, 30, 43, 0.34);
+  background: var(--surface-alt);
 
   strong {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #c5e2df;
+    color: var(--foreground);
     font-size: 0.72rem;
   }
 
   strong svg {
     width: 14px;
     height: 14px;
-    color: #c5e2df;
+    color: var(--foreground);
   }
 
   span {

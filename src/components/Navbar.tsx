@@ -59,6 +59,8 @@ export default function Navbar() {
   const navLinksRef = React.useRef<Map<string, HTMLAnchorElement | null>>(new Map());
   const moreContainerRef = React.useRef<HTMLLIElement | null>(null);
 
+  const isAdminRoute = pathname.startsWith('/admin');
+
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const [isReady, setIsReady] = useState(false);
 
@@ -380,6 +382,27 @@ export default function Navbar() {
               {t('nav.admin')}
             </DrawerLinkItem>
           </DrawerSection>
+
+          {isAdminRoute && (
+            <DrawerSection>
+              <DrawerSectionTitle>Admin Panel</DrawerSectionTitle>
+              <DrawerLinkItem href="/admin/dashboard" $active={isActive('/admin/dashboard')} onClick={closeMenu}>
+                Dashboard
+              </DrawerLinkItem>
+              <DrawerLinkItem href="/admin/certificates" $active={isActive('/admin/certificates')} onClick={closeMenu}>
+                Certificates
+              </DrawerLinkItem>
+              <DrawerLinkItem href="/admin/cms" $active={isActive('/admin/cms')} onClick={closeMenu}>
+                Content CMS
+              </DrawerLinkItem>
+              <DrawerLinkItem href="/admin/analytics" $active={isActive('/admin/analytics')} onClick={closeMenu}>
+                Analytics
+              </DrawerLinkItem>
+              <DrawerLinkItem href="/admin/settings" $active={isActive('/admin/settings')} onClick={closeMenu}>
+                Settings
+              </DrawerLinkItem>
+            </DrawerSection>
+          )}
 
           <DrawerSection>
             <DrawerSectionTitle>{t('common.language')}</DrawerSectionTitle>
