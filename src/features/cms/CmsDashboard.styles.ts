@@ -5,6 +5,7 @@ export const PageContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  min-width: 0;
 `;
 
 /* ── Tab Bar ── */
@@ -16,6 +17,12 @@ export const TabsContainer = styled.div`
   padding: 4px;
   border-radius: 10px;
   width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+
+  @media (max-width: 580px) {
+    width: 100%;
+  }
 `;
 
 export const TabButton = styled.button<{ $active: boolean }>`
@@ -33,10 +40,21 @@ export const TabButton = styled.button<{ $active: boolean }>`
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 
   &:hover {
     color: ${(props) => (props.$active ? "var(--ink)" : "var(--foreground)")};
     background: ${(props) => (props.$active ? "var(--lime)" : "var(--surface-hover)")};
+  }
+
+  @media (max-width: 580px) {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
+
+    svg {
+      display: none;
+    }
   }
 `;
 
@@ -72,6 +90,13 @@ export const SectionHeaderRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media (max-width: 580px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const SectionTitleGroup = styled.div`
@@ -142,6 +167,7 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;
+  min-width: 500px;
 
   th,
   td {

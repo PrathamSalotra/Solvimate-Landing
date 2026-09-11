@@ -30,4 +30,6 @@ export const LayoutGrid = styled.div`
 export const MainContent = styled.section`
   display: grid;
   gap: 14px;
+  min-width: 0;
+  overflow: hidden;
 `;

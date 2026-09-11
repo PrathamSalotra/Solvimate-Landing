@@ -4,6 +4,7 @@ export const PageContainer = styled.div`
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  min-width: 0;
 `;
 
 export const Grid = styled.div`
@@ -21,6 +22,7 @@ export const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
 `;
 
 export const RightColumn = styled.div`
@@ -28,6 +30,7 @@ export const RightColumn = styled.div`
   flex-direction: column;
   position: sticky;
   top: 24px;
+  min-width: 0;
 
   @media (max-width: 1100px) {
     position: static;

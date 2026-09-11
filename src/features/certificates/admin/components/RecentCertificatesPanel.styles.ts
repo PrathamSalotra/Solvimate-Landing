@@ -126,6 +126,7 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 0.8rem;
+  min-width: 450px;
 
   th,
   td {

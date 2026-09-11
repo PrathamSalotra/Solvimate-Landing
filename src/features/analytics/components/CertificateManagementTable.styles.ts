@@ -18,6 +18,10 @@ export const HeaderRow = styled.div`
   margin-bottom: 24px;
   flex-wrap: wrap;
   gap: 16px;
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+  }
 `;
 
 export const TitleBlock = styled.div`
@@ -40,6 +44,11 @@ export const TitleBlock = styled.div`
 export const SearchWrap = styled.div`
   position: relative;
   min-width: 280px;
+
+  @media (max-width: 720px) {
+    min-width: unset;
+    width: 100%;
+  }
 
   svg {
     position: absolute;
@@ -79,6 +88,7 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;
+  min-width: 600px;
 
   th,
   td {

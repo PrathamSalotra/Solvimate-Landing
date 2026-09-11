@@ -125,6 +125,11 @@ export const UploadZone = styled.div`
   border-radius: 8px;
   padding: 12px 16px;
 
+  @media (max-width: 475px) {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .icon {
     width: 40px;
     height: 40px;
@@ -147,6 +152,10 @@ export const FileDetails = styled.div`
   flex: 1;
   min-width: 0;
 
+  @media (max-width: 475px) {
+    flex: 1 1 calc(100% - 56px);
+  }
+
   span.name {
     color: var(--foreground);
     font-size: 0.85rem;
@@ -167,6 +176,19 @@ export const ActionButtons = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media (max-width: 475px) {
+    width: 100%;
+    margin-top: 4px;
+    gap: 8px;
+
+    button {
+      flex: 1;
+      min-width: 100px;
+      justify-content: center;
+      text-align: center;
+    }
+  }
 `;
 
 export const ReplaceButton = styled.button`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
   padding: 24px;
@@ -52,6 +52,11 @@ export const StatusLabelRow = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 475px) {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
   .label-group {
     display: flex;
     align-items: center;
@@ -92,7 +97,7 @@ export const StatusLabelRow = styled.div`
 export const StatusTrack = styled.div`
   width: 100%;
   height: 6px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--border-subtle);
   border-radius: 3px;
   overflow: hidden;
 `;

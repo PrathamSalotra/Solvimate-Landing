@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  border: 1px solid rgba(55, 251, 137, 0.2);
+  border: 1px solid var(--border-subtle);
   border-radius: 16px;
-  background: linear-gradient(170deg, rgba(1, 55, 51, 0.9), rgba(0, 30, 43, 0.95));
+  background: var(--surface);
   padding: 24px;
   margin-bottom: 24px;
+
+  @media (max-width: 580px) {
+    padding: 16px;
+  }
 `;
 
 export const SectionHeaderRow = styled.div`
@@ -20,12 +24,12 @@ export const SectionHeaderRow = styled.div`
 export const TitleBlock = styled.div`
   h2 {
     margin: 0 0 8px;
-    color: #ffffff;
+    color: var(--foreground);
     font-size: 1.1rem;
   }
   p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--mist);
     font-size: 0.85rem;
     max-width: 500px;
     line-height: 1.5;
@@ -46,29 +50,34 @@ export const InviteForm = styled.form`
 
 export const InviteInput = styled.input`
   padding: 10px 14px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  color: #ffffff;
+  color: var(--foreground);
   font-size: 0.85rem;
   transition: all 0.2s ease;
   min-width: 240px;
 
   &:focus {
     outline: none;
-    border-color: rgba(55, 251, 137, 0.6);
-    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--lime);
+    background: var(--surface-alt);
   }
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--mist);
+    opacity: 0.5;
+  }
+
+  @media (max-width: 600px) {
+    min-width: unset;
   }
 `;
 
 export const InviteButton = styled.button`
   padding: 10px 20px;
-  background: #37fb89;
-  color: #013733;
+  background: var(--lime);
+  color: var(--ink);
   border: none;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -78,9 +87,8 @@ export const InviteButton = styled.button`
   white-space: nowrap;
 
   &:hover:not(:disabled) {
-    background: #2ce878;
+    opacity: 0.9;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(55, 251, 137, 0.2);
   }
 
   &:disabled {
@@ -91,35 +99,36 @@ export const InviteButton = styled.button`
 
 export const TableWrap = styled.div`
   overflow-x: auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--surface-alt);
 `;
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;
+  min-width: 550px;
 
   th,
   td {
     padding: 14px 16px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   th {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--mist);
     font-weight: 500;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.5px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-hover);
     white-space: nowrap;
   }
 
   td {
-    color: #ffffff;
+    color: var(--foreground);
     vertical-align: middle;
   }
 
@@ -128,7 +137,7 @@ export const Table = styled.table`
   }
 
   tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-hover);
   }
 `;
 
@@ -143,8 +152,8 @@ export const EmailCell = styled.div`
 `;
 
 export const YouBadge = styled.span`
-  background: rgba(55, 251, 137, 0.15);
-  color: #37fb89;
+  background: color-mix(in srgb, var(--lime) 15%, transparent);
+  color: var(--lime);
   padding: 2px 8px;
   border-radius: 999px;
   font-size: 0.65rem;
@@ -155,10 +164,10 @@ export const YouBadge = styled.span`
 
 export const RoleSelect = styled.select`
   padding: 6px 12px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  color: #ffffff;
+  color: var(--foreground);
   font-size: 0.8rem;
   cursor: pointer;
 
@@ -169,12 +178,12 @@ export const RoleSelect = styled.select`
 
   &:focus {
     outline: none;
-    border-color: #37fb89;
+    border-color: var(--lime);
   }
 
   option {
-    background: #013733;
-    color: #ffffff;
+    background: var(--surface);
+    color: var(--foreground);
   }
 `;
 
@@ -192,14 +201,14 @@ export const StatusBadgeButton = styled.button<{ $isActive: boolean }>`
   ${(props) =>
     props.$isActive
       ? `
-        color: #37fb89;
-        background: rgba(55, 251, 137, 0.12);
-        border: 1px solid rgba(55, 251, 137, 0.3);
+        color: var(--lime);
+        background: color-mix(in srgb, var(--lime) 12%, transparent);
+        border: 1px solid color-mix(in srgb, var(--lime) 30%, transparent);
       `
       : `
         color: #ff7070;
-        background: rgba(255, 112, 112, 0.12);
-        border: 1px solid rgba(255, 112, 112, 0.3);
+        background: color-mix(in srgb, #ff7070 12%, transparent);
+        border: 1px solid color-mix(in srgb, #ff7070 30%, transparent);
       `}
 
   &:disabled {
@@ -213,16 +222,16 @@ export const StatusBadgeButton = styled.button<{ $isActive: boolean }>`
 `;
 
 export const MutedText = styled.span`
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--mist);
   font-size: 0.8rem;
 `;
 
 export const EmptyState = styled.p`
   padding: 32px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--mist);
   margin: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--surface-alt);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-subtle);
 `;
