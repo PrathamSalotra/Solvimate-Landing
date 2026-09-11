@@ -17,13 +17,9 @@ import { useGSAPScrollReveal } from '@/hooks/useGSAPScrollReveal';
 import {
   HomeContainer,
   FixedWaveBackgroundContainer,
-  StatusSection,
-  StatusBadge,
-  TestInputWrapper,
-  TestInput,
 } from './HomeClient.styles';
 
-export default function HomeClient({ listingsCount }: { listingsCount: number }) {
+export default function HomeClient({ listingsCount }: { listingsCount?: number }) {
   const { t } = useLanguage();
   const containerRef = useGSAPScrollReveal<HTMLDivElement>();
 
@@ -42,18 +38,6 @@ export default function HomeClient({ listingsCount }: { listingsCount: number })
       <TestimonialsSection />
       <FAQSection />
       <CTASection />
-      <StatusSection>
-        <StatusBadge>{t('home.serverQuery', { count: listingsCount })}</StatusBadge>
-        <TestInputWrapper>
-          <label
-            htmlFor="test-input"
-            style={{ fontSize: '0.75rem', opacity: 0.8, color: 'inherit' }}
-          >
-            {t('home.inputLabel')}
-          </label>
-          <TestInput id="test-input" type="text" placeholder={t('home.inputPlaceholder')} />
-        </TestInputWrapper>
-      </StatusSection>
     </HomeContainer>
   );
 }

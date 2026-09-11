@@ -35,14 +35,9 @@ export default function GetInTouch() {
         <ContactGrid>
           <ContactCard data-gsap="card">
             <ContactLabel>{t('about.emailLabel')}</ContactLabel>
-            <ContactValueLink href="mailto:operationssolvimate@gmail.com">
-              operationssolvimate@gmail.com
+            <ContactValueLink href="mailto:sales@solvimate.com">
+              sales@solvimate.com
             </ContactValueLink>
-          </ContactCard>
-
-          <ContactCard data-gsap="card">
-            <ContactLabel>{t('about.phoneLabel')}</ContactLabel>
-            <ContactValueLink href="tel:+916307875230">+91 6307875230</ContactValueLink>
           </ContactCard>
 
           <ContactCard data-gsap="card">
