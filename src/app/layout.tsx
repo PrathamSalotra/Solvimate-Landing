@@ -53,10 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning className={`${interTight.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
+      <head />
       <body>
+        <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <StyledComponentsRegistry>
           <ThemeProvider>
             <LanguageProvider>

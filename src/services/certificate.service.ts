@@ -170,7 +170,7 @@ export async function updateCertificate(
   const updated = await Certificate.findOneAndUpdate(
     { verificationId: normalizedId },
     { $set: updatePayload },
-    { new: true, runValidators: true }
+    { returnDocument: 'after', runValidators: true }
   );
 
   if (!updated) {
@@ -189,6 +189,6 @@ export async function recordCertificateVerification(verificationId: string, veri
       $inc: { verificationCount: 1 },
       $set: { lastVerifiedAt: verifiedAt },
     },
-    { new: true, runValidators: true }
+    { returnDocument: 'after', runValidators: true }
   );
 }

@@ -4,8 +4,11 @@ import Link from "next/link";
 export const Page = styled.main`
   min-height: calc(100vh - 72px);
   padding: 154px 20px 56px;
-  background: var(--background);
-  background-image: linear-gradient(90deg, transparent 0, rgba(55, 251, 137, 0.035) 50%, transparent 100%), linear-gradient(165deg, transparent 42%, rgba(55, 251, 137, 0.09) 42.1%, transparent 42.3%);
+  background: ${({ theme }) => theme.background};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 
   @media (max-width: 700px) {
     padding-top: 54px;
@@ -13,106 +16,125 @@ export const Page = styled.main`
 `;
 
 export const Container = styled.div`
-  width: min(100%, 960px);
-  margin: 0 auto;
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 
 export const VerificationHeader = styled.header`
   margin-bottom: 16px;
-  padding: 24px;
-  border: 1px solid rgba(55, 251, 137, 0.14);
-  border-radius: 10px;
-  background: rgba(10, 46, 61, 0.72);
+  padding: 22px 24px;
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.25)' : theme.border)};
+  border-radius: 20px;
+  background-color: ${({ theme }) => theme.cardBg};
+  box-shadow: ${({ theme }) =>
+    theme.isDark
+      ? '0 16px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(55, 251, 137, 0.1)'
+      : '0 10px 30px rgba(0, 0, 0, 0.06)'};
+  box-sizing: border-box;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     padding: 20px 16px;
   }
 `;
 
 export const VerificationBadge = styled.span`
   display: inline-flex;
-  padding: 4px 10px;
-  border: 1px solid rgba(159, 184, 180, 0.3);
-  border-radius: 999px;
-  color: var(--paper);
-  background: rgba(159, 184, 180, 0.08);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background-color: ${({ theme }) => (theme.isDark ? 'rgba(255, 78, 104, 0.1)' : 'rgba(255, 78, 104, 0.05)')};
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 78, 104, 0.3)' : 'rgba(255, 78, 104, 0.2)')};
+  color: #ff4e68;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 `;
 
 export const PageTitle = styled.h1`
-  margin: 11px 0 5px;
-  color: var(--paper);
-  font-family: var(--font-display);
+  margin: 10px 0 3px;
+  color: ${({ theme }) => theme.foreground};
+  font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.55rem, 3vw, 2rem);
+  font-weight: 700;
   line-height: 1.15;
 `;
 
 export const VerificationId = styled.p`
   margin: 0;
-  color: var(--mist);
-  font-size: 0.72rem;
+  color: ${({ theme }) => theme.textSecondary};
+  font-size: 0.85rem;
 
   strong {
-    color: var(--paper);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
+    color: ${({ theme }) => theme.foreground};
+    font-family: ${({ theme }) => theme.fonts.mono};
+    font-size: 0.85rem;
   }
 `;
 
 export const InvalidCard = styled.section`
-  padding: 26px 24px 24px;
-  border: 1px solid rgba(55, 251, 137, 0.14);
-  border-radius: 10px;
-  background: rgba(10, 46, 61, 0.78);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  padding: 2rem 2.25rem;
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 78, 104, 0.25)' : theme.border)};
+  border-radius: 20px;
+  background-color: ${({ theme }) => theme.cardBg};
+  box-shadow: ${({ theme }) =>
+    theme.isDark
+      ? '0 16px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 78, 104, 0.1)'
+      : '0 10px 30px rgba(255, 78, 104, 0.06)'};
+  box-sizing: border-box;
 
-  @media (max-width: 560px) {
-    padding: 22px 16px;
+  @media (max-width: 600px) {
+    padding: 1.5rem;
   }
 `;
 
 export const InvalidHeading = styled.div`
   display: flex;
   align-items: center;
-  gap: 11px;
-  margin-bottom: 21px;
+  gap: 12px;
+  margin-bottom: 24px;
 `;
 
 export const InvalidIcon = styled.span`
   display: grid;
-  width: 17px;
-  height: 17px;
+  width: 24px;
+  height: 24px;
   place-items: center;
   color: #ff4e68;
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 78, 104, 0.1)' : 'rgba(255, 78, 104, 0.05)')};
+  border-radius: 6px;
 
   svg {
-    width: 17px;
-    height: 17px;
+    width: 16px;
+    height: 16px;
   }
 `;
 
 export const InvalidTitle = styled.h2`
   margin: 0;
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+  color: ${({ theme }) => theme.foreground};
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: 1.25rem;
+  font-weight: 700;
   line-height: 1.2;
 `;
 
 export const InvalidMessage = styled.p`
   margin: 0;
-  color: var(--paper);
-  font-size: 0.76rem;
-  line-height: 1.5;
+  color: ${({ theme }) => theme.foreground};
+  font-size: 0.9rem;
+  line-height: 1.6;
 `;
 
 export const CardDivider = styled.hr`
   height: 1px;
-  margin: 19px 0 15px;
+  margin: 24px 0;
   border: 0;
-  background: rgba(159, 184, 180, 0.1);
+  background: ${({ theme }) => theme.border};
 `;
 
 export const SupportRow = styled.div`
@@ -124,76 +146,81 @@ export const SupportRow = styled.div`
   @media (max-width: 640px) {
     align-items: flex-start;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
 `;
 
 export const SupportText = styled.p`
   margin: 0;
-  color: var(--mist);
-  font-size: 0.62rem;
+  color: ${({ theme }) => theme.textSecondary};
+  font-size: 0.85rem;
 `;
 
 export const SupportLink = styled(Link)`
-  color: var(--lime);
+  color: ${({ theme }) => (theme.isDark ? '#37fb89' : theme.accentText)};
+  font-weight: 600;
 
   &:hover {
-    color: var(--mint);
     text-decoration: underline;
   }
 `;
 
 export const ErrorCode = styled.span`
-  color: rgba(159, 184, 180, 0.7);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
+  color: ${({ theme }) => theme.textSecondary};
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.75rem;
   white-space: nowrap;
+  padding: 4px 8px;
+  background: ${({ theme }) => (theme.isDark ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.02)')};
+  border-radius: 4px;
 `;
 
 export const Actions = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 24px;
 `;
 
 const ActionBase = styled(Link)`
   display: inline-flex;
-  min-height: 32px;
+  min-height: 40px;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
-  border-radius: 5px;
-  font-size: 0.64rem;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 600;
-  transition: background 180ms ease, border-color 180ms ease;
+  transition: all 0.2s ease;
 `;
 
 export const HomeLink = styled(ActionBase)`
-  border: 1px solid rgba(55, 251, 137, 0.28);
-  color: var(--paper);
-  background: rgba(55, 251, 137, 0.18);
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.28)' : theme.border)};
+  color: ${({ theme }) => theme.foreground};
+  background: ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.18)' : 'rgba(0, 0, 0, 0.03)')};
 
   &:hover {
-    background: rgba(55, 251, 137, 0.28);
+    background: ${({ theme }) => (theme.isDark ? 'rgba(55, 251, 137, 0.28)' : 'rgba(0, 0, 0, 0.06)')};
+    border-color: ${({ theme }) => (theme.isDark ? '#37fb89' : theme.accentText)};
   }
 `;
 
 export const VerifyAgainLink = styled(ActionBase)`
-  border: 1px solid rgba(159, 184, 180, 0.2);
-  color: var(--mist);
-  background: rgba(0, 30, 43, 0.28);
+  border: 1px solid ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.textSecondary};
+  background: ${({ theme }) => (theme.isDark ? 'rgba(0, 30, 43, 0.28)' : 'transparent')};
 
   &:hover {
-    border-color: var(--lime);
-    color: var(--paper);
+    border-color: ${({ theme }) => (theme.isDark ? '#befe72' : theme.accentText)};
+    color: ${({ theme }) => theme.foreground};
   }
 `;
 
 export const FooterNote = styled.p`
-  margin: 26px 0 0;
-  color: rgba(159, 184, 180, 0.55);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
+  margin: 32px 0 0;
+  color: ${({ theme }) => theme.textSecondary};
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.75rem;
   text-align: center;
+  opacity: 0.7;
 `;
